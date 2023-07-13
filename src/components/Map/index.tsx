@@ -1,6 +1,5 @@
 "use client";
 
-import { LatLng } from "leaflet";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
@@ -10,7 +9,7 @@ export default function Mapa({cidade, clinicas}) {
     <MapContainer
       center={[cidade.lat, cidade.long]}
       zoom={13}
-      style={{ height: "400px", width: '100vw' }}
+      style={{ height: "400px", width: '100vw'}}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
