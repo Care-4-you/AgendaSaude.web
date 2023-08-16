@@ -1,13 +1,38 @@
 [
   {
-    "localização":{
-      "endereço": {
-        "cidade": "Araci"
-      },
-      "coordenadas": {
-        "longitude": -66.897166,
-        "latitude": -9.825808
+    "id": 1,
+    "nome_fantasia": " CITTO CENTRO DE INVESTIGACAO E TRATAMENTO EM TRAUMATOLOGIA E ORTOPEDIA LTDA",
+    "proprietario": "@ObjectId",
+    "email": "email@email",
+    "tipo": "centro médico",
+    "cnpj": "04.327.738/0001-19", 
+    "contato": {
+      "telefone": "",
+      "website": ""
+    },
+    "especialidades": [
+      "@ObjectId",
+      "@ObjectId"
+    ],
+    "endereco": {
+      "numero": "631-b",
+      "rua": "R. Álvaro Augusto",
+      "bairro": "Ginásio",
+      "cidade": "Serrinha",
+      "uf": "Ba",
+      "CEP": "48700-000",
+      "geo": {
+        "lat": "-15.839492",
+        "lng": "-47.9436166"
       }
-    }
+    },
+    "profissionais":[
+      "@ObjectId",
+      "@ObjectId"
+    ],
+    "convenios_aceitos": [
+      "@ObjectId",
+      "@ObjectId"
+    ]
   }
 ]
