@@ -1,5 +1,8 @@
 export interface ICidade {
   id?: string
-  latitude: number
-  longitude: number
+  uf?: string
+  geo: {
+    lat: number
+    lng: number
+  }
 }

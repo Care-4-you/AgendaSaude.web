@@ -1,9 +1,10 @@
 import Mapa from "../components/Mapa";
+import clinicas from "../Api/clinicas.json";
 
 export default function Home() {
   return (
     <div className="">
-      <Mapa cidade={{latitude: -11.337516, longitude: -38.96385}} clinicas={[{latitude: -11.337516, longitude: -38.963585, id: 1}]}/>
+      <Mapa cidade={{geo:{lat: -11.337516, lng: -38.96385}}} clinicas={[clinicas[0]]}/>
     </div>
   );
 }

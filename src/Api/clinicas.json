@@ -1,14 +1,19 @@
 [
   {
     "id": 1,
-    "nome_fantasia": " CITTO CENTRO DE INVESTIGACAO E TRATAMENTO EM TRAUMATOLOGIA E ORTOPEDIA LTDA",
+    "nome_fantasia": "CITTO CENTRO DE INVESTIGACAO E TRATAMENTO EM TRAUMATOLOGIA E ORTOPEDIA LTDA",
+    "nome": "CITTO",
     "proprietario": "@ObjectId",
-    "email": "email@email",
-    "tipo": "centro médico",
+    "email": "cittoadm@gmail.com",
+    "titulo": "centro médico",
     "cnpj": "04.327.738/0001-19", 
     "contato": {
-      "telefone": "",
-      "website": ""
+      "telefone": "07532617400",
+      "website": "https://www.clinicacitto.com.br/"
+    },
+    "funcionamento": {
+      "dias": "",
+      "horarios": ""
     },
     "especialidades": [
       "@ObjectId",
@@ -22,8 +27,8 @@
       "uf": "Ba",
       "CEP": "48700-000",
       "geo": {
-        "lat": "-15.839492",
-        "lng": "-47.9436166"
+        "lat": -11.668519042439957,
+        "lng": -39.005277586337236
       }
     },
     "profissionais":[
