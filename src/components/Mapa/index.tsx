@@ -17,7 +17,7 @@ export default function Mapa({cidade}: MapaProps) {
     <MapContainer
       center={{lat:cidade.geo.lat, lng:cidade.geo.lng}}
       zoom={14}
-      style={{ height: "700px", width: "100vw"}}
+      style={{ height: "90vh", width: "80%"}}
     >
       <LayersControl>
         <LayersControl.BaseLayer checked name="Light">

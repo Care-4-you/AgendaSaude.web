@@ -5,7 +5,7 @@
     "nome": "CITTO",
     "proprietario": "@ObjectId",
     "email": "cittoadm@gmail.com",
-    "titulo": "centro médico",
+    "titulo": "Centro médico",
     "cnpj": "04.327.738/0001-19", 
     "contato": {
       "telefone": "07532617400",
@@ -25,7 +25,7 @@
       "bairro": "Ginásio",
       "cidade": "Serrinha",
       "uf": "Ba",
-      "CEP": "48700-000",
+      "cep": "48700-000",
       "geo": {
         "lat": -11.668519042439957,
         "lng": -39.005277586337236
@@ -39,5 +39,22 @@
       "@ObjectId",
       "@ObjectId"
     ]
+  },
+  {
+    "id": 2,
+    "nome": "CMT",
+    "titulo": "Clínica médica e do trabalho",
+    "endereco": {
+      "numero": "604",
+      "rua": "R. Álvaro Augusto",
+      "bairro": "Ginásio",
+      "cidade": "Serrinha",
+      "uf": "Ba",
+      "cep": "48700-000",
+      "geo": {
+        "lat": -11.6680572,
+        "lng": -39.0251614
+      }
+    }
   }
 ]
