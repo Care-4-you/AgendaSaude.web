@@ -3,35 +3,60 @@
 import { ICidade } from "@/shared/interfaces/ICidade";
 import { IClinica } from "@/shared/interfaces/IClinica";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import citto from "../../../public/Imagens/CITTO.jpg";
+import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
+// import citto from "../../../public/Imagens/CITTO.jpg";
 
 interface MapaProps {
   cidade: ICidade
-  clinicas: IClinica[]
+  clinicas?: IClinica[]
 }
 
-export default function Mapa({cidade, clinicas}: MapaProps) {
+export default function Mapa({cidade}: MapaProps) {
   // const position :  = [51.505, 51.505];
   return (
     <MapContainer
-      center={[cidade.geo.lat, cidade.geo.lng]}
+      center={{lat:cidade.geo.lat, lng:cidade.geo.lng}}
       zoom={14}
       style={{ height: "700px", width: "100vw"}}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {clinicas.length > 0 && clinicas.map((clinica) => {
-        return (
-          <Marker position={[clinica.endereco.geo.lat, clinica.endereco.geo.lng]} key={clinica.id}>
-            <Popup>
-              <img src="../../../public/next.svg" alt="a" className="w-8 h-8" />
-            </Popup>
-          </Marker>
-        );
-      })}
+      <LayersControl>
+        <LayersControl.BaseLayer checked name="Light">
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+            attribution= {"&copy; OpenStreetMap France | &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"}
+            maxZoom={20}
+            opacity={1}
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Dark">
+          <TileLayer
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+            subdomains="abcd"
+            attribution= {"&copy; <a href=\"https://stadiamaps.com/\">Stadia Maps</a>, &copy; <a href=\"https://openmaptiles.org/\">OpenMapTiles</a> &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors"}
+            maxZoom={20}
+            opacity={1}
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Satélite">
+          <TileLayer
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+            subdomains={["mt0", "mt1", "mt2", "mt3"]}
+            attribution={"Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"}
+            maxZoom={21}
+            minZoom={1}
+            opacity={1}
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Google(não encontrei o attribution correto)">
+          <TileLayer
+            url="http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}"
+            attribution="google"
+            maxZoom={21}
+            minZoom={1}
+            opacity={1}
+          />
+        </LayersControl.BaseLayer>
+      </LayersControl>
     </MapContainer>
   );
 }
