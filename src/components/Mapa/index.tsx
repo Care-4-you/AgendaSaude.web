@@ -7,17 +7,16 @@ import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
 // import citto from "../../../public/Imagens/CITTO.jpg";
 
 interface MapaProps {
-  cidade: ICidade
+  cidade?: ICidade
   clinicas?: IClinica[]
 }
 
-export default function Mapa({cidade}: MapaProps) {
-  // const position :  = [51.505, 51.505];
+export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}}: MapaProps) {
   return (
     <MapContainer
       center={{lat:cidade.geo.lat, lng:cidade.geo.lng}}
-      zoom={14}
-      style={{ height: "90vh", width: "80%"}}
+      zoom={4}
+      style={{ height: "90vh", width: "100%"}}
     >
       <LayersControl>
         <LayersControl.BaseLayer checked name="Light">
