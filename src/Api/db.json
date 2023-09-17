@@ -1,0 +1,131 @@
+{
+  "clinicas": [
+    {
+      "id": 1,
+      "nome": "CITTO",
+      "titulo": "Centro médico",
+      "endereco": {
+        "numero": "631-b",
+        "rua": "R. Álvaro Cabral",
+        "bairro": "Ginásio",
+        "cidade": "Serrinha",
+        "uf": "Ba",
+        "cep": "48700-000",
+        "geo": {
+          "lat": -11.668519042439957,
+          "lng": -39.005277586337236
+        }
+      },
+      "imagem_url": ["https://lh5.googleusercontent.com/p/AF1QipMfY2gFoFhOiXe5dn1ZIbif8UEamln7j9MxZ-bj=w408-h271-k-no"],
+      "contato": {
+        "telefone": "07532617400",
+        "website": "https://www.clinicacitto.com.br/"
+      },
+      "especialidades": [],
+      "convenios_aceitos": [],
+      "avaliacao": 4.1
+    },
+    {
+      "id": 2,
+      "nome": "CMT",
+      "titulo": "Clínica médica e do trabalho",
+      "endereco": {
+        "numero": "604",
+        "rua": "R. Álvaro Augusto",
+        "bairro": "Ginásio",
+        "cidade": "Serrinha",
+        "uf": "Ba",
+        "cep": "48700-000",
+        "geo": {
+          "lat": -11.6680572,
+          "lng": -39.0251614
+        }
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Cruz Freire",
+      "titulo": "Instituto",
+      "endereco": {
+        "numero": "570",
+        "rua": "R. Álvaro Augusto",
+        "bairro": "Centro",
+        "cidade": "Serrinha",
+        "uf": "Ba",
+        "cep": "48734-000",
+        "geo": {
+          "lat": -11.667706,
+          "lng": -39.0057923
+        }
+      },
+      "imagem_url": ["https://lh5.googleusercontent.com/p/AF1QipPCyss7YeBBbeNwVejkbdSLKuVpzXs8DRl9dtCv=w426-h240-k-no"],
+      "contato": {
+        "telefone": "07532611851",
+        "website": "http://institutocruzfreire.com.br/"
+      },
+      "especialidades": [],
+      "convenios_aceitos": [],
+      "avaliacao": 2.8
+    },
+    {
+      "id": 4,
+      "nome": "Nefrologia de Serrinha",
+      "titulo": "Clínica de ",
+      "endereco": {
+        "numero": "500",
+        "rua": "R. Álvaro Augusto",
+        "bairro": "Ginásio",
+        "cidade": "Serrinha",
+        "uf": "Ba",
+        "cep": "48734-000",
+        "geo": {
+          "lat": -11.6676843,
+          "lng": -39.0057234
+        }
+      },
+      "imagem_url": ["https://lh5.googleusercontent.com/p/AF1QipMaT2A83eHzrYqFkdSd9y8l_rp9kwKWITeQDo9B=s516-k-no"],
+      "contato": {
+        "telefone": "07532612453",
+        "website": "http://www.cns-hd.com.br/"
+      },
+      "especialidades": [
+        "Nefrologia"
+      ],
+      "convenios_aceitos": [
+        "Unimed",
+        "ASFEB",
+        "Bradesco seguros",
+        "Goodlife",
+        "Capesesp",
+        "Planserv",
+        "Camed",
+        "CASSEB"
+      ],
+      "avaliacao": 4.6
+    },  {
+      "id": 5,
+      "nome": "",
+      "titulo": "Centro médico",
+      "endereco": {
+        "numero": "721-b",
+        "rua": "R. Álvaro Cabral",
+        "bairro": "Centro",
+        "cidade": "Cafundós",
+        "uf": "Ba",
+        "cep": "48734-000",
+        "geo": {
+          "lat": 0,
+          "lng": 0
+        }
+      },
+      "imagem_url": [],
+      "contato": {
+        "telefone": "",
+        "website": ""
+      },
+      "especialidades": [],
+      "convenios_aceitos": [],
+      "avaliacao": ""
+    }
+  ]
+}
