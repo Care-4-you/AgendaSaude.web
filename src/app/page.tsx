@@ -1,5 +1,5 @@
 import Mapa from "../components/Mapa";
-import clinicas from "../Api/clinicas.json";
+import clinicas from "../Api/db.json";
 
 export default function Home() {
 
@@ -10,7 +10,7 @@ export default function Home() {
       </header>
       <main>
         <div className="flex">
-          <Mapa clinicas={[clinicas[0]]}/>
+          <Mapa clinicas={[clinicas.clinicas[0]]}/>
         </div>
       </main>
     </div>
