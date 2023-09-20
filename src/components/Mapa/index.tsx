@@ -7,7 +7,11 @@ import "./Popup.css";
 import { useState } from "react";
 import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import CardClinica from "../CardClinica";
-// import citto from "../../../public/Imagens/CITTO.jpg";
+import {} from "react-icons/io";
+import pin from "../../../public/static/pin.svg";
+import { Icon } from "leaflet";
+// import Image from "next/image";
+// mport citto from "../../../public/Imagens/CITTO.jpg";
 
 interface MapaProps {
   cidade?: ICidade
@@ -17,6 +21,12 @@ interface MapaProps {
 export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}, clinicas}: MapaProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geoData, setGeoData] = useState({ lat:cidade.geo.lat, lng:cidade.geo.lng});
+
+  const customIcon = new Icon({
+    iconUrl: "https://cdn.icon-icons.com/icons2/3357/PNG/512/map_navigation_pin_maps_pointer_clinic_placeholder_location_hospital_icon_210661.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 10]
+  });
   
   return (
     <MapContainer
@@ -64,7 +74,7 @@ export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}, clinicas}: Ma
         {clinicas && (
           clinicas.map( clinica => {
             return (
-              <Marker key={clinica.id} position={[clinica.endereco.geo.lat, clinica.endereco.geo.lng]}>
+              <Marker key={clinica.id} position={[clinica.endereco.geo.lat, clinica.endereco.geo.lng]} title="a" icon={customIcon}>
                 <Popup className="mapa_popup">
                   <CardClinica clinica={clinicas[0]}/>
                 </Popup>
