@@ -1,13 +1,16 @@
 export interface IClinica {
-  id?: number
-  // nome_fantasia?: string
-  // tipo?: string
-  // especialidades?: string[]
+  id: number
+  nome: string
+  titulo: string
+  imagem_url: string
+  avaliacao?: number
   endereco: {
-    // numero?: string
-    // rua?: string
-    // bairro?: string
-    // uf?: string
+    numero?: string
+    rua?: string
+    bairro?: string
+    cidade?: string
+    uf?: string
+    cep?: string
     geo: {
       lat: number
       lng: number

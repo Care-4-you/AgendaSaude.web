@@ -3,7 +3,10 @@
 import { ICidade } from "@/shared/interfaces/ICidade";
 import { IClinica } from "@/shared/interfaces/IClinica";
 import "leaflet/dist/leaflet.css";
-import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
+import "./Popup.css";
+import { useState } from "react";
+import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import CardClinica from "../CardClinica";
 // import citto from "../../../public/Imagens/CITTO.jpg";
 
 interface MapaProps {
@@ -11,15 +14,18 @@ interface MapaProps {
   clinicas?: IClinica[]
 }
 
-export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}}: MapaProps) {
+export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}, clinicas}: MapaProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [geoData, setGeoData] = useState({ lat:cidade.geo.lat, lng:cidade.geo.lng});
+  
   return (
     <MapContainer
-      center={{lat:cidade.geo.lat, lng:cidade.geo.lng}}
+      center={[geoData.lat, geoData.lng]}
       zoom={4}
       style={{ height: "90vh", width: "100%"}}
     >
       <LayersControl>
-        <LayersControl.BaseLayer checked name="Light">
+        <LayersControl.BaseLayer name="Light">
           <TileLayer
             url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
             attribution= {"&copy; OpenStreetMap France | &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"}
@@ -36,7 +42,7 @@ export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}}: MapaProps) {
             opacity={1}
           />
         </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Satélite">
+        <LayersControl.BaseLayer checked name="Satélite">
           <TileLayer
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
             subdomains={["mt0", "mt1", "mt2", "mt3"]}
@@ -55,6 +61,17 @@ export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}}: MapaProps) {
             opacity={1}
           />
         </LayersControl.BaseLayer>
+        {clinicas && (
+          clinicas.map( clinica => {
+            return (
+              <Marker key={clinica.id} position={[clinica.endereco.geo.lat, clinica.endereco.geo.lng]}>
+                <Popup className="mapa_popup">
+                  <CardClinica clinica={clinicas[0]}/>
+                </Popup>
+              </Marker>
+            );
+          })
+        )}
       </LayersControl>
     </MapContainer>
   );

@@ -1,0 +1,17 @@
+.mapa_popup {
+  padding: 0;
+}
+
+.mapa_popup .leaflet-popup-content-wrapper {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mapa_popup .leaflet-popup-content-wrapper p {
+  margin: 0;
+}
+
+.mapa_popup .leaflet-popup-content {
+  margin: 0;
+}

@@ -1,7 +1,11 @@
 import Mapa from "../components/Mapa";
-import clinicas from "../Api/db.json";
+import { api } from "@/lib/api";
+import { IClinica } from "@/shared/interfaces/IClinica";
 
-export default function Home() {
+export default async function Home() {
+  const response = await api.get("/clinicas");
+
+  const clinicas: IClinica[] = response.data;
 
   return (
     <div>
@@ -10,7 +14,7 @@ export default function Home() {
       </header>
       <main>
         <div className="flex">
-          <Mapa clinicas={[clinicas.clinicas[0]]}/>
+          <Mapa clinicas={clinicas}/>
         </div>
       </main>
     </div>
