@@ -2,31 +2,51 @@
 import { IClinica } from "@/shared/interfaces/IClinica";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 
-
 interface CardClinicaProps {
-  clinica: IClinica
+  clinica: IClinica;
 }
 
-export default function CardClinica({clinica}: CardClinicaProps) {
+export default function CardClinica({ clinica }: CardClinicaProps) {
+  function renderStars(avaliacao: number) {
+    const inteiro = Math.trunc(avaliacao);
+    const decimal = avaliacao - inteiro;
+
+    const result = [];
+    // adiciona estrelas cheias.
+    for (let i = 0; i < inteiro; i++) {
+      result.push(<BsStarFill key={result.length} />);
+    }
+    // adiciona estrela pela metade caso o decimal seja maior ou igual a 0.5, ou vazia, caso seja menor.
+    decimal < 0.5
+      ? result.push(<BsStar key={result.length} />)
+      : result.push(<BsStarHalf key={result.length} />);
+
+    // completa o restante das 5 estrelas com estrelas vazias.
+    for (let i = 0; i < 5 - result.length; i++) {
+      result.push(<BsStar key={result.length} />);
+    }
+    return result;
+  }
   return (
-    <div className="p-0 m-0 overflow-hidden w-48">
-      <img src={clinica.imagem_url} alt="" className="rounded-t-xl"/>
+    <div className="m-0 w-48 overflow-hidden p-0">
+      <img src={clinica.imagem_url} alt="" className="rounded-t-xl" />
       <div className="p-2">
         <h3 className=" font-bold">{clinica.nome}</h3>
-        <div className="flex items-center gap-1 h-fit">
+        <div className="flex h-fit items-center gap-1">
           <p>{clinica.avaliacao}</p>
           <div className="flex items-center">
+            {renderStars(clinica.avaliacao!)}
+            {/* <BsStarFill />
             <BsStarFill />
             <BsStarFill />
             <BsStarFill />
-            <BsStarFill />
-            {/* <BsStarHalf /> */}
-            <BsStar />
+            <BsStarHalf />
+            <BsStar /> */}
+            {}
           </div>
           <p>(50)</p>
         </div>
         <h6>{clinica.titulo}</h6>
-
       </div>
     </div>
   );

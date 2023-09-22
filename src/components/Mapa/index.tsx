@@ -8,7 +8,6 @@ import { useState } from "react";
 import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import CardClinica from "../CardClinica";
 import {} from "react-icons/io";
-import pin from "../../../public/static/pin.svg";
 import { Icon } from "leaflet";
 // import Image from "next/image";
 // mport citto from "../../../public/Imagens/CITTO.jpg";
@@ -22,10 +21,12 @@ export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}, clinicas}: Ma
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geoData, setGeoData] = useState({ lat:cidade.geo.lat, lng:cidade.geo.lng});
 
+  // Icon da biblioteca leaflet
+  // "https://cdn.icon-icons.com/icons2/3357/PNG/512/map_navigation_pin_maps_pointer_clinic_placeholder_location_hospital_icon_210661.png"
   const customIcon = new Icon({
-    iconUrl: "https://cdn.icon-icons.com/icons2/3357/PNG/512/map_navigation_pin_maps_pointer_clinic_placeholder_location_hospital_icon_210661.png",
-    iconSize: [32, 32],
-    iconAnchor: [16, 10]
+    iconUrl: "https://png.pngtree.com/png-clipart/20221229/original/pngtree-hospital-location-pin-icon-in-red-color-png-image_8824531.png",
+    iconSize: [64, 64],
+    iconAnchor: [32, 48]
   });
   
   return (
@@ -76,7 +77,7 @@ export default function Mapa({cidade={geo:{lat: -14.4, lng: -57}}, clinicas}: Ma
             return (
               <Marker key={clinica.id} position={[clinica.endereco.geo.lat, clinica.endereco.geo.lng]} title="a" icon={customIcon}>
                 <Popup className="mapa_popup">
-                  <CardClinica clinica={clinicas[0]}/>
+                  <CardClinica clinica={clinica}/>
                 </Popup>
               </Marker>
             );

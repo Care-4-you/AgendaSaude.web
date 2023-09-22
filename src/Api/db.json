@@ -41,7 +41,7 @@
         "cep": "48734-000",
         "geo": {
           "lat": -11.667698998469465,
-          "lng": -39.00595571038507
+          "lng": -39.005955710385070
         }
       },
       "imagem_url": [
@@ -51,9 +51,7 @@
         "telefone": "07532611851",
         "website": "http://institutocruzfreire.com.br/"
       },
-      "especialidades": [
-        ""
-      ],
+      "especialidades": [],
       "convenios_aceitos": [],
       "avaliacao": 2.8
     },
@@ -107,8 +105,8 @@
         "uf": "Ba",
         "cep": "48734-000",
         "geo": {
-          "lat": 0,
-          "lng": 0
+          "lat": -11,
+          "lng": -39
         }
       },
       "imagem_url": [],
