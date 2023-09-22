@@ -17,12 +17,14 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
       result.push(<BsStarFill key={result.length} />);
     }
     // adiciona estrela pela metade caso o decimal seja maior ou igual a 0.5, ou vazia, caso seja menor.
-    decimal < 0.5
-      ? result.push(<BsStar key={result.length} />)
-      : result.push(<BsStarHalf key={result.length} />);
+    if (decimal !== 0) {
+      decimal < 0.5
+        ? result.push(<BsStar key={result.length} />)
+        : result.push(<BsStarHalf key={result.length} />);
+    }
 
     // completa o restante das 5 estrelas com estrelas vazias.
-    for (let i = 0; i < 5 - result.length; i++) {
+    while (result.length < 5) {
       result.push(<BsStar key={result.length} />);
     }
     return result;
@@ -36,13 +38,6 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
           <p>{clinica.avaliacao}</p>
           <div className="flex items-center">
             {renderStars(clinica.avaliacao!)}
-            {/* <BsStarFill />
-            <BsStarFill />
-            <BsStarFill />
-            <BsStarFill />
-            <BsStarHalf />
-            <BsStar /> */}
-            {}
           </div>
           <p>(50)</p>
         </div>
