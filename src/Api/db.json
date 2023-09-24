@@ -94,29 +94,256 @@
       "avaliacao": 4.6
     },
     {
-      "id": 5,
-      "nome": "",
-      "titulo": "Centro médico",
+      "id": 2,
+      "nome": "Clínica São Paulo",
+      "titulo": "Clínica Médica",
       "endereco": {
-        "numero": "721-b",
-        "rua": "R. Álvaro Cabral",
-        "bairro": "Centro",
-        "cidade": "Cafundós",
-        "uf": "Ba",
-        "cep": "48734-000",
+        "numero": "123",
+        "rua": "Av. Paulista",
+        "bairro": "Bela Vista",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "cep": "01310-000",
         "geo": {
-          "lat": -11,
-          "lng": -39
+          "lat": -23.5639876,
+          "lng": -46.6547491
         }
       },
-      "imagem_url": [],
+      "imagem_url": [
+        "https://example.com/imagem1.jpg",
+        "https://example.com/imagem2.jpg"
+      ],
       "contato": {
-        "telefone": "",
-        "website": ""
+        "telefone": "1122334455",
+        "website": "https://www.clinicasaopaulo.com.br/"
       },
-      "especialidades": [],
-      "convenios_aceitos": [],
-      "avaliacao": ""
+      "especialidades": ["Clínica Geral", "Cardiologia", "Dermatologia"],
+      "convenios_aceitos": ["Bradesco Saúde", "SulAmérica Saúde"],
+      "avaliacao": 4.5
+    },
+    {
+      "id": 3,
+      "nome": "Hospital Santa Maria",
+      "titulo": "Hospital",
+      "endereco": {
+        "numero": "789",
+        "rua": "R. Santa Clara",
+        "bairro": "Centro",
+        "cidade": "Rio de Janeiro",
+        "uf": "RJ",
+        "cep": "20030-030",
+        "geo": {
+          "lat": -22.9083135,
+          "lng": -43.1802195
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem3.jpg",
+        "https://example.com/imagem4.jpg"
+      ],
+      "contato": {
+        "telefone": "2123456789",
+        "website": "https://www.hospitalsantamaria.com.br/"
+      },
+      "especialidades": ["Ortopedia", "Pediatria", "Neurologia"],
+      "convenios_aceitos": ["Amil", "Unimed"],
+      "avaliacao": 4.8
+    },
+    {
+      "id": 11,
+      "nome": "Clínica Vida Nova",
+      "titulo": "Clínica Médica",
+      "endereco": {
+        "numero": "456",
+        "rua": "R. das Flores",
+        "bairro": "Jardim das Oliveiras",
+        "cidade": "Curitiba",
+        "uf": "PR",
+        "cep": "80050-150",
+        "geo": {
+          "lat": -25.4413145,
+          "lng": -49.2808922
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem5.jpg",
+        "https://example.com/imagem6.jpg"
+      ],
+      "contato": {
+        "telefone": "4133334444",
+        "website": "https://www.clinicavidanova.com.br/"
+      },
+      "especialidades": ["Ginecologia", "Oftalmologia", "Psicologia"],
+      "convenios_aceitos": ["Unimed", "Hapvida"],
+      "avaliacao": 4.2
+    },
+    {
+      "id": 5,
+      "nome": "Clínica Saúde Total",
+      "titulo": "Clínica de Saúde",
+      "endereco": {
+        "numero": "101",
+        "rua": "Av. das Palmeiras",
+        "bairro": "Jardim Tropical",
+        "cidade": "Salvador",
+        "uf": "BA",
+        "cep": "41900-000",
+        "geo": {
+          "lat": -12.9771683,
+          "lng": -38.4690146
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem7.jpg",
+        "https://example.com/imagem8.jpg"
+      ],
+      "contato": {
+        "telefone": "7188889999",
+        "website": "https://www.saude-total.com.br/"
+      },
+      "especialidades": ["Dentista", "Nutrição", "Fisioterapia"],
+      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "avaliacao": 4.6
+    },
+    {
+      "id": 6,
+      "nome": "Clínica Bem-Estar",
+      "titulo": "Clínica de Saúde",
+      "endereco": {
+        "numero": "200",
+        "rua": "Av. Paulista",
+        "bairro": "Jardins",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "cep": "01400-000",
+        "geo": {
+          "lat": -23.566248,
+          "lng": -46.653804
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem9.jpg",
+        "https://example.com/imagem10.jpg"
+      ],
+      "contato": {
+        "telefone": "1133225544",
+        "website": "https://www.clinicabemestar.com.br/"
+      },
+      "especialidades": ["Clínica Geral", "Psicologia", "Nutrição"],
+      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "avaliacao": 4.4
+    },
+    {
+      "id": 7,
+      "nome": "Hospital São Lucas",
+      "titulo": "Hospital",
+      "endereco": {
+        "numero": "1500",
+        "rua": "R. da Saúde",
+        "bairro": "Vila Mariana",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "cep": "04144-000",
+        "geo": {
+          "lat": -23.608765,
+          "lng": -46.632954
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem11.jpg",
+        "https://example.com/imagem12.jpg"
+      ],
+      "contato": {
+        "telefone": "1123456789",
+        "website": "https://www.hospitalsaolucas.com.br/"
+      },
+      "especialidades": ["Cardiologia", "Cirurgia", "Neurologia"],
+      "convenios_aceitos": ["Amil", "Unimed"],
+      "avaliacao": 4.7
+    },
+    {
+      "id": 8,
+      "nome": "Clínica Vida Saudável",
+      "titulo": "Clínica de Bem-Estar",
+      "endereco": {
+        "numero": "300",
+        "rua": "Av. Copacabana",
+        "bairro": "Copacabana",
+        "cidade": "Rio de Janeiro",
+        "uf": "RJ",
+        "cep": "22050-001",
+        "geo": {
+          "lat": -22.969731,
+          "lng": -43.185070
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem13.jpg",
+        "https://example.com/imagem14.jpg"
+      ],
+      "contato": {
+        "telefone": "2122223333",
+        "website": "https://www.clinicavidasaudavel.com.br/"
+      },
+      "especialidades": ["Nutrição", "Fisioterapia", "Psicologia"],
+      "convenios_aceitos": ["Bradesco Saúde", "Unimed"],
+      "avaliacao": 4.9
+    },
+    {
+      "id": 9,
+      "nome": "Hospital São João",
+      "titulo": "Hospital",
+      "endereco": {
+        "numero": "200",
+        "rua": "R. da Saúde",
+        "bairro": "Vila Mariana",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "cep": "04144-000",
+        "geo": {
+          "lat": -23.608765,
+          "lng": -46.632954
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem15.jpg",
+        "https://example.com/imagem16.jpg"
+      ],
+      "contato": {
+        "telefone": "1123456789",
+        "website": "https://www.hospitalsaojoao.com.br/"
+      },
+      "especialidades": ["Ortopedia", "Pediatria", "Cirurgia"],
+      "convenios_aceitos": ["Amil", "Unimed"],
+      "avaliacao": 4.6
+    },
+    {
+      "id": 10,
+      "nome": "Clínica Bem Viver",
+      "titulo": "Clínica de Saúde",
+      "endereco": {
+        "numero": "100",
+        "rua": "Av. Paulista",
+        "bairro": "Jardins",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "cep": "01400-000",
+        "geo": {
+          "lat": -23.566248,
+          "lng": -46.653804
+        }
+      },
+      "imagem_url": [
+        "https://example.com/imagem17.jpg",
+        "https://example.com/imagem18.jpg"
+      ],
+      "contato": {
+        "telefone": "1133225544",
+        "website": "https://www.clinicabemviver.com.br/"
+      },
+      "especialidades": ["Clínica Geral", "Psicologia", "Nutrição"],
+      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "avaliacao": 4.4
     }
   ]
 }
