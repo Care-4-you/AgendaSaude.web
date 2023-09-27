@@ -1,99 +1,6 @@
 {
   "clinicas": [
     {
-      "id": 1,
-      "nome": "CITTO",
-      "titulo": "Centro médico",
-      "endereco": {
-        "numero": "631-b",
-        "rua": "R. Álvaro Cabral",
-        "bairro": "Ginásio",
-        "cidade": "Serrinha",
-        "uf": "Ba",
-        "cep": "48700-000",
-        "geo": {
-          "lat": -11.668477657279864,
-          "lng": -39.005282234208615
-        }
-      },
-      "imagem_url": [
-        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg",
-        "https://lh5.googleusercontent.com/p/AF1QipMfY2gFoFhOiXe5dn1ZIbif8UEamln7j9MxZ-bj=w408-h271-k-no"
-      ],
-      "contato": {
-        "telefone": "07532617400",
-        "website": "https://www.clinicacitto.com.br/"
-      },
-      "especialidades": [],
-      "convenios_aceitos": [],
-      "avaliacao": 4.1
-    },
-    {
-      "id": 3,
-      "nome": "Cruz Freire",
-      "titulo": "Instituto",
-      "endereco": {
-        "numero": "570",
-        "rua": "R. Álvaro Augusto",
-        "bairro": "Centro",
-        "cidade": "Serrinha",
-        "uf": "Ba",
-        "cep": "48734-000",
-        "geo": {
-          "lat": -11.667698998469465,
-          "lng": -39.005955710385070
-        }
-      },
-      "imagem_url": [
-        "https://lh5.googleusercontent.com/p/AF1QipPCyss7YeBBbeNwVejkbdSLKuVpzXs8DRl9dtCv=w426-h240-k-no"
-      ],
-      "contato": {
-        "telefone": "07532611851",
-        "website": "http://institutocruzfreire.com.br/"
-      },
-      "especialidades": [],
-      "convenios_aceitos": [],
-      "avaliacao": 2.8
-    },
-    {
-      "id": 4,
-      "nome": "Nefrologia de Serrinha",
-      "titulo": "Clínica de ",
-      "endereco": {
-        "numero": "500",
-        "rua": "R. Álvaro Augusto",
-        "bairro": "Ginásio",
-        "cidade": "Serrinha",
-        "uf": "Ba",
-        "cep": "48734-000",
-        "geo": {
-          "lat": -11.667683659861726,
-          "lng": -39.005679317978995
-        }
-      },
-      "imagem_url": [
-        "https://lh5.googleusercontent.com/p/AF1QipMaT2A83eHzrYqFkdSd9y8l_rp9kwKWITeQDo9B=s516-k-no"
-      ],
-      "contato": {
-        "telefone": "07532612453",
-        "website": "http://www.cns-hd.com.br/"
-      },
-      "especialidades": [
-        "Nefrologia"
-      ],
-      "convenios_aceitos": [
-        "Unimed",
-        "ASFEB",
-        "Bradesco seguros",
-        "Goodlife",
-        "Capesesp",
-        "Planserv",
-        "Camed",
-        "CASSEB"
-      ],
-      "avaliacao": 4.6
-    },
-    {
       "id": 2,
       "nome": "Clínica São Paulo",
       "titulo": "Clínica Médica",
@@ -110,8 +17,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem1.jpg",
-        "https://example.com/imagem2.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "1122334455",
@@ -138,8 +44,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem3.jpg",
-        "https://example.com/imagem4.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "2123456789",
@@ -148,62 +53,6 @@
       "especialidades": ["Ortopedia", "Pediatria", "Neurologia"],
       "convenios_aceitos": ["Amil", "Unimed"],
       "avaliacao": 4.8
-    },
-    {
-      "id": 11,
-      "nome": "Clínica Vida Nova",
-      "titulo": "Clínica Médica",
-      "endereco": {
-        "numero": "456",
-        "rua": "R. das Flores",
-        "bairro": "Jardim das Oliveiras",
-        "cidade": "Curitiba",
-        "uf": "PR",
-        "cep": "80050-150",
-        "geo": {
-          "lat": -25.4413145,
-          "lng": -49.2808922
-        }
-      },
-      "imagem_url": [
-        "https://example.com/imagem5.jpg",
-        "https://example.com/imagem6.jpg"
-      ],
-      "contato": {
-        "telefone": "4133334444",
-        "website": "https://www.clinicavidanova.com.br/"
-      },
-      "especialidades": ["Ginecologia", "Oftalmologia", "Psicologia"],
-      "convenios_aceitos": ["Unimed", "Hapvida"],
-      "avaliacao": 4.2
-    },
-    {
-      "id": 5,
-      "nome": "Clínica Saúde Total",
-      "titulo": "Clínica de Saúde",
-      "endereco": {
-        "numero": "101",
-        "rua": "Av. das Palmeiras",
-        "bairro": "Jardim Tropical",
-        "cidade": "Salvador",
-        "uf": "BA",
-        "cep": "41900-000",
-        "geo": {
-          "lat": -12.9771683,
-          "lng": -38.4690146
-        }
-      },
-      "imagem_url": [
-        "https://example.com/imagem7.jpg",
-        "https://example.com/imagem8.jpg"
-      ],
-      "contato": {
-        "telefone": "7188889999",
-        "website": "https://www.saude-total.com.br/"
-      },
-      "especialidades": ["Dentista", "Nutrição", "Fisioterapia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
-      "avaliacao": 4.6
     },
     {
       "id": 6,
@@ -222,8 +71,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem9.jpg",
-        "https://example.com/imagem10.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "1133225544",
@@ -250,8 +98,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem11.jpg",
-        "https://example.com/imagem12.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "1123456789",
@@ -278,8 +125,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem13.jpg",
-        "https://example.com/imagem14.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "2122223333",
@@ -306,8 +152,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem15.jpg",
-        "https://example.com/imagem16.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "1123456789",
@@ -334,8 +179,7 @@
         }
       },
       "imagem_url": [
-        "https://example.com/imagem17.jpg",
-        "https://example.com/imagem18.jpg"
+        "https://cdn1.vectorstock.com/i/1000x1000/38/25/cartoon-hospital-building-emergency-clinic-vector-24613825.jpg"
       ],
       "contato": {
         "telefone": "1133225544",
