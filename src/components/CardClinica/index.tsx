@@ -37,7 +37,7 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
       <img src={clinica.imagem_url} alt="" className="rounded-t-xl" />
       <div className="p-2">
         <div className="mb-2">
-          <h3 className=" font-bold">{clinica.nome}</h3>
+          <h3 className=" text-lg font-bold">{clinica.nome}</h3>
           {
             // Código que adiciona funcionalidade de estrelas ao card, pronto para ser disponibilizado em novas versões
             /* <div className="flex h-fit items-center gap-1">
@@ -48,7 +48,11 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
             <p>(50)</p>
           </div> */
           }
-          <h6>{clinica.titulo}</h6>
+          <h6 className="text-sx">{clinica.titulo}</h6>
+          <p className="pt-2 text-sm font-semibold">
+            {clinica.endereco.rua}, nº {clinica.endereco.numero},{" "}
+            {clinica.endereco.bairro}
+          </p>
         </div>
         <Botao texto="Agendar" />
       </div>
