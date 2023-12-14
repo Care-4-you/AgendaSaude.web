@@ -15,21 +15,21 @@ const Carousel: React.FC = () => {
   const pages: Page[] = [
     {
       title: "Pacientes",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum?",
+      content: "Para você que deseja pesquisar uma clínica ou consultório especialista perto de você e agendar uma consulta em poucos cliques.",
       linkTo: "/map",
-      customButtonName: "Encontrar Clínicas ",
+      customButtonName: "Busque clínicas e consultório.",
     },
     {
       title: "Médicos",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum?",
+      content: "Em um único lugar é possível gerenciar sua agenda de atendimento, o histórico de tratamento de seus pacientes e facilitar sua organização diária.",
       linkTo: "/",
-      customButtonName: "Encontrar Médicos ",
+      customButtonName: "Facilite sua agenda e históricos de tratamento de seus pacientes.",
     },
     {
       title: "Clínicas",
-      content: "Conteúdo da Página 3.",
+      content: "Através do Agenda Saúde será possível aumentar o alcance de sua clínica em sua região e ter acesso a algumas funcionalidades que simplificará o dia a dia de seu negócio.",
       linkTo: "/",
-      customButtonName: "Encontrar Pacientes",
+      customButtonName: "Aumente suas base de clientes e sua eficiência.",
     },
   ];
 
