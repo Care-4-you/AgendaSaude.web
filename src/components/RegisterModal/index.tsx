@@ -1,5 +1,12 @@
+import React, { ReactNode } from "react";
 
-const RegisterModal = ({ isOpen, onClose, children }) => {
+interface RegisterModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+}
+
+const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
