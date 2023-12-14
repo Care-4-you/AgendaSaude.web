@@ -7,6 +7,7 @@ import { useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { TbUserHeart } from "react-icons/tb";
 import { FaClinicMedical } from "react-icons/fa";
+import Button from "../Button";
 
 
 export default function Navbar() {
@@ -19,26 +20,24 @@ export default function Navbar() {
   const fecharModal = () => {
     setModalAberto(false);
   };
-
-
   return (
     <nav className="p-4 bg-slate-600">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <ul className="flex space-x-4">
             <li className="list-none text-white text-xl font-bold">
-              <Logo imagePath="/caminho/da/sua/imagem.png"/>
+              <Logo imagePath="/caminho/da/imagem.png"/>
             </li>
           </ul>
         </div>
         <ul className="flex space-x-4">
           <li>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={abrirModal}>
+            <Button className="bg-blue-300" variant="filled" onClick={abrirModal}>
               Cadastrar
-            </button>
+            </Button>
           </li>
           <li>
-            <Link href="/">
+            <Link href="#">
               <Botao texto="Entrar" />
             </Link>
           </li>
@@ -65,13 +64,15 @@ export default function Navbar() {
               <p>Lorem ipsum dolor sit amet consectetur</p>
             </button>
 
-            <button className="mr-4 flex  bg-slate-300">
-              <div className="pr-4">
-                <FaClinicMedical className="text-5xl"/>
-              </div>
-              <p className="font-bold">Clínica</p>
-              <p>Lorem ipsum dolor sit amet consectetur</p>
-            </button>
+            <Link href='/registerClinical'>
+              <button className="mr-4 flex  bg-slate-300">
+                <div className="pr-4">
+                  <FaClinicMedical className="text-5xl"/>
+                </div>
+                <p className="font-bold">Clínica</p>
+                <p>Lorem ipsum dolor sit amet consectetur</p>
+              </button>
+            </Link>
           </div>
         </Modal>
       </div>
