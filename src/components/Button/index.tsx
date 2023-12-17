@@ -16,7 +16,7 @@ type ButtonColors = keyof typeof ButtonColors;
 type ButtonVariants = keyof typeof ButtonVariants;
 
 type ButtonProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   leftAccessory?: React.ReactNode;
   rightAccessory?: React.ReactNode;
   color?: ButtonColors;
@@ -53,12 +53,12 @@ export default function Button({
     },
     plain: {
       primary:
-        "border border-transparent bg-transparent hover:bg-transparent p-0 font-semibold",
+        "border border-transparent bg-transparent  text-gray-100 hover:text-white hover:bg-transparent p-0 font-semibold",
     },
   };
   const disabledClasses = {
     filled:
-      "cursor-not-allowed border border-gray-500 bg-gray-500 text-th-primary-color hover:bg-gray-500 ",
+      "cursor-not-allowed border border-gray-500 bg-gray-500  text-slate-700 hover:bg-gray-500 ",
     outlined:
       "cursor-not-allowed border border-gray-500 bg-transparent text-gray-500 ",
     plain:
@@ -86,7 +86,6 @@ export default function Button({
   return (
     <button
       onClick={onClick}
-      disabled={disabled}
       className={cn(
         defaultButtonClass,
         disabled ? disabledClasses[variant] : variants[variant][color],

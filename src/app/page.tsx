@@ -1,11 +1,9 @@
-import Navbar from "@/components/Navbar";
 import Carrousel from "@/components/Carrousel";
-
+import { Container } from "../components/Container";
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-      <Carrousel/>
-    </div>
+    <Container>
+      <Carrousel />
+    </Container>
   );
 }
