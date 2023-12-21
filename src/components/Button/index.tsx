@@ -53,7 +53,7 @@ export default function Button({
     },
     plain: {
       primary:
-        "border border-transparent bg-transparent  text-gray-100 hover:text-white hover:bg-transparent p-0 font-semibold",
+        "border border-transparent bg-transparent  text-gray-100 hover:text-blue-600 hover:bg-transparent p-0 font-semibold",
     },
   };
   const disabledClasses = {
