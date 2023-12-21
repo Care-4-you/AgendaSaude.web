@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 import Button from "../Button";
 
@@ -13,6 +13,8 @@ interface Page {
 
 const Carousel: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const shouldClearIntervalRef = useRef<boolean>(false); // Nova referência
+  const intervalRef = useRef<number | null>(null);
 
   const pages: Page[] = [
     {
@@ -43,6 +45,9 @@ const Carousel: React.FC = () => {
   ];
 
   const handlePageChange = (pageNumber: number) => {
+    // Define a referência para limpar o intervalo imediatamente
+    shouldClearIntervalRef.current = true;
+    // Atualiza a página
     setCurrentPage(pageNumber);
   };
 
@@ -55,14 +60,29 @@ const Carousel: React.FC = () => {
     const prevPage = currentPage === 1 ? 3 : currentPage - 1;
     setCurrentPage(prevPage);
   };
-
-  // Função para atribuir intervalo de cada página do carrossel
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      handleNextPage();
-    }, 5000);
-
-    return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar o componente
+    // Inicia o intervalo apenas se ainda não estiver em execução e não estiver configurado para limpar
+    if (!intervalRef.current && !shouldClearIntervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        handleNextPage();
+      }, 10000);
+      console.log("Intervalo iniciado");
+    }
+    // Limpa o intervalo imediatamente se a referência indicar
+    if (shouldClearIntervalRef.current && intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      shouldClearIntervalRef.current = false;
+      console.log("Intervalo limpo ao clicar em um botão de página");
+    }
+    // Limpa o intervalo ao desmontar o componente
+    return () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        console.log("Intervalo limpo ao desmontar o componente");
+      }
+    };
   }, [currentPage]);
 
   return (
