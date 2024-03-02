@@ -1,6 +1,7 @@
-import Mapa from "../../components/Mapa";
 import { api } from "@/lib/api";
 import { IClinica } from "@/shared/interfaces/IClinica";
+
+import Mapa from "../../components/Mapa";
 
 export default async function Home() {
   const response = await api.get("/clinicas");

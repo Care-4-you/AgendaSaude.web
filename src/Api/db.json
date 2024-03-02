@@ -23,8 +23,15 @@
         "telefone": "1122334455",
         "website": "https://www.clinicasaopaulo.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Cardiologia", "Dermatologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "SulAmérica Saúde"],
+      "especialidades": [
+        "Clínica Geral",
+        "Cardiologia",
+        "Dermatologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "SulAmérica Saúde"
+      ],
       "avaliacao": 4.5
     },
     {
@@ -50,8 +57,15 @@
         "telefone": "2123456789",
         "website": "https://www.hospitalsantamaria.com.br/"
       },
-      "especialidades": ["Ortopedia", "Pediatria", "Neurologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Ortopedia",
+        "Pediatria",
+        "Neurologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.8
     },
     {
@@ -77,8 +91,15 @@
         "telefone": "1133225544",
         "website": "https://www.clinicabemestar.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Psicologia", "Nutrição"],
-      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "especialidades": [
+        "Clínica Geral",
+        "Psicologia",
+        "Nutrição"
+      ],
+      "convenios_aceitos": [
+        "SulAmérica Saúde",
+        "Golden Cross"
+      ],
       "avaliacao": 4.4
     },
     {
@@ -104,8 +125,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitalsaolucas.com.br/"
       },
-      "especialidades": ["Cardiologia", "Cirurgia", "Neurologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cardiologia",
+        "Cirurgia",
+        "Neurologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -131,8 +159,15 @@
         "telefone": "2122223333",
         "website": "https://www.clinicavidasaudavel.com.br/"
       },
-      "especialidades": ["Nutrição", "Fisioterapia", "Psicologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Unimed"],
+      "especialidades": [
+        "Nutrição",
+        "Fisioterapia",
+        "Psicologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Unimed"
+      ],
       "avaliacao": 4.9
     },
     {
@@ -158,8 +193,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitalsaojoao.com.br/"
       },
-      "especialidades": ["Ortopedia", "Pediatria", "Cirurgia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Ortopedia",
+        "Pediatria",
+        "Cirurgia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.6
     },
     {
@@ -185,8 +227,15 @@
         "telefone": "1133225544",
         "website": "https://www.clinicabemviver.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Psicologia", "Nutrição"],
-      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "especialidades": [
+        "Clínica Geral",
+        "Psicologia",
+        "Nutrição"
+      ],
+      "convenios_aceitos": [
+        "SulAmérica Saúde",
+        "Golden Cross"
+      ],
       "avaliacao": 4.4
     },
     {
@@ -212,8 +261,15 @@
         "telefone": "1123456789",
         "website": "https://www.clinicasaolucas.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Cardiologia", "Oncologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Clínica Geral",
+        "Cardiologia",
+        "Oncologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.3
     },
     {
@@ -239,8 +295,15 @@
         "telefone": "1122223333",
         "website": "https://www.hospitalsaojose.com.br/"
       },
-      "especialidades": ["Cirurgia", "Ortopedia", "Neurologia"],
-      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "especialidades": [
+        "Cirurgia",
+        "Ortopedia",
+        "Neurologia"
+      ],
+      "convenios_aceitos": [
+        "SulAmérica Saúde",
+        "Golden Cross"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -266,8 +329,15 @@
         "telefone": "1133225544",
         "website": "https://www.clinicabemsaude.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Nutrição", "Psicologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Nutrição",
+        "Psicologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.5
     },
     {
@@ -293,8 +363,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitalnossasenhora.com.br/"
       },
-      "especialidades": ["Pediatria", "Cirurgia", "Ginecologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Pediatria",
+        "Cirurgia",
+        "Ginecologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.4
     },
     {
@@ -320,8 +397,15 @@
         "telefone": "1133225544",
         "website": "https://www.clinicaviverbem.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Psicologia", "Nutrição"],
-      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "especialidades": [
+        "Clínica Geral",
+        "Psicologia",
+        "Nutrição"
+      ],
+      "convenios_aceitos": [
+        "SulAmérica Saúde",
+        "Golden Cross"
+      ],
       "avaliacao": 4.6
     },
     {
@@ -347,8 +431,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitalsaomarcos.com.br/"
       },
-      "especialidades": ["Cardiologia", "Ortopedia", "Oncologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cardiologia",
+        "Ortopedia",
+        "Oncologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.8
     },
     {
@@ -374,8 +465,15 @@
         "telefone": "1122334455",
         "website": "https://www.clinicadobemestar.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Dermatologia", "Psiquiatria"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Dermatologia",
+        "Psiquiatria"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -401,8 +499,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitalsaofrancisco.com.br/"
       },
-      "especialidades": ["Cirurgia", "Neurologia", "Oftalmologia"],
-      "convenios_aceitos": ["SulAmérica Saúde", "Golden Cross"],
+      "especialidades": [
+        "Cirurgia",
+        "Neurologia",
+        "Oftalmologia"
+      ],
+      "convenios_aceitos": [
+        "SulAmérica Saúde",
+        "Golden Cross"
+      ],
       "avaliacao": 4.9
     },
     {
@@ -428,8 +533,15 @@
         "telefone": "1133225544",
         "website": "https://www.clinicabemestartotal.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Nutrição", "Psicologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Nutrição",
+        "Psicologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.6
     },
     {
@@ -455,8 +567,15 @@
         "telefone": "1123456789",
         "website": "https://www.hospitaldasaude.com.br/"
       },
-      "especialidades": ["Cardiologia", "Ortopedia", "Oncologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cardiologia",
+        "Ortopedia",
+        "Oncologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.8
     },
     {
@@ -475,13 +594,22 @@
           "lng": -43.185070
         }
       },
-      "imagem_url": ["https://media.istockphoto.com/id/680135472/pt/vetorial/hospital-building-cartoon-modern-vector-illustration-medical-clinic-and-city-background.jpg?s=1024x1024&w=is&k=20&c=AYuEInWyil2I9Ju7k7xX5YCSuuApcU1QYqfsYENabgU="],
+      "imagem_url": [
+        "https://media.istockphoto.com/id/680135472/pt/vetorial/hospital-building-cartoon-modern-vector-illustration-medical-clinic-and-city-background.jpg?s=1024x1024&w=is&k=20&c=AYuEInWyil2I9Ju7k7xX5YCSuuApcU1QYqfsYENabgU="
+      ],
       "contato": {
         "telefone": "2122223333",
         "website": "https://www.clinicariosaude.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Dermatologia", "Pediatria"],
-      "convenios_aceitos": ["Bradesco Saúde", "Unimed"],
+      "especialidades": [
+        "Clínica Geral",
+        "Dermatologia",
+        "Pediatria"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Unimed"
+      ],
       "avaliacao": 4.5
     },
     {
@@ -500,13 +628,22 @@
           "lng": -43.190211
         }
       },
-      "imagem_url": ["https://img.freepik.com/vetores-premium/edificio-do-hospital-para-ilustracao-vetorial-de-fundo-de-desenhos-animados-de-saude-com-ambulancia-medico-paciente-enfermeiras-e-exterior-da-clinica-medica_2175-1510.jpg"],
+      "imagem_url": [
+        "https://img.freepik.com/vetores-premium/edificio-do-hospital-para-ilustracao-vetorial-de-fundo-de-desenhos-animados-de-saude-com-ambulancia-medico-paciente-enfermeiras-e-exterior-da-clinica-medica_2175-1510.jpg"
+      ],
       "contato": {
         "telefone": "2123456789",
         "website": "https://www.hospitalsaopedro.com.br/"
       },
-      "especialidades": ["Cirurgia", "Ortopedia", "Ginecologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cirurgia",
+        "Ortopedia",
+        "Ginecologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -525,13 +662,22 @@
           "lng": -43.185695
         }
       },
-      "imagem_url": ["https://media.istockphoto.com/id/688337988/es/vector/edificio-sistema-de-salud-centro-m%C3%A9dico-con-todos-los-departamentos-del-hospital-moderno.jpg?s=612x612&w=0&k=20&c=kJJn_LHTWgWF7YaoADqds2fJxHYWZCEzNcx_BHQe2Yw="],
+      "imagem_url": [
+        "https://media.istockphoto.com/id/688337988/es/vector/edificio-sistema-de-salud-centro-m%C3%A9dico-con-todos-los-departamentos-del-hospital-moderno.jpg?s=612x612&w=0&k=20&c=kJJn_LHTWgWF7YaoADqds2fJxHYWZCEzNcx_BHQe2Yw="
+      ],
       "contato": {
         "telefone": "2122334455",
         "website": "https://www.clinicavidaplena.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Nutrição", "Psicologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Nutrição",
+        "Psicologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.6
     },
     {
@@ -550,13 +696,22 @@
           "lng": -43.184321
         }
       },
-      "imagem_url": ["https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"],
+      "imagem_url": [
+        "https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"
+      ],
       "contato": {
         "telefone": "2123456789",
         "website": "https://www.hospitalesperanca.com.br/"
       },
-      "especialidades": ["Pediatria", "Oncologia", "Cardiologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Pediatria",
+        "Oncologia",
+        "Cardiologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.8
     },
     {
@@ -575,13 +730,22 @@
           "lng": -43.185484
         }
       },
-      "imagem_url": ["https://static.vecteezy.com/ti/vetor-gratis/p1/7323425-o-hospital-edificio-e-profissional-medico-centro-moderno-hospital-hospital-ao-ar-livre-profissional-medico-na-clinica-pano-de-fundo-plano-cartoon-ilustracao-vetor.jpg"],
+      "imagem_url": [
+        "https://static.vecteezy.com/ti/vetor-gratis/p1/7323425-o-hospital-edificio-e-profissional-medico-centro-moderno-hospital-hospital-ao-ar-livre-profissional-medico-na-clinica-pano-de-fundo-plano-cartoon-ilustracao-vetor.jpg"
+      ],
       "contato": {
         "telefone": "2122334455",
         "website": "https://www.clinicadobemestarrj.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Dermatologia", "Nutrição"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Dermatologia",
+        "Nutrição"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -600,13 +764,22 @@
           "lng": -43.180964
         }
       },
-      "imagem_url": ["https://img.freepik.com/vetores-premium/edificio-do-hospital-para-ilustracao-vetorial-de-fundo-de-desenhos-animados-de-saude-com-ambulancia-medico-paciente-enfermeiras-e-exterior-da-clinica-medica_2175-1510.jpg"],
+      "imagem_url": [
+        "https://img.freepik.com/vetores-premium/edificio-do-hospital-para-ilustracao-vetorial-de-fundo-de-desenhos-animados-de-saude-com-ambulancia-medico-paciente-enfermeiras-e-exterior-da-clinica-medica_2175-1510.jpg"
+      ],
       "contato": {
         "telefone": "2123456789",
         "website": "https://www.hospitaldasaudecarioca.com.br/"
       },
-      "especialidades": ["Cardiologia", "Ortopedia", "Ginecologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cardiologia",
+        "Ortopedia",
+        "Ginecologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.9
     },
     {
@@ -625,13 +798,22 @@
           "lng": -43.185695
         }
       },
-      "imagem_url": ["https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"],
+      "imagem_url": [
+        "https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"
+      ],
       "contato": {
         "telefone": "2122334455",
         "website": "https://www.clinicacuidarbemrj.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Nutrição", "Psicologia"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Nutrição",
+        "Psicologia"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.6
     },
     {
@@ -650,13 +832,22 @@
           "lng": -43.184321
         }
       },
-      "imagem_url": ["https://static.vecteezy.com/ti/vetor-gratis/p1/7323425-o-hospital-edificio-e-profissional-medico-centro-moderno-hospital-hospital-ao-ar-livre-profissional-medico-na-clinica-pano-de-fundo-plano-cartoon-ilustracao-vetor.jpg"],
+      "imagem_url": [
+        "https://static.vecteezy.com/ti/vetor-gratis/p1/7323425-o-hospital-edificio-e-profissional-medico-centro-moderno-hospital-hospital-ao-ar-livre-profissional-medico-na-clinica-pano-de-fundo-plano-cartoon-ilustracao-vetor.jpg"
+      ],
       "contato": {
         "telefone": "2123456789",
         "website": "https://www.hospitaldosanjos.com.br/"
       },
-      "especialidades": ["Pediatria", "Oncologia", "Cardiologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Pediatria",
+        "Oncologia",
+        "Cardiologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.8
     },
     {
@@ -675,13 +866,22 @@
           "lng": -43.185484
         }
       },
-      "imagem_url": ["https://media.istockphoto.com/id/688337988/es/vector/edificio-sistema-de-salud-centro-m%C3%A9dico-con-todos-los-departamentos-del-hospital-moderno.jpg?s=612x612&w=0&k=20&c=kJJn_LHTWgWF7YaoADqds2fJxHYWZCEzNcx_BHQe2Yw="],
+      "imagem_url": [
+        "https://media.istockphoto.com/id/688337988/es/vector/edificio-sistema-de-salud-centro-m%C3%A9dico-con-todos-los-departamentos-del-hospital-moderno.jpg?s=612x612&w=0&k=20&c=kJJn_LHTWgWF7YaoADqds2fJxHYWZCEzNcx_BHQe2Yw="
+      ],
       "contato": {
         "telefone": "2122334455",
         "website": "https://www.clinicabemcarioca.com.br/"
       },
-      "especialidades": ["Clínica Geral", "Dermatologia", "Nutrição"],
-      "convenios_aceitos": ["Bradesco Saúde", "Amil"],
+      "especialidades": [
+        "Clínica Geral",
+        "Dermatologia",
+        "Nutrição"
+      ],
+      "convenios_aceitos": [
+        "Bradesco Saúde",
+        "Amil"
+      ],
       "avaliacao": 4.7
     },
     {
@@ -700,13 +900,22 @@
           "lng": -43.180964
         }
       },
-      "imagem_url": ["https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"],
+      "imagem_url": [
+        "https://i.pinimg.com/originals/86/15/47/861547d6b20eedd16ab36dc108f44254.jpg"
+      ],
       "contato": {
         "telefone": "2123456789",
         "website": "https://www.hospitalcidademaravilhosa.com.br/"
       },
-      "especialidades": ["Cardiologia", "Ortopedia", "Ginecologia"],
-      "convenios_aceitos": ["Amil", "Unimed"],
+      "especialidades": [
+        "Cardiologia",
+        "Ortopedia",
+        "Ginecologia"
+      ],
+      "convenios_aceitos": [
+        "Amil",
+        "Unimed"
+      ],
       "avaliacao": 4.9
     }
   ]

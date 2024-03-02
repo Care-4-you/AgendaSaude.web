@@ -6,11 +6,7 @@ interface RegisterModalProps {
   children: ReactNode;
 }
 
-const RegisterModal: React.FC<RegisterModalProps> = ({
-  isOpen,
-  onClose,
-  children,
-}) => {
+const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, children }) => {
   if (!isOpen) return null;
 
   return (

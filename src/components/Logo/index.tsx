@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+
 import PropTypes from "prop-types";
 
 interface LogoProps {
@@ -8,13 +10,13 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ imagePath }) => {
   return (
     <Link href="/">
-      <img src={imagePath} alt="Logo" />
+      <Image src={imagePath} alt="Logo" />
     </Link>
   );
 };
 
 Logo.propTypes = {
-  imagePath: PropTypes.string.isRequired,
+  imagePath: PropTypes.string.isRequired
 };
 
 export default Logo;

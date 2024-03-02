@@ -1,8 +1,8 @@
 export interface ICidade {
-  id?: string
-  uf?: string
+  id?: string;
+  uf?: string;
   geo: {
-    lat: number
-    lng: number
-  }
+    lat: number;
+    lng: number;
+  };
 }

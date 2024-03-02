@@ -1,12 +1,13 @@
 "use client";
 
-import Modal from "../RegisterModal";
-import Logo from "../Logo";
-import { IoClose } from "react-icons/io5";
 import { useState } from "react";
-import { TbUserHeart, TbUser } from "react-icons/tb";
 import { FaClinicMedical } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { TbUserHeart, TbUser } from "react-icons/tb";
+
 import Button from "../Button";
+import Logo from "../Logo";
+import Modal from "../RegisterModal";
 
 export default function Navbar() {
   const [modalAberto, setModalAberto] = useState(false);

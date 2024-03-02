@@ -1,6 +1,7 @@
 "use client";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
+
 import Button from "../Button";
 
 interface Page {
@@ -23,7 +24,7 @@ const Carousel: React.FC = () => {
       content:
         "Para você que deseja pesquisar uma clínica ou consultório especialista perto de você e agendar uma consulta em poucos cliques.",
       linkTo: "/map",
-      customButtonName: "Encontrar clinicas",
+      customButtonName: "Encontrar clinicas"
     },
     {
       tab: "Médico",
@@ -32,7 +33,7 @@ const Carousel: React.FC = () => {
       content:
         "Em um único lugar é possível gerenciar sua agenda de atendimento, o histórico de tratamento de seus pacientes e facilitar sua organização diária.",
       linkTo: "/",
-      customButtonName: "",
+      customButtonName: ""
     },
     {
       tab: "Clinica",
@@ -40,8 +41,8 @@ const Carousel: React.FC = () => {
       content:
         "Através do Agenda Saúde será possível aumentar o alcance de sua clínica em sua região e ter acesso a algumas funcionalidades que simplificará o dia a dia de seu negócio.",
       linkTo: "/",
-      customButtonName: "",
-    },
+      customButtonName: ""
+    }
   ];
 
   const handlePageChange = (pageNumber: number) => {
@@ -63,7 +64,7 @@ const Carousel: React.FC = () => {
   useEffect(() => {
     // Inicia o intervalo apenas se ainda não estiver em execução e não estiver configurado para limpar
     if (!intervalRef.current && !shouldClearIntervalRef.current) {
-      intervalRef.current = setInterval(() => {
+      intervalRef.current = window.setInterval(() => {
         handleNextPage();
       }, 10000);
       console.log("Intervalo iniciado");

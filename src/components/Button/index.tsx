@@ -1,15 +1,16 @@
 "use client";
 import Link from "next/link";
+
 import cn from "../../lib/cn";
 
 const ButtonColors = {
-  primary: "primary",
+  primary: "primary"
 } as const;
 
 const ButtonVariants = {
   filled: "filled",
   outlined: "outlined",
-  plain: "plain",
+  plain: "plain"
 } as const;
 
 type ButtonColors = keyof typeof ButtonColors;
@@ -45,16 +46,16 @@ export default function Button({
   const variants = {
     filled: {
       primary:
-        "border border-gray-300 bg-gray-200  text-slate-700 hover:bg-gray-300 hover:text-black  hover:border-gray-400 ",
+        "border border-gray-300 bg-gray-200  text-slate-700 hover:bg-gray-300 hover:text-black  hover:border-gray-400 "
     },
     outlined: {
       primary:
-        "border border-gray-300 bg-transparent text-gray-400  hover:border-gray-400 hover:text-gray-500 ",
+        "border border-gray-300 bg-transparent text-gray-400  hover:border-gray-400 hover:text-gray-500 "
     },
     plain: {
       primary:
-        "border border-transparent bg-transparent  text-gray-100 hover:text-blue-600 hover:bg-transparent p-0 font-semibold",
-    },
+        "border border-transparent bg-transparent  text-gray-100 hover:text-blue-600 hover:bg-transparent p-0 font-semibold"
+    }
   };
   const disabledClasses = {
     filled:
@@ -62,7 +63,7 @@ export default function Button({
     outlined:
       "cursor-not-allowed border border-gray-500 bg-transparent text-gray-500 ",
     plain:
-      "cursor-not-allowed border border-transparent bg-transparent text-gray-500 hover:bg-transparent hover:text-gray-500 ",
+      "cursor-not-allowed border border-transparent bg-transparent text-gray-500 hover:bg-transparent hover:text-gray-500 "
   };
 
   if (href) {
@@ -74,7 +75,7 @@ export default function Button({
         className={cn(
           defaultButtonClass,
           disabled ? disabledClasses[variant] : variants[variant][color],
-          className,
+          className
         )}
       >
         {leftAccessory ? leftAccessory : null}
@@ -89,7 +90,7 @@ export default function Button({
       className={cn(
         defaultButtonClass,
         disabled ? disabledClasses[variant] : variants[variant][color],
-        className,
+        className
       )}
       {...props}
     >

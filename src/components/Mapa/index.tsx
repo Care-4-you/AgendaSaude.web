@@ -1,20 +1,24 @@
 "use client";
 
-import { ICidade } from "@/shared/interfaces/ICidade";
-import { IClinica } from "@/shared/interfaces/IClinica";
-import "leaflet/dist/leaflet.css";
-import "./Popup.css";
 import { useState } from "react";
 import {
   LayersControl,
   MapContainer,
   Marker,
   Popup,
-  TileLayer,
+  TileLayer
 } from "react-leaflet";
-import CardClinica from "../CardClinica";
-import {} from "react-icons/io";
+
+import "leaflet/dist/leaflet.css";
+import "./Popup.css";
+
+import { ICidade } from "@/shared/interfaces/ICidade";
+import { IClinica } from "@/shared/interfaces/IClinica";
 import { Icon } from "leaflet";
+
+import CardClinica from "../CardClinica";
+
+import {} from "react-icons/io";
 // import Image from "next/image";
 // mport citto from "../../../public/Imagens/CITTO.jpg";
 
@@ -25,12 +29,12 @@ interface MapaProps {
 
 export default function Mapa({
   cidade = { geo: { lat: -14.4, lng: -57 } },
-  clinicas,
+  clinicas
 }: MapaProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geoData, setGeoData] = useState({
     lat: cidade.geo.lat,
-    lng: cidade.geo.lng,
+    lng: cidade.geo.lng
   });
 
   // Icon da biblioteca leaflet
@@ -39,7 +43,7 @@ export default function Mapa({
     iconUrl:
       "https://png.pngtree.com/png-clipart/20221229/original/pngtree-hospital-location-pin-icon-in-red-color-png-image_8824531.png",
     iconSize: [48, 48],
-    iconAnchor: [24, 48],
+    iconAnchor: [24, 48]
   });
 
   return (
