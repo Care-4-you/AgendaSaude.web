@@ -27,7 +27,7 @@ interface MapaProps {
   clinicas?: IClinica[];
 }
 
-export default function Mapa({
+export default function Map({
   cidade = { geo: { lat: -14.4, lng: -57 } },
   clinicas
 }: MapaProps) {

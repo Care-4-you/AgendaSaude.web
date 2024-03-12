@@ -10,7 +10,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ imagePath }) => {
   return (
     <Link href="/">
-      <Image
+      <img
         src={imagePath}
         alt="Logo"
         className="w-12 bg-slate-200 rounded-full"
