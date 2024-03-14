@@ -4,7 +4,7 @@ import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 
 import { IClinica } from "@/shared/interfaces/IClinica";
 
-import Botao from "../Botao";
+import Button from "../Button";
 
 interface CardClinicaProps {
   clinica: IClinica;
@@ -57,7 +57,7 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
             {clinica.endereco.bairro}
           </p>
         </div>
-        <Botao texto="Agendar" />
+        <Button title="Agendar" />
       </div>
     </div>
   );
