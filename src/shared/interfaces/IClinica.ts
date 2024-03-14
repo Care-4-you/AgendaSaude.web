@@ -17,3 +17,28 @@ export interface IClinica {
     };
   };
 }
+export type ClinicaFormData = {
+  name: string;
+  phone: string;
+  cellPhone: string;
+  whatapp: string;
+  cnpj: string;
+  street: string;
+  zipcode: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  addressComplement: string;
+  specialty: {
+    value: string;
+    label: string;
+  };
+  healthInsurance: {
+    value: string;
+    label: string;
+  };
+  email: string;
+  password: string;
+  confirmPassword: string;
+  acceptTerm: boolean;
+};
