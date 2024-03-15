@@ -12,6 +12,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import "./Popup.css";
 
+import { useClinicas } from "@/hooks/useClinicas";
 import { ICidade } from "@/shared/interfaces/ICidade";
 import { IClinica } from "@/shared/interfaces/IClinica";
 import { Icon } from "leaflet";
@@ -28,14 +29,16 @@ interface MapaProps {
 }
 
 export default function Map({
-  cidade = { geo: { lat: -14.4, lng: -57 } },
-  clinicas
+  cidade = { geo: { lat: -14.4, lng: -57 } }
 }: MapaProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geoData, setGeoData] = useState({
     lat: cidade.geo.lat,
     lng: cidade.geo.lng
   });
+
+  const { clinicas } = useClinicas();
+  console.log(clinicas);
 
   // Icon da biblioteca leaflet
   // "https://cdn.icon-icons.com/icons2/3357/PNG/512/map_navigation_pin_maps_pointer_clinic_placeholder_location_hospital_icon_210661.png"
