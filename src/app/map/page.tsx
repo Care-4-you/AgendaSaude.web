@@ -1,12 +1,17 @@
+"use client";
 import { api } from "@/lib/api";
 import { IClinica } from "@/shared/interfaces/IClinica";
 
 import Mapa from "../../components/Map";
 
-export default async function Home() {
-  const response = await api.get("/clinicas");
+import { useEffect, useState } from "react";
 
-  const clinicas: IClinica[] = response.data;
+export default async function Home() {
+  const [clinicas, setClinicas] = useState<IClinica[]>([]);
+
+  useEffect(() => {
+    api.get("clinicas").then((response) => setClinicas(response.data.clinicas));
+  }, []);
 
   return (
     <div>
