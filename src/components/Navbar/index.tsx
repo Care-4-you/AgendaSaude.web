@@ -31,7 +31,7 @@ export default function Navbar() {
         </div>
         <ul className="flex space-x-4">
           <li>
-            <Button href="#" variant="plain" className="text-lg">
+            <Button variant="plain" className="text-lg">
               Entrar
             </Button>
           </li>
@@ -60,9 +60,9 @@ export default function Navbar() {
 
           <div className=" flex  flex-col gap-4 sm:w-8/12">
             <Button
-              href="#"
               className="flex h-14 gap-6 rounded-lg sm:h-auto"
               leftAccessory={<TbUser size={32} />}
+              disabled
             >
               <p className="text-left text-lg font-bold text-black">Paciente</p>
               <p className="hidden text-left font-semibold text-black sm:inline-block ">
@@ -71,7 +71,7 @@ export default function Navbar() {
             </Button>
 
             <Button
-              href="#"
+              disabled
               className="flex  h-14 gap-6 rounded-lg sm:h-auto"
               leftAccessory={<TbUserHeart size={32} />}
             >

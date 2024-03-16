@@ -48,7 +48,7 @@ export default function Map({
     <MapContainer
       center={[geoData.lat, geoData.lng]}
       zoom={4}
-      style={{ height: "91.6vh", width: "100%" }}
+      style={{ height: "91.6vh", width: "100%", zIndex: "1" }}
     >
       <LayersControl>
         <LayersControl.BaseLayer name="Light">
