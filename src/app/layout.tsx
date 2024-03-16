@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ClinicaProvider } from "@/hooks/useClinicas";
-import { Model, createServer } from "miragejs";
+import { createServer } from "miragejs";
 
 import db from "../Api/db.json" assert { type: "json" };
 import Navbar from "../components/Navbar";
@@ -12,14 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 // criando rota api dinamica
 createServer({
-  models: {
-    clinica: Model
-  },
-  seeds(server) {
-    server.db.loadData({
-      clinicas: db.clinicas
-    });
-  },
   routes() {
     this.namespace = "api";
     this.get("/clinicas", () => ({
@@ -27,8 +19,6 @@ createServer({
     }));
   }
 });
-
-console.log(db.clinicas);
 
 export const metadata = {
   title: "Agenda saúde",
