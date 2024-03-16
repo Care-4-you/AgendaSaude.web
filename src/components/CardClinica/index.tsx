@@ -37,8 +37,8 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
 
   return (
     <div className="m-0 w-48 overflow-hidden p-0">
-      <Image src={clinica.imagem_url} alt="" className="rounded-t-xl" />
-      <div className="p-2">
+      <img src={clinica.imagem_url[0]} alt="" className="rounded-t-xl" />
+      <div className="p-2 flex flex-col">
         <div className="mb-2">
           <h3 className=" text-lg font-bold">{clinica.nome}</h3>
           {
@@ -57,7 +57,9 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
             {clinica.endereco.bairro}
           </p>
         </div>
-        <Button title="Agendar" />
+        <Button type="button" title="Agendar" className="flex justify-center">
+          Agendar
+        </Button>
       </div>
     </div>
   );

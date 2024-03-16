@@ -14,6 +14,8 @@ const Logo: React.FC<LogoProps> = ({ imagePath }) => {
         src={imagePath}
         alt="Logo"
         className="w-12 bg-slate-200 rounded-full"
+        width={48}
+        height={48}
       />
     </Link>
   );

@@ -2,7 +2,7 @@ export interface IClinica {
   id: number;
   nome: string;
   titulo: string;
-  imagem_url: string;
+  imagem_url: string[];
   avaliacao?: number;
   endereco: {
     numero?: string;
@@ -17,6 +17,7 @@ export interface IClinica {
     };
   };
 }
+
 export type ClinicaFormData = {
   name: string;
   phone: string;

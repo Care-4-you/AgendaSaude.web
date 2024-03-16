@@ -5,7 +5,6 @@ import { FaClinicMedical } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { TbUserHeart, TbUser } from "react-icons/tb";
 
-import logoImg from "../../../public/logo.svg";
 import Button from "../Button";
 import Logo from "../Logo";
 import Modal from "../RegisterModal";
@@ -26,7 +25,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <ul className="flex space-x-4">
             <li className="list-none text-xl font-bold text-white">
-              <Logo imagePath={logoImg} />
+              <Logo imagePath={"logo.svg"} />
             </li>
           </ul>
         </div>
