@@ -29,6 +29,8 @@ export default function registerClinical() {
     defaultValues: { isWhatsapp: false, acceptTerm: false, hasNumber: false }
   });
 
+  const acceptTerm = methods.watch("acceptTerm");
+
   const { currentStep, step, isFirstStep, back, next, isLastStep } =
     UseMulitstepForm([
       <StepOne key="stepOne" />,
@@ -104,13 +106,17 @@ export default function registerClinical() {
                         variant={"secondary"}
                         onClick={back}
                         type="button"
-                        className="w-2/5 bg-white text-black"
+                        className="w-60 bg-white text-black"
                       >
                         Voltar
                       </Button>
                     )}
 
-                    <Button type="submit" className="w-2/5">
+                    <Button
+                      type="submit"
+                      className=" w-60"
+                      disabled={!acceptTerm && isLastStep}
+                    >
                       <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
                       {isLastStep ? null : (
                         <MdKeyboardArrowRight

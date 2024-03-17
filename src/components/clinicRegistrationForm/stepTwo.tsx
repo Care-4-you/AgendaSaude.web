@@ -40,6 +40,7 @@ function StepTwo() {
         error={errors.street ? errors.street.message : ""}
       />
       <Input
+        mask="number"
         disabled={hasNumber}
         className="col-span-1"
         placeholder="Numero"
@@ -57,7 +58,7 @@ function StepTwo() {
       <div className=" col-span-1 flex  w-full  justify-start gap-1 items-center  ">
         <input
           type="checkbox"
-          id=" hasNumber"
+          id="hasNumber"
           {...register("hasNumber", {
             required: false
           })}

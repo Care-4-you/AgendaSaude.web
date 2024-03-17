@@ -8,7 +8,7 @@ import { Label } from "../ui/label";
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  mask?: "cellphone" | "phone" | "cnpj" | "cep" | "cpf" | "default";
+  mask?: "cellphone" | "phone" | "number" | "cnpj" | "cep" | "cpf" | "default";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error?: any;
 }

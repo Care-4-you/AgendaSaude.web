@@ -27,7 +27,7 @@ export type ClinicaFormData = {
   street: string;
   zipcode: string;
   state: string;
-  houseNumber: string | boolean;
+  houseNumber: string;
   city: string;
   neighborhood: string;
   addressComplement: string;
