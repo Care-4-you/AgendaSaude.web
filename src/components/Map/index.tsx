@@ -19,8 +19,6 @@ import { Icon } from "leaflet";
 import CardClinica from "../CardClinica";
 
 import {} from "react-icons/io";
-// import Image from "next/image";
-// mport citto from "../../../public/Imagens/CITTO.jpg";
 
 interface MapaProps {
   cidade?: ICidade;
@@ -29,7 +27,7 @@ interface MapaProps {
 
 export default function Map({
   cidade = { geo: { lat: -14.4, lng: -57 } },
-  clinicas
+  clinicas = []
 }: MapaProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geoData, setGeoData] = useState({
@@ -50,7 +48,7 @@ export default function Map({
     <MapContainer
       center={[geoData.lat, geoData.lng]}
       zoom={4}
-      style={{ height: "90vh", width: "100%" }}
+      style={{ height: "91.6vh", width: "100%", zIndex: "1" }}
     >
       <LayersControl>
         <LayersControl.BaseLayer name="Light">

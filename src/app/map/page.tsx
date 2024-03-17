@@ -1,20 +1,18 @@
-import { api } from "@/lib/api";
-import { IClinica } from "@/shared/interfaces/IClinica";
+import dynamic from "next/dynamic";
 
-import Mapa from "../../components/Map";
+import db from "../../Api/db.json" assert { type: "json" };
 
-export default async function Home() {
-  const response = await api.get("/clinicas");
+/* A importação dinâmica permite que uma biblioteca que só roda no browser aguarde ser 
+ executada somente no browser, evitar um erro como 'windows is not defined' por 
+ tentar usar o objeto windows fora do ambiente do browser. */
+const DynamicMap = dynamic(() => import("@/components/Map"), {
+  ssr: false
+});
 
-  const clinicas: IClinica[] = response.data;
-
+export default function SearchClinicals() {
   return (
     <div>
-      <main>
-        <div className="flex">
-          <Mapa clinicas={clinicas} />
-        </div>
-      </main>
+      <DynamicMap clinicas={db.clinicas} />
     </div>
   );
 }
