@@ -1,6 +1,6 @@
 export const handleKeyup = (
   event: React.FormEvent<HTMLInputElement>,
-  mask: "default" | "phone" | "cnpj" | "cep" | "cpf" | "cellphone"
+  mask: "default" | "phone" | "cnpj" | "cep" | "cpf" | "cellphone" | "number"
 ) => {
   if (mask === "phone") {
     event.currentTarget.maxLength = 14;
@@ -56,6 +56,15 @@ export const handleKeyup = (
       .replace(/(\d{3})(\d)/, "$1-$2")
       .replace(/(-\d{2})\d+?$/, "$1");
     event.currentTarget.value = Masked;
+    return event;
+  }
+  if (mask === "number") {
+    event.currentTarget.maxLength = 6;
+    const value = event.currentTarget.value;
+    const noMask = value.replace(/[^a-zA-Z0-9]/g, ""); // Permite apenas letras e números
+    const masked = noMask.replace(/([a-zA-Z0-9]{6})/, "$1");
+
+    event.currentTarget.value = masked;
     return event;
   }
 };
