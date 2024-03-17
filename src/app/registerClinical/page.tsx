@@ -25,7 +25,9 @@ export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
   const [progress, setProgress] = useState(25);
 
-  const methods = useForm<ClinicaFormData>();
+  const methods = useForm<ClinicaFormData>({
+    defaultValues: { isWhatsapp: false, acceptTerm: false, hasNumber: false }
+  });
 
   const { currentStep, step, isFirstStep, back, next, isLastStep } =
     UseMulitstepForm([
@@ -109,9 +111,12 @@ export default function registerClinical() {
                     )}
 
                     <Button type="submit" className="w-2/5">
-                      {isLastStep ? "Finalizar" : "Continuar"}
+                      <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
                       {isLastStep ? null : (
-                        <MdKeyboardArrowRight color="white" size={32} />
+                        <MdKeyboardArrowRight
+                          color="white"
+                          className=" size-8"
+                        />
                       )}
                     </Button>
                   </div>

@@ -26,6 +26,7 @@ export type ClinicaFormData = {
   street: string;
   zipcode: string;
   state: string;
+  houseNumber: string | boolean;
   city: string;
   neighborhood: string;
   addressComplement: string;
@@ -41,4 +42,6 @@ export type ClinicaFormData = {
   password: string;
   confirmPassword: string;
   acceptTerm: boolean;
+  isWhatsapp: boolean;
+  hasNumber: boolean;
 };

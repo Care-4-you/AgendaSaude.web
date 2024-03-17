@@ -36,7 +36,7 @@ function StepThree() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     control: (styles: any) => ({
       ...styles,
-      height: "2.75em"
+      minHeight: "2.75em"
     })
   };
   return (
@@ -90,6 +90,7 @@ function StepThree() {
               <Select
                 className={`${errors.healthInsurance ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
                 styles={colorStyles}
+                closeMenuOnSelect={false}
                 id="convenio"
                 components={animatedComponents}
                 isMulti

@@ -1,29 +1,40 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
 
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
+import { Label } from "../ui/label";
 
 function StepOne() {
   const {
     register,
-
+    setValue,
+    watch,
     formState: { errors }
   } = useFormContext<ClinicaFormData>();
 
+  const isWhatsapp: boolean = watch("isWhatsapp");
+  const cellPhoneNumber: string = watch("cellPhone");
+
+  useEffect(() => {
+    if (isWhatsapp) return setValue("whatapp", cellPhoneNumber);
+  }, [cellPhoneNumber, isWhatsapp, setValue]);
+
   return (
-    <fieldset className="grid grid-cols-2 gap-x-4 ">
+    <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
       <Input
         id="name"
         type="text"
-        className="col-span-2"
+        className="col-span-4"
         placeholder="Nome da clínica"
         label="Nome da clinica*"
         {...register("name", {
           required: {
             value: true,
             message: "Campo Nome da clínica é obrigatorio"
-          }
+          },
+          maxLength: 255
         })}
         error={errors.name ? errors.name.message : ""}
       />
@@ -31,7 +42,7 @@ function StepOne() {
         id="phone"
         mask="phone"
         type="tel"
-        className="col-span-1"
+        className=" col-span-4 lg:col-span-2"
         placeholder="(00) 0000-0000"
         label="Telefone*"
         {...register("phone", {
@@ -51,13 +62,13 @@ function StepOne() {
         id="cellPhone"
         mask="cellphone"
         type="tel"
-        className="col-span-1"
+        className="col-span-2 lg:col-span-1"
         placeholder="(00) 00000-0000"
         label="Celular*"
         {...register("cellPhone", {
           required: {
             value: true,
-            message: "Campo Celular é obrigatorio"
+            message: "Campo obrigatorio"
           },
           pattern: {
             value:
@@ -67,16 +78,29 @@ function StepOne() {
         })}
         error={errors.cellPhone ? errors.cellPhone.message : ""}
       />
+      <div className=" col-span-2 lg:col-span-1 flex  w-full  justify-start gap-1 items-center  ">
+        <input
+          type="checkbox"
+          id="isWhatsapp"
+          {...register("isWhatsapp", {
+            required: false
+          })}
+        />
+        <Label htmlFor="isWhatsapp" className=" text-xs">
+          É whatapps ?
+        </Label>
+      </div>
       <Input
+        disabled={isWhatsapp}
         id="whatapp"
         mask="cellphone"
         type="tel"
-        className="col-span-1"
+        className="col-span-2"
         placeholder="(00) 00000-0000"
         label="Whatapp*"
         {...register("whatapp", {
           required: {
-            value: true,
+            value: isWhatsapp ? false : true,
             message: "Campo Whatapp é obrigatorio"
           },
           pattern: {
@@ -91,7 +115,7 @@ function StepOne() {
         id="CNPJ"
         mask="cnpj"
         type="text"
-        className="col-span-1"
+        className="col-span-2"
         placeholder="XX.XXX.XXX/0001-XX"
         label="CNPJ*"
         {...register("cnpj", {
