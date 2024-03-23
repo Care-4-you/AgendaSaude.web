@@ -1,11 +1,17 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { LuEye, LuEyeOff } from "react-icons/lu";
 
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 function StepFour() {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+
   const {
     register,
     watch,
@@ -24,57 +30,79 @@ function StepFour() {
         {...register("email", {
           required: {
             value: true,
-            message: "Campo Email é obrigatorio"
+            message: "Campo Email é obrigatório"
           },
           pattern: {
             value:
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            message: "Formato invalido Ex. exemplo@email.com"
+            message: "Formato inválido Ex. exemplo@email.com"
           }
         })}
         error={errors.email ? errors.email.message : ""}
       />
-      <Input
-        className="col-span-2"
-        placeholder="Senha"
-        label="Senha*"
-        id="password"
-        type="password"
-        {...register("password", {
-          required: { value: true, message: "Campo Senha é obrigatorio" },
-          minLength: {
-            value: 8,
-            message: "Senha deve ter no minimo 8 caracters"
-          },
-          validate: {
-            hasUppercase: (value) =>
-              /^(?=.*[A-Z]).+$/.test(value) ||
-              "Deve conter no minimo uma letra maiúscula",
-            hasLowerCase: (value) =>
-              /^(?=.*[a-z]).+$/.test(value) ||
-              "Deve conter no minimo uma letra minuscula",
-            hasSpecialChar: (value) =>
-              /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(value) ||
-              "Deve conter caracters especiaos Ex. @ # $"
-          }
-        })}
-        error={errors.password ? errors.password.message : ""}
-      />
-      <Input
-        className="col-span-2"
-        placeholder="Repetir senha"
-        label="Repetir senha*"
-        id="confirmPassword"
-        type="password"
-        {...register("confirmPassword", {
-          required: {
-            value: true,
-            message: "Campo Repetir senha é obrigatorio"
-          },
-          validate: (value) => value === password || "A senha nao corresponde"
-        })}
-        error={errors.confirmPassword ? errors.confirmPassword.message : ""}
-      />
+      <div className="col-span-2 relative">
+        <Input
+          placeholder="Senha"
+          type={isShowPassword ? "text" : "password"}
+          label="Senha*"
+          id="password"
+          {...register("password", {
+            required: { value: true, message: "Campo Senha é obrigatório" },
+            minLength: {
+              value: 8,
+              message: "Senha deve ter no minimo 8 caracters"
+            },
+            validate: {
+              hasUppercase: (value) =>
+                /^(?=.*[A-Z]).+$/.test(value) ||
+                "Deve conter no minimo uma letra maiúscula",
+              hasLowerCase: (value) =>
+                /^(?=.*[a-z]).+$/.test(value) ||
+                "Deve conter no minimo uma letra minuscula",
+              hasSpecialChar: (value) =>
+                /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(value) ||
+                "Deve conter caracters especiaos Ex. @ # $"
+            }
+          })}
+          error={errors.password ? errors.password.message : ""}
+        />
+        <span
+          className=" cursor-pointer absolute  top-[46px]  right-4"
+          onClick={() => setIsShowPassword((prev) => !prev)}
+        >
+          {isShowPassword ? (
+            <LuEye size={"1.25em"} />
+          ) : (
+            <LuEyeOff size={"1.25em"} />
+          )}
+        </span>
+      </div>
+      <div className="col-span-2 relative">
+        <Input
+          placeholder="Repetir senha"
+          label="Repetir senha*"
+          id="confirmPassword"
+          type={isShowConfirmPassword ? "text" : "password"}
+          {...register("confirmPassword", {
+            required: {
+              value: true,
+              message: "Campo Repetir senha é obrigatório"
+            },
+            validate: (value) => value === password || "A senha não corresponde"
+          })}
+          error={errors.confirmPassword ? errors.confirmPassword.message : ""}
+        />
+        <span
+          className=" cursor-pointer absolute  top-[46px]  right-4"
+          onClick={() => setIsShowConfirmPassword((prev) => !prev)}
+        >
+          {isShowConfirmPassword ? (
+            <LuEye size={"1.25em"} />
+          ) : (
+            <LuEyeOff size={"1.25em"} />
+          )}
+        </span>
+      </div>
       <div className="flex flex-col gap-6 col-span-2 m-2">
         <Label htmlFor="">Carregar imagem/logotipo</Label>
         <Label
@@ -138,7 +166,7 @@ function StepFour() {
             </a>
           </label>
         </div>
-        <p className="flex items-center space-x-2  col-span-1 h-4 text-sm  font-bold text-red-500 mt-1.5 ">
+        <p className="flex items-center space-x-2  col-span-1 h-4 text-sm  font-semibold text-red-500 mt-1.5 ">
           {errors.acceptTerm ? errors.acceptTerm.message : ""}
         </p>
       </div>

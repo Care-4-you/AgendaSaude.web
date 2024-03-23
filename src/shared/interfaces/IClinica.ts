@@ -22,7 +22,7 @@ export type ClinicaFormData = {
   name: string;
   phone: string;
   cellPhone: string;
-  whatapp: string;
+  whatsapp: string;
   cnpj: string;
   street: string;
   zipcode: string;

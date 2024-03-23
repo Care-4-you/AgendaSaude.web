@@ -42,7 +42,7 @@ function StepThree() {
   return (
     <fieldset className=" grid grid-cols-1 gap-4 ">
       <div className="col-span-1 flex flex-col gap-3">
-        <Label htmlFor="Especialidadesmedica">Especialidades medica*</Label>
+        <Label htmlFor="Especialidadesmedica">Especialidades médicas*</Label>
         <Controller
           control={control}
           name="specialty"
@@ -56,6 +56,7 @@ function StepThree() {
                 closeMenuOnSelect={false}
                 components={animatedComponents}
                 isMulti
+                placeholder="Selecionar"
                 options={especialidadesMedicas}
                 menuPlacement="auto"
                 isSearchable={false}
@@ -64,7 +65,7 @@ function StepThree() {
                 {...register("specialty", {
                   required: {
                     value: true,
-                    message: " o campo Especialidades medica é obrigatorio"
+                    message: "Campo Especialidades médicas é obrigatório"
                   }
                 })}
                 {...renderProps.field}
@@ -75,12 +76,12 @@ function StepThree() {
             );
           }}
         />
-        <p className="min-h-4 text-sm  font-bold text-red-500">
+        <p className="min-h-4 text-sm  font-semibold text-red-500">
           {errors.specialty ? errors.specialty.message : ""}
         </p>
       </div>
       <div className="col-span-1 flex flex-col gap-3">
-        <Label htmlFor="convenio">Convenio*</Label>
+        <Label htmlFor="convenio">Convênio*</Label>
         <Controller
           control={control}
           name="healthInsurance"
@@ -94,6 +95,7 @@ function StepThree() {
                 id="convenio"
                 components={animatedComponents}
                 isMulti
+                placeholder="Selecionar"
                 options={convenios}
                 menuPlacement="auto"
                 isSearchable={false}
@@ -102,7 +104,7 @@ function StepThree() {
                 {...register("healthInsurance", {
                   required: {
                     value: true,
-                    message: " o campo Convenio é obrigatorio"
+                    message: "Campo Convênio é obrigatório"
                   }
                 })}
                 {...renderProps.field}
@@ -113,7 +115,7 @@ function StepThree() {
             );
           }}
         />
-        <p className="min-h-4 text-sm  font-bold text-red-500">
+        <p className="min-h-4 text-sm  font-semibold text-red-500">
           {errors.healthInsurance ? errors.healthInsurance.message : ""}
         </p>
       </div>

@@ -29,7 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <p className="min-h-4 text-sm  font-bold text-red-500">
+        <p className="min-h-4 text-sm font-semibold  text-red-500">
           {error ? error : " "}
         </p>
       </fieldset>

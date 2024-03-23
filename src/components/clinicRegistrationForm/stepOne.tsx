@@ -18,7 +18,8 @@ function StepOne() {
   const cellPhoneNumber: string = watch("cellPhone");
 
   useEffect(() => {
-    if (isWhatsapp) return setValue("whatapp", cellPhoneNumber);
+    if (isWhatsapp)
+      return setValue("whatsapp", cellPhoneNumber, { shouldValidate: true });
   }, [cellPhoneNumber, isWhatsapp, setValue]);
 
   return (
@@ -28,11 +29,11 @@ function StepOne() {
         type="text"
         className="col-span-4"
         placeholder="Nome da clínica"
-        label="Nome da clinica*"
+        label="Nome da clínica*"
         {...register("name", {
           required: {
             value: true,
-            message: "Campo Nome da clínica é obrigatorio"
+            message: "Campo Nome da clínica é obrigatório"
           },
           maxLength: 255
         })}
@@ -48,12 +49,12 @@ function StepOne() {
         {...register("phone", {
           required: {
             value: true,
-            message: "Campo Telefone é obrigatorio"
+            message: "Campo Telefone é obrigatório"
           },
           pattern: {
             value:
               /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:[2-9]\d{3})[-.\s]?(\d{4}))$/,
-            message: "Formato invalido"
+            message: "Formato inválido"
           }
         })}
         error={errors.phone ? errors.phone.message : ""}
@@ -68,12 +69,12 @@ function StepOne() {
         {...register("cellPhone", {
           required: {
             value: true,
-            message: "Campo obrigatorio"
+            message: "Campo obrigatório"
           },
           pattern: {
             value:
               /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:9\d{4})[-.\s]?(\d{4}))$/,
-            message: "Formato invalido"
+            message: "Formato inválido"
           }
         })}
         error={errors.cellPhone ? errors.cellPhone.message : ""}
@@ -87,29 +88,29 @@ function StepOne() {
           })}
         />
         <Label htmlFor="isWhatsapp" className=" text-xs">
-          É whatapps ?
+          É whatsapp ?
         </Label>
       </div>
       <Input
         disabled={isWhatsapp}
-        id="whatapp"
+        id="whatsapp"
         mask="cellphone"
         type="tel"
         className="col-span-2"
         placeholder="(00) 00000-0000"
         label="Whatapp*"
-        {...register("whatapp", {
+        {...register("whatsapp", {
           required: {
             value: isWhatsapp ? false : true,
-            message: "Campo Whatapp é obrigatorio"
+            message: "Campo Whatapp é obrigatório"
           },
           pattern: {
             value:
               /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:9\d{4})[-.\s]?(\d{4}))$/,
-            message: "Formato invalido"
+            message: "Formato inválido"
           }
         })}
-        error={errors.whatapp ? errors.whatapp.message : ""}
+        error={errors.whatsapp ? errors.whatsapp.message : ""}
       />
       <Input
         id="CNPJ"
@@ -121,11 +122,11 @@ function StepOne() {
         {...register("cnpj", {
           required: {
             value: true,
-            message: "Campo CNPJ é obrigatorio"
+            message: "Campo CNPJ é obrigatório"
           },
           pattern: {
             value: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
-            message: "Formato invalido"
+            message: "Formato inválido"
           }
         })}
         error={errors.cnpj ? errors.cnpj.message : ""}

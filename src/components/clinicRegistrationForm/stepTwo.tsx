@@ -19,13 +19,13 @@ function StepTwo() {
   const hasNumber = watch("hasNumber");
 
   useEffect(() => {
-    if (hasNumber) return setValue("houseNumber", "");
+    if (hasNumber) return setValue("houseNumber", "", { shouldValidate: true });
   }, [hasNumber, setValue]);
 
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
       <Input
-        className="col-span-4"
+        className="col-span-6 lg:col-span-4"
         placeholder="Logradouro"
         label="Logradouro*"
         id="street"
@@ -33,7 +33,7 @@ function StepTwo() {
         {...register("street", {
           required: {
             value: true,
-            message: "Campo Logradouro é obrigatorio"
+            message: "Campo Logradouro é obrigatório"
           },
           maxLength: 255
         })}
@@ -42,7 +42,7 @@ function StepTwo() {
       <Input
         mask="number"
         disabled={hasNumber}
-        className="col-span-1"
+        className=" col-span-3 lg:col-span-1"
         placeholder="Numero"
         label="Nº*"
         id="houseNumber"
@@ -50,12 +50,12 @@ function StepTwo() {
         {...register("houseNumber", {
           required: {
             value: hasNumber ? false : true,
-            message: "Campo obrigatorio"
+            message: "Campo obrigatório"
           }
         })}
         error={errors.houseNumber ? errors.houseNumber.message : ""}
       />
-      <div className=" col-span-1 flex  w-full  justify-start gap-1 items-center  ">
+      <div className=" col-span-3 lg:col-span-1 flex  w-full  justify-start gap-1 items-center  ">
         <input
           type="checkbox"
           id="hasNumber"
@@ -77,11 +77,11 @@ function StepTwo() {
         {...register("zipcode", {
           required: {
             value: true,
-            message: "Campo CEP é obrigatorio"
+            message: "Campo CEP é obrigatório"
           },
           pattern: {
             value: /^\d{5}-\d{3}$/,
-            message: "Formato invalido"
+            message: "Formato inválido"
           }
         })}
         error={errors.zipcode ? errors.zipcode.message : ""}
@@ -95,7 +95,7 @@ function StepTwo() {
         {...register("state", {
           required: {
             value: true,
-            message: "Campo Estado é obrigatorio"
+            message: "Campo Estado é obrigatório"
           }
         })}
         error={errors.state ? errors.state.message : ""}
@@ -109,7 +109,7 @@ function StepTwo() {
         {...register("city", {
           required: {
             value: true,
-            message: "Campo Cidade é obrigatorio"
+            message: "Campo Cidade é obrigatório"
           }
         })}
         error={errors.city ? errors.city.message : ""}
@@ -123,7 +123,7 @@ function StepTwo() {
         {...register("neighborhood", {
           required: {
             value: true,
-            message: "Campo Bairro é obrigatorio"
+            message: "Campo Bairro é obrigatório"
           }
         })}
         error={errors.neighborhood ? errors.neighborhood.message : ""}

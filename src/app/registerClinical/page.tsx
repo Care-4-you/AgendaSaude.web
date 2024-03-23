@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -24,6 +25,7 @@ import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
   const [progress, setProgress] = useState(25);
+  const router = useRouter();
 
   const methods = useForm<ClinicaFormData>({
     defaultValues: { isWhatsapp: false, acceptTerm: false, hasNumber: false }
@@ -63,10 +65,15 @@ export default function registerClinical() {
     if (!isLastStep) return next();
     setOpenModal(true);
   };
+
+  function sendEmail() {
+    setOpenModal(false);
+    router.push("/");
+  }
   return (
     <>
       <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-white from-50% to-[#C2C1C1] to-50%">
-        <div className="flex container  justify-between flex-col md:flex-row  ">
+        <div className="flex container  justify-between flex-col md:flex-row bg- ">
           <div className=" flex flex-1 gap-6 flex-col justify-center  md:justify-start min-h-screen ">
             <hgroup className="max-w-sm pr-4 md:pt-32">
               <h2 className=" text-5xl font-bold text-black leading-[75px]">
@@ -81,7 +88,7 @@ export default function registerClinical() {
             </p>
           </div>
           <div className=" flex flex-1 justify-center items-center md:justify-start md:items-start min-h-screen ">
-            <div className="md:pt-[72px] w-full md:pl-10 lg:pl-20 ">
+            <div className="md:pt-[72px] w-full md:pl-10 lg:pl-20">
               <hgroup className="flex flex-col justify-start gap-2">
                 <p className=" text-4xl  font-thin text-slate-900 italic mb-1">
                   LOGO
@@ -106,7 +113,7 @@ export default function registerClinical() {
                         variant={"secondary"}
                         onClick={back}
                         type="button"
-                        className="w-60 bg-white text-black"
+                        className="w-2/5 bg-white text-black"
                       >
                         Voltar
                       </Button>
@@ -114,7 +121,7 @@ export default function registerClinical() {
 
                     <Button
                       type="submit"
-                      className=" w-60"
+                      className=" w-2/5"
                       disabled={!acceptTerm && isLastStep}
                     >
                       <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
@@ -148,11 +155,11 @@ export default function registerClinical() {
               cadastrado.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter className=" lg:justify-center">
+          <DialogFooter className="   items-center sm:justify-center flex">
             <Button
               type="submit"
               className="w-2/5 px-4 py-7 "
-              onClick={() => setOpenModal(false)}
+              onClick={sendEmail}
             >
               Concluir
             </Button>
