@@ -61,7 +61,7 @@ function StepFour() {
                 "Deve conter no minimo uma letra minuscula",
               hasSpecialChar: (value) =>
                 /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(value) ||
-                "Deve conter caracters especiaos Ex. @ # $"
+                "Deve conter caracteres especiais Ex. @ # $"
             }
           })}
           error={errors.password ? errors.password.message : ""}

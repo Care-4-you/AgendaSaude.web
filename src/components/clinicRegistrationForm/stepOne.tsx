@@ -98,7 +98,7 @@ function StepOne() {
         type="tel"
         className="col-span-2"
         placeholder="(00) 00000-0000"
-        label="Whatapp*"
+        label="Whatsapp*"
         {...register("whatsapp", {
           required: {
             value: isWhatsapp ? false : true,
