@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FaClinicMedical } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { TbUserHeart, TbUser } from "react-icons/tb";
+import { TbUser } from "react-icons/tb";
 
 import Button from "../Button";
 import Logo from "../Logo";
@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <ul className="flex space-x-4">
             <li className="list-none text-xl font-bold text-white">
-              <Logo imagePath={"logo.svg"} />
+              <Logo imagePath={"/logo_soujunior.png"} />
             </li>
           </ul>
         </div>
@@ -71,25 +71,17 @@ export default function Navbar() {
             </Button>
 
             <Button
-              disabled
-              className="flex  h-14 gap-6 rounded-lg sm:h-auto"
-              leftAccessory={<TbUserHeart size={32} />}
-            >
-              <p className="text-left text-lg font-bold text-black">Médico</p>
-              <p className="hidden text-left font-semibold text-black sm:inline-block ">
-                Lorem ipsum dolor sit amet consectetur
-              </p>
-            </Button>
-
-            <Button
-              href="/registerClinical"
               className="flex   h-14 gap-6 rounded-lg sm:h-auto"
               leftAccessory={<FaClinicMedical size={32} />}
             >
-              <p className="text-left text-lg font-bold text-black">Clínica</p>
-              <p className=" hidden text-left font-semibold text-black sm:inline-block ">
-                Lorem ipsum dolor sit amet consectetur
-              </p>
+              <a href="/registerClinical" target="_self">
+                <p className="text-left text-lg font-bold text-black">
+                  Clínica
+                </p>
+                <p className=" hidden text-left font-semibold text-black sm:inline-block ">
+                  Lorem ipsum dolor sit amet consectetur
+                </p>
+              </a>
             </Button>
           </div>
         </Modal>

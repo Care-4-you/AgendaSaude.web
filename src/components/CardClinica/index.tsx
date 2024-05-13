@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Image from "next/image";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 
 import { IClinica } from "@/shared/interfaces/IClinica";

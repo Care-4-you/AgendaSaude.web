@@ -73,7 +73,7 @@ export default function registerClinical() {
   return (
     <>
       <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-white from-50% to-[#C2C1C1] to-50%">
-        <div className="flex container  justify-between flex-col md:flex-row bg- ">
+        <div className="flex container  justify-between flex-col md:flex-row ">
           <div className=" flex flex-1 gap-6 flex-col justify-center  md:justify-start min-h-screen ">
             <hgroup className="max-w-sm pr-4 md:pt-32">
               <h2 className=" text-5xl font-bold text-black leading-[75px]">
