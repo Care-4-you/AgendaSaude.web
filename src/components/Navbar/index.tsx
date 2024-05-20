@@ -54,7 +54,7 @@ export default function Navbar() {
               Cadastrar
             </h2>
             <p className=" text-center text-lg font-medium  text-gray-900  lg:text-2xl">
-              Lorem ipsum dolor sit amet consectetur.
+              Cadastre uma conta em nosso serviço
             </p>
           </header>
 
@@ -65,9 +65,9 @@ export default function Navbar() {
               disabled
             >
               <p className="text-left text-lg font-bold text-black">Paciente</p>
-              <p className="hidden text-left font-semibold text-black sm:inline-block ">
+              {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
                 Lorem ipsum dolor sit amet consectetur
-              </p>
+              </p> */}
             </Button>
 
             <Button
@@ -78,9 +78,9 @@ export default function Navbar() {
                 <p className="text-left text-lg font-bold text-black">
                   Clínica
                 </p>
-                <p className=" hidden text-left font-semibold text-black sm:inline-block ">
+                {/* <p className=" hidden text-left font-semibold text-black sm:inline-block ">
                   Lorem ipsum dolor sit amet consectetur
-                </p>
+                </p> */}
               </a>
             </Button>
           </div>
