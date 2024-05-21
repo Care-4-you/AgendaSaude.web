@@ -62,12 +62,15 @@ export default function Navbar() {
             <Button
               className="flex h-14 gap-6 rounded-lg sm:h-auto"
               leftAccessory={<TbUser size={32} />}
-              disabled
             >
-              <p className="text-left text-lg font-bold text-black">Paciente</p>
-              {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
+              <a href="/registerPatient" target="_self">
+                <p className="text-left text-lg font-bold text-black">
+                  Paciente
+                </p>
+                {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
                 Lorem ipsum dolor sit amet consectetur
               </p> */}
+              </a>
             </Button>
 
             <Button
