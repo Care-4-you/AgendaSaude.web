@@ -24,7 +24,7 @@ function StepTwo() {
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
       <Input
-        className="col-span-6 lg:col-span-4"
+        className="col-span-6 lg:col-span-6"
         placeholder="Endereço"
         label="Endereço*"
         id="street"
