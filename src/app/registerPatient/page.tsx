@@ -15,8 +15,8 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 import StepOne from "../../components/patientRegistrationForm/stepOne";
-import StepTwo from "../../components/patientRegistrationForm/stepTwo";
 import StepThree from "../../components/patientRegistrationForm/stepThree";
+import StepTwo from "../../components/patientRegistrationForm/stepTwo";
 import { Button } from "../../components/ui/button";
 import UseMulitstepForm from "../../hooks/UseMultistepForm";
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
@@ -42,15 +42,12 @@ export default function registerClinical() {
   useEffect(() => {
     function getProgress() {
       if (currentStep + 1 === 1) {
-        return setProgress(25);
+        return setProgress(33);
       }
       if (currentStep + 1 === 2) {
-        return setProgress(50);
+        return setProgress(66);
       }
       if (currentStep + 1 === 3) {
-        return setProgress(75);
-      }
-      if (currentStep + 1 === 4) {
         return setProgress(100);
       }
     }

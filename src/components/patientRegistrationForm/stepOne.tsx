@@ -1,19 +1,22 @@
+import Image from "next/image";
 import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+
 import { Input } from "@/components/ui/input";
 
 import { PacienteFormData } from "../../shared/interfaces/IPacient";
 import { Label } from "../ui/label";
-import Image from "next/image";
 
 const animatedComponents = makeAnimated();
+
 function StepOne() {
   const {
     register,
     control,
     formState: { errors }
   } = useFormContext<PacienteFormData>();
+
   const genero = [
     { value: "masculino", label: "Masculino" },
     { value: "feminino", label: "Feminino" },
@@ -26,6 +29,32 @@ function StepOne() {
       ...styles,
       minHeight: "2.75em"
     })
+  };
+
+  const MINIMUM_AGE = 18;
+
+  const isValidDate = (dateString: Date) => {
+    const date = new Date(dateString);
+    return !isNaN(date.getTime());
+  };
+
+  const isOfAge = (dateString: Date) => {
+    const birthDate = new Date(dateString);
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const dayDifference = today.getDate() - birthDate.getDate();
+
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+      return age - 1 >= MINIMUM_AGE;
+    }
+
+    return age >= MINIMUM_AGE;
+  };
+
+  const hasFourDigitYear = (dateString: Date) => {
+    const year = new Date(dateString).getFullYear();
+    return /^\d{4}$/.test(year.toString());
   };
   return (
     <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
@@ -70,7 +99,27 @@ function StepOne() {
         })}
         error={errors.name ? errors.name.message : ""}
       />
-      <div className="col-span-1 flex flex-col gap-3">
+      <Input
+        id="date"
+        type="date"
+        className="col-span-4"
+        placeholder="Nome completo"
+        label="Data de aniversario"
+        {...register("date", {
+          required: {
+            value: true,
+            message: "Campo data de aniversario é obrigatório"
+          },
+          validate: {
+            validDate: (value) => isValidDate(value) || "Data inválida",
+            fourDigitYear: (value) =>
+              hasFourDigitYear(value) || "O ano deve ter 4 dígitos",
+            ofAge: (value) => isOfAge(value) || "Você deve ser maior de idade"
+          }
+        })}
+        error={errors.date ? errors.date.message : ""}
+      />
+      <div className="col-end-5 col-span-2 flex flex-col gap-3">
         <Label htmlFor="convenio">Gênero*</Label>
         <Controller
           control={control}
@@ -81,15 +130,14 @@ function StepOne() {
               <Select
                 className={`${errors.gender ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
                 styles={colorStyles}
-                closeMenuOnSelect={false}
                 id="genero"
                 components={animatedComponents}
                 placeholder="Selecionar"
                 options={genero}
                 menuPlacement="auto"
                 isSearchable={false}
-                menuPortalTarget={document.body}
                 menuPosition="fixed"
+                menuPortalTarget={document.body}
                 {...register("gender", {
                   required: {
                     value: true,
