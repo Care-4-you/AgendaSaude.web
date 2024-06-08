@@ -1,10 +1,10 @@
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 import { Input } from "@/components/ui/input";
-
 import { PacienteFormData } from "../../shared/interfaces/IPacient";
 import { Label } from "../ui/label";
 
@@ -16,6 +16,12 @@ function StepOne() {
     control,
     formState: { errors }
   } = useFormContext<PacienteFormData>();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const genero = [
     { value: "masculino", label: "Masculino" },
@@ -56,8 +62,9 @@ function StepOne() {
     const year = new Date(dateString).getFullYear();
     return /^\d{4}$/.test(year.toString());
   };
+
   return (
-    <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
+    <fieldset className="grid grid-cols-4 gap-x-4  items-center">
       <div className="flex flex-col gap-6 col-span-4 m-2">
         <Label
           htmlFor="image"
@@ -103,7 +110,7 @@ function StepOne() {
         id="date"
         type="date"
         className="col-span-4"
-        placeholder="Nome completo"
+        placeholder="Data de aniversário"
         label="Data de aniversario"
         {...register("date", {
           required: {
@@ -137,7 +144,7 @@ function StepOne() {
                 menuPlacement="auto"
                 isSearchable={false}
                 menuPosition="fixed"
-                menuPortalTarget={document.body}
+                menuPortalTarget={isClient ? document.body : undefined}
                 {...register("gender", {
                   required: {
                     value: true,
