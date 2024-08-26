@@ -20,7 +20,7 @@ function StepFour() {
   const password = watch("password");
 
   return (
-    <fieldset className="grid grid-cols-2 gap-x-4 ">
+    <fieldset className="grid grid-cols-2 gap-x-4  items-center ">
       <Input
         className="col-span-2"
         placeholder="Email"
@@ -102,6 +102,25 @@ function StepFour() {
             <LuEyeOff size={"1.25em"} />
           )}
         </span>
+        <Input
+          id="CNPJ"
+          mask="cnpj"
+          type="text"
+          className="col-span-2"
+          placeholder="XX.XXX.XXX/0001-XX"
+          label="CNPJ*"
+          {...register("cnpj", {
+            required: {
+              value: true,
+              message: "Campo CNPJ é obrigatório"
+            },
+            pattern: {
+              value: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
+              message: "Formato inválido"
+            }
+          })}
+          error={errors.cnpj ? errors.cnpj.message : ""}
+        />
       </div>
       <div className="flex flex-col gap-6 col-span-2 m-2">
         <Label htmlFor="">Carregar imagem/logotipo</Label>
