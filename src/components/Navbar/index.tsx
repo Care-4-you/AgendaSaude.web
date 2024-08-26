@@ -8,10 +8,19 @@ import { TbUser } from "react-icons/tb";
 import Button from "../Button";
 import Logo from "../Logo";
 import Modal from "../RegisterModal";
+import ModalLogin from "../LoginModal";
 
 export default function Navbar() {
   const [modalAberto, setModalAberto] = useState(false);
+  const [modalAbertoLogin, setModalAbertoLogin] = useState(false);
 
+  const abrirModalLogin = () => {
+    setModalAbertoLogin(true);
+  };
+
+  const fecharModalLogin = () => {
+    setModalAbertoLogin(false);
+  };
   const abrirModal = () => {
     setModalAberto(true);
   };
@@ -31,7 +40,11 @@ export default function Navbar() {
         </div>
         <ul className="flex space-x-4">
           <li>
-            <Button variant="plain" className="text-lg">
+            <Button
+              variant="plain"
+              className="text-lg"
+              onClick={abrirModalLogin}
+            >
               Entrar
             </Button>
           </li>
@@ -41,6 +54,55 @@ export default function Navbar() {
             </Button>
           </li>
         </ul>
+        <ModalLogin isOpen={modalAbertoLogin} onClose={fecharModalLogin}>
+          <Button
+            className="absolute right-4 top-4"
+            variant="plain"
+            leftAccessory={<IoClose size={28} color="black" />}
+            onClick={fecharModalLogin}
+          />
+
+          <header className="mb-8 flex w-full flex-col items-center gap-4 font-sans">
+            <h2 className=" text-3xl font-bold text-black md:text-4xl  lg:text-5xl">
+              Entrar
+            </h2>
+            <p className=" text-center text-lg font-medium  text-gray-900  lg:text-2xl">
+              Entre com sua conta para utilizar as funcionalidades do Agenda
+              Saúde.
+            </p>
+          </header>
+
+          <div className=" flex  flex-col gap-4 sm:w-8/12">
+            <Button
+              className="flex h-14 gap-6 rounded-lg sm:h-auto"
+              leftAccessory={<TbUser size={32} />}
+            >
+              <a href="#" target="_self">
+                <p className="text-left text-lg font-bold text-black">
+                  Paciente
+                </p>
+                {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
+                Lorem ipsum dolor sit amet consectetur
+              </p> */}
+              </a>
+            </Button>
+
+            <Button
+              className="flex   h-14 gap-6 rounded-lg sm:h-auto"
+              leftAccessory={<FaClinicMedical size={32} />}
+            >
+              <a href="#" target="_self">
+                <p className="text-left text-lg font-bold text-black">
+                  Clínica
+                </p>
+                {/* <p className=" hidden text-left font-semibold text-black sm:inline-block ">
+                  Lorem ipsum dolor sit amet consectetur
+                </p> */}
+              </a>
+            </Button>
+          </div>
+        </ModalLogin>
+
         <Modal isOpen={modalAberto} onClose={fecharModal}>
           <Button
             className="absolute right-4 top-4"
