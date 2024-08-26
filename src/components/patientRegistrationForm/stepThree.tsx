@@ -139,7 +139,7 @@ function StepFour() {
           >
             Você aceita os
             <a
-              href="#"
+              href="/terms"
               target="_blank"
               rel="noopener noreferrer"
               className=" font-medium"
@@ -149,7 +149,7 @@ function StepFour() {
             </a>{" "}
             e a sua{" "}
             <a
-              href="#"
+              href="/terms"
               target="_blank"
               rel="noopener noreferrer"
               className=" font-medium"

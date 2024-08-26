@@ -20,6 +20,7 @@ import StepTwo from "../../components/patientRegistrationForm/stepTwo";
 import { Button } from "../../components/ui/button";
 import UseMulitstepForm from "../../hooks/UseMultistepForm";
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
+import Logo from "@/components/Logo";
 
 export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
@@ -72,27 +73,23 @@ export default function registerClinical() {
           <div className=" flex flex-1 gap-6 flex-col justify-center  md:justify-start min-h-screen ">
             <hgroup className="max-w-sm pr-4 md:pt-32">
               <h2 className=" text-5xl font-bold text-black leading-[75px]">
-                Lorem ipsum dolor sit amet.
+                Cadastro de conta Paciente
               </h2>
             </hgroup>
             <p className=" text-base text-gray-900 max-w-md pr-4  font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              non sollicitudin tellus. Vivamus venenatis libero suscipit sem
-              venenatis finibus. Maecenas orci enim, sodales quis porttitor a,
-              feugiat in est.
+              Crie uma conta de paciente no Agenda Saúde para pode agendar
+              consultas médicas em qualquer lugar do Brasil.
             </p>
           </div>
           <div className=" flex flex-1 justify-center items-center md:justify-start md:items-start min-h-screen ">
             <div className="md:pt-[72px] w-full md:pl-10 lg:pl-20">
               <hgroup className="flex flex-col justify-start gap-2">
-                <p className=" text-4xl  font-thin text-slate-900 italic mb-1">
-                  LOGO
-                </p>
+                <Logo imagePath={"/logo_soujunior.png"} />
                 <h3 className=" text-3xl font-semibold">
-                  Lorem ipsum dolor sit amet.
+                  Cadastro de conta de Paciente
                 </h3>
                 <span className=" text-base font-medium">
-                  Lorem ipsum dolor sit amet.
+                  Crie sua conta como paciente.
                 </span>
               </hgroup>
               <Progress value={progress} className="w-full mt-12  mb-10" />
