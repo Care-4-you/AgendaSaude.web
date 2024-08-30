@@ -46,3 +46,8 @@ export type ClinicaFormData = {
   isWhatsapp: boolean;
   hasNumber: boolean;
 };
+
+export type FormLogin = {
+  username: string;
+  password: string;
+};

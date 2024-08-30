@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Container } from "@/components/Container";
 import React from "react";
+
+import { Container } from "@/components/Container";
 
 export default function Terms() {
   return (
