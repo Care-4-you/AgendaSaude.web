@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+import Logo from "@/components/Logo";
 import {
   Dialog,
   DialogContent,
@@ -14,15 +15,15 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 
-import StepFour from "../../components/clinicRegistrationForm/stepFour";
-import StepOne from "../../components/clinicRegistrationForm/stepOne";
-import StepThree from "../../components/clinicRegistrationForm/stepThree";
-import StepTwo from "../../components/clinicRegistrationForm/stepTwo";
-import { Button } from "../../components/ui/button";
-import UseMulitstepForm from "../../hooks/UseMultistepForm";
-import { ClinicaFormData } from "../../shared/interfaces/IClinica";
+import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
+import { Button } from "../../../components/ui/button";
+import UseMulitstepForm from "../../../hooks/UseMultistepForm";
+import StepThree from "../../../components/patientRegistrationForm/stepThree";
+import StepTwo from "../../../components/patientRegistrationForm/stepTwo";
+import StepOne from "../../../components/patientRegistrationForm/stepOne";
+import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
 
-export default function registerClinical() {
+export default function registerPaciente() {
   const [openModal, setOpenModal] = useState(false);
   const [progress, setProgress] = useState(25);
   const router = useRouter();
@@ -37,22 +38,18 @@ export default function registerClinical() {
     UseMulitstepForm([
       <StepOne key="stepOne" />,
       <StepTwo key="stepTwo" />,
-      <StepThree key="stepThree" />,
-      <StepFour key="stepFour" />
+      <StepThree key="stepThree" />
     ]);
 
   useEffect(() => {
     function getProgress() {
       if (currentStep + 1 === 1) {
-        return setProgress(25);
+        return setProgress(33);
       }
       if (currentStep + 1 === 2) {
-        return setProgress(50);
+        return setProgress(66);
       }
       if (currentStep + 1 === 3) {
-        return setProgress(75);
-      }
-      if (currentStep + 1 === 4) {
         return setProgress(100);
       }
     }
@@ -72,38 +69,34 @@ export default function registerClinical() {
   }
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-white from-50% to-[#C2C1C1] to-50%">
-        <div className="flex container  justify-between flex-col md:flex-row ">
-          <div className=" flex flex-1 gap-6 flex-col justify-center  md:justify-start min-h-screen ">
-            <hgroup className="max-w-sm pr-4 md:pt-32">
-              <h2 className=" text-5xl font-bold text-black leading-[75px]">
-                Lorem ipsum dolor sit amet.
-              </h2>
-            </hgroup>
-            <p className=" text-base text-gray-900 max-w-md pr-4  font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              non sollicitudin tellus. Vivamus venenatis libero suscipit sem
-              venenatis finibus. Maecenas orci enim, sodales quis porttitor a,
-              feugiat in est.
-            </p>
+      <div className="min-h-screen md:bg-gradient-to-l  from-[#C2C1C1] from-50% to-white to-50% ">
+        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between  pt-12">
+          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-white pb-16 md:min-h-screen ">
+            <div className="max-w-[27rem] md:pt-[72px]">
+              <hgroup className="mb-4">
+                <h2 className=" text-5xl font-bold text-black leading-[75px]">
+                  Cadastro de conta Paciente
+                </h2>
+              </hgroup>
+              <p className="text-lg text-gray-900 font-medium">
+                Crie uma conta de paciente no Agenda Saúde para pode agendar
+                consultas médicas em qualquer lugar do Brasil.
+              </p>
+            </div>
           </div>
-          <div className=" flex flex-1 justify-center items-center md:justify-start md:items-start min-h-screen ">
-            <div className="md:pt-[72px] w-full md:pl-10 lg:pl-20">
-              <hgroup className="flex flex-col justify-start gap-2">
-                <p className=" text-4xl  font-thin text-slate-900 italic mb-1">
-                  LOGO
-                </p>
-                <h3 className=" text-3xl font-semibold">
-                  Lorem ipsum dolor sit amet.
-                </h3>
+          <div className=" min-h-screen flex-1 px-8 py-8 2xl:px-0 flex justify-center  items-center md:items-start bg-[#c2c1c1] ">
+            <div className="w-full  md:pl-10 lg:pl-20">
+              <hgroup className="mb-8 flex flex-col gap-4">
+                <Logo imagePath={"/logo_soujunior.png"} />
+                <h3 className=" text-3xl font-semibold"> Cadastro de conta de Paciente</h3>
                 <span className=" text-base font-medium">
-                  Lorem ipsum dolor sit amet.
+                Crie sua conta como paciente.
                 </span>
               </hgroup>
               <Progress value={progress} className="w-full mt-12  mb-10" />
               <FormProvider {...methods}>
                 <form
-                  className=" w-full  h-[500px] flex justify-between flex-col"
+                  className=" w-full flex justify-between flex-col gap-28"
                   onSubmit={methods.handleSubmit((e) => onSubmit(e))}
                 >
                   {step}
@@ -137,7 +130,7 @@ export default function registerClinical() {
               </FormProvider>
             </div>
           </div>
-        </div>
+        </MaxWidthWrapper>
       </div>
       <Dialog
         open={openModal}

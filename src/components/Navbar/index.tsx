@@ -1,36 +1,46 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaClinicMedical } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
 import { TbUser } from "react-icons/tb";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from "@/components/ui/dialog";
 
 import Button from "../Button";
 import Logo from "../Logo";
-import Modal from "../RegisterModal";
-import ModalLogin from "../LoginModal";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
 export default function Navbar() {
-  const [modalAberto, setModalAberto] = useState(false);
-  const [modalAbertoLogin, setModalAbertoLogin] = useState(false);
+  const router = useRouter();
+  const [openModal, setOpenModal] = useState(false);
+  const [isLogin, setIsLogin] = useState<"LOGIN" | "CADASTRO">("LOGIN");
 
-  const abrirModalLogin = () => {
-    setModalAbertoLogin(true);
-  };
-
-  const fecharModalLogin = () => {
-    setModalAbertoLogin(false);
-  };
-  const abrirModal = () => {
-    setModalAberto(true);
+  const handleModalLogin = () => {
+    setOpenModal(!openModal);
+    setIsLogin("LOGIN");
   };
 
-  const fecharModal = () => {
-    setModalAberto(false);
+  const handleModalCadastro = () => {
+    setOpenModal(!openModal);
+    setIsLogin("CADASTRO");
   };
+
+  const handleCloseModal = (path: string) => {
+    setOpenModal(!openModal);
+    router.push(`${path}`);
+  };
+
   return (
     <nav className="bg-slate-600 p-4">
-      <div className="container mx-auto flex items-center justify-between">
+      <MaxWidthWrapper className=" mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <ul className="flex space-x-4">
             <li className="list-none text-xl font-bold text-white">
@@ -43,114 +53,69 @@ export default function Navbar() {
             <Button
               variant="plain"
               className="text-lg"
-              onClick={abrirModalLogin}
+              onClick={handleModalLogin}
             >
               Entrar
             </Button>
           </li>
           <li>
-            <Button variant="plain" onClick={abrirModal} className="text-lg">
+            <Button
+              variant="plain"
+              onClick={handleModalCadastro}
+              className="text-lg"
+            >
               Cadastrar
             </Button>
           </li>
         </ul>
-        <ModalLogin isOpen={modalAbertoLogin} onClose={fecharModalLogin}>
-          <Button
-            className="absolute right-4 top-4"
-            variant="plain"
-            leftAccessory={<IoClose size={28} color="black" />}
-            onClick={fecharModalLogin}
-          />
-
-          <header className="mb-8 flex w-full flex-col items-center gap-4 font-sans">
-            <h2 className=" text-3xl font-bold text-black md:text-4xl  lg:text-5xl">
-              Entrar
-            </h2>
-            <p className=" text-center text-lg font-medium  text-gray-900  lg:text-2xl">
-              Entre com sua conta para utilizar as funcionalidades do Agenda
-              Saúde.
-            </p>
-          </header>
-
-          <div className=" flex  flex-col gap-4 sm:w-8/12">
-            <Button
-              className="flex h-14 gap-6 rounded-lg sm:h-auto"
-              leftAccessory={<TbUser size={32} />}
+      </MaxWidthWrapper>
+      <Dialog
+        open={openModal}
+        defaultOpen={openModal}
+        modal
+        onOpenChange={() => setOpenModal((prev) => !prev)}
+      >
+        <DialogContent className=" lg:max-w-screen-lg xl:max-w-screen-xl ">
+          <DialogHeader className="gap-5">
+            <DialogTitle className="font-bold text-5xl text-center  text-black">
+              {isLogin === "LOGIN" ? "Entrar" : "Cadastrar"}
+            </DialogTitle>
+            <DialogDescription className="text-center text-lg font-medium  text-gray-900  lg:text-2xl">
+              {isLogin === "LOGIN"
+                ? "Entre com sua conta para utilizar as funcionalidades do Agenda Saúde."
+                : " Cadastre uma conta em nosso serviço"}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex !flex-col items-center justify-center gap-3 sm:space-x-0">
+            <button
+              onClick={() =>
+                handleCloseModal(
+                  isLogin === "LOGIN" ? "/signin" : "/register-paciente"
+                )
+              }
+              className=" flex items-center justify-center lg:justify-start h-14 gap-6 rounded-lg  border-2  w-3/4 px-6 py-8 bg-[#D9D9D9] transition-transform hover:scale-105"
             >
-              <a href="#" target="_self">
-                <p className="text-left text-lg font-bold text-black">
-                  Paciente
-                </p>
-                {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
-                Lorem ipsum dolor sit amet consectetur
-              </p> */}
-              </a>
-            </Button>
-
-            <Button
-              className="flex   h-14 gap-6 rounded-lg sm:h-auto"
-              leftAccessory={<FaClinicMedical size={32} />}
+              <TbUser size={32} />
+              <span className="text-left text-lg font-bold text-black">
+                Paciente
+              </span>
+            </button>
+            <button
+              onClick={() =>
+                handleCloseModal(
+                  isLogin === "LOGIN" ? "#" : "/register-clinic"
+                )
+              }
+              className="flex items-center justify-center lg:justify-start h-14 gap-6 rounded-lg  border-2  w-3/4 px-6 py-8 bg-[#D9D9D9] transition-transform hover:scale-105"
             >
-              <a href="#" target="_self">
-                <p className="text-left text-lg font-bold text-black">
-                  Clínica
-                </p>
-                {/* <p className=" hidden text-left font-semibold text-black sm:inline-block ">
-                  Lorem ipsum dolor sit amet consectetur
-                </p> */}
-              </a>
-            </Button>
-          </div>
-        </ModalLogin>
-
-        <Modal isOpen={modalAberto} onClose={fecharModal}>
-          <Button
-            className="absolute right-4 top-4"
-            variant="plain"
-            leftAccessory={<IoClose size={28} color="black" />}
-            onClick={fecharModal}
-          />
-
-          <header className="mb-8 flex w-full flex-col items-center gap-4 font-sans">
-            <h2 className=" text-3xl font-bold text-black md:text-4xl  lg:text-5xl">
-              Cadastrar
-            </h2>
-            <p className=" text-center text-lg font-medium  text-gray-900  lg:text-2xl">
-              Cadastre uma conta em nosso serviço
-            </p>
-          </header>
-
-          <div className=" flex  flex-col gap-4 sm:w-8/12">
-            <Button
-              className="flex h-14 gap-6 rounded-lg sm:h-auto"
-              leftAccessory={<TbUser size={32} />}
-            >
-              <a href="/registerPatient" target="_self">
-                <p className="text-left text-lg font-bold text-black">
-                  Paciente
-                </p>
-                {/* <p className="hidden text-left font-semibold text-black sm:inline-block ">
-                Lorem ipsum dolor sit amet consectetur
-              </p> */}
-              </a>
-            </Button>
-
-            <Button
-              className="flex   h-14 gap-6 rounded-lg sm:h-auto"
-              leftAccessory={<FaClinicMedical size={32} />}
-            >
-              <a href="/registerClinical" target="_self">
-                <p className="text-left text-lg font-bold text-black">
-                  Clínica
-                </p>
-                {/* <p className=" hidden text-left font-semibold text-black sm:inline-block ">
-                  Lorem ipsum dolor sit amet consectetur
-                </p> */}
-              </a>
-            </Button>
-          </div>
-        </Modal>
-      </div>
+              <FaClinicMedical size={32} />
+              <span className="text-left text-lg font-bold text-black ">
+                Clinica
+              </span>
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 }

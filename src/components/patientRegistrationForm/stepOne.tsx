@@ -80,7 +80,7 @@ function StepOne() {
           </div>
           <div>
             <p className=" font-bold text-base leading-6 text-black  underline underline-offset-4">
-              Selecione o arquivo
+              Selecione uma imagem
             </p>
             <p className=" font-medium text-xs leading-[18px] text-black ">
               Certifique-se de que o arquivo esteja abaixo de 2mb
