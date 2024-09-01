@@ -111,7 +111,7 @@ function StepOne() {
         type="date"
         className="col-span-4"
         placeholder="Data de aniversário"
-        label="Data de aniversario"
+        label="Data de aniversario*"
         {...register("date", {
           required: {
             value: true,

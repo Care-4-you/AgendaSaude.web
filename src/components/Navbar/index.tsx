@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaClinicMedical } from "react-icons/fa";
+import { FaBookMedical, FaClinicMedical } from "react-icons/fa";
 import { TbUser } from "react-icons/tb";
 
 import {
@@ -102,12 +102,25 @@ export default function Navbar() {
             </button>
             <button
               onClick={() =>
-                handleCloseModal(
-                  isLogin === "LOGIN" ? "#" : "/register-clinic"
-                )
+                handleCloseModal(isLogin === "LOGIN" ? "#" : "/register-clinic")
               }
               className="flex items-center justify-center lg:justify-start h-14 gap-6 rounded-lg  border-2  w-3/4 px-6 py-8 bg-[#D9D9D9] transition-transform hover:scale-105"
             >
+              {isLogin === "LOGIN" && (
+                <button
+                  onClick={() =>
+                    handleCloseModal(
+                      isLogin === "LOGIN" ? "#" : "/register-paciente"
+                    )
+                  }
+                  className="flex items-center justify-center lg:justify-start h-14 gap-6 rounded-lg  border-2  w-3/4 px-6 py-8 bg-[#D9D9D9] transition-transform hover:scale-105"
+                >
+                  <FaBookMedical size={32} />
+                  <span className="text-left text-lg font-bold text-black ">
+                    Médico
+                  </span>
+                </button>
+              )}
               <FaClinicMedical size={32} />
               <span className="text-left text-lg font-bold text-black ">
                 Clinica
