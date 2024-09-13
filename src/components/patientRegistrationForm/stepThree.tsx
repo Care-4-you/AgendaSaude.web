@@ -147,15 +147,6 @@ function StepFour() {
               {" "}
               Termos e condições do Agenda Saúde
             </a>{" "}
-            e a sua{" "}
-            <a
-              href="/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className=" font-medium"
-            >
-              Política de Privacidade?
-            </a>
           </label>
         </div>
         <p className="flex items-center space-x-2  col-span-1 h-4 text-sm  font-semibold text-red-500 mt-1.5 ">
