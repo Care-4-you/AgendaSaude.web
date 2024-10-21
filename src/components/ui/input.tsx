@@ -8,16 +8,30 @@ import { Label } from "../ui/label";
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  labelClassName?: string;
   mask?: "cellphone" | "phone" | "number" | "cnpj" | "cep" | "cpf" | "default";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error?: any;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, label, error, mask = "default", ...props }, ref) => {
+  (
+    {
+      className,
+      type,
+      label,
+      error,
+      mask = "default",
+      labelClassName,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <fieldset className={className}>
-        <Label htmlFor={label}>{label}</Label>
+        <Label htmlFor={label} className={labelClassName}>
+          {label}
+        </Label>
         <input
           onKeyUp={(e) => handleKeyup(e, mask)}
           name={label}
