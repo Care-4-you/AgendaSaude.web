@@ -7,10 +7,10 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 import Logo from "@/components/Logo";
 
-import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { FormLogin } from "../../../shared/interfaces/IClinica";
+import MaxWidthWrapper from "../../../../components/MaxWidthWrapper";
+import { Button } from "../../../../components/ui/button";
+import { Input } from "../../../../components/ui/input";
+import { FormLogin } from "../../../../shared/interfaces/IClinica";
 
 export default function Signin() {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -34,11 +34,11 @@ export default function Signin() {
             <div className="max-w-[27rem] md:pt-[72px]">
               <hgroup className="mb-4">
                 <h2 className=" text-5xl font-bold text-black leading-[75px]">
-                  Entre com sua conta de paciente
+                  Entre com sua conta de médico.
                 </h2>
               </hgroup>
               <p className="text-lg text-gray-900 font-medium">
-                Acesse o Agenda Saúde com sua conta de paciente.
+                Acesse o Agenda Saúde com sua conta de médico.
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function Signin() {
                 <Logo imagePath={"/logo_soujunior.png"} />
                 <h3 className=" text-3xl font-semibold">Entrar</h3>
                 <span className=" text-base font-medium">
-                  Acesse o Agenda Saúde com sua conta de paciente.
+                  Acesse o Agenda Saúde com sua conta de médico.
                 </span>
               </hgroup>
 
