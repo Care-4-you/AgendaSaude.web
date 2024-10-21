@@ -145,7 +145,7 @@ function StepFour() {
               className=" font-medium"
             >
               {" "}
-              Termos e condições do Agenda Saúde
+              Termos e condições do Agenda Saúde?
             </a>{" "}
           </label>
         </div>
