@@ -39,20 +39,24 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-slate-600 p-4">
+    <nav className="bg-[#3E31AE] p-4">
       <MaxWidthWrapper className=" mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <ul className="flex space-x-4">
-            <li className="list-none text-xl font-bold text-white">
-              <Logo imagePath={"/logo_soujunior.png"} />
+            <li className="ml-3 list-none text-xl font-bold text-white">
+              <Logo
+                imagePath={"/logo_agenda_saude.png"}
+                height={150}
+                width={170}
+              />
             </li>
           </ul>
         </div>
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 mr-4">
           <li>
             <Button
               variant="plain"
-              className="text-lg"
+              className="text-lg font-Poppins"
               onClick={handleModalLogin}
             >
               Entrar
@@ -62,7 +66,7 @@ export default function Navbar() {
             <Button
               variant="plain"
               onClick={handleModalCadastro}
-              className="text-lg"
+              className="text-lg font-Poppins"
             >
               Cadastrar
             </Button>
