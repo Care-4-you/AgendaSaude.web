@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 
 import Button from "../Button";
+import LogoNoLink from "../Logo/LogoNoLink";
+import { Container } from "../Container";
 
 interface Page {
   tab: string;
@@ -20,26 +22,25 @@ const Carousel: React.FC = () => {
   const pages: Page[] = [
     {
       tab: "Paciente",
-      title: "Busque clínicas e consultório",
+      title: "Encontre o cuidado que precisa, sem complicações",
       content:
-        "Para você que deseja pesquisar uma clínica ou consultório especialista perto de você e agendar uma consulta em poucos cliques.",
+        "Agende consultas com profissionais de saúde perto de você, com informações transparentes e preços acessíveis. A sua saúde em primeiro lugar, com facilidade e segurança.",
       linkTo: "/map",
-      customButtonName: "Encontrar clinicas"
+      customButtonName: "ENCONTRAR CLÍNICAS"
     },
     {
       tab: "Médico",
-      title:
-        "Facilite sua agenda e históricos de tratamento de seus pacientes.",
+      title: "Amplie sua presença e conquiste novos pacientes",
       content:
-        "Em um único lugar é possível gerenciar sua agenda de atendimento, o histórico de tratamento de seus pacientes e facilitar sua organização diária.",
+        "Gerencie sua agenda de forma eficiente e expanda sua rede de atendimentos. Facilite a comunicação e ofereça um serviço de excelência aos seus pacientes.",
       linkTo: "/",
       customButtonName: ""
     },
     {
       tab: "Clinica",
-      title: "Aumente suas base de clientes e sua eficiência.",
+      title: "Potencialize a gestão e otimize os atendimentos",
       content:
-        "Através do Agenda Saúde será possível aumentar o alcance de sua clínica em sua região e ter acesso a algumas funcionalidades que simplificará o dia a dia de seu negócio.",
+        "Organize seus serviços, aumente a visibilidade da sua clínica e melhore a experiência dos pacientes com uma plataforma intuitiva e eficaz.",
       linkTo: "/",
       customButtonName: ""
     }
@@ -67,37 +68,34 @@ const Carousel: React.FC = () => {
       intervalRef.current = window.setInterval(() => {
         handleNextPage();
       }, 10000);
-      console.log("Intervalo iniciado");
     }
     // Limpa o intervalo imediatamente se a referência indicar
     if (shouldClearIntervalRef.current && intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       shouldClearIntervalRef.current = false;
-      console.log("Intervalo limpo ao clicar em um botão de página");
     }
     // Limpa o intervalo ao desmontar o componente
     return () => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
-        console.log("Intervalo limpo ao desmontar o componente");
       }
     };
   }, [currentPage]);
 
   return (
-    <>
+    <Container>
       <section className=" w-full items-center flex justify-center pt-14 ">
         <div className=" relative  flex    w-full max-w-7xl flex-col   items-center justify-between  gap-12 p-12  md:items-start">
-          <div className="flex w-auto items-center justify-center rounded-full border border-slate-900  overflow-hidden">
+          <div className="flex w-auto items-center justify-center rounded-full border border-slate-400  overflow-hidden">
             {pages.map((page, index) => (
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2   border-l border-slate-900  ${
+                className={`px-4 py-2   border-l border-slate-400  ${
                   currentPage === index + 1
-                    ? " bg-slate-900 text-white"
+                    ? " bg-[#1C226B] text-white"
                     : "bg-white text-slate-900"
                 }  `}
               >
@@ -107,43 +105,54 @@ const Carousel: React.FC = () => {
           </div>
           <div className="  min-h-[400px] flex  flex-col items-center justify-center gap-8 md:flex-row md:gap-0">
             <div className="flex flex-col justify-between  md:w-7/12">
-              <h2 className="mb-10 font-mono  text-3xl font-semibold leading-tight text-black sm:text-4xl md:text-5xl">
+              <h2 className="mb-10 font-MuseoModerno  text-3xl font-semibold leading-tight text-black sm:text-4xl md:text-5xl">
                 {pages[currentPage - 1].title}
               </h2>
               <p className=" font-mono text-xl font-medium tracking-tight text-black">
                 {pages[currentPage - 1].content}
               </p>
+              <div className="flex mt-7 justify-center md:justify-start sm:items-center">
+                {pages[currentPage - 1].customButtonName !== "" && (
+                  <Button
+                    href={pages[currentPage - 1].linkTo}
+                    className=" h-16 w-auto rounded-full px-8 py-4 text-lg font-bold md:text-xl lg:text-2xl text-center bg-[#111928] text-white font-Poppins font-medium"
+                  >
+                    {pages[currentPage - 1].customButtonName}
+                  </Button>
+                )}
+              </div>
             </div>
-            <div className="flex items-end justify-center md:w-5/12">
-              {pages[currentPage - 1].customButtonName !== "" && (
-                <Button
-                  href={pages[currentPage - 1].linkTo}
-                  className=" h-16 w-auto rounded-full px-8 py-4 text-lg font-bold md:text-xl lg:text-2xl text-center"
-                >
-                  {pages[currentPage - 1].customButtonName}
-                </Button>
-              )}
+            <div>
+              <LogoNoLink
+                width={433}
+                height={494}
+                imagePath="/foto_inicial.png"
+              />
             </div>
           </div>
 
           {/* Botões para avançar e retroceder */}
-          <div className="flex gap-8">
+          <div className="hidden md:flex gap-8">
+            {" "}
+            {/* Visível apenas em md+ */}
             <Button
               className="-left-14 top-[17rem] xl:absolute"
               variant="plain"
-              leftAccessory={<IoArrowBackCircle size={48} color="black" />}
+              leftAccessory={<IoArrowBackCircle size={48} color="#1C226B" />}
               onClick={handlePrevPage}
             />
             <Button
-              className="-right-14 top-[17rem]  xl:absolute"
+              className="-right-14 top-[17rem] xl:absolute"
               variant="plain"
-              rightAccessory={<IoArrowForwardCircle size={48} color="black" />}
+              rightAccessory={
+                <IoArrowForwardCircle size={48} color="#1C226B" />
+              }
               onClick={handleNextPage}
             />
           </div>
         </div>
       </section>
-    </>
+    </Container>
   );
 };
 
