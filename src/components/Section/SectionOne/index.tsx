@@ -6,7 +6,7 @@ import Link from "next/link";
 const SectionOne = () => {
   return (
     <div className="bg-[#1C226B] py-16 flex flex-col items-center">
-      <h1 className="font-MuseoModerno text-4xl font-bold text-white mb-4">
+      <h1 className="font-MuseoModerno text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 text-center">
         Serviços que são feitos no site
       </h1>
 
