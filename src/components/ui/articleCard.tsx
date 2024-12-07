@@ -1,21 +1,30 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ArticleCardProps {
   imagePath: string;
   title: string;
   description: string;
+  href: string;
 }
 
-const ArticleCard = ({ imagePath, title, description }: ArticleCardProps) => {
+const ArticleCard = ({
+  imagePath,
+  title,
+  description,
+  href
+}: ArticleCardProps) => {
   return (
     <div className="flex gap-4">
-      <Image
-        src={imagePath}
-        alt={title}
-        className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-md"
-        width={250}
-        height={216}
-      />
+      <Link href={href} className="w-full">
+        <Image
+          src={imagePath}
+          alt={title}
+          className="object-cover rounded-md"
+          width={250}
+          height={250}
+        />
+      </Link>
 
       <div>
         <h2 className="font-bold text-lg sm:text-xl text-black">{title}</h2>
