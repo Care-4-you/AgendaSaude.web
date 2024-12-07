@@ -16,7 +16,7 @@ interface Page {
 
 const Carousel: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const shouldClearIntervalRef = useRef<boolean>(false); // Nova referência
+  const shouldClearIntervalRef = useRef<boolean>(false);
   const intervalRef = useRef<number | null>(null);
 
   const pages: Page[] = [
@@ -47,9 +47,7 @@ const Carousel: React.FC = () => {
   ];
 
   const handlePageChange = (pageNumber: number) => {
-    // Define a referência para limpar o intervalo imediatamente
     shouldClearIntervalRef.current = true;
-    // Atualiza a página
     setCurrentPage(pageNumber);
   };
 
@@ -63,19 +61,16 @@ const Carousel: React.FC = () => {
     setCurrentPage(prevPage);
   };
   useEffect(() => {
-    // Inicia o intervalo apenas se ainda não estiver em execução e não estiver configurado para limpar
     if (!intervalRef.current && !shouldClearIntervalRef.current) {
       intervalRef.current = window.setInterval(() => {
         handleNextPage();
       }, 10000);
     }
-    // Limpa o intervalo imediatamente se a referência indicar
     if (shouldClearIntervalRef.current && intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       shouldClearIntervalRef.current = false;
     }
-    // Limpa o intervalo ao desmontar o componente
     return () => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
@@ -130,11 +125,8 @@ const Carousel: React.FC = () => {
               />
             </div>
           </div>
-
-          {/* Botões para avançar e retroceder */}
           <div className="hidden md:flex gap-8">
             {" "}
-            {/* Visível apenas em md+ */}
             <Button
               className="-left-14 top-[17rem] xl:absolute"
               variant="plain"
