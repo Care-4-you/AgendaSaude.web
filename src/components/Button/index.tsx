@@ -10,7 +10,8 @@ const ButtonColors = {
 const ButtonVariants = {
   filled: "filled",
   outlined: "outlined",
-  plain: "plain"
+  plain: "plain",
+  button_back: "button_back"
 } as const;
 
 type ButtonColors = keyof typeof ButtonColors;
