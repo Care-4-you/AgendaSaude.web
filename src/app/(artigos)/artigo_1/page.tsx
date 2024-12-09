@@ -1,22 +1,23 @@
 import { BackgroundImage } from "../components/Backgroundimage";
-import { BackButton } from "../components/buttonBack";
+
 import { ContentOverlay } from "../components/content";
 
 const Article_One = () => {
   return (
-    <div className="relative mb-4 flex flex-col">
-      <div className="relative w-full h-[80vh]">
+    <div className="relative min-h-screen flex-col">
+      <div className="relative w-full h-[50vh] sm:h-[70vh]">
         <BackgroundImage
           src="/articleImage/2.png"
           alt="Dicas para manter a saúde em dia"
         />
       </div>
 
-      <BackButton />
-      <div className="absolute inset-0">
+      <div className="flex items-center justify-center px-8 -mt-[140px] mb-8">
         <ContentOverlay
           title="Dicas para Manter a Saúde Mental em Dia"
-          content="Manter a saúde mental em dia é essencial para levar uma vida equilibrada e satisfatória, tanto emocional quanto fisicamente. A rotina, o trabalho, a vida familiar e as responsabilidades podem gerar estresse, ansiedade e cansaço emocional. Por isso, é fundamental adotar hábitos que fortaleçam a mente e nos ajudem a enfrentar os desafios diários. Aqui estão algumas dicas práticas para cuidar da saúde mental no dia a dia."
+          content={[
+            "Manter a saúde mental em dia é essencial para levar uma vida equilibrada e satisfatória, tanto emocional quanto fisicamente. A rotina, o trabalho, a vida familiar e as responsabilidades podem gerar estresse, ansiedade e cansaço emocional. Por isso, é fundamental adotar hábitos que fortaleçam a mente e nos ajudem a enfrentar os desafios diários. Aqui estão algumas dicas práticas para cuidar da saúde mental no dia a dia."
+          ]}
           listItems={[
             "Mantenha uma Rotina: Organizar o dia com horários para trabalho e descanso reduz o estresse e ajuda a equilibrar a vida.",
             "Durma Bem: O sono de qualidade melhora o humor e a saúde mental; evite telas antes de dormir e adote uma rotina relaxante.",
