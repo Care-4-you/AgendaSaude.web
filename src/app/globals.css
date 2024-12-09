@@ -81,3 +81,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
   visibility: hidden;
 }
+
+@layer utilities{
+  .background-image-full {
+    background-image: url('../../public/articleImage/1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
