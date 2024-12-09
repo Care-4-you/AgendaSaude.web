@@ -40,8 +40,7 @@ const SectionOne = () => {
           className="w-48 h-64 object-cover rounded-md"
         />
       </div>
-      {/* Botão */}
-      <Link href={"/"}>
+      <Link href={"/nosso_servicos"}>
         <Button className="bg-[#111928] border-none text-white font-medium px-6 py-3 rounded-full font-Poppins">
           Saiba mais
         </Button>
