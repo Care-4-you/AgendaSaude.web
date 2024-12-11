@@ -18,6 +18,9 @@ const config = {
       }
     },
     extend: {
+      screens: {
+        tablet: "900px"
+      },
       colors: {
         roxo: "#ad7b9d",
         verde: "#9eb88e",

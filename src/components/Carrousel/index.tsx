@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
+import { TbChevronCompactRight, TbChevronCompactLeft } from "react-icons/tb";
 
 import Button from "../Button";
-import LogoNoLink from "../Logo/LogoNoLink";
 import { Container } from "../Container";
+import LogoNoLink from "../Logo/LogoNoLink";
 
 interface Page {
   tab: string;
@@ -12,6 +12,7 @@ interface Page {
   content: string;
   linkTo: string;
   customButtonName: string;
+  image: string;
 }
 
 const Carousel: React.FC = () => {
@@ -26,7 +27,8 @@ const Carousel: React.FC = () => {
       content:
         "Agende consultas com profissionais de saúde perto de você, com informações transparentes e preços acessíveis. A sua saúde em primeiro lugar, com facilidade e segurança.",
       linkTo: "/map",
-      customButtonName: "ENCONTRAR CLÍNICAS"
+      customButtonName: "ENCONTRAR CLÍNICAS",
+      image: "/paciente.png"
     },
     {
       tab: "Médico",
@@ -34,7 +36,8 @@ const Carousel: React.FC = () => {
       content:
         "Gerencie sua agenda de forma eficiente e expanda sua rede de atendimentos. Facilite a comunicação e ofereça um serviço de excelência aos seus pacientes.",
       linkTo: "/",
-      customButtonName: ""
+      customButtonName: "",
+      image: "/medico.png"
     },
     {
       tab: "Clinica",
@@ -42,7 +45,8 @@ const Carousel: React.FC = () => {
       content:
         "Organize seus serviços, aumente a visibilidade da sua clínica e melhore a experiência dos pacientes com uma plataforma intuitiva e eficaz.",
       linkTo: "/",
-      customButtonName: ""
+      customButtonName: "",
+      image: "/clinica.png"
     }
   ];
 
@@ -110,7 +114,7 @@ const Carousel: React.FC = () => {
                 {pages[currentPage - 1].customButtonName !== "" && (
                   <Button
                     href={pages[currentPage - 1].linkTo}
-                    className=" h-16 w-auto rounded-full px-8 py-4 text-lg font-bold md:text-xl lg:text-2xl text-center bg-[#111928] text-white font-Poppins font-medium"
+                    className=" h-16 w-auto rounded-full px-8 py-4 text-lg font-bold md:text-xl lg:text-2xl text-center bg-[#111928] text-white font-Poppins "
                   >
                     {pages[currentPage - 1].customButtonName}
                   </Button>
@@ -121,7 +125,7 @@ const Carousel: React.FC = () => {
               <LogoNoLink
                 width={433}
                 height={494}
-                imagePath="/foto_inicial.png"
+                imagePath={pages[currentPage - 1].image}
               />
             </div>
           </div>
@@ -130,14 +134,14 @@ const Carousel: React.FC = () => {
             <Button
               className="-left-14 top-[17rem] xl:absolute"
               variant="plain"
-              leftAccessory={<IoArrowBackCircle size={48} color="#1C226B" />}
+              leftAccessory={<TbChevronCompactLeft size={48} color="#1C226B" />}
               onClick={handlePrevPage}
             />
             <Button
               className="-right-14 top-[17rem] xl:absolute"
               variant="plain"
               rightAccessory={
-                <IoArrowForwardCircle size={48} color="#1C226B" />
+                <TbChevronCompactRight size={48} color="#1C226B" />
               }
               onClick={handleNextPage}
             />

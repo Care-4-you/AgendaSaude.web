@@ -16,17 +16,17 @@ const ArticleCard = ({
 }: ArticleCardProps) => {
   return (
     <div className="flex gap-4">
-      <Link href={href} className="w-full">
+      <Link href={href} className="flex-1">
         <Image
           src={imagePath}
           alt={title}
-          className="object-cover rounded-md"
+          className="  object-cover rounded-md"
           width={250}
           height={250}
         />
       </Link>
 
-      <div>
+      <div className="flex-[2]">
         <h2 className="font-bold text-lg sm:text-xl text-black">{title}</h2>
         <p className="text-sm sm:text-base text-gray-700">{description}</p>
       </div>

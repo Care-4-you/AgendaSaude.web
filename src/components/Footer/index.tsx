@@ -41,11 +41,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 col-span-1">
           <h3 className="text-4xl font-semibold">
             Time de desenvolvimento do projeto
           </h3>
-          <div className="flex flex-wrap md:flex-nowrap gap-6 items-center">
+          <div className="flex flex-wrap  gap-6 items-center">
             <div className="space-y-3 flex-1">
               <TeamMember
                 name="Igor Calmon"

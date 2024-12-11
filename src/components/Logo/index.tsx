@@ -3,12 +3,17 @@ import Link from "next/link";
 
 interface LogoProps {
   imagePath: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   className?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ imagePath, height, width, className }) => {
+const Logo: React.FC<LogoProps> = ({
+  imagePath,
+  height = "100",
+  width = "100",
+  className
+}) => {
   return (
     <Link href="/">
       <Image
