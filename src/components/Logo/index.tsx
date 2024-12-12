@@ -3,15 +3,15 @@ import Link from "next/link";
 
 interface LogoProps {
   imagePath: string;
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   className?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({
   imagePath,
-  height = "100",
-  width = "100",
+  height = "42",
+  width = "40",
   className
 }) => {
   return (
