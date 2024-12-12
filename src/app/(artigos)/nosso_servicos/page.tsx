@@ -1,10 +1,12 @@
 import { BackgroundImage } from "../components/Backgroundimage";
+import { BackButton } from "../components/buttonBack";
 import { ContentOverlay } from "../components/content";
 
 const OurServices = () => {
   return (
     <div className="relative min-h-screen flex-col">
       <div className="relative w-full h-[50vh] sm:h-[70vh]">
+        <BackButton />
         <BackgroundImage
           src="/articleImage/1.png"
           alt="Dicas para manter a saúde em dia"
