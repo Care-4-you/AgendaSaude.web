@@ -3,8 +3,8 @@ import Link from "next/link";
 
 interface LogoProps {
   imagePath: string;
-  width?: string;
-  height?: string;
+  width?: number | `${number}` | undefined;
+  height?: number | `${number}` | undefined;
   className?: string;
 }
 
