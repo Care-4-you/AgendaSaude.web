@@ -25,6 +25,7 @@ function StepTwo() {
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
       <Input
+        labelClassName="text-white"
         className="col-span-6 lg:col-span-4"
         placeholder="Logradouro"
         label="Logradouro*"
@@ -40,6 +41,7 @@ function StepTwo() {
         error={errors.street ? errors.street.message : ""}
       />
       <Input
+        labelClassName="text-white"
         mask="number"
         disabled={hasNumber}
         className=" col-span-3 lg:col-span-1"
@@ -63,11 +65,12 @@ function StepTwo() {
             required: false
           })}
         />
-        <Label htmlFor="hasNumber" className="text-xs">
+        <Label htmlFor="hasNumber" className="text-xs text-white">
           S/N
         </Label>
       </div>
       <Input
+        labelClassName="text-white"
         className="col-span-3"
         mask="cep"
         placeholder="CEP"
@@ -87,6 +90,7 @@ function StepTwo() {
         error={errors.zipcode ? errors.zipcode.message : ""}
       />
       <Input
+        labelClassName="text-white"
         className="col-span-3"
         placeholder="Estado"
         label="Estado*"
@@ -101,6 +105,7 @@ function StepTwo() {
         error={errors.state ? errors.state.message : ""}
       />
       <Input
+        labelClassName="text-white"
         className="col-span-3"
         placeholder="Cidade"
         label="Cidade*"
@@ -115,6 +120,7 @@ function StepTwo() {
         error={errors.city ? errors.city.message : ""}
       />
       <Input
+        labelClassName="text-white"
         className="col-span-3"
         placeholder="Bairro"
         label="Bairro*"
@@ -129,6 +135,7 @@ function StepTwo() {
         error={errors.neighborhood ? errors.neighborhood.message : ""}
       />
       <Input
+        labelClassName="text-white"
         className="col-span-6"
         placeholder="Complemento"
         label="Complemento"

@@ -42,7 +42,9 @@ function StepThree() {
   return (
     <fieldset className=" grid grid-cols-1 gap-4 ">
       <div className="col-span-1 flex flex-col gap-3">
-        <Label htmlFor="Especialidadesmedica">Especialidades médicas*</Label>
+        <Label className="text-white" htmlFor="Especialidadesmedica">
+          Especialidades médicas*
+        </Label>
         <Controller
           control={control}
           name="specialty"
@@ -81,7 +83,9 @@ function StepThree() {
         </p>
       </div>
       <div className="col-span-1 flex flex-col gap-3">
-        <Label htmlFor="convenio">Convênio*</Label>
+        <Label htmlFor="convenio" className="text-white">
+          Convênio*
+        </Label>
         <Controller
           control={control}
           name="healthInsurance"

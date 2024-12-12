@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-import Logo from "@/components/Logo";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +19,7 @@ import { Button } from "../../../components/ui/button";
 import UseMulitstepForm from "../../../hooks/UseMultistepForm";
 import StepThree from "../../../components/patientRegistrationForm/stepThree";
 import StepTwo from "../../../components/patientRegistrationForm/stepTwo";
+import Image from "next/image";
 import StepOne from "../../../components/patientRegistrationForm/stepOne";
 import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
 
@@ -69,31 +69,34 @@ export default function registerPaciente() {
   }
   return (
     <>
-      <div className="min-h-screen md:bg-gradient-to-l  from-[#C2C1C1] from-50% to-white to-50% ">
-        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between  pt-12">
-          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-white pb-16 md:min-h-screen ">
+      <div className="min-h-screen">
+        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
+          <div className="flex-1 px-8 py-8 2xl:px-0 flex justify-center md:justify-start pb-16 md:min-h-screen ">
             <div className="max-w-[27rem] md:pt-[72px]">
               <hgroup className="mb-4">
-                <h2 className=" text-5xl font-bold text-black leading-[75px]">
-                  Cadastro de conta Paciente
+                <h2 className=" text-5xl font-semibold text-black leading-[150%] font-MuseoModerno">
+                  Dê o primeiro passo para uma jornada de saúde facilitada.
                 </h2>
               </hgroup>
               <p className="text-lg text-gray-900 font-medium">
-                Crie uma conta de paciente no Agenda Saúde para poder agendar
-                consultas médicas em qualquer lugar do Brasil.
+                Ao se cadastrar, você abre as portas para uma rede de saúde que
+                conecta você a clínicas e especialistas dedicados. Cuide-se com
+                mais facilidade e encontre o suporte que precisa para uma vida
+                mais saudável e equilibrada. Vamos juntos nessa jornada?
               </p>
             </div>
           </div>
-          <div className=" min-h-screen flex-1 px-8 py-8 2xl:px-0 flex justify-center  items-center md:items-start bg-[#c2c1c1] ">
+          <div className=" min-h-screen flex-1 px-8 py-8 2xl:px-0 flex justify-center  items-center md:items-start bg-[#1C226B] ">
             <div className="w-full  md:pl-10 lg:pl-20">
               <hgroup className="mb-8 flex flex-col gap-4">
-                <Logo imagePath={"/logo_soujunior.png"} />
-                <h3 className=" text-3xl font-semibold">
+                <Image alt="Logo" src={"/Vector.png"} height={42} width={40} />
+                <h3 className=" text-[32px] font-semibold text-white font-MuseoModerno">
                   {" "}
-                  Cadastro de conta de Paciente
+                  Saúde ao seu alcance, comece agora.
                 </h3>
-                <span className=" text-base font-medium">
-                  Crie sua conta como paciente.
+                <span className=" text-base font-medium font-Poppins text-white">
+                  Preencha suas informações e descubra a diferença que um bom
+                  cuidado pode fazer.
                 </span>
               </hgroup>
               <Progress value={progress} className="w-full mt-12  mb-10" />
@@ -117,7 +120,7 @@ export default function registerPaciente() {
 
                     <Button
                       type="submit"
-                      className=" w-2/5"
+                      className=" w-[259px] bg-black text-white flex items-center justify-center hover:bg-[#3E31AE] "
                       disabled={!acceptTerm && isLastStep}
                     >
                       <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
@@ -154,7 +157,7 @@ export default function registerPaciente() {
           <DialogFooter className="   items-center sm:justify-center flex">
             <Button
               type="submit"
-              className="w-2/5 px-4 py-7 "
+              className="w-2/5 px-4 py-7 text-white"
               onClick={sendEmail}
             >
               Concluir

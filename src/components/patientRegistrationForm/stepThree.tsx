@@ -22,6 +22,7 @@ function StepFour() {
       <Input
         className="col-span-2"
         placeholder="Email"
+        labelClassName="text-white"
         label="Email*"
         id="email"
         type="text"
@@ -40,6 +41,7 @@ function StepFour() {
       />
       <div className="col-span-2 relative">
         <Input
+          labelClassName="text-white"
           placeholder="Senha"
           type={isShowPassword ? "text" : "password"}
           label="Senha*"
@@ -77,6 +79,7 @@ function StepFour() {
       </div>
       <div className="col-span-2 relative">
         <Input
+          labelClassName="text-white"
           placeholder="Repetir senha"
           label="Repetir senha*"
           id="confirmPassword"
@@ -101,6 +104,7 @@ function StepFour() {
           )}
         </span>
         <Input
+          labelClassName="text-white"
           id="CPF"
           mask="cpf"
           type="text"
@@ -135,7 +139,7 @@ function StepFour() {
           />
           <label
             htmlFor="acceptTerm"
-            className="text-xs  font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-xs  font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
           >
             Você aceita os
             <a

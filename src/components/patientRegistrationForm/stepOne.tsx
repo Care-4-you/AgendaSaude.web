@@ -68,9 +68,9 @@ function StepOne() {
       <div className="flex flex-col gap-6 col-span-4 m-2">
         <Label
           htmlFor="image"
-          className=" cursor-pointer flex  justify-start  gap-14 items-center"
+          className=" cursor-pointer flex  justify-start  gap-14 items-center "
         >
-          <div className="bg-white flex justify-center items-center rounded-full p-8">
+          <div className="bg-white flex justify-center items-center rounded-sm p-8">
             <Image
               src="/upload.svg"
               width={70}
@@ -79,10 +79,10 @@ function StepOne() {
             />
           </div>
           <div>
-            <p className=" font-bold text-base leading-6 text-black  underline underline-offset-4">
+            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
               Selecione uma imagem
             </p>
-            <p className=" font-medium text-xs leading-[18px] text-black ">
+            <p className=" font-medium text-xs leading-[18px] text-white ">
               Certifique-se de que o arquivo esteja abaixo de 2mb
             </p>
           </div>
@@ -94,7 +94,7 @@ function StepOne() {
       <Input
         id="name"
         type="text"
-        className="col-span-4"
+        className="col-span-4 text-white"
         placeholder="Nome completo"
         label="Nome completo*"
         {...register("name", {
@@ -110,6 +110,7 @@ function StepOne() {
         id="date"
         type="date"
         className="col-span-4"
+        labelClassName="text-white"
         placeholder="Data de aniversário"
         label="Data de aniversario*"
         {...register("date", {
@@ -126,8 +127,10 @@ function StepOne() {
         })}
         error={errors.date ? errors.date.message : ""}
       />
-      <div className="col-end-5 col-span-2 flex flex-col gap-3">
-        <Label htmlFor="convenio">Gênero*</Label>
+      <div className="col-span-4 flex flex-col gap-3 ">
+        <Label htmlFor="convenio" className="text-white">
+          Gênero*
+        </Label>
         <Controller
           control={control}
           name="gender"
@@ -135,7 +138,7 @@ function StepOne() {
           render={(renderProps) => {
             return (
               <Select
-                className={`${errors.gender ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
+                className={`w-full ${errors.gender ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
                 styles={colorStyles}
                 id="genero"
                 components={animatedComponents}

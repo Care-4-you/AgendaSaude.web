@@ -25,6 +25,7 @@ function StepOne() {
   return (
     <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
       <Input
+        labelClassName="text-white"
         id="name"
         type="text"
         className="col-span-4"
@@ -40,6 +41,7 @@ function StepOne() {
         error={errors.name ? errors.name.message : ""}
       />
       <Input
+        labelClassName="text-white"
         id="phone"
         mask="phone"
         type="tel"
@@ -60,6 +62,7 @@ function StepOne() {
         error={errors.phone ? errors.phone.message : ""}
       />
       <Input
+        labelClassName="text-white"
         id="cellPhone"
         mask="cellphone"
         type="tel"
@@ -87,11 +90,12 @@ function StepOne() {
             required: false
           })}
         />
-        <Label htmlFor="isWhatsapp" className=" text-xs">
+        <Label htmlFor="isWhatsapp" className=" text-xs text-white">
           É whatsapp ?
         </Label>
       </div>
       <Input
+        labelClassName="text-white"
         disabled={isWhatsapp}
         id="whatsapp"
         mask="cellphone"

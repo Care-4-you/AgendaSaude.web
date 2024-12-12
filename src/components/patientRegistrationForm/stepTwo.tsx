@@ -24,7 +24,7 @@ function StepTwo() {
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
       <Input
-        className="col-span-6 lg:col-span-6"
+        className="col-span-6 lg:col-span-6 text-white"
         placeholder="Endereço"
         label="Endereço*"
         id="street"
@@ -39,6 +39,7 @@ function StepTwo() {
         error={errors.street ? errors.street.message : ""}
       />
       <Input
+        labelClassName="text-white"
         className="col-span-3"
         mask="cep"
         placeholder="CEP"
@@ -58,7 +59,7 @@ function StepTwo() {
         error={errors.zipcode ? errors.zipcode.message : ""}
       />
       <Input
-        className="col-span-3"
+        className="col-span-3 text-white"
         placeholder="Estado"
         label="Estado*"
         id="state"
@@ -72,8 +73,8 @@ function StepTwo() {
         error={errors.state ? errors.state.message : ""}
       />
       <Input
-        className="col-span-3"
-        placeholder="Cidade"
+        className="col-span-3 text-white"
+        placeholder="Cidade "
         label="Cidade*"
         id="city"
         type="text"
@@ -86,7 +87,7 @@ function StepTwo() {
         error={errors.city ? errors.city.message : ""}
       />
       <Input
-        className="col-span-3"
+        className="col-span-3 text-white"
         placeholder="Bairro"
         label="Bairro*"
         id="neighborhood"
@@ -100,7 +101,7 @@ function StepTwo() {
         error={errors.neighborhood ? errors.neighborhood.message : ""}
       />
       <Input
-        className="col-span-6"
+        className="col-span-6 text-white"
         placeholder="Complemento"
         label="Complemento"
         id="addressComplement"

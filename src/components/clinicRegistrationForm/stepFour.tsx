@@ -22,6 +22,7 @@ function StepFour() {
   return (
     <fieldset className="grid grid-cols-2 gap-x-4  items-center ">
       <Input
+        labelClassName="text-white"
         className="col-span-2"
         placeholder="Email"
         label="Email*"
@@ -42,6 +43,7 @@ function StepFour() {
       />
       <div className="col-span-2 relative">
         <Input
+          labelClassName="text-white"
           placeholder="Senha"
           type={isShowPassword ? "text" : "password"}
           label="Senha*"
@@ -79,6 +81,7 @@ function StepFour() {
       </div>
       <div className="col-span-2 relative">
         <Input
+          labelClassName="text-white"
           placeholder="Repetir senha"
           label="Repetir senha*"
           id="confirmPassword"
@@ -103,6 +106,7 @@ function StepFour() {
           )}
         </span>
         <Input
+          labelClassName="text-white"
           id="CNPJ"
           mask="cnpj"
           type="text"
@@ -123,7 +127,9 @@ function StepFour() {
         />
       </div>
       <div className="flex flex-col gap-6 col-span-2 m-2">
-        <Label htmlFor="">Carregar imagem/logotipo</Label>
+        <Label htmlFor="" className="text-white">
+          Carregar imagem/logotipo
+        </Label>
         <Label
           htmlFor="image"
           className=" cursor-pointer flex  justify-start  gap-14 items-center"
@@ -137,10 +143,10 @@ function StepFour() {
             />
           </div>
           <div>
-            <p className=" font-bold text-base leading-6 text-black  underline underline-offset-4">
+            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
               Selecione uma imagem
             </p>
-            <p className=" font-medium text-xs leading-[18px] text-black ">
+            <p className=" font-medium text-xs leading-[18px] text-white ">
               Certifique-se de que o arquivo esteja abaixo de 2mb
             </p>
           </div>
@@ -162,7 +168,7 @@ function StepFour() {
           />
           <label
             htmlFor="acceptTerm"
-            className="text-xs  font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-xs  font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
           >
             Você aceita os
             <a
