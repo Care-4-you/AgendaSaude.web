@@ -27,7 +27,7 @@ export default function Signin() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
         <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
           <div className=" min-h-screen flex-1 p-10 mt-16 2xl:px-0 flex justify-center  md:justify-center items-center md:items-start bg-white ">
             <div>
@@ -124,7 +124,7 @@ export default function Signin() {
               </form>
             </div>
           </div>
-          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-[#3E31AE] pb-16 md:min-h-screen">
+          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-[#1C226B] pb-16 md:min-h-screen">
             <div className="max-w-[27rem] md:pt-[72px]">
               <hgroup className="mb-4">
                 <Image
@@ -134,11 +134,11 @@ export default function Signin() {
                   height={42}
                   className="mb-2"
                 />
-                <h2 className=" text-[32px] font-bold text-black leading-[150%] font-MuseoModerno text-white">
+                <h2 className=" text-[32px] font-bold leading-[150%] font-MuseoModerno text-white">
                   Vamos juntos cuidar da sua saúde
                 </h2>
               </hgroup>
-              <p className="text-lg text-gray-900 font-medium font-Poppins text-white">
+              <p className="text-lg font-medium font-Poppins text-white">
                 Acesse seu perfil e continue sua jornada para uma saúde mais
                 conectada. Ao fazer login, você terá acesso a clínicas,
                 especialistas e serviços personalizados, tudo pensado para

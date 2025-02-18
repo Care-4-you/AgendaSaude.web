@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -9,7 +10,6 @@ import MaxWidthWrapper from "../../../../components/MaxWidthWrapper";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { FormLogin } from "../../../../shared/interfaces/IClinica";
-import Image from "next/image";
 
 export default function Signin() {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -27,9 +27,9 @@ export default function Signin() {
 
   return (
     <>
-      <div className="min-h-screen">
-        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
-          <div className=" min-h-screen flex-1 p-10 mt-16 2xl:px-0 flex justify-center  md:justify-center items-center md:items-start bg-white ">
+      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
+        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between ">
+          <div className=" flex-1 px-8 py-8 pt-36 2xl:px-0 flex justify-center md:justify-start  pb-16 min-h-screen bg-[#ebfffd]">
             <div>
               <hgroup className=" flex flex-col gap-4">
                 <h3 className=" text-[32px] font-semibold font-MuseoModerno">
@@ -124,8 +124,8 @@ export default function Signin() {
               </form>
             </div>
           </div>
-          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-[#3E31AE] pb-16 md:min-h-screen">
-            <div className="max-w-[27rem] md:pt-[72px]">
+          <div className="min-h-screen flex-1 px-8  py-8 2xl:px-0 flex justify-center gap-2 items-center md:items-start bg-[#1C226B] ">
+            <div className="max-w-[28rem] ">
               <hgroup className="mb-4">
                 <Image
                   alt="Login"
@@ -134,11 +134,11 @@ export default function Signin() {
                   height={42}
                   className="mb-2"
                 />
-                <h2 className=" text-[32px] font-bold text-black leading-[150%] font-MuseoModerno text-white">
+                <h2 className=" text-[32px] font-semibold  leading-[150%] font-MuseoModerno text-white">
                   Vamos juntos cuidar da sua saúde
                 </h2>
               </hgroup>
-              <p className="text-lg text-gray-900 font-medium font-Poppins text-white">
+              <p className="text-lg font-medium font-Poppins text-white">
                 Acesse seu perfil e continue sua jornada para uma saúde mais
                 conectada. Ao fazer login, você terá acesso a clínicas,
                 especialistas e serviços personalizados, tudo pensado para

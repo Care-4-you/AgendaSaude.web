@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -15,12 +16,11 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
-import { Button } from "../../../components/ui/button";
-import UseMulitstepForm from "../../../hooks/UseMultistepForm";
+import StepOne from "../../../components/patientRegistrationForm/stepOne";
 import StepThree from "../../../components/patientRegistrationForm/stepThree";
 import StepTwo from "../../../components/patientRegistrationForm/stepTwo";
-import Image from "next/image";
-import StepOne from "../../../components/patientRegistrationForm/stepOne";
+import { Button } from "../../../components/ui/button";
+import UseMulitstepForm from "../../../hooks/UseMultistepForm";
 import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
 
 export default function registerPaciente() {
@@ -69,7 +69,7 @@ export default function registerPaciente() {
   }
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
         <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
           <div className="flex-1 px-8 py-8 2xl:px-0 flex justify-center md:justify-start pb-16 md:min-h-screen ">
             <div className="max-w-[27rem] md:pt-[72px]">

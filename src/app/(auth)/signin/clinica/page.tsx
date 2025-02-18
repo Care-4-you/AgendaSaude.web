@@ -27,9 +27,9 @@ export default function Signin() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
         <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
-          <div className=" min-h-screen flex-1 p-10 mt-16 2xl:px-0 flex justify-center  md:justify-center items-center md:items-start bg-white ">
+          <div className=" min-h-screen flex-1 p-10 mt-16 2xl:px-0 flex justify-center  md:justify-center items-center md:items-start bg-[#ebfffd] ">
             <div>
               <hgroup className=" flex flex-col gap-4">
                 <h3 className=" text-[32px] font-semibold font-MuseoModerno">

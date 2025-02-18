@@ -1,12 +1,10 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 
 function StepFour() {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -126,34 +124,7 @@ function StepFour() {
           error={errors.cnpj ? errors.cnpj.message : ""}
         />
       </div>
-      <div className="flex flex-col gap-6 col-span-2 m-2">
-        <Label htmlFor="" className="text-white">
-          Carregar imagem/logotipo
-        </Label>
-        <Label
-          htmlFor="image"
-          className=" cursor-pointer flex  justify-start  gap-14 items-center"
-        >
-          <div className="bg-white size-20 flex justify-center items-center">
-            <Image
-              src="/upload.svg"
-              width={50}
-              height={50}
-              alt="Picture of the author"
-            />
-          </div>
-          <div>
-            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
-              Selecione uma imagem
-            </p>
-            <p className=" font-medium text-xs leading-[18px] text-white ">
-              Certifique-se de que o arquivo esteja abaixo de 2mb
-            </p>
-          </div>
-        </Label>
 
-        <input type="file" id="image" name="image" hidden />
-      </div>
       <div className="  grid  grid-cols-1 col-span-2 my-3 ">
         <div className="flex items-center  space-x-2  col-span-1">
           <input

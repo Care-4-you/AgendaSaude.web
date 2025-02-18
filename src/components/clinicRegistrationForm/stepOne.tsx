@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -24,6 +25,34 @@ function StepOne() {
 
   return (
     <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
+      <div className="flex flex-col gap-6 col-span-4 mb-2">
+        <Label htmlFor="" className="text-white">
+          Carregar imagem/logotipo
+        </Label>
+        <Label
+          htmlFor="image"
+          className=" cursor-pointer flex  justify-start  gap-14 items-center "
+        >
+          <div className="bg-white flex justify-center items-center rounded-sm p-8">
+            <Image
+              src="/upload.svg"
+              width={70}
+              height={70}
+              alt="Picture of the author"
+            />
+          </div>
+          <div>
+            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
+              Selecione uma imagem
+            </p>
+            <p className=" font-medium text-xs leading-[18px] text-white ">
+              Certifique-se de que o arquivo esteja abaixo de 2mb
+            </p>
+          </div>
+        </Label>
+
+        <input type="file" id="image" name="image" hidden />
+      </div>
       <Input
         labelClassName="text-white"
         id="name"

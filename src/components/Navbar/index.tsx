@@ -56,7 +56,7 @@ export default function Navbar() {
           <li>
             <Button
               variant="plain"
-              className="text-lg font-Poppins"
+              className="text-lg font-Poppins font-normal hover:text-white"
               onClick={handleModalLogin}
             >
               Entrar
@@ -66,7 +66,7 @@ export default function Navbar() {
             <Button
               variant="plain"
               onClick={handleModalCadastro}
-              className="text-lg font-Poppins"
+              className="text-lg font-Poppins font-normal hover:text-white"
             >
               Cadastrar
             </Button>
@@ -130,7 +130,7 @@ export default function Navbar() {
 
                   <div className="flex   flex-col items-start  justify-start">
                     <p className=" font-lg font-Poppins font-semibold">
-                      Médico
+                      Clínica
                     </p>
                     <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
                       Expanda sua prática e atenda mais pacientes prontos para

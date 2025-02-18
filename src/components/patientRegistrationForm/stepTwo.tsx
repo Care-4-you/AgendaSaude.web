@@ -24,21 +24,6 @@ function StepTwo() {
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
       <Input
-        className="col-span-6 lg:col-span-6 text-white"
-        placeholder="Endereço"
-        label="Endereço*"
-        id="street"
-        type="text"
-        {...register("street", {
-          required: {
-            value: true,
-            message: "Campo de endereço é obrigatório"
-          },
-          maxLength: 255
-        })}
-        error={errors.street ? errors.street.message : ""}
-      />
-      <Input
         labelClassName="text-white"
         className="col-span-3"
         mask="cep"
@@ -71,6 +56,21 @@ function StepTwo() {
           }
         })}
         error={errors.state ? errors.state.message : ""}
+      />
+      <Input
+        className="col-span-6 lg:col-span-6 text-white"
+        placeholder="Endereço"
+        label="Endereço*"
+        id="street"
+        type="text"
+        {...register("street", {
+          required: {
+            value: true,
+            message: "Campo de endereço é obrigatório"
+          },
+          maxLength: 255
+        })}
+        error={errors.street ? errors.street.message : ""}
       />
       <Input
         className="col-span-3 text-white"

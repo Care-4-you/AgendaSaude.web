@@ -24,6 +24,42 @@ function StepTwo() {
 
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
+      {" "}
+      <Input
+        labelClassName="text-white"
+        className="col-span-3"
+        mask="cep"
+        placeholder="CEP"
+        label="Cep*"
+        id="zipcode"
+        type="text"
+        {...register("zipcode", {
+          required: {
+            value: true,
+            message: "Campo CEP é obrigatório"
+          },
+          pattern: {
+            value: /^\d{5}-\d{3}$/,
+            message: "Formato inválido"
+          }
+        })}
+        error={errors.zipcode ? errors.zipcode.message : ""}
+      />
+      <Input
+        labelClassName="text-white"
+        className="col-span-3"
+        placeholder="Estado"
+        label="Estado*"
+        id="state"
+        type="text"
+        {...register("state", {
+          required: {
+            value: true,
+            message: "Campo Estado é obrigatório"
+          }
+        })}
+        error={errors.state ? errors.state.message : ""}
+      />
       <Input
         labelClassName="text-white"
         className="col-span-6 lg:col-span-4"
@@ -69,41 +105,6 @@ function StepTwo() {
           S/N
         </Label>
       </div>
-      <Input
-        labelClassName="text-white"
-        className="col-span-3"
-        mask="cep"
-        placeholder="CEP"
-        label="Cep*"
-        id="zipcode"
-        type="text"
-        {...register("zipcode", {
-          required: {
-            value: true,
-            message: "Campo CEP é obrigatório"
-          },
-          pattern: {
-            value: /^\d{5}-\d{3}$/,
-            message: "Formato inválido"
-          }
-        })}
-        error={errors.zipcode ? errors.zipcode.message : ""}
-      />
-      <Input
-        labelClassName="text-white"
-        className="col-span-3"
-        placeholder="Estado"
-        label="Estado*"
-        id="state"
-        type="text"
-        {...register("state", {
-          required: {
-            value: true,
-            message: "Campo Estado é obrigatório"
-          }
-        })}
-        error={errors.state ? errors.state.message : ""}
-      />
       <Input
         labelClassName="text-white"
         className="col-span-3"

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -22,7 +23,6 @@ import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
 import { Button } from "../../../components/ui/button";
 import UseMulitstepForm from "../../../hooks/UseMultistepForm";
 import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
-import Image from "next/image";
 
 export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
@@ -75,9 +75,9 @@ export default function registerClinical() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
         <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
-          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-white pb-16 md:min-h-screen ">
+          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-[#ebfffd] pb-16 md:min-h-screen ">
             <div className="max-w-[27rem] md:pt-[72px]">
               <hgroup className="mb-4">
                 <h2 className=" text-5xl font-semibold text-black leading-[150%] font-MuseoModerno">
@@ -96,7 +96,6 @@ export default function registerClinical() {
             <div className="w-full  md:pl-10 lg:pl-20">
               <hgroup className="mb-8 flex flex-col gap-4">
                 <Image alt="Logo" src={"/Vector.png"} height={42} width={40} />
-                <h3 className=" text-[32px] font-semibold text-white font-MuseoModerno" />
                 <h3 className="  text-[32px] font-semibold text-white font-MuseoModerno">
                   Saúde ao seu alcance, comece agora.
                 </h3>
