@@ -16,7 +16,6 @@ function StepFour() {
     formState: { errors }
   } = useFormContext<PacienteFormData>();
   const password = watch("password");
-
   return (
     <fieldset className="grid grid-cols-2 gap-x-4  items-center ">
       <Input

@@ -91,7 +91,6 @@ export default function registerPaciente() {
               <hgroup className="mb-8 flex flex-col gap-4">
                 <Image alt="Logo" src={"/Vector.png"} height={42} width={40} />
                 <h3 className=" text-[32px] font-semibold text-white font-MuseoModerno">
-                  {" "}
                   Saúde ao seu alcance, comece agora.
                 </h3>
                 <span className=" text-base font-medium font-Poppins text-white">

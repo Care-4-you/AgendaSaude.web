@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
+import { UseSearchCep } from "../../Api/UseSearchCep";
 import { noMask } from "../../hooks/useMask";
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Input } from "../ui/input";
@@ -17,14 +18,30 @@ function StepTwo() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const cep = noMask(watch("zipcode"));
   const hasNumber = watch("hasNumber");
+  const { CepData } = UseSearchCep({ cep });
 
   useEffect(() => {
     if (hasNumber) return setValue("houseNumber", "", { shouldValidate: true });
   }, [hasNumber, setValue]);
 
+  useEffect(() => {
+    if (CepData) {
+      setValue("state", CepData.estado);
+      setValue("street", CepData.logradouro);
+      setValue("city", CepData.localidade);
+      setValue("neighborhood", CepData.bairro);
+    }
+    if (cep === "") {
+      setValue("state", "");
+      setValue("street", "");
+      setValue("city", "");
+      setValue("neighborhood", "");
+      return;
+    }
+  }, [CepData, cep, setValue]);
+
   return (
     <fieldset className="grid grid-cols-6 gap-x-4 ">
-      {" "}
       <Input
         labelClassName="text-white"
         className="col-span-3"
@@ -141,6 +158,7 @@ function StepTwo() {
         placeholder="Complemento"
         label="Complemento"
         id="addressComplement"
+        {...register("addressComplement")}
         type="text"
       />
     </fieldset>
