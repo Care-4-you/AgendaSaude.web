@@ -128,7 +128,7 @@ export default function Navbar() {
 
                   <div className="flex   flex-col items-start  justify-start">
                     <p className=" font-lg font-Poppins font-semibold">
-                      médico
+                      Médico
                     </p>
                     <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
                       Expanda sua prática e atenda mais pacientes prontos para
