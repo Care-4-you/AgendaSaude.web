@@ -115,28 +115,6 @@ export default function Navbar() {
                   </div>
                 </div>
               </button>
-              <button
-                onClick={() =>
-                  handleCloseModal(
-                    isLogin === "LOGIN" ? "/signin" : "/register-clinic"
-                  )
-                }
-                className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg  px-4  lg:px-9  border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
-              >
-                <div className="flex  items-center gap-8 w-full justify-center lg:justify-start">
-                  <TbUserHeart size={25} />
-
-                  <div className="flex   flex-col items-start  justify-start">
-                    <p className=" font-lg font-Poppins font-semibold">
-                      Médico
-                    </p>
-                    <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
-                      Expanda sua prática e atenda mais pacientes prontos para
-                      melhorar suas vidas
-                    </span>
-                  </div>
-                </div>
-              </button>
               {isLogin === "LOGIN" && (
                 <button
                   onClick={() =>
@@ -147,10 +125,10 @@ export default function Navbar() {
                   className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg px-4  lg:px-9 border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
                 >
                   <div className="flex  items-center gap-8 w-full justify-center lg:justify-start">
-                    <HiOutlineOfficeBuilding size={25} />
+                    <TbUserHeart size={25} />
                     <div className="flex flex-col items-start justify-start">
                       <p className=" font-lg font-Poppins font-semibold">
-                        Clínica
+                        Médico
                       </p>
                       <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
                         Conecte-se com pacientes e médicos em busca do local
@@ -160,6 +138,27 @@ export default function Navbar() {
                   </div>
                 </button>
               )}
+              <button
+                onClick={() =>
+                  handleCloseModal(
+                    isLogin === "LOGIN" ? "/signin/clinica" : "/register-clinic"
+                  )
+                }
+                className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg  px-4  lg:px-9  border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
+              >
+                <div className="flex  items-center gap-8 w-full justify-center lg:justify-start">
+                  <HiOutlineOfficeBuilding size={25} />
+                  <div className="flex   flex-col items-start  justify-start">
+                    <p className=" font-lg font-Poppins font-semibold">
+                      Clínica
+                    </p>
+                    <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
+                      Expanda sua prática e atenda mais pacientes prontos para
+                      melhorar suas vidas
+                    </span>
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
         </DialogContent>
