@@ -6,10 +6,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-import MaxWidthWrapper from "../../../../components/MaxWidthWrapper";
-import { Button } from "../../../../components/ui/button";
-import { Input } from "../../../../components/ui/input";
-import { FormLogin } from "../../../../shared/interfaces/IClinica";
+import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { FormLogin } from "../../../shared/interfaces/IClinica";
 
 export default function Signin() {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -124,7 +124,7 @@ export default function Signin() {
               </form>
             </div>
           </div>
-          <div className="min-h-screen flex-1 px-8  py-8 2xl:px-0 flex justify-center gap-2 items-center md:items-start bg-[#1C226B] ">
+          <div className="min-h-screen flex-1 px-8  md:pt-36  2xl:px-0 flex justify-center gap-2 items-center md:items-start bg-[#1C226B] ">
             <div className="max-w-[28rem] ">
               <hgroup className="mb-4">
                 <Image

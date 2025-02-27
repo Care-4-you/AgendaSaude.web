@@ -97,9 +97,7 @@ export default function Navbar() {
               <button
                 onClick={() =>
                   handleCloseModal(
-                    isLogin === "LOGIN"
-                      ? "/signin/paciente"
-                      : "/register-paciente"
+                    isLogin === "LOGIN" ? "/signin" : "/register-paciente"
                   )
                 }
                 className=" flex items-center justify-start  h-[72px]  rounded-lg  px-4  lg:px-9  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
@@ -120,7 +118,7 @@ export default function Navbar() {
               <button
                 onClick={() =>
                   handleCloseModal(
-                    isLogin === "LOGIN" ? "/signin/clinica" : "/register-clinic"
+                    isLogin === "LOGIN" ? "/signin" : "/register-clinic"
                   )
                 }
                 className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg  px-4  lg:px-9  border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
@@ -130,7 +128,7 @@ export default function Navbar() {
 
                   <div className="flex   flex-col items-start  justify-start">
                     <p className=" font-lg font-Poppins font-semibold">
-                      Clínica
+                      médico
                     </p>
                     <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
                       Expanda sua prática e atenda mais pacientes prontos para
@@ -143,9 +141,7 @@ export default function Navbar() {
                 <button
                   onClick={() =>
                     handleCloseModal(
-                      isLogin === "LOGIN"
-                        ? "/signin/medico"
-                        : "/register-paciente"
+                      isLogin === "LOGIN" ? "/signin" : "/register-paciente"
                     )
                   }
                   className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg px-4  lg:px-9 border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
