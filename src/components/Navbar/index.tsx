@@ -141,7 +141,7 @@ export default function Navbar() {
               <button
                 onClick={() =>
                   handleCloseModal(
-                    isLogin === "LOGIN" ? "/signin/clinica" : "/register-clinic"
+                    isLogin === "LOGIN" ? "/signin" : "/register-clinic"
                   )
                 }
                 className=" flex items-center justify-start  h-[72px] gap-6 rounded-lg  px-4  lg:px-9  border-2  w-3/4  bg-[#3E31AE] text-[#FBFDFD] transition-transform hover:scale-105"
