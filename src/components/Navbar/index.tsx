@@ -131,8 +131,8 @@ export default function Navbar() {
                         Médico
                       </p>
                       <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
-                        Conecte-se com pacientes e médicos em busca do local
-                        perfeito para cuidar da saúde
+                        Expanda sua prática e atenda mais pacientes prontos para
+                        melhorar suas vidas
                       </span>
                     </div>
                   </div>
@@ -153,8 +153,8 @@ export default function Navbar() {
                       Clínica
                     </p>
                     <span className="hidden  lg:block text-left  font-medium text-sm text-[##FBFDFD] ">
-                      Expanda sua prática e atenda mais pacientes prontos para
-                      melhorar suas vidas
+                      Conecte-se com pacientes e médicos em busca do local
+                      perfeito para cuidar da saúde
                     </span>
                   </div>
                 </div>
