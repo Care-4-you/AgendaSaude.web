@@ -1,31 +1,34 @@
-import { Container } from "@/components/Container";
-import FAQItems from "@/components/ui/facItems";
 import Link from "next/link";
+
+import { default as LayoutContainer } from "@/components/layout/container";
+
+import AccordionCustom from "../../layout/accordion";
 
 const SectionThree = () => {
   return (
-    <Container>
-      <section className=" mt-6 mb-6 bg-[#1C226B] text-white p-8 rounded-3xl flex flex-col md:flex-row items-start justify-between md:items-center">
-        <div className="mb-8 md:mb-0 md:mr-8 max-w-md">
-          <h2 className="text-lg font-semibold font-Poppins">
+    <section className="p-4">
+      <LayoutContainer
+        as="div"
+        className="bg-agenda-saude-purple-200 grid grid-cols-1 gap-14 rounded-3xl px-11 py-28 lg:grid-cols-2"
+      >
+        <aside className="flex flex-col items-start justify-center gap-2 text-white">
+          <span className="font-poppins text-lg font-semibold">
             Perguntas e Respostas
-          </h2>
-          <p className="text-3xl font-bold mt-2 leading-tight font-MuseoModerno">
+          </span>
+          <h2 className="max-w-[484px] font-museo text-2xl md:text-3xl font-bold leading-snug">
             Tire suas dúvidas e aproveite ao máximo as funcionalidades do Agenda
             Saúde.
-          </p>
-          <p className="text-sm mt-4 font-Poppins text-[12px]">
+          </h2>
+          <p className="mt-4 font-poppins text-xs">
             Não encontrou o que procurava?{" "}
-            <Link href={"/"} className="underline text-blue-300">
+            <Link href={"/"} className="text-blue-300 underline">
               Fale com o nosso time
             </Link>
           </p>
-        </div>
-        <div className="w-full md:w-1/2">
-          <FAQItems />
-        </div>
-      </section>
-    </Container>
+        </aside>
+        <AccordionCustom />
+      </LayoutContainer>
+    </section>
   );
 };
 

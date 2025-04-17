@@ -24,16 +24,16 @@ function StepOne() {
   }, [cellPhoneNumber, isWhatsapp, setValue]);
 
   return (
-    <fieldset className="grid grid-cols-4 gap-x-4  items-center  ">
-      <div className="flex flex-col gap-6 col-span-4 mb-2">
+    <fieldset className="grid grid-cols-4 items-center  gap-x-4  ">
+      <div className="col-span-4 mb-2 flex flex-col gap-6">
         <Label htmlFor="" className="text-white">
           Carregar imagem/logotipo
         </Label>
         <Label
           htmlFor="image"
-          className=" cursor-pointer flex  justify-start  gap-14 items-center "
+          className=" flex cursor-pointer  items-center  justify-start gap-14 "
         >
-          <div className="bg-white flex justify-center items-center rounded-sm p-8">
+          <div className="flex items-center justify-center rounded-sm bg-white p-8">
             <Image
               src="/upload.svg"
               width={70}
@@ -42,10 +42,10 @@ function StepOne() {
             />
           </div>
           <div>
-            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
+            <p className=" text-base font-bold leading-6 text-white  underline underline-offset-4">
               Selecione uma imagem
             </p>
-            <p className=" font-medium text-xs leading-[18px] text-white ">
+            <p className=" text-xs font-medium leading-[18px] text-white ">
               Certifique-se de que o arquivo esteja abaixo de 2mb
             </p>
           </div>
@@ -111,7 +111,7 @@ function StepOne() {
         })}
         error={errors.cellPhone ? errors.cellPhone.message : ""}
       />
-      <div className=" col-span-2 lg:col-span-1 flex  w-full  justify-start gap-1 items-center  ">
+      <div className=" col-span-2 flex w-full  items-center  justify-start gap-1 lg:col-span-1  ">
         <input
           type="checkbox"
           id="isWhatsapp"

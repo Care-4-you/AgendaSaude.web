@@ -51,3 +51,12 @@ export type FormLogin = {
   username: string;
   password: string;
 };
+
+export type ResetPassowrdEmail = {
+  username: string;
+};
+export type ResetPassowrdTokenEmail = {
+  token: string;
+  password: string;
+  confirmPassword: string;
+};

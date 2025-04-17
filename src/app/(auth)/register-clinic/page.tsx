@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+import iconplus from "@/assets/icon-plus.png";
+import { default as LayoutContainer } from "@/components/layout/container";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +21,6 @@ import StepFour from "../../../components/clinicRegistrationForm/stepFour";
 import StepOne from "../../../components/clinicRegistrationForm/stepOne";
 import StepThree from "../../../components/clinicRegistrationForm/stepThree";
 import StepTwo from "../../../components/clinicRegistrationForm/stepTwo";
-import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
 import { Button } from "../../../components/ui/button";
 import UseMulitstepForm from "../../../hooks/UseMultistepForm";
 import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
@@ -75,49 +76,49 @@ export default function registerClinical() {
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
-        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between">
-          <div className="flex-1 px-8 py-8  2xl:px-0 flex justify-center md:justify-start  bg-[#ebfffd] pb-16 md:min-h-screen ">
-            <div className="max-w-[27rem] md:pt-[72px]">
-              <hgroup className="mb-4">
-                <h2 className=" text-5xl font-semibold text-black leading-[150%] font-MuseoModerno">
-                  Dê o primeiro passo para uma jornada de saúde facilitada.
-                </h2>
-              </hgroup>
-              <p className="text-lg text-gray-900 font-medium">
+      <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% md:bg-gradient-to-r">
+        <LayoutContainer className="flex min-h-screen flex-col px-0 md:flex-row ">
+          <div className="flex flex-1 justify-center bg-agenda-saude-blue-100 p-8  md:justify-start 2xl:p-0 ">
+            <hgroup className="max-w-[27rem] p-4 md:p-0 md:pt-16">
+              <h2 className="mb-7 font-museo text-3xl font-semibold text-black xs:text-5xl xs:leading-[150%]">
+                Dê o primeiro passo para uma jornada de saúde facilitada.
+              </h2>
+              <p className="text-lg font-medium text-gray-900">
                 Ao se cadastrar, você abre as portas para uma rede de saúde que
                 conecta você a clínicas e especialistas dedicados. Cuide-se com
                 mais facilidade e encontre o suporte que precisa para uma vida
                 mais saudável e equilibrada. Vamos juntos nessa jornada?
               </p>
-            </div>
+            </hgroup>
           </div>
-          <div className=" min-h-screen flex-1 px-8 py-8 2xl:px-0 flex justify-center  items-center md:items-start bg-[#1C226B]">
-            <div className="w-full  md:pl-10 lg:pl-20">
-              <hgroup className="mb-8 flex flex-col gap-4">
-                <Image alt="Logo" src={"/Vector.png"} height={42} width={40} />
-                <h3 className="  text-[32px] font-semibold text-white font-MuseoModerno">
-                  Saúde ao seu alcance, comece agora.
-                </h3>
-                <span className="  text-base font-medium font-Poppins text-white">
-                  Preencha suas informações e descubra a diferença que um bom
-                  cuidado pode fazer.
-                </span>
-              </hgroup>
-              <Progress value={progress} className="w-full mt-12  mb-10" />
+
+          <div className=" flex min-h-screen flex-1 flex-col items-center justify-start bg-agenda-saude-purple-200 md:items-end">
+            <div className="max-w-2xl px-8 py-16 md:pl-14">
+              <Image alt="Logo" src={iconplus} height={42} width={40} />
+              <h3 className="my-2.5 font-museo text-[32px] font-semibold text-white">
+                Saúde ao seu alcance, comece agora.
+              </h3>
+              <span className="font-poppins text-base font-medium text-white">
+                Preencha suas informações e descubra a diferença que um bom
+                cuidado pode fazer.
+              </span>
+              <Progress
+                value={progress}
+                className="mb-10 mt-12 h-4 w-full bg-agenda-saude-blue-100"
+              />
               <FormProvider {...methods}>
                 <form
-                  className=" w-full flex justify-between flex-col gap-28"
+                  className=" flex w-full flex-col justify-between gap-28"
                   onSubmit={methods.handleSubmit((e) => onSubmit(e))}
                 >
                   {step}
-                  <div className="flex items-center gap-4 justify-center ">
+                  <div className="flex items-center justify-center gap-4 ">
                     {!isFirstStep && (
                       <Button
                         variant={"secondary"}
                         onClick={back}
                         type="button"
-                        className="w-2/5 bg-white text-black"
+                        className="inline-flex h-11 w-full max-w-64 items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
                       >
                         Voltar
                       </Button>
@@ -125,7 +126,7 @@ export default function registerClinical() {
 
                     <Button
                       type="submit"
-                      className=" w-[259px] bg-black text-white flex items-center justify-center hover:bg-[#3E31AE] "
+                      className=" inline-flex h-11 w-full max-w-64 items-center justify-center rounded-lg bg-black hover:bg-black/80"
                       disabled={!acceptTerm && isLastStep}
                     >
                       <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
@@ -141,7 +142,7 @@ export default function registerClinical() {
               </FormProvider>
             </div>
           </div>
-        </MaxWidthWrapper>
+        </LayoutContainer>
       </div>
       <Dialog
         open={openModal}
@@ -151,15 +152,15 @@ export default function registerClinical() {
       >
         <DialogContent className="sm:max-w-[560px]">
           <DialogHeader className="gap-5">
-            <DialogTitle className="font-semibold text-5xl text-center  text-black">
+            <DialogTitle className="text-center text-5xl font-semibold  text-black">
               Cadastro realizado com sucesso
             </DialogTitle>
-            <DialogDescription className="font-normal text-base  text-center leading-6  text-[#2D2E2E]">
+            <DialogDescription className="text-center text-base  font-normal leading-6  text-[#2D2E2E]">
               Confirme sua conta através do link enviado para seu e-mail
               cadastrado.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter className="   items-center sm:justify-center flex">
+          <DialogFooter className="   flex items-center sm:justify-center">
             <Button
               type="submit"
               className="w-2/5 px-4 py-7 text-white"

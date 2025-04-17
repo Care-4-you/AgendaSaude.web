@@ -5,11 +5,11 @@ import SectionTwo from "@/components/Section/SectionTwo";
 
 export default function Home() {
   return (
-    <div>
+    <main className="min-h-screen bg-agenda-saude-blue-100">
       <Carrousel />
       <SectionOne />
       <SectionTwo />
       <SectionThree />
-    </div>
+    </main>
   );
 }
