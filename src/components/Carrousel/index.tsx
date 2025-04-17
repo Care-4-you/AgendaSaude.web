@@ -1,10 +1,13 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { TbChevronCompactRight, TbChevronCompactLeft } from "react-icons/tb";
 
+import { cn } from "../../lib/utils";
+
 import Button from "../Button";
-import { Container } from "../Container";
-import LogoNoLink from "../Logo/LogoNoLink";
+import { buttonVariants } from "../ui/button";
+import Image from "next/image";
 
 interface Page {
   tab: string;
@@ -26,7 +29,7 @@ const Carousel: React.FC = () => {
       title: "Encontre o cuidado que precisa, sem complicações",
       content:
         "Agende consultas com profissionais de saúde perto de você, com informações transparentes e preços acessíveis. A sua saúde em primeiro lugar, com facilidade e segurança.",
-      linkTo: "/map",
+      linkTo: "/mapa",
       customButtonName: "ENCONTRAR CLÍNICAS",
       image: "/paciente.png"
     },
@@ -84,15 +87,15 @@ const Carousel: React.FC = () => {
   }, [currentPage]);
 
   return (
-    <Container>
-      <section className=" w-full items-center flex justify-center pt-14 ">
-        <div className=" relative  flex    w-full max-w-7xl flex-col   items-center justify-between  gap-12 p-12  md:items-start">
-          <div className="flex w-auto items-center justify-center rounded-full border border-slate-400  overflow-hidden">
+    <div className="mx-auto max-w-[1920px] md:px-2 xl:px-20 ">
+      <section className=" flex w-full items-center justify-center pt-14 ">
+        <div className="relative flex  w-full max-w-7xl flex-col   items-center justify-between  gap-12 p-12  md:items-start">
+          <div className="flex w-auto items-center justify-center overflow-hidden rounded-full border  border-slate-400">
             {pages.map((page, index) => (
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2   border-l border-slate-400  ${
+                className={`border-l border-slate-400   px-4 py-2  ${
                   currentPage === index + 1
                     ? " bg-[#1C226B] text-white"
                     : "bg-white text-slate-900"
@@ -102,34 +105,38 @@ const Carousel: React.FC = () => {
               </button>
             ))}
           </div>
-          <div className="  min-h-[400px] flex  flex-col items-center justify-center gap-8 md:flex-row md:gap-0">
+          <div className="  flex min-h-[400px]  flex-col items-center justify-center gap-8 md:flex-row md:gap-0">
             <div className="flex flex-col justify-between  md:w-7/12">
-              <h2 className="mb-10 font-MuseoModerno  text-3xl font-semibold leading-tight text-black sm:text-4xl md:text-5xl">
+              <h2 className="mb-10 font-museo  text-3xl font-semibold leading-tight text-black sm:text-4xl md:text-5xl">
                 {pages[currentPage - 1].title}
               </h2>
               <p className=" font-mono text-xl font-medium tracking-tight text-black">
                 {pages[currentPage - 1].content}
               </p>
-              <div className="flex mt-7 justify-center md:justify-start sm:items-center">
+              <div className="mt-7 flex justify-center sm:items-center md:justify-start">
                 {pages[currentPage - 1].customButtonName !== "" && (
-                  <Button
+                  <Link
                     href={pages[currentPage - 1].linkTo}
-                    className=" h-16 w-auto rounded-full px-8 py-4 text-lg font-bold md:text-xl lg:text-2xl text-center bg-[#111928] text-white font-Poppins "
+                    className={cn(
+                      buttonVariants({ variant: "default" }),
+                      "h-16 w-auto rounded-full bg-[#111928] px-8 py-4 text-center font-poppins text-lg font-bold text-white md:text-xl lg:text-2xl"
+                    )}
                   >
                     {pages[currentPage - 1].customButtonName}
-                  </Button>
+                  </Link>
                 )}
               </div>
             </div>
             <div>
-              <LogoNoLink
+              <Image
+                src={pages[currentPage - 1].image}
+                alt="image"
                 width={433}
                 height={494}
-                imagePath={pages[currentPage - 1].image}
               />
             </div>
           </div>
-          <div className="hidden md:flex gap-8">
+          <div className="hidden gap-8 md:flex">
             {" "}
             <Button
               className="-left-14 top-[17rem] xl:absolute"
@@ -148,7 +155,7 @@ const Carousel: React.FC = () => {
           </div>
         </div>
       </section>
-    </Container>
+    </div>
   );
 };
 

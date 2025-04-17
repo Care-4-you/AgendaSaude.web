@@ -53,7 +53,7 @@ function StepThree() {
             return (
               <Select
                 styles={colorStyles}
-                className={`${errors.specialty ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
+                className={`${errors.specialty ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
                 id="Especialidadesmedica"
                 closeMenuOnSelect={false}
                 components={animatedComponents}
@@ -93,7 +93,7 @@ function StepThree() {
           render={(renderProps) => {
             return (
               <Select
-                className={`${errors.healthInsurance ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
+                className={`${errors.healthInsurance ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
                 styles={colorStyles}
                 closeMenuOnSelect={false}
                 id="convenio"

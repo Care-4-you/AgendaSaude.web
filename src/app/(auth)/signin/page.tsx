@@ -1,18 +1,22 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-import MaxWidthWrapper from "../../../components/MaxWidthWrapper";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { useAuth } from "../../../hooks/auth";
 import { FormLogin } from "../../../shared/interfaces/IClinica";
 
 export default function Signin() {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const searchParams = useSearchParams();
+  const q = searchParams.get("q") || "paciente";
+  const { signIn } = useAuth();
 
   const {
     register,
@@ -20,31 +24,46 @@ export default function Signin() {
     formState: { errors }
   } = useForm<FormLogin>();
 
-  const onSubmit: SubmitHandler<FormLogin> = (data, event) => {
-    event?.preventDefault();
+  const returnText = (text: string) => {
+    switch (text) {
+      case "paciente":
+        return "Acesse seu perfil e continue sua jornada para uma saúde mais conectada. Ao fazer login você terá acesso a clínicas, especialistas e serviços personalizados, tudo pensado para simplificar o seu cuidado.";
+
+      case "medico":
+        return "Acesse seu perfil e continue sua jornada para uma saúde mais conectada. Ao fazer login como médico você terá acesso a funcionalidades para tornar suas consultas mais eficientes, como agenda de consultas e acompanhamento de tratamentos de seus pacientes";
+
+      case "clinica":
+        return "Acesse seu perfil e continue sua jornada para uma saúde mais conectada. Ao fazer login como clínica você terá acesso a funcionalidades que ajudarão na organização de agenda de médicos, agendamento de consultas e gerenciamento de contato dos pacientes.";
+      default:
+        break;
+    }
+  };
+
+  const onSubmit: SubmitHandler<FormLogin> = async (data) => {
     console.log(data);
+    await signIn({ email: data.username, password: data.password });
   };
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-b md:bg-gradient-to-r  from-[#ebfffd] from-50%  bg-[#1C226B] to-50%">
-        <MaxWidthWrapper className="flex flex-col md:flex-row justify-between ">
-          <div className=" flex-1 px-8 py-8 pt-36 2xl:px-0 flex justify-center md:justify-start  pb-16 min-h-screen bg-[#ebfffd]">
+      <div className="min-h-[calc(100vh-68px)] bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% md:bg-gradient-to-r">
+        <div className="mx-auto flex h-full w-full max-w-[87.5rem] flex-col justify-between md:flex-row ">
+          <div className=" flex  flex-1 justify-center bg-[#ebfffd] px-8  py-36  pb-16 md:justify-start 2xl:px-0">
             <div>
               <hgroup className=" flex flex-col gap-4">
-                <h3 className=" text-[32px] font-semibold font-MuseoModerno">
+                <h3 className=" font-MuseoModerno text-[32px] font-semibold">
                   Bem vindo ao seu Espaço de saúde
                 </h3>
-                <span className=" text-base font-medium font-Poppins">
+                <span className=" font-Poppins text-base font-medium">
                   Seu cuidado está a um clique de distância.
                 </span>
               </hgroup>
 
               <form
-                className=" w-full flex justify-between flex-col gap-16"
-                onSubmit={handleSubmit((e) => onSubmit(e))}
+                className=" flex w-full flex-col justify-between gap-16"
+                onSubmit={handleSubmit(onSubmit)}
               >
-                <fieldset className="grid grid-cols-2 gap-x-4  items-center ">
+                <fieldset className="grid grid-cols-2 items-center  gap-x-4 ">
                   <Input
                     className="col-span-2"
                     placeholder="Email"
@@ -64,7 +83,7 @@ export default function Signin() {
                     })}
                     error={errors.username ? errors.username.message : ""}
                   />
-                  <div className="col-span-2 relative">
+                  <div className="relative col-span-2">
                     <Input
                       placeholder="Senha"
                       type={isShowPassword ? "text" : "password"}
@@ -74,28 +93,12 @@ export default function Signin() {
                         required: {
                           value: true,
                           message: "Campo Senha é obrigatório"
-                        },
-                        minLength: {
-                          value: 8,
-                          message: "Senha deve ter no minimo 8 caracters"
-                        },
-                        validate: {
-                          hasUppercase: (value) =>
-                            /^(?=.*[A-Z]).+$/.test(value) ||
-                            "Deve conter no minimo uma letra maiúscula",
-                          hasLowerCase: (value) =>
-                            /^(?=.*[a-z]).+$/.test(value) ||
-                            "Deve conter no minimo uma letra minuscula",
-                          hasSpecialChar: (value) =>
-                            /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(
-                              value
-                            ) || "Deve conter caracters especiaos Ex. @ # $"
                         }
                       })}
                       error={errors.password ? errors.password.message : ""}
                     />
                     <span
-                      className=" cursor-pointer absolute  top-[46px]  right-4"
+                      className=" absolute right-4  top-[46px]  cursor-pointer"
                       onClick={() => setIsShowPassword((prev) => !prev)}
                     >
                       {isShowPassword ? (
@@ -106,8 +109,8 @@ export default function Signin() {
                     </span>
                   </div>
                   <Link
-                    href="#"
-                    className="font-semibold hover:underline mt-4 font-Poppins"
+                    href="/password/reset"
+                    className="font-Poppins mt-4 font-semibold hover:underline"
                   >
                     Esqueci minha senha.
                   </Link>
@@ -124,8 +127,8 @@ export default function Signin() {
               </form>
             </div>
           </div>
-          <div className="min-h-screen flex-1 px-8  md:pt-36  2xl:px-0 flex justify-center gap-2 items-center md:items-start bg-[#1C226B] ">
-            <div className="max-w-[28rem] ">
+          <div className="flex  flex-1  items-center  justify-center gap-2 bg-[#1C226B] px-8 md:items-start md:py-36 2xl:px-0 ">
+            <div className="max-w-[28rem] py-32 md:py-0">
               <hgroup className="mb-4">
                 <Image
                   alt="Login"
@@ -134,19 +137,16 @@ export default function Signin() {
                   height={42}
                   className="mb-2"
                 />
-                <h2 className=" text-[32px] font-semibold  leading-[150%] font-MuseoModerno text-white">
+                <h2 className=" font-MuseoModerno text-[32px]  font-semibold leading-[150%] text-white">
                   Vamos juntos cuidar da sua saúde
                 </h2>
               </hgroup>
-              <p className="text-lg font-medium font-Poppins text-white">
-                Acesse seu perfil e continue sua jornada para uma saúde mais
-                conectada. Ao fazer login, você terá acesso a clínicas,
-                especialistas e serviços personalizados, tudo pensado para
-                simplificar o seu cuidado.
+              <p className="font-Poppins text-lg font-medium text-white">
+                {returnText(q)}
               </p>
             </div>
           </div>
-        </MaxWidthWrapper>
+        </div>
       </div>
     </>
   );
