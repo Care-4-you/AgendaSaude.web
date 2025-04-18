@@ -110,7 +110,7 @@ function StepTwo() {
         })}
         error={errors.houseNumber ? errors.houseNumber.message : ""}
       />
-      <div className=" col-span-3 lg:col-span-1 flex  w-full  justify-start gap-1 items-center  ">
+      <div className=" col-span-3 flex w-full  items-center  justify-start gap-1 lg:col-span-1  ">
         <input
           type="checkbox"
           id="hasNumber"

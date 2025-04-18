@@ -1,13 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { TbChevronCompactRight, TbChevronCompactLeft } from "react-icons/tb";
+
+import clinica from "@/assets/clinica.png";
+import medico from "@/assets/medico.png";
+import paciente from "@/assets/paciente.png";
 
 import { cn } from "../../lib/utils";
 
 import Button from "../Button";
 import { buttonVariants } from "../ui/button";
-import Image from "next/image";
 
 interface Page {
   tab: string;
@@ -15,7 +20,7 @@ interface Page {
   content: string;
   linkTo: string;
   customButtonName: string;
-  image: string;
+  image: StaticImageData;
 }
 
 const Carousel: React.FC = () => {
@@ -31,7 +36,7 @@ const Carousel: React.FC = () => {
         "Agende consultas com profissionais de saúde perto de você, com informações transparentes e preços acessíveis. A sua saúde em primeiro lugar, com facilidade e segurança.",
       linkTo: "/mapa",
       customButtonName: "ENCONTRAR CLÍNICAS",
-      image: "/paciente.png"
+      image: paciente
     },
     {
       tab: "Médico",
@@ -40,7 +45,7 @@ const Carousel: React.FC = () => {
         "Gerencie sua agenda de forma eficiente e expanda sua rede de atendimentos. Facilite a comunicação e ofereça um serviço de excelência aos seus pacientes.",
       linkTo: "/",
       customButtonName: "",
-      image: "/medico.png"
+      image: medico
     },
     {
       tab: "Clinica",
@@ -49,7 +54,7 @@ const Carousel: React.FC = () => {
         "Organize seus serviços, aumente a visibilidade da sua clínica e melhore a experiência dos pacientes com uma plataforma intuitiva e eficaz.",
       linkTo: "/",
       customButtonName: "",
-      image: "/clinica.png"
+      image: clinica
     }
   ];
 

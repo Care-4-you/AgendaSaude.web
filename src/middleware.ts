@@ -7,6 +7,14 @@ const blockIfAuthenticated = [
   "/register-clinic"
 ];
 
+const validRoutes = [
+  "/",
+  "/signin",
+  "/register-paciente",
+  "/register-clinic",
+  "/password"
+];
+
 export function middleware(req: NextRequest) {
   const token = req.cookies.get("@Saude:token")?.value;
   const { pathname } = req.nextUrl;
@@ -18,15 +26,19 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/", req.url)); // redireciona para home, dashboard, etc.
   }
 
+  // Verifica se a rota acessada é inválida (404)
+  const isKnownRoute = validRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+
+  if (!isKnownRoute) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   return NextResponse.next();
 }
 
 // Definir as rotas que o middleware deve verificar
 export const config = {
-  matcher: [
-    "/signin",
-    "/register-paciente",
-    "/register-clinic",
-    "/password/:path*"
-  ]
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"]
 };

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
+import uploadsvg from "@/assets/upload.svg";
 import { Input } from "@/components/ui/input";
+
 import { PacienteFormData } from "../../shared/interfaces/IPacient";
 import { Label } from "../ui/label";
 
@@ -64,25 +66,25 @@ function StepOne() {
   };
 
   return (
-    <fieldset className="grid grid-cols-4 gap-x-4  items-center">
-      <div className="flex flex-col gap-6 col-span-4 m-2">
+    <fieldset className="grid grid-cols-4 items-center  gap-x-4">
+      <div className="col-span-4 m-2 flex flex-col gap-6">
         <Label
           htmlFor="image"
-          className=" cursor-pointer flex  justify-start  gap-14 items-center "
+          className=" flex cursor-pointer  items-center  justify-start gap-14 "
         >
-          <div className="bg-white flex justify-center items-center rounded-sm p-8">
+          <div className="flex items-center justify-center rounded-sm bg-white p-8">
             <Image
-              src="/upload.svg"
+              src={uploadsvg}
               width={70}
               height={70}
               alt="Picture of the author"
             />
           </div>
           <div>
-            <p className=" font-bold text-base leading-6 text-white  underline underline-offset-4">
+            <p className=" text-base font-bold leading-6 text-white  underline underline-offset-4">
               Selecione uma imagem
             </p>
-            <p className=" font-medium text-xs leading-[18px] text-white ">
+            <p className=" text-xs font-medium leading-[18px] text-white ">
               Certifique-se de que o arquivo esteja abaixo de 2mb
             </p>
           </div>
@@ -138,7 +140,7 @@ function StepOne() {
           render={(renderProps) => {
             return (
               <Select
-                className={`w-full ${errors.gender ? " focus-visible:ring-red-500 border-red-500  rounded-md  border-2" : ""}`}
+                className={`w-full ${errors.gender ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
                 styles={colorStyles}
                 id="genero"
                 components={animatedComponents}

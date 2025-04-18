@@ -71,7 +71,7 @@ export default function Header() {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent className="min-w-44 w-auto mt-3 space-y-3.5 flex flex-col   border-none">
+              <PopoverContent className="mt-3 flex w-auto min-w-44 flex-col space-y-3.5   border-none">
                 <p>Olá, {user.name}!</p>
                 <p> {user.email}</p>
                 <Link
@@ -91,7 +91,7 @@ export default function Header() {
                 <Button
                   type="button"
                   onClick={signOut}
-                  className=" py-2 w-full bg-black text-white hover:bg-black/80 hover:text-white border-none"
+                  className=" w-full border-none bg-black py-2 text-white hover:bg-black/80 hover:text-white"
                 >
                   Sair
                 </Button>

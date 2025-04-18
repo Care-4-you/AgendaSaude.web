@@ -1,11 +1,11 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
 import { PacienteFormData } from "../../shared/interfaces/IPacient";
 import { Input } from "../ui/input";
-import Link from "next/link";
 
 function StepFour() {
   const [isShowPassword, setIsShowPassword] = useState(false);

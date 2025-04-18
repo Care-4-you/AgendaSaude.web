@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
+import uploadsvg from "@/assets/upload.svg";
 import { Input } from "@/components/ui/input";
 
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
@@ -35,7 +36,7 @@ function StepOne() {
         >
           <div className="flex items-center justify-center rounded-sm bg-white p-8">
             <Image
-              src="/upload.svg"
+              src={uploadsvg}
               width={70}
               height={70}
               alt="Picture of the author"

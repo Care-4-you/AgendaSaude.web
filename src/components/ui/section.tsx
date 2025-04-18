@@ -23,22 +23,22 @@ const Section: React.FC<SectionProps> = ({
   children
 }) => {
   return (
-    <section className="my-8 container">
+    <section className="container my-8">
       <div className="flex items-start">
         <div className="mr-20">
           <Image
             src={imageSrc}
             alt={title}
-            className="w-full h-full"
+            className="h-full w-full"
             width={300}
             height={300}
           />
         </div>
         <div>
-          <h2 className="text-3xl md:text-5xl sm:text-4xl font-bold text-black-800 pb-8 font-mono">
+          <h2 className="text-black-800 pb-8 font-mono text-3xl font-bold sm:text-4xl md:text-5xl">
             {title}
           </h2>
-          <p className="text-black-600 font-mono text-xl font-medium mb-10">
+          <p className="text-black-600 mb-10 font-mono text-xl font-medium">
             {description}
             <span className="flex flex-row">
               {links.map((link, index) => (
@@ -46,7 +46,7 @@ const Section: React.FC<SectionProps> = ({
                   key={index}
                   href={link.href}
                   target="_blank"
-                  className="pt-5 mr-10 mt-4 hover:text-blue-500"
+                  className="mr-10 mt-4 pt-5 hover:text-blue-500"
                 >
                   {link.label}
                 </a>

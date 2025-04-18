@@ -10,7 +10,7 @@ interface TeamMemberProps {
 const TeamMember = ({ name, linkedinUrl, githubUrl }: TeamMemberProps) => {
   return (
     <div className="flex justify-between space-x-4">
-      <p className="text-white leading-[1.5] font-MuseoModerno text-lg">
+      <p className="font-MuseoModerno text-lg leading-[1.5] text-white">
         {name}
       </p>
       <div className="flex flex-row space-x-4">
@@ -18,7 +18,7 @@ const TeamMember = ({ name, linkedinUrl, githubUrl }: TeamMemberProps) => {
           href={linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white hover:text-[#3E31AE] transition-colors duration-200"
+          className="text-white transition-colors duration-200 hover:text-[#3E31AE]"
         >
           <BsLinkedin size={20} />
         </Link>
@@ -26,7 +26,7 @@ const TeamMember = ({ name, linkedinUrl, githubUrl }: TeamMemberProps) => {
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white hover:text-[#3E31AE] transition-colors duration-200"
+          className="text-white transition-colors duration-200 hover:text-[#3E31AE]"
         >
           <BsGithub size={20} />
         </Link>

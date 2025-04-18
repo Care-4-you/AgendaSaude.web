@@ -12,13 +12,13 @@ import { cn } from "@/lib/utils";
 
 const SectionOne = () => {
   return (
-    <section className="bg-agenda-saude-purple-200 w-full py-16">
+    <section className="w-full bg-agenda-saude-purple-200 py-16">
       <LayoutContainer
         as="div"
         className="flex flex-col items-center justify-center  gap-16"
       >
         <hgroup className="text-center">
-          <h2 className="mb-4 font-museo text-4xl lg:text-6xl font-bold text-white">
+          <h2 className="mb-4 font-museo text-4xl font-bold text-white lg:text-6xl">
             Serviços que são feitos no site
           </h2>
           <p className="font-poppins text-lg font-medium text-white">

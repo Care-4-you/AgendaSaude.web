@@ -18,7 +18,7 @@ function StepFour() {
   const password = watch("password");
 
   return (
-    <fieldset className="grid grid-cols-2 gap-x-4  items-center ">
+    <fieldset className="grid grid-cols-2 items-center  gap-x-4 ">
       <Input
         labelClassName="text-white"
         className="col-span-2"
@@ -39,7 +39,7 @@ function StepFour() {
         })}
         error={errors.email ? errors.email.message : ""}
       />
-      <div className="col-span-2 relative">
+      <div className="relative col-span-2">
         <Input
           labelClassName="text-white"
           placeholder="Senha"
@@ -67,7 +67,7 @@ function StepFour() {
           error={errors.password ? errors.password.message : ""}
         />
         <span
-          className=" cursor-pointer absolute  top-[46px]  right-4"
+          className=" absolute right-4  top-[46px]  cursor-pointer"
           onClick={() => setIsShowPassword((prev) => !prev)}
         >
           {isShowPassword ? (
@@ -77,7 +77,7 @@ function StepFour() {
           )}
         </span>
       </div>
-      <div className="col-span-2 relative">
+      <div className="relative col-span-2">
         <Input
           labelClassName="text-white"
           placeholder="Repetir senha"
@@ -94,7 +94,7 @@ function StepFour() {
           error={errors.confirmPassword ? errors.confirmPassword.message : ""}
         />
         <span
-          className=" cursor-pointer absolute  top-[46px]  right-4"
+          className=" absolute right-4  top-[46px]  cursor-pointer"
           onClick={() => setIsShowConfirmPassword((prev) => !prev)}
         >
           {isShowConfirmPassword ? (
@@ -125,8 +125,8 @@ function StepFour() {
         />
       </div>
 
-      <div className="  grid  grid-cols-1 col-span-2 my-3 ">
-        <div className="flex items-center  space-x-2  col-span-1">
+      <div className="  col-span-2  my-3 grid grid-cols-1 ">
+        <div className="col-span-1 flex  items-center  space-x-2">
           <input
             type="checkbox"
             id="acceptTerm"
@@ -139,7 +139,7 @@ function StepFour() {
           />
           <label
             htmlFor="acceptTerm"
-            className="text-xs  font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
+            className="text-xs  font-light leading-none text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             Você aceita os
             <a
@@ -162,7 +162,7 @@ function StepFour() {
             </a>
           </label>
         </div>
-        <p className="flex items-center space-x-2  col-span-1 h-4 text-sm  font-semibold text-red-500 mt-1.5 ">
+        <p className="col-span-1 mt-1.5 flex  h-4 items-center space-x-2  text-sm font-semibold text-red-500 ">
           {errors.acceptTerm ? errors.acceptTerm.message : ""}
         </p>
       </div>

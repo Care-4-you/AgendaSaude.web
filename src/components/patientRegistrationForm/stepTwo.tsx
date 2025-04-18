@@ -77,7 +77,7 @@ function StepTwo() {
         error={errors.state ? errors.state.message : ""}
       />
       <Input
-        className="col-span-6 lg:col-span-6 text-white"
+        className="col-span-6 text-white lg:col-span-6"
         placeholder="Endereço"
         label="Endereço*"
         id="street"

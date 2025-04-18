@@ -9,7 +9,7 @@ interface TeamMemberProps {
 
 const TeamMember = ({ name, linkedinUrl, githubUrl }: TeamMemberProps) => {
   return (
-    <li className=" flex items-center justify-between w-full">
+    <li className=" flex w-full items-center justify-between">
       <p className="font-museo text-lg text-white">{name}</p>
       <div className="flex flex-row space-x-4">
         <Link
