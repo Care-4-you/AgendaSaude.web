@@ -100,7 +100,6 @@ export function AuthProvider({
           email,
           password
         });
-        console.log(dataApi);
 
         api.interceptors.request.use((config) => {
           if (config.headers) {
@@ -133,7 +132,13 @@ export function AuthProvider({
           user: userToSave
         });
 
-        router.push("/");
+        if (userToSave.role === "medico") {
+          router.push("/dashboard/medico");
+        } else if (userToSave.role === "paciente") {
+          router.push("/dashboard/paciente");
+        } else if (userToSave.role === "USER") {
+          router.push("/dashboard/clinica");
+        }
       } catch (error) {
         console.log("Err", error);
         alert("erro no login");
@@ -154,7 +159,7 @@ export function AuthProvider({
       };
     });
   }, []);
-  console.log(data);
+
   return (
     <AuthContext.Provider
       value={{

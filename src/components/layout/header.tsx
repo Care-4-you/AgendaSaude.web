@@ -15,12 +15,14 @@ import {
 import { useAuth } from "@/hooks/auth";
 
 import { Button } from "../ui/button";
-import useDialog from "./dialog";
+import useDialogLogin from "./dialog-login";
+import useDialogRegister from "./dialog-register";
 
 export default function Header() {
   const { user, signOut } = useAuth();
-  const { DialogComponent, handleModalCadastro, handleModalLogin } =
-    useDialog();
+  const { DialogComponent, handleOpenModal } = useDialogLogin();
+  const { DialogComponentRegister, handleOpenModalRegister } =
+    useDialogRegister();
 
   const isAuthenticated = user && user.name && user.email;
 
@@ -42,7 +44,7 @@ export default function Header() {
               size="sm"
               variant="link"
               className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
-              onClick={handleModalLogin}
+              onClick={handleOpenModal}
             >
               Entrar
             </Button>
@@ -50,7 +52,7 @@ export default function Header() {
               size="sm"
               variant="link"
               className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
-              onClick={handleModalCadastro}
+              onClick={handleOpenModalRegister}
             >
               Cadastrar
             </Button>
@@ -101,6 +103,7 @@ export default function Header() {
         )}
       </LayoutContainer>
       <DialogComponent />
+      <DialogComponentRegister />
     </header>
   );
 }

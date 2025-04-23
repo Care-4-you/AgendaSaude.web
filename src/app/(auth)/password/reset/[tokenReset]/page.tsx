@@ -5,6 +5,7 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
+import iconplus from "@/assets/icon-plus.png";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -165,7 +166,7 @@ export default function ResetToken({ params }: { params: IParams }) {
               <hgroup className="mb-4">
                 <Image
                   alt="Login"
-                  src="/Vector.png"
+                  src={iconplus}
                   width={40}
                   height={42}
                   className="mb-2"

@@ -7,6 +7,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+import iconplus from "@/assets/icon-plus.png";
+
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { useAuth } from "../../../hooks/auth";
@@ -40,7 +42,6 @@ export default function Signin() {
   };
 
   const onSubmit: SubmitHandler<FormLogin> = async (data) => {
-    console.log(data);
     await signIn({ email: data.username, password: data.password });
   };
 
@@ -132,7 +133,7 @@ export default function Signin() {
               <hgroup className="mb-4">
                 <Image
                   alt="Login"
-                  src="/Vector.png"
+                  src={iconplus}
                   width={40}
                   height={42}
                   className="mb-2"

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { getServerAuth } from "./hooks/getServerAuth";
+
 const blockIfAuthenticated = [
   "/signin",
   "/register-paciente",
@@ -12,10 +14,14 @@ const validRoutes = [
   "/signin",
   "/register-paciente",
   "/register-clinic",
-  "/password"
+  "/password",
+  "/mapa",
+  "/dashboard"
 ];
 
 export function middleware(req: NextRequest) {
+  const { user } = getServerAuth();
+
   const token = req.cookies.get("@Saude:token")?.value;
   const { pathname } = req.nextUrl;
 
@@ -23,16 +29,36 @@ export function middleware(req: NextRequest) {
   const isProtected = blockIfAuthenticated.includes(pathname) || isPasswordPath;
 
   if (token && isProtected) {
-    return NextResponse.redirect(new URL("/", req.url)); // redireciona para home, dashboard, etc.
+    return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Verifica se a rota acessada é inválida (404)
   const isKnownRoute = validRoutes.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`)
   );
 
   if (!isKnownRoute) {
     return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  // === Proteção para rotas do dashboard === //
+  if (pathname.startsWith("/dashboard")) {
+    if (!token) {
+      return NextResponse.redirect(new URL("/signin", req.url));
+    }
+
+    try {
+      if (
+        (pathname.startsWith("/dashboard/medico") && user.role !== "medico") ||
+        (pathname.startsWith("/dashboard/paciente") &&
+          user.role !== "paciente") ||
+        (pathname.startsWith("/dashboard/clinica") && user.role !== "USER")
+      ) {
+        return NextResponse.redirect(new URL("/unauthorized", req.url));
+      }
+    } catch (err) {
+      console.error("Erro ao verificar token:", err);
+      return NextResponse.redirect(new URL("/signin", req.url));
+    }
   }
 
   return NextResponse.next();

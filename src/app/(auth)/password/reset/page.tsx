@@ -6,6 +6,7 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+import iconplus from "@/assets/icon-plus.png";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -97,7 +98,7 @@ export default function Reset() {
                     type="submit"
                     className="w-full max-w-60 rounded-lg bg-black text-white"
                   >
-                    <span>Entrar</span>
+                    <span>Enviar</span>
                     <MdKeyboardArrowRight color="white" className=" size-8" />
                   </Button>
                 </div>
@@ -109,7 +110,7 @@ export default function Reset() {
               <hgroup className="mb-4">
                 <Image
                   alt="Login"
-                  src="/Vector.png"
+                  src={iconplus}
                   width={40}
                   height={42}
                   className="mb-2"
