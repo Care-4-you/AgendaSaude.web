@@ -18,6 +18,9 @@ const config: Config = {
       },
       colors: {
         "agenda-saude": {
+          green: {
+            "100": "#76B39D"
+          },
           purple: {
             "100": "#3E31AE",
             "200": "#1c226b",

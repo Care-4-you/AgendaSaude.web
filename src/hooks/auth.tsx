@@ -60,6 +60,12 @@ interface Props {
   initialUser?: IUser | null;
 }
 
+const roleRedirectMap: Record<string, string> = {
+  medico: "/dashboard/medico",
+  paciente: "/dashboard/paciente",
+  USER: "/dashboard/clinica"
+};
+
 export function AuthProvider({
   children,
   initialToken = "",
@@ -118,13 +124,11 @@ export function AuthProvider({
         };
 
         setCookie({}, "@Saude:token", dataApi.acessToken, {
-          maxAge: 60 * 60 * 24,
           path: "/"
         });
 
         setCookie({}, "@Saude:user", JSON.stringify(userToSave), {
-          path: "/",
-          maxAge: 60 * 60 * 24
+          path: "/"
         });
 
         setData({
@@ -132,13 +136,9 @@ export function AuthProvider({
           user: userToSave
         });
 
-        if (userToSave.role === "medico") {
-          router.push("/dashboard/medico");
-        } else if (userToSave.role === "paciente") {
-          router.push("/dashboard/paciente");
-        } else if (userToSave.role === "USER") {
-          router.push("/dashboard/clinica");
-        }
+        const redirectPath = roleRedirectMap[userToSave.role];
+
+        router.push(redirectPath);
       } catch (error) {
         console.log("Err", error);
         alert("erro no login");

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { FaBell } from "react-icons/fa";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 import logo from "@/assets/logo_agenda_saude.png";
 import { default as LayoutContainer } from "@/components/layout/container";
@@ -75,7 +76,14 @@ export default function Header() {
               </PopoverTrigger>
               <PopoverContent className="mt-3 flex w-auto min-w-44 flex-col space-y-3.5   border-none">
                 <p>Olá, {user.name}!</p>
-                <p> {user.email}</p>
+
+                <Link
+                  href="/dashboard"
+                  className="flex items-center justify-start gap-2"
+                >
+                  <MdOutlineSpaceDashboard />
+                  <span>Dashboard</span>
+                </Link>
                 <Link
                   href="#"
                   className="flex items-center justify-start gap-2"
