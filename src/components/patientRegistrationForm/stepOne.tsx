@@ -114,11 +114,11 @@ function StepOne() {
         className="col-span-4"
         labelClassName="text-white"
         placeholder="Data de aniversário"
-        label="Data de aniversario*"
+        label="Data de aniversário*"
         {...register("date", {
           required: {
             value: true,
-            message: "Campo data de aniversario é obrigatório"
+            message: "Campo data de aniversário é obrigatório"
           },
           validate: {
             validDate: (value) => isValidDate(value) || "Data inválida",

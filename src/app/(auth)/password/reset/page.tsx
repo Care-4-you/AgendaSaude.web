@@ -25,8 +25,11 @@ export default function Reset() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    watch
   } = useForm<ResetPassowrdEmail>();
+
+  const inputFielded = watch("username");
 
   const onSubmit: SubmitHandler<ResetPassowrdEmail> = (data, event) => {
     event?.preventDefault();
@@ -97,6 +100,7 @@ export default function Reset() {
                   <Button
                     type="submit"
                     className="w-full max-w-60 rounded-lg bg-black text-white"
+                    disabled={!inputFielded}
                   >
                     <span>Enviar</span>
                     <MdKeyboardArrowRight color="white" className=" size-8" />

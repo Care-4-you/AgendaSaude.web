@@ -33,8 +33,12 @@ export default function ResetToken({ params }: { params: IParams }) {
     handleSubmit,
     watch,
     formState: { errors }
-  } = useForm<ResetPassowrdTokenEmail>();
+  } = useForm<ResetPassowrdTokenEmail>({ mode: "all" });
   const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  const isDisabled =
+    !password || !confirmPassword || Object.keys(errors).length > 0;
 
   const onSubmit: SubmitHandler<ResetPassowrdTokenEmail> = (data, event) => {
     event?.preventDefault();
@@ -154,6 +158,7 @@ export default function ResetToken({ params }: { params: IParams }) {
                   <Button
                     type="submit"
                     className="w-full max-w-60 rounded-lg bg-black text-white"
+                    disabled={isDisabled}
                   >
                     <span>Confirmar</span>
                   </Button>

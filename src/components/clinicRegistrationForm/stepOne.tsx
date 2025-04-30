@@ -25,8 +25,8 @@ function StepOne() {
   }, [cellPhoneNumber, isWhatsapp, setValue]);
 
   return (
-    <fieldset className="grid grid-cols-4 items-center  gap-x-4  ">
-      <div className="col-span-4 mb-2 flex flex-col gap-6">
+    <fieldset className="grid grid-cols-6 items-center  gap-x-4  ">
+      <div className="col-span-6 mb-2 flex flex-col gap-6">
         <Label htmlFor="" className="text-white">
           Carregar imagem/logotipo
         </Label>
@@ -58,7 +58,7 @@ function StepOne() {
         labelClassName="text-white"
         id="name"
         type="text"
-        className="col-span-4"
+        className="col-span-6"
         placeholder="Nome da clínica"
         label="Nome da clínica*"
         {...register("name", {
@@ -75,7 +75,7 @@ function StepOne() {
         id="phone"
         mask="phone"
         type="tel"
-        className=" col-span-4 lg:col-span-2"
+        className=" col-span-6 lg:col-span-2"
         placeholder="(00) 0000-0000"
         label="Telefone*"
         {...register("phone", {
@@ -96,7 +96,7 @@ function StepOne() {
         id="cellPhone"
         mask="cellphone"
         type="tel"
-        className="col-span-2 lg:col-span-1"
+        className="col-span-4 lg:col-span-2"
         placeholder="(00) 00000-0000"
         label="Celular*"
         {...register("cellPhone", {
@@ -112,7 +112,7 @@ function StepOne() {
         })}
         error={errors.cellPhone ? errors.cellPhone.message : ""}
       />
-      <div className=" col-span-2 flex w-full  items-center  justify-start gap-1 lg:col-span-1  ">
+      <div className=" col-span-2 flex w-full  items-center  justify-start gap-1 lg:col-span-2  ">
         <input
           type="checkbox"
           id="isWhatsapp"
@@ -130,7 +130,7 @@ function StepOne() {
         id="whatsapp"
         mask="cellphone"
         type="tel"
-        className="col-span-2"
+        className="col-span-4 lg:col-span-2"
         placeholder="(00) 00000-0000"
         label="Whatapp*"
         {...register("whatsapp", {
