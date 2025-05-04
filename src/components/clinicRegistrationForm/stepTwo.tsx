@@ -16,7 +16,7 @@ function StepTwo() {
   } = useFormContext<ClinicaFormData>();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const cep = noMask(watch("zipcode"));
+  const cep = noMask(watch("cep"));
   const hasNumber = watch("hasNumber");
   const { CepData } = UseSearchCep({ cep });
 
@@ -27,13 +27,13 @@ function StepTwo() {
   useEffect(() => {
     if (CepData) {
       setValue("state", CepData.estado);
-      setValue("street", CepData.logradouro);
+      setValue("address", CepData.logradouro);
       setValue("city", CepData.localidade);
       setValue("neighborhood", CepData.bairro);
     }
     if (cep === "") {
       setValue("state", "");
-      setValue("street", "");
+      setValue("address", "");
       setValue("city", "");
       setValue("neighborhood", "");
       return;
@@ -48,9 +48,9 @@ function StepTwo() {
         mask="cep"
         placeholder="CEP"
         label="Cep*"
-        id="zipcode"
+        id="cep"
         type="text"
-        {...register("zipcode", {
+        {...register("cep", {
           required: {
             value: true,
             message: "Campo CEP é obrigatório"
@@ -60,7 +60,7 @@ function StepTwo() {
             message: "Formato inválido"
           }
         })}
-        error={errors.zipcode ? errors.zipcode.message : ""}
+        error={errors.cep ? errors.cep.message : ""}
       />
       <Input
         labelClassName="text-white"
@@ -82,16 +82,16 @@ function StepTwo() {
         className="col-span-6 lg:col-span-4"
         placeholder="Logradouro"
         label="Logradouro*"
-        id="street"
+        id="address"
         type="text"
-        {...register("street", {
+        {...register("address", {
           required: {
             value: true,
             message: "Campo Logradouro é obrigatório"
           },
           maxLength: 255
         })}
-        error={errors.street ? errors.street.message : ""}
+        error={errors.address ? errors.address.message : ""}
       />
       <Input
         labelClassName="text-white"

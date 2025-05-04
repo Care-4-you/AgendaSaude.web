@@ -16,7 +16,9 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import { Loader2 } from "lucide-react";
 
+import { UseRegisterClinic } from "../../../Api/clinic/useRegisterClinic";
 import StepFour from "../../../components/clinicRegistrationForm/stepFour";
 import StepOne from "../../../components/clinicRegistrationForm/stepOne";
 import StepThree from "../../../components/clinicRegistrationForm/stepThree";
@@ -29,6 +31,7 @@ export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
   const [progress, setProgress] = useState(25);
   const router = useRouter();
+  const { mutate, status, isPending } = UseRegisterClinic();
 
   const methods = useForm<ClinicaFormData>({
     defaultValues: { isWhatsapp: false, acceptTerm: false, hasNumber: false }
@@ -64,9 +67,8 @@ export default function registerClinical() {
 
   const onSubmit: SubmitHandler<ClinicaFormData> = (data, event) => {
     event?.preventDefault();
-    console.log(data);
     if (!isLastStep) return next();
-    setOpenModal(true);
+    mutate(data);
   };
 
   function sendEmail() {
@@ -74,6 +76,11 @@ export default function registerClinical() {
     router.push("/");
   }
 
+  useEffect(() => {
+    if (status === "success") {
+      setOpenModal(true);
+    }
+  }, [status]);
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% md:bg-gradient-to-r">
@@ -129,7 +136,20 @@ export default function registerClinical() {
                       className=" inline-flex h-11 w-full max-w-64 items-center justify-center rounded-lg bg-black hover:bg-black/80"
                       disabled={!acceptTerm && isLastStep}
                     >
-                      <span>{isLastStep ? "Finalizar" : "Continuar"}</span>
+                      <span>
+                        {isLastStep ? (
+                          isPending ? (
+                            <Loader2 className="animate-spin" />
+                          ) : (
+                            "Finalizar"
+                          )
+                        ) : (
+                          "Continuar"
+                        )}
+                      </span>
+                      {/* {isLastStep && isPending && (
+                        <Loader2 className="animate-spin" />
+                      )} */}
                       {isLastStep ? null : (
                         <MdKeyboardArrowRight
                           color="white"
