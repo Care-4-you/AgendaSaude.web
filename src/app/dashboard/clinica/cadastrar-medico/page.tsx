@@ -49,6 +49,7 @@ export default function Page() {
   };
 
   const DoctorFinded = {
+    name: "joao silva",
     UF: "RJ",
     councilsNumber: "123456"
   };
@@ -160,13 +161,13 @@ export default function Page() {
         onOpenChange={() => setOpenModal((prev) => !prev)}
       >
         {crmTrue ? (
-          <DialogContent className=" flex  flex-col items-center  justify-around gap-4 bg-agenda-saude-blue-100  ">
+          <DialogContent className=" flex  w-full max-w-[750px] flex-col  items-center justify-around gap-4 bg-agenda-saude-blue-100  ">
             <DialogHeader className=" gap-5">
               <DialogTitle className="text-center font-museo  text-2xl font-semibold  text-[#181819]">
-                {}
-                Esse médico já possui cadastro em nossa plataforma.
+                O médico {DoctorFinded.name} já possui cadastro em nossa
+                plataforma.
               </DialogTitle>
-              <DialogDescription className="text-center font-museo  text-2xl font-semibold  leading-6 text-[#181819]">
+              <DialogDescription className="text-center font-museo  text-2xl font-semibold  text-[#181819]">
                 Você deseja convidá-lo para fazer parte do quadro da clínica?
               </DialogDescription>
             </DialogHeader>
@@ -190,7 +191,7 @@ export default function Page() {
             </DialogFooter>
           </DialogContent>
         ) : (
-          <DialogContent className=" flex  flex-col items-center  justify-around gap-4 bg-agenda-saude-blue-100  ">
+          <DialogContent className=" flex  w-full max-w-[750px] flex-col items-center  justify-around gap-4 bg-agenda-saude-blue-100  ">
             <DialogHeader className=" gap-5">
               <DialogTitle className="text-center font-museo  text-2xl font-semibold  text-[#181819]">
                 Esse médico não possui cadastro em nossa plataforma
