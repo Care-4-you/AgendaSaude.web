@@ -23,7 +23,6 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { SearchDoctorProps } from "../../../../shared/interfaces/IClinica";
-import "sweetalert2/src/sweetalert2.scss";
 
 const animatedComponents = makeAnimated();
 
