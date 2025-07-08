@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${museo.variable} ${inter.className} antialiased`}
+        className={`${poppins.className} ${museo.className} ${inter.className} antialiased`}
       >
         <AuthProvider initialToken={token} initialUser={user}>
           <TanstackProvider>

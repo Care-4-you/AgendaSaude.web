@@ -60,3 +60,11 @@ export type ResetPassowrdTokenEmail = {
   password: string;
   confirmPassword: string;
 };
+
+export type SearchDoctorProps = {
+  state: {
+    value: string;
+    label: string;
+  };
+  councilsNumber: string;
+};
