@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @layer base {
   :root {
@@ -88,22 +86,25 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
   visibility: hidden;
 }
 
-@layer utilities{
+@layer utilities {
   .background-image-full {
     background-image: url('../../public/articleImage/1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
+
 }
 
 
@@ -112,6 +113,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

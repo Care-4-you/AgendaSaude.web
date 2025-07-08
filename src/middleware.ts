@@ -14,6 +14,7 @@ const validRoutes = [
   "/signin",
   "/register-paciente",
   "/register-clinic",
+  "/register-doctor",
   "/password",
   "/mapa",
   "/dashboard"

@@ -13,8 +13,8 @@ const config: Config = {
         xs: "450px"
       },
       fontFamily: {
-        poppins: "var(--font-poppins), sans-serif",
-        museo: "var(--font-museo), sans-serif"
+        poppins: "var(--font-poppins)",
+        museo: "var(--font-museo)"
       },
       colors: {
         "agenda-saude": {
