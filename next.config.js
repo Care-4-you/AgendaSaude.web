@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // a função abaixo habilita o CORS
+  images: {
+    domains: ["cdn-icons-png.flaticon.com"]
+  },
   async headers() {
     return [
       {
