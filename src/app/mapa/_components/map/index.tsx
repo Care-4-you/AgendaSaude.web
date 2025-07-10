@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import {
   LayersControl,
@@ -8,45 +7,19 @@ import {
   Popup,
   TileLayer
 } from "react-leaflet";
-
 import "leaflet/dist/leaflet.css";
 import "./Popup.css";
-
 import { Icon } from "leaflet";
 import CardClinica from "../../../../components/card-clinic";
+import { ClinicaAPI } from "../../types";
 
-interface ClinicaAPI {
-  id: number;
-  name: string;
-  phone: string;
-  cellPhone: string;
-  whatsapp: string;
-  hasNumber: boolean;
-  houseNumber: string;
-  acceptTerm: boolean;
-  email: string;
-  cnpj: string;
-  address: string;
-  cep: string;
-  city: string;
-  state: string;
-  neighborhood: string;
-  complement: string;
-  latitude: number;
-  longitude: number;
-  createdAt: string;
-  specialty: { id: number; value: string; label: string }[];
-  healthInsurance: { id: number; value: string; label: string }[];
-  imagem_url?: string[];
-  avaliacao?: number;
+interface MapProps {
+  clínicas: ClinicaAPI[];
 }
 
-export default function Map() {
-  const [clinicas, setClinicas] = useState<ClinicaAPI[]>([]);
-  const [geoData, setGeoData] = useState({
-    lat: -14.4,
-    lng: -57
-  });
+export default function Map({ clínicas }: MapProps) {
+  const [clinicasState, setClinicas] = useState<ClinicaAPI[]>(clínicas);
+  const [geoData, setGeoData] = useState({ lat: -14.4, lng: -57 });
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const customIcon = new Icon({
@@ -56,28 +29,30 @@ export default function Map() {
     iconAnchor: [24, 48]
   });
 
-  useEffect(() => {
-    async function fetchClinicas() {
-      try {
-        const res = await fetch(`${url}/clinics`);
-        const json = await res.json();
-        const data = json.data || [];
-
-        setClinicas(data);
-
-        if (data.length > 0) {
-          setGeoData({
-            lat: data[0].latitude,
-            lng: data[0].longitude
-          });
-        }
-      } catch (error) {
-        console.error("Erro ao buscar clínicas:", error);
+  async function fetchClinicas() {
+    try {
+      const res = await fetch(`${url}/clinics`);
+      const json = await res.json();
+      const data = json.data || [];
+      setClinicas(data);
+      if (data.length > 0) {
+        setGeoData({ lat: data[0].latitude, lng: data[0].longitude });
       }
+    } catch (error) {
+      console.error("Erro ao buscar clínicas:", error);
     }
+  }
 
-    fetchClinicas();
-  }, []);
+  useEffect(() => {
+    if (clínicas.length > 0) {
+      setClinicas(clínicas);
+      if (clínicas[0]?.latitude && clínicas[0]?.longitude) {
+        setGeoData({ lat: clínicas[0].latitude, lng: clínicas[0].longitude });
+      }
+    } else {
+      fetchClinicas();
+    }
+  }, [clínicas]);
 
   return (
     <MapContainer
@@ -89,7 +64,7 @@ export default function Map() {
         <LayersControl.BaseLayer name="Light">
           <TileLayer
             url="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
-            attribution='&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='© OpenStreetMap France | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             maxZoom={20}
             opacity={1}
           />
@@ -97,7 +72,7 @@ export default function Map() {
         <LayersControl.BaseLayer name="Dark">
           <TileLayer
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+            attribution='© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
             maxZoom={20}
             opacity={1}
           />
@@ -105,23 +80,23 @@ export default function Map() {
         <LayersControl.BaseLayer checked name="Satélite">
           <TileLayer
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-            attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+            attribution="Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
             maxZoom={21}
             minZoom={1}
             opacity={1}
           />
         </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Google(não encontrei o attribution correto)">
+        <LayersControl.BaseLayer name="Google">
           <TileLayer
             url="http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}"
-            attribution="google"
+            attribution='© <a href="https://www.google.com/help/terms_maps.html">Google</a>'
             maxZoom={21}
             minZoom={1}
             opacity={1}
           />
         </LayersControl.BaseLayer>
 
-        {clinicas.map((clinica) => {
+        {clinicasState.map((clinica) => {
           const lat = clinica.latitude;
           const lng = clinica.longitude;
 
@@ -130,7 +105,20 @@ export default function Map() {
           return (
             <Marker key={clinica.id} position={[lat, lng]} icon={customIcon}>
               <Popup className="mapa_popup">
-                <CardClinica clinica={clinica} />
+                <CardClinica
+                  clinica={{
+                    id: clinica.id,
+                    name: clinica.name,
+                    address: clinica.address,
+                    houseNumber: clinica.houseNumber,
+                    neighborhood: clinica.neighborhood,
+                    phone: clinica.phone,
+                    imagem_url: clinica.imagem_url,
+                    specialty: clinica.specialty,
+                    healthInsurance: clinica.healthInsurance,
+                    avaliacao: clinica.avaliacao
+                  }}
+                />
               </Popup>
             </Marker>
           );
