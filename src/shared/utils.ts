@@ -30,5 +30,7 @@ export const UFs = [
 
 export const councilsTypes = [
   { value: "CRM", label: "CRM" },
-  { value: "CRO", label: "CRO" }
+  { value: "CRO", label: "CRO" },
+  { value: "CRN", label: "CRN" },
+  { value: "CREFITO", label: "CREFITO" }
 ];

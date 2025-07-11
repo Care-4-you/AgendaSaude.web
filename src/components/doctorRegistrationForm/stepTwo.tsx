@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
@@ -23,13 +23,34 @@ function StepTwo() {
     formState: { errors }
   } = useFormContext<DoctorFormData>();
 
-  const especialidadesMedicas = [
-    { value: "cardiologia", label: "Cardiologia" },
-    { value: "dermatologia", label: "Dermatologia" },
-    { value: "ginecologia", label: "Ginecologia" },
-    { value: "ortopedia", label: "Ortopedia" },
-    { value: "pediatria", label: "Pediatria" }
-  ];
+  const selectedCouncil = useWatch({
+    control,
+    name: "councils.value"
+  });
+
+  const especializacoesPorConselho: Record<
+    string,
+    { value: string; label: string }[]
+  > = {
+    CRM: [
+      { value: "cardiologia", label: "Cardiologia" },
+      { value: "ginecologia", label: "Ginecologia" },
+      { value: "urologia", label: "Urologia" },
+      { value: "ortopedia", label: "Ortopedia" },
+      { value: "oncologia", label: "Oncologia" },
+      { value: "geriatria", label: "Geriatria" },
+      { value: "oftalmologia", label: "Oftalmologia" },
+      { value: "angiologia", label: "Angiologia" },
+      { value: "dermatologia", label: "Dermatologia" },
+      { value: "cirurgia", label: "Cirurgia" },
+      { value: "clinica-geral", label: "Clínica Geral" }
+    ],
+    CRN: [{ value: "nutricao", label: "Nutrição" }],
+    CRO: [{ value: "odontologia", label: "Odontologia" }],
+    CREFITO: [{ value: "fisioterapia", label: "Fisioterapia" }]
+  };
+
+  const especializacoes = especializacoesPorConselho[selectedCouncil] || [];
 
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,8 +62,8 @@ function StepTwo() {
 
   useEffect(() => {
     if (myArray) {
-      setValue("councilsNumber", myArray.number || "");
       setValue("councilsUF", myArray.state || "");
+      setValue("councilsNumber", myArray.councilsNumber || "");
     }
   }, [myArray, setValue]);
 
@@ -61,7 +82,7 @@ function StepTwo() {
               <Select
                 styles={colorStyles}
                 className={`${errors.councils ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
-                id="Especialidadesmedica"
+                id="councils"
                 closeMenuOnSelect={true}
                 components={animatedComponents}
                 placeholder="Selecionar"
@@ -145,7 +166,7 @@ function StepTwo() {
                 closeMenuOnSelect={true}
                 components={animatedComponents}
                 placeholder="Selecionar"
-                options={especialidadesMedicas}
+                options={especializacoes}
                 menuPlacement="auto"
                 isSearchable={true}
                 menuPortalTarget={document.body}
