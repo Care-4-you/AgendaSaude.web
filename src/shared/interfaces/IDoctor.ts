@@ -23,4 +23,6 @@ export type DoctorFormData = {
   password: string;
   passwordConfirmation: string;
   acceptTerm: boolean;
+  isWhatsapp: boolean;
+  whatsapp: string;
 };

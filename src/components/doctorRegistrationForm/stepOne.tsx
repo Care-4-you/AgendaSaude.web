@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useEffect } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -21,8 +22,18 @@ function StepOne() {
   const {
     register,
     control,
+    watch,
+    setValue,
     formState: { errors }
   } = useFormContext<DoctorFormData>();
+
+  const isWhatsapp: boolean = watch("isWhatsapp");
+  const cellPhoneNumber: string = watch("cellPhone");
+
+  useEffect(() => {
+    if (isWhatsapp)
+      return setValue("whatsapp", cellPhoneNumber, { shouldValidate: true });
+  }, [cellPhoneNumber, isWhatsapp, setValue]);
 
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,8 +44,8 @@ function StepOne() {
   };
 
   return (
-    <fieldset className="grid grid-cols-6 items-center  gap-x-4  ">
-      <div className="col-span-6 mb-2 flex flex-col gap-6">
+    <fieldset className="grid grid-cols-8 items-center  gap-x-4  ">
+      <div className="col-span-8 mb-2 flex flex-col gap-6">
         <Label htmlFor="" className="text-white">
           Carregar imagem/logotipo
         </Label>
@@ -66,7 +77,7 @@ function StepOne() {
         labelClassName="text-white"
         id="name"
         type="text"
-        className="col-span-6 lg:col-span-3"
+        className="col-span-8 lg:col-span-4"
         placeholder="Nome "
         label="Nome*"
         {...register("name", {
@@ -78,7 +89,7 @@ function StepOne() {
         })}
         error={errors.name ? errors.name.message : ""}
       />
-      <div className="col-span-6 flex flex-col gap-3 lg:col-span-3  ">
+      <div className="col-span-8 flex flex-col gap-3 lg:col-span-4  ">
         <Label htmlFor="convenio" className="text-white">
           Gênero*
         </Label>
@@ -122,13 +133,13 @@ function StepOne() {
         id="phone"
         mask="phone"
         type="tel"
-        className=" col-span-6 lg:col-span-3"
+        className=" col-span-8 lg:col-span-3"
         placeholder="(00) 0000-0000"
         label="Telefone*"
         {...register("phone", {
           required: {
             value: true,
-            message: "Campo Telefone é obrigatório"
+            message: "Campo é obrigatório"
           },
           pattern: {
             value:
@@ -143,9 +154,9 @@ function StepOne() {
         id="cellPhone"
         mask="cellphone"
         type="tel"
-        className="col-span-6 lg:col-span-3"
+        className="col-span-4 lg:col-span-3"
         placeholder="(00) 00000-0000"
-        label="Celular(whatsapp)*"
+        label="Celular*"
         {...register("cellPhone", {
           required: {
             value: true,
@@ -158,6 +169,40 @@ function StepOne() {
           }
         })}
         error={errors.cellPhone ? errors.cellPhone.message : ""}
+      />
+      <div className=" col-span-4 flex w-full  items-center  justify-start gap-1 lg:col-span-2">
+        <input
+          type="checkbox"
+          id="isWhatsapp"
+          {...register("isWhatsapp", {
+            required: false
+          })}
+        />
+        <Label htmlFor="isWhatsapp" className=" text-xs text-white">
+          É whatsapp ?
+        </Label>
+      </div>
+      <Input
+        labelClassName="text-white"
+        disabled={isWhatsapp}
+        id="whatsapp"
+        mask="cellphone"
+        type="tel"
+        className="col-span-8 lg:col-span-4"
+        placeholder="(00) 00000-0000"
+        label="Whatapp*"
+        {...register("whatsapp", {
+          required: {
+            value: isWhatsapp ? false : true,
+            message: "Campo é obrigatório"
+          },
+          pattern: {
+            value:
+              /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:9\d{4})[-.\s]?(\d{4}))$/,
+            message: "Formato inválido"
+          }
+        })}
+        error={errors.whatsapp ? errors.whatsapp.message : ""}
       />
     </fieldset>
   );
