@@ -31,7 +31,7 @@ export default function Map({ clínicas }: MapProps) {
 
   async function fetchClinicas() {
     try {
-      const res = await fetch(`${url}/clinics`);
+      const res = await fetch(`${url}/clinics/active`);
       const json = await res.json();
       const data = json.data || [];
       setClinicas(data);
