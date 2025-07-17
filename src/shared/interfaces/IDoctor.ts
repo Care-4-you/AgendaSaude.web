@@ -1,6 +1,7 @@
 export type DoctorFormData = {
   name: string;
   phone: string;
+  whatsapp: string;
   cellPhone: string;
   councils: {
     value: string;
@@ -24,5 +25,4 @@ export type DoctorFormData = {
   passwordConfirmation: string;
   acceptTerm: boolean;
   isWhatsapp: boolean;
-  whatsapp: string;
 };
