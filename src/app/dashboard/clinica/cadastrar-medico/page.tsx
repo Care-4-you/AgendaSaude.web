@@ -19,6 +19,7 @@ import { setCookie } from "nookies";
 
 import { UFs } from "../../../../shared/utils";
 
+import { UseSeachDoctor } from "../../../../Api/clinic/useSerachDoctor";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
@@ -27,10 +28,6 @@ import { SearchDoctorProps } from "../../../../shared/interfaces/IClinica";
 const animatedComponents = makeAnimated();
 
 export default function Page() {
-  const route = useRouter();
-  const [crmTrue, setCrmTrue] = useState(false);
-
-  const [openModal, setOpenModal] = useState(false);
   const {
     register,
     handleSubmit,
@@ -38,6 +35,13 @@ export default function Page() {
     watch,
     formState: { errors }
   } = useForm<SearchDoctorProps>();
+  const route = useRouter();
+  const { DoctorData } = UseSeachDoctor({
+    councilsNumber: watch("councilsNumber"),
+    councilsUF: watch("state.value")
+  });
+
+  const [openModal, setOpenModal] = useState(false);
 
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,27 +52,17 @@ export default function Page() {
     })
   };
 
-  const DoctorFinded = {
-    name: "joao silva",
-    UF: "RJ",
-    councilsNumber: "123456"
-  };
   const onSubmit: SubmitHandler<SearchDoctorProps> = async (data) => {
     setCookie({}, "@Saude:CreateDoctorAccountData", JSON.stringify(data), {
       path: "/"
     });
 
-    if (
-      DoctorFinded.UF === watch("state.value") &&
-      DoctorFinded.councilsNumber === watch("councilsNumber")
-    ) {
-      setCrmTrue(true);
+    if (DoctorData && DoctorData.exists === true) {
       setTimeout(() => {
         setOpenModal(true);
       }, 1000);
       return;
     }
-    setCrmTrue(false);
     setTimeout(() => {
       setOpenModal(true);
     }, 1000);
@@ -77,6 +71,7 @@ export default function Page() {
   const createDoctorAccount = () => {
     route.push("/register-doctor");
   };
+
   return (
     <>
       <div className="flex  w-full flex-1 flex-col  items-center  lg:items-start ">
@@ -160,11 +155,11 @@ export default function Page() {
         modal
         onOpenChange={() => setOpenModal((prev) => !prev)}
       >
-        {crmTrue ? (
+        {DoctorData?.exists ? (
           <DialogContent className=" flex  w-full max-w-[750px] flex-col  items-center justify-around gap-4 bg-agenda-saude-blue-100  ">
             <DialogHeader className=" gap-5">
               <DialogTitle className="text-center font-museo  text-2xl font-semibold  text-[#181819]">
-                O médico {DoctorFinded.name} já possui cadastro em nossa
+                O médico {DoctorData.name} já possui cadastro em nossa
                 plataforma.
               </DialogTitle>
               <DialogDescription className="text-center font-museo  text-2xl font-semibold  text-[#181819]">

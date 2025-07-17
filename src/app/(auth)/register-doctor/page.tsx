@@ -18,7 +18,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Loader2 } from "lucide-react";
 
-import { UseRegisterClinic } from "../../../Api/clinic/useRegisterClinic";
+import { UseRegisterDoctor } from "../../../Api/clinic/useRegisterDoctor";
 import StepFour from "../../../components/doctorRegistrationForm/stepFour";
 import StepOne from "../../../components/doctorRegistrationForm/stepOne";
 import StepTwo from "../../../components/doctorRegistrationForm/stepTwo";
@@ -30,7 +30,7 @@ export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
   const [progress, setProgress] = useState(25);
   const router = useRouter();
-  const { status, isPending } = UseRegisterClinic();
+  const { mutateAsync, status, isPending } = UseRegisterDoctor();
 
   const methods = useForm<DoctorFormData>({
     defaultValues: { acceptTerm: false }
@@ -60,12 +60,10 @@ export default function registerClinical() {
     getProgress();
   }, [currentStep]);
 
-  const onSubmit: SubmitHandler<DoctorFormData> = (data, event) => {
+  const onSubmit: SubmitHandler<DoctorFormData> = async (data, event) => {
     event?.preventDefault();
-    console.log(data);
     if (!isLastStep) return next();
-    setOpenModal(true);
-    console.log(data);
+    mutateAsync(data);
   };
 
   function sendEmail() {
