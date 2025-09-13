@@ -12,7 +12,7 @@ import "./Popup.css";
 import { Icon } from "leaflet";
 import CardClinica from "../../../../components/card-clinic";
 import { ClinicaAPI } from "../../types";
-import iconPin from "../../../../assets/pinmap.svg"
+import iconPin from "../../../../assets/pinmap.svg";
 
 interface MapProps {
   clínicas: ClinicaAPI[];
