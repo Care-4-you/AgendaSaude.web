@@ -24,13 +24,6 @@ function StepThree() {
     { value: "sulAmerica", label: "SulAmérica" },
     { value: "portoSeguro", label: "Porto Seguro" }
   ];
-  const especialidadesMedicas = [
-    { value: "cardiologia", label: "Cardiologia" },
-    { value: "dermatologia", label: "Dermatologia" },
-    { value: "ginecologia", label: "Ginecologia" },
-    { value: "ortopedia", label: "Ortopedia" },
-    { value: "pediatria", label: "Pediatria" }
-  ];
 
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,47 +34,6 @@ function StepThree() {
   };
   return (
     <fieldset className=" grid grid-cols-1 gap-4 ">
-      <div className="col-span-1 flex flex-col gap-3">
-        <Label className="text-white" htmlFor="Especialidadesmedica">
-          Especialidades médicas*
-        </Label>
-        <Controller
-          control={control}
-          name="specialty"
-          rules={{ required: true }}
-          render={(renderProps) => {
-            return (
-              <Select
-                styles={colorStyles}
-                className={`${errors.specialty ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
-                id="Especialidadesmedica"
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                isMulti
-                placeholder="Selecionar"
-                options={especialidadesMedicas}
-                menuPlacement="auto"
-                isSearchable={false}
-                menuPortalTarget={document.body}
-                menuPosition="fixed"
-                {...register("specialty", {
-                  required: {
-                    value: true,
-                    message: "Campo Especialidades médicas é obrigatório"
-                  }
-                })}
-                {...renderProps.field}
-                onChange={(e) => {
-                  renderProps.field.onChange(e);
-                }}
-              />
-            );
-          }}
-        />
-        <p className="min-h-4 text-sm  font-semibold text-red-500">
-          {errors.specialty ? errors.specialty.message : ""}
-        </p>
-      </div>
       <div className="col-span-1 flex flex-col gap-3">
         <Label htmlFor="convenio" className="text-white">
           Convênio*

@@ -12,6 +12,7 @@ import "./Popup.css";
 import { Icon } from "leaflet";
 import CardClinica from "../../../../components/card-clinic";
 import { ClinicaAPI } from "../../types";
+import iconPin from "../../../../assets/pinmap.svg";
 
 interface MapProps {
   clínicas: ClinicaAPI[];
@@ -23,8 +24,7 @@ export default function Map({ clínicas }: MapProps) {
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const customIcon = new Icon({
-    iconUrl:
-      "https://png.pngtree.com/png-clipart/20221229/original/pngtree-hospital-location-pin-icon-in-red-color-png-image_8824531.png",
+    iconUrl: iconPin,
     iconSize: [48, 48],
     iconAnchor: [24, 48]
   });
