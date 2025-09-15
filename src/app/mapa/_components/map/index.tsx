@@ -12,7 +12,7 @@ import "./Popup.css";
 import { Icon } from "leaflet";
 import CardClinica from "../../../../components/card-clinic";
 import { ClinicaAPI } from "../../types";
-import iconPin from "../../../../assets/pinmap.svg";
+import iconPin from "../../../../assets/pinmap.png";
 
 interface MapProps {
   clínicas: ClinicaAPI[];
@@ -24,7 +24,7 @@ export default function Map({ clínicas }: MapProps) {
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const customIcon = new Icon({
-    iconUrl: iconPin,
+    iconUrl: iconPin.src,
     iconSize: [48, 48],
     iconAnchor: [24, 48]
   });
