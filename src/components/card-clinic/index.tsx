@@ -1,23 +1,63 @@
+"use client";
 import Image from "next/image";
-import Button from "../Button";
+import { useEffect, useState } from "react";
+
 import { Phone, Pin } from "lucide-react";
+
+import Button from "../Button";
+
+interface Specialty {
+  value: string;
+  label: string;
+}
+
+interface HealthInsurance {
+  id: number;
+  label: string;
+}
 
 interface CardClinicaProps {
   clinica: {
     id: number;
     name: string;
     address: string;
-    houseNumber: string;
-    neighborhood: string;
-    phone: string;
+    houseNumber?: string;
+    neighborhood?: string;
+    phone?: string;
     imagem_url?: string[];
-    specialty: { id: number; label: string }[];
-    healthInsurance: { id: number; label: string }[];
+    healthInsurance?: HealthInsurance[];
     avaliacao?: number;
   };
 }
 
 export default function CardClinica({ clinica }: CardClinicaProps) {
+  const [especialidades, setEspecialidades] = useState<Specialty[]>([]);
+  const [loading, setLoading] = useState(false);
+  const url = process.env.NEXT_PUBLIC_SERVER_URL;
+
+  useEffect(() => {
+    async function fetchEspecialidades() {
+      try {
+        setLoading(true);
+        const res = await fetch(`${url}/clinics/${clinica.id}/specialties`);
+        const json = await res.json();
+        setEspecialidades(json.data?.specialties || []);
+      } catch (err) {
+        console.error("Erro ao buscar especialidades:", err);
+        setEspecialidades([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEspecialidades();
+  }, [clinica.id, url]);
+
+  const healthInsurance = clinica.healthInsurance ?? [];
+  const houseNumber = clinica.houseNumber ?? "–";
+  const neighborhood = clinica.neighborhood ?? "–";
+  const phone = clinica.phone ?? "–";
+
   return (
     <div className="m-0 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white p-0 shadow">
       <Image
@@ -36,30 +76,40 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
 
         <p className="mt-1 flex items-start text-gray-600">
           <Pin className="mr-1 h-4 w-4" />
-          {clinica.address}, nº {clinica.houseNumber}, {clinica.neighborhood}
+          {clinica.address}, nº {houseNumber}, {neighborhood}
         </p>
 
         <p className="mt-1 flex items-center text-gray-600">
           <Phone className="mr-1 h-4 w-4" />
-          {clinica.phone}
+          {phone}
         </p>
 
         <div className="mt-2">
-          <h4 className="font-semibold">Especialidades:</h4>
-          <ul className="ml-4 list-disc">
-            {clinica.specialty.map((esp) => (
-              <li key={esp.id}>{esp.label}</li>
-            ))}
-          </ul>
+          <h4 className="font-semibold">Planos aceitos:</h4>
+          {healthInsurance.length > 0 ? (
+            <ul className="ml-4 list-disc">
+              {healthInsurance.map((plano) => (
+                <li key={plano.id}>{plano.label}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Não informado</p>
+          )}
         </div>
 
         <div className="mt-2">
-          <h4 className="font-semibold">Planos aceitos:</h4>
-          <ul className="ml-4 list-disc">
-            {clinica.healthInsurance.map((plano) => (
-              <li key={plano.id}>{plano.label}</li>
-            ))}
-          </ul>
+          <h4 className="font-semibold">Especialidades:</h4>
+          {loading ? (
+            <p>Carregando...</p>
+          ) : especialidades.length > 0 ? (
+            <ul className="ml-4 list-disc">
+              {especialidades.map((esp) => (
+                <li key={esp.value}>{esp.label}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Não informado</p>
+          )}
         </div>
 
         <Button
