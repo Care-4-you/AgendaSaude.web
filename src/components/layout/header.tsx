@@ -39,26 +39,34 @@ export default function Header() {
             className="xs:w-[170px]"
           />
         </Link>
-        {!isAuthenticated && (
-          <div>
-            <Button
-              size="sm"
-              variant="link"
-              className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
-              onClick={handleOpenModal}
-            >
-              Entrar
-            </Button>
-            <Button
-              size="sm"
-              variant="link"
-              className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
-              onClick={handleOpenModalRegister}
-            >
-              Cadastrar
-            </Button>
-          </div>
-        )}
+        <div className="flex items-center gap-4">
+          <Link
+            href="/sobre-nos"
+            className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
+          >
+            Sobre nós
+          </Link>
+          {!isAuthenticated && (
+            <div className="flex items-center">
+              <Button
+                size="sm"
+                variant="link"
+                className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
+                onClick={handleOpenModal}
+              >
+                Entrar
+              </Button>
+              <Button
+                size="sm"
+                variant="link"
+                className="font-poppins text-base font-normal text-zinc-100 hover:text-white hover:no-underline md:text-lg"
+                onClick={handleOpenModalRegister}
+              >
+                Cadastrar
+              </Button>
+            </div>
+          )}
+        </div>
         {isAuthenticated && (
           <div className="flex items-center justify-center gap-x-4">
             <Link href="#">

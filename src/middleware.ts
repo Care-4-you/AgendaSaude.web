@@ -17,7 +17,8 @@ const validRoutes = [
   "/register-doctor",
   "/password",
   "/mapa",
-  "/dashboard"
+  "/dashboard",
+  "/sobre-nos"
 ];
 
 export function middleware(req: NextRequest) {

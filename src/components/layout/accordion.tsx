@@ -17,12 +17,12 @@ function AccordionCustom() {
     {
       question: "O Agenda Saúde oferece a opção de teleconsulta?",
       replay:
-        "Sim, você pode realizar consultas online com nossos profissionais pelo aplicativo. "
+        "Atualmente, o Agenda Saúde não oferece a opção de teleconsulta. No entanto, estamos avaliando a possibilidade de incluir essa modalidade no futuro. "
     },
     {
       question: "Como entro em contato com o suporte do Agenda Saúde?",
       replay:
-        "O ideal é que isso não aconteça, por hora não terá penalidades, mas futuramente isso pode acontecer. Então, foque nos estudos e seja um aluno acima da média e veja seus méritos ganharem prêmios."
+        "Você pode entrar em contato com o suporte do Agenda Saúde em dias úteis, das 9h às 19h, pelo e-mail care4you.lab.soujunior@gmail.com. Estamos à disposição para ajudar!"
     },
     {
       question: "Posso cancelar ou remarcar uma consulta?",
@@ -32,7 +32,7 @@ function AccordionCustom() {
     {
       question: "Posso fazer o pagamento da consulta pelo aplicativo?",
       replay:
-        "Sim, aceitamos pagamentos via cartão de crédito e PIX diretamente no aplicativo."
+        "O Agenda Saúde ajuda você a encontrar profissionais, visualizar os valores das consultas com transparência e agendar atendimentos médicos especializados. No entanto, o pagamento deve ser realizado diretamente com a clínica ou consultório no momento do atendimento."
     }
   ];
   return (
