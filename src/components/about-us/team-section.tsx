@@ -9,44 +9,44 @@ import AboutUsCard from "./about-us-card";
 const teamMembers = [
   {
     name: "Igor Calmon",
-    role: "Developer",
-    bio: "Transformando ideias em código eficiente e soluções escaláveis para o Agenda Saúde.",
+    role: "Aglista e PO",
+    bio: "Profissional com base Agile e foco em ROI, processos eficientes e entrega de valor.",
     photoUrl: igorPhoto.src,
     linkedinUrl: "https://www.linkedin.com/in/igor-calmon",
-    githubUrl: "https://github.com/igorcalmon",
+    githubUrl: "https://github.com/igorcalmon"
   },
   {
     name: "Emanuelle Maria",
     role: "QA Engineer",
-    bio: "Garantindo a qualidade e excelência em cada funcionalidade entregue pelo time.",
+    bio: "Profissional estratégica com foco em processos e na entrega de valor ao negócio.",
     photoUrl: manuPhoto.src,
     linkedinUrl: "https://www.linkedin.com/in/emanuelle-mariz-qa/",
-    githubUrl: "https://github.com/emanuellemariz",
+    githubUrl: "https://github.com/emanuellemariz"
   },
   {
     name: "Gabriel Mello",
-    role: "Developer",
-    bio: "Apaixonado por tecnologia e em constante evolução para impactar vidas positivamente.",
+    role: "Frontend Developer",
+    bio: "Profissional técnico, com visão de negócio e focado em novas tecnologias.",
     photoUrl: gabrielPhoto.src,
     linkedinUrl: "https://www.linkedin.com/in/gabrielmellomoraes/",
-    githubUrl: "https://github.com/GabrielMello1407",
+    githubUrl: "https://github.com/GabrielMello1407"
   },
   {
     name: "Cleiton Barros",
-    role: "Developer",
-    bio: "Construindo pontes entre tecnologia e inovação no projeto Agenda Saúde.",
+    role: "Frontend Developer",
+    bio: "Profissional focado em converter problemas em soluções técnicas eficazes.",
     photoUrl: cleitonPhoto.src,
     linkedinUrl: "https://www.linkedin.com/in/cleitonbarrosmoura/",
-    githubUrl: "https://github.com/cleitonBarros",
+    githubUrl: "https://github.com/cleitonBarros"
   },
   {
     name: "Gabrielle Rosa",
     role: "Developer",
-    bio: "Dedicada a criar soluções que fazem a diferença no dia a dia da comunidade.",
+    bio: "Profissional focada em criar jornadas de alto impacto e valor real para o negócio.",
     photoUrl: "https://github.com/Gaburiiere.png",
     linkedinUrl: "https://www.linkedin.com/in/gabriellenprosa/",
-    githubUrl: "https://github.com/Gaburiiere",
-  },
+    githubUrl: "https://github.com/Gaburiiere"
+  }
 ];
 
 export default function TeamSection() {
@@ -59,8 +59,9 @@ export default function TeamSection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member, index) => {
             // Subtle rotation between -2 and 2 degrees
-            const rotation = (index % 3 === 0 ? -1.5 : index % 2 === 0 ? 1.5 : -0.5);
-            
+            const rotation =
+              index % 3 === 0 ? -1.5 : index % 2 === 0 ? 1.5 : -0.5;
+
             return (
               <AboutUsCard
                 key={member.name}
