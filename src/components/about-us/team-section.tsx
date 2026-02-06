@@ -2,6 +2,7 @@ import cleitonPhoto from "@/assets/team/cleiton.jpeg";
 import gabrielPhoto from "@/assets/team/gabriel.png";
 import igorPhoto from "@/assets/team/igor.jpeg";
 import manuPhoto from "@/assets/team/manu.png";
+import gabiPhoto from "@/assets/team/gabi.jpeg";
 import Container from "@/components/layout/container";
 
 import AboutUsCard from "./about-us-card";
@@ -16,7 +17,7 @@ const teamMembers = [
     githubUrl: "https://github.com/igorcalmon"
   },
   {
-    name: "Emanuelle Maria",
+    name: "Emanuelle Mariz",
     role: "QA Engineer",
     bio: "Profissional estratégica com foco em processos e na entrega de valor ao negócio.",
     photoUrl: manuPhoto.src,
@@ -41,9 +42,9 @@ const teamMembers = [
   },
   {
     name: "Gabrielle Rosa",
-    role: "Developer",
+    role: "UI/UX Designer",
     bio: "Profissional focada em criar jornadas de alto impacto e valor real para o negócio.",
-    photoUrl: "https://github.com/Gaburiiere.png",
+    photoUrl: gabiPhoto.src,
     linkedinUrl: "https://www.linkedin.com/in/gabriellenprosa/",
     githubUrl: "https://github.com/Gaburiiere"
   }
