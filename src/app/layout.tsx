@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import 'animate.css';
+
 import { Poppins, MuseoModerno, Inter } from "next/font/google";
 
 import Footer from "@/components/layout/footer";
@@ -37,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${museo.className} ${inter.className} antialiased`}
+        className={`${poppins.className} ${museo.variable} ${inter.className} antialiased scroll-custom`}
       >
         <AuthProvider initialToken={token} initialUser={user}>
           <TanstackProvider>

@@ -5,7 +5,7 @@ import SectionTwo from "@/components/Section/SectionTwo";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-agenda-saude-blue-100">
+    <main className="min-h-screen bg-agenda-saude-blue-100 pt-20">
       <Carrousel />
       <SectionOne />
       <SectionTwo />

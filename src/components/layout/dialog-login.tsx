@@ -17,21 +17,19 @@ import {
 export default function useDialogLogin() {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setOpenModal(!openModal);
-  };
+ const handleOpenModal = () => {
+  setOpenModal(true);  
+};
 
-  const handleCloseModal = () => {
-    setOpenModal(!openModal);
-  };
-
+const handleCloseModal = () => {
+  setOpenModal(false);  
+};
   const DialogComponent = () => {
     return (
       <Dialog
         open={openModal}
-        defaultOpen={openModal}
         modal
-        onOpenChange={() => setOpenModal((prev) => !prev)}
+        onOpenChange={setOpenModal} 
       >
         <DialogContent className="min-h-[530px] max-w-2xl !rounded-3xl bg-[#EBFFFD] lg:max-w-5xl">
           <div className="flex w-full flex-col gap-7 py-11">

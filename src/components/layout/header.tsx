@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
-import { FaBell } from "react-icons/fa";
+import { RiImageEditFill } from "react-icons/ri";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 import logo from "@/assets/logo_agenda_saude.png";
@@ -19,16 +19,24 @@ import { Button } from "../ui/button";
 import useDialogLogin from "./dialog-login";
 import useDialogRegister from "./dialog-register";
 
+import { Bell, Mails } from "lucide-react";
+import useDialogChangePhoto from "./dialog-change-photo";
+import Notification from "../notification";
+import { notification } from "../../shared/utils";
+
 export default function Header() {
   const { user, signOut } = useAuth();
   const { DialogComponent, handleOpenModal } = useDialogLogin();
+  const { DialogComponentChangePhoto, handleOpenModalChangePhoto } =
+    useDialogChangePhoto();
   const { DialogComponentRegister, handleOpenModalRegister } =
     useDialogRegister();
+  const { NotificationModal, handleOpenModalNotification } = Notification();
 
   const isAuthenticated = user && user.name && user.email;
 
   return (
-    <header className="bg-agenda-saude-purple-100 py-4">
+    <header className="fixed w-full z-50 bg-agenda-saude-purple-100 py-4">
       <LayoutContainer as="nav" className="flex items-center justify-between">
         <Link href="/">
           <Image
@@ -46,7 +54,7 @@ export default function Header() {
           >
             Sobre nós
           </Link>
-          {!isAuthenticated && (
+          {!isAuthenticated ? (
             <div className="flex items-center">
               <Button
                 size="sm"
@@ -65,61 +73,89 @@ export default function Header() {
                 Cadastrar
               </Button>
             </div>
+          ) : (
+            <div className="relative flex items-center justify-center gap-x-4  ">
+              <Button
+                onClick={handleOpenModalNotification}
+                size="icon"
+                className="relative bg-transparent hover:bg-transparent"
+              >
+                <Bell />
+                <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                  {notification.length}
+                </span>
+              </Button>
+              <Popover>
+                <PopoverTrigger>
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      alt="@shadcn"
+                      className="object-centere object-cover"
+                    />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </PopoverTrigger>
+                <PopoverContent className="mt-3 flex  max-w-56 flex-col space-y-3.5 border-none  bg-agenda-saude-green-100 ">
+                  <div className="relative flex w-full items-center justify-center">
+                    <Avatar className="h-28 w-28">
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                        className="object-centere object-cover"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="outline"
+                      className=" absolute left-28 top-20 size-9 rounded-full"
+                      onClick={handleOpenModalChangePhoto}
+                    >
+                      <RiImageEditFill size={22} className="text-slate-950" />
+                    </Button>
+                  </div>
+                  <p className="text-white">Olá, {user.name}!</p>
+
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center justify-start gap-2 text-white hover:font-medium"
+                  >
+                    <MdOutlineSpaceDashboard size={22} />
+                    <span>Dashboard</span>
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-start gap-2 text-white hover:font-medium"
+                  >
+                    <CgProfile size={22} />
+                    <span>Minha Conta</span>
+                  </Link>
+                  <Link
+                    href="#"
+                    className="flex items-center justify-start gap-2 text-white hover:font-medium"
+                  >
+                    <Mails size={22} />
+                    <span>Alterar email e senha</span>
+                  </Link>
+                  <Button
+                    type="button"
+                    onClick={signOut}
+                    className=" bg-agenda-saude-purple-100 font-poppins text-lg font-semibold text-agenda-saude-blue-100 hover:bg-agenda-saude-purple-100/90"
+                  >
+                    Sair
+                  </Button>
+                </PopoverContent>
+              </Popover>
+            </div>
           )}
         </div>
-        {isAuthenticated && (
-          <div className="flex items-center justify-center gap-x-4">
-            <Link href="#">
-              <FaBell size="24" className="text-white" />
-            </Link>
-            <Popover>
-              <PopoverTrigger>
-                <Avatar>
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
-                  />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-              </PopoverTrigger>
-              <PopoverContent className="mt-3 flex w-auto min-w-44 flex-col space-y-3.5   border-none">
-                <p>Olá, {user.name}!</p>
-
-                <Link
-                  href="/dashboard"
-                  className="flex items-center justify-start gap-2"
-                >
-                  <MdOutlineSpaceDashboard />
-                  <span>Dashboard</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center justify-start gap-2"
-                >
-                  <CgProfile />
-                  <span>Minha Conta</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center justify-start gap-2"
-                >
-                  <FaBell />
-                  <span>Notificações</span>
-                </Link>
-                <Button
-                  type="button"
-                  onClick={signOut}
-                  className=" w-full border-none bg-black py-2 text-white hover:bg-black/80 hover:text-white"
-                >
-                  Sair
-                </Button>
-              </PopoverContent>
-            </Popover>
-          </div>
-        )}
       </LayoutContainer>
       <DialogComponent />
       <DialogComponentRegister />
+      <DialogComponentChangePhoto />
+      <NotificationModal />
     </header>
   );
 }

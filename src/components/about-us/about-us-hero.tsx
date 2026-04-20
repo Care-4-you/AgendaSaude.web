@@ -4,7 +4,7 @@ import Container from "@/components/layout/container";
 
 export default function AboutUsHero() {
   return (
-    <section className="bg-white py-12 md:py-20">
+    <section className="bg-white  py-24 md:py-20">
       <Container className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-6">
           <h1 className="font-poppins text-4xl font-bold text-agenda-saude-purple-100 md:text-5xl">

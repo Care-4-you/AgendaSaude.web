@@ -17,20 +17,19 @@ export default function useDialogRegister() {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModalRegister = () => {
-    setOpenModal(!openModal);
+    setOpenModal(true);
   };
 
   const handleCloseModal = () => {
-    setOpenModal(!openModal);
+    setOpenModal(false);
   };
 
   const DialogComponentRegister = () => {
     return (
       <Dialog
         open={openModal}
-        defaultOpen={openModal}
         modal
-        onOpenChange={() => setOpenModal((prev) => !prev)}
+        onOpenChange={setOpenModal}
       >
         <DialogContent className="min-h-[530px] max-w-2xl !rounded-3xl bg-[#EBFFFD] lg:max-w-5xl">
           <div className="flex w-full flex-col gap-7 py-11">

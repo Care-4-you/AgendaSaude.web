@@ -34,3 +34,51 @@ export const councilsTypes = [
   { value: "CRN", label: "CRN" },
   { value: "CREFITO", label: "CREFITO" }
 ];
+
+
+export const notification = [
+    {
+      "id": 1713350000000,
+      "mensagem": "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
+      "title": "Agenda cheia no período",
+
+    },
+    {
+      "id": 1713350001000,
+      "mensagem": "O Dr. Ricardo alterou seus horários de atendimento.....",
+      "title": "Alteração na agenda",
+    },
+    {
+      "id": 1713350003000,
+      "mensagem": "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
+      "title": "Agenda cheia no período",
+
+    },
+    {
+      "id": 1713350006000,
+      "mensagem": "O Dr. Ricardo alterou seus horários de atendimento.....",
+      "title": "Alteração na agenda",
+    },
+    {
+      "id": 1713350009000,
+      "mensagem": "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
+      "title": "Agenda cheia no período",
+
+    },
+    {
+      "id": 1713350012000,
+      "mensagem": "O Dr. Ricardo alterou seus horários de atendimento.....",
+      "title": "Alteração na agenda",
+    },
+    {
+      "id": 1713350015000,
+      "mensagem": "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
+      "title": "Agenda cheia no período",
+
+    },
+    {
+      "id": 1713350018000,
+      "mensagem": "O Dr. Ricardo alterou seus horários de atendimento.....",
+      "title": "Alteração na agenda",
+    }
+]
