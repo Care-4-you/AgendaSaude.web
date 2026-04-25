@@ -15,15 +15,17 @@ export default function Dashboard({
 }>) {
   const pathname = usePathname();
   const isCalendario = pathname?.includes("/calendario");
+  const isTabelaPrecos = pathname?.includes("/tabela-precos");
+  const hideBgImage = isCalendario || isTabelaPrecos;
 
   return (
     <LayoutContainer
       as="section"
-      className={`flex h-full min-h-[calc(100vh-68px)] gap-4 overflow-x-hidden ${!isCalendario ? "py-16" : ""}`}
+      className={`flex h-full min-h-[calc(100vh-68px)] gap-4 overflow-x-hidden ${!hideBgImage ? "py-16" : ""}`}
     >
       {children}
 
-      {!isCalendario && (
+      {!hideBgImage && (
         <div className="relative hidden w-full flex-1 items-center justify-end lg:inline-flex xl:justify-center">
           <div className="absolute -right-32 h-full min-h-[550px] w-[415px] xl:left-1/2 xl:-translate-x-1/2">
             <Image
