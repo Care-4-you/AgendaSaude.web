@@ -39,7 +39,7 @@ export default function TabelaPrecosPage() {
 
       <div className="w-full max-w-6xl mx-auto px-6 flex flex-col pb-12">
         {/* Main Content Area - Dark Blue Card */}
-        <div className="w-full bg-[#0B2149] rounded-xl p-8 md:p-14 min-h-[600px] shadow-lg relative">
+        <div className="w-full bg-[#0B2149] rounded-xl p-4 sm:p-8 md:p-14 min-h-[600px] shadow-lg relative">
            <PricingTable 
              initialItems={INITIAL_MOCK_DATA} 
              specialtiesOptions={CLINIC_SPECIALTIES} 

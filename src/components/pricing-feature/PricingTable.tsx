@@ -89,26 +89,26 @@ export function PricingTable({ initialItems, specialtiesOptions }: PricingTableP
         </button>
 
         {/* Table Body (Scrollable with sticky header) */}
-        <div className="max-h-[500px] overflow-y-auto overflow-x-hidden">
-          <table className="w-full text-left border-collapse table-fixed relative">
+        <div className="max-h-[500px] overflow-y-auto overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[600px] relative">
             <thead className="bg-[#7CB99E] text-white font-semibold text-sm sticky top-0 z-10 shadow-sm">
               <tr>
-                <th className="p-3 w-1/4 font-semibold">
-                  <div className="flex items-center justify-between">
-                    Procedimento <ChevronUp size={16} className="text-white/80" />
+                <th className="p-3 w-[30%] font-semibold">
+                  <div className="flex items-center justify-between gap-2">
+                    Procedimento <ChevronUp size={16} className="text-white/80 shrink-0" />
                   </div>
                 </th>
-                <th className="p-3 w-1/4 border-l border-[#6DA38B] font-semibold">
-                  <div className="flex items-center justify-between">
-                    Especialidade <ChevronUp size={16} className="text-white/80" />
+                <th className="p-3 w-[25%] border-l border-[#6DA38B] font-semibold">
+                  <div className="flex items-center justify-between gap-2">
+                    Especialidade <ChevronUp size={16} className="text-white/80 shrink-0" />
                   </div>
                 </th>
-                <th className="p-3 w-1/4 border-l border-[#6DA38B] font-semibold">
-                  <div className="flex items-center justify-between">
-                    Cobertura <ChevronUp size={16} className="text-white/80" />
+                <th className="p-3 w-[25%] border-l border-[#6DA38B] font-semibold">
+                  <div className="flex items-center justify-between gap-2">
+                    Cobertura <ChevronUp size={16} className="text-white/80 shrink-0" />
                   </div>
                 </th>
-                <th className="p-3 w-1/4 border-l border-[#6DA38B] font-semibold">
+                <th className="p-3 w-[20%] border-l border-[#6DA38B] font-semibold">
                   Valor
                 </th>
               </tr>
