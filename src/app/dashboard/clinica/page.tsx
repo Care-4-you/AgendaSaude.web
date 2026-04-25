@@ -26,7 +26,7 @@ export default function Page() {
           </Link>
 
           <Link
-            href="#"
+            href={`${path}/calendario`}
             className={cn(
               buttonVariants({ variant: "default" }),
               "h-32 w-full max-w-[325px] whitespace-normal break-words rounded-2xl bg-agenda-saude-purple-300 px-4 text-center font-museo text-2xl"
