@@ -6,19 +6,7 @@ import { LuEye, LuEyeOff } from "react-icons/lu";
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Input } from "../ui/input";
 
-function StepFour() {
-  const [isShowPassword, setIsShowPassword] = useState(false);
-  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
-
-  const {
-    register,
-    watch,
-    formState: { errors }
-  } = useFormContext<ClinicaFormData>();
-
-  const password = watch("password");
-
-  const isValidCNPJ = (cnpj: string) => {
+ export const isValidCNPJ = (cnpj: string) => {
     cnpj = cnpj.replace(/[^\d]+/g, "");
 
     if (cnpj.length !== 14) return false;
@@ -52,7 +40,21 @@ function StepFour() {
 
     resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
     return resultado === parseInt(digitos.charAt(1));
-  };
+};
+
+function StepFour() {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+
+  const {
+    register,
+    watch,
+    formState: { errors }
+  } = useFormContext<ClinicaFormData>();
+
+  const password = watch("password");
+
+ 
 
   return (
     <fieldset className="grid grid-cols-2 items-center  gap-x-4 ">

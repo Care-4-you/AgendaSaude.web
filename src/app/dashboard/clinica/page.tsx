@@ -36,7 +36,7 @@ export default function Page() {
           </Link>
 
           <Link
-            href="#"
+            href={`${path}/contato-pacientes`}
             className={cn(
               buttonVariants({ variant: "default" }),
               "h-32 w-full max-w-[325px] whitespace-normal break-words rounded-2xl bg-agenda-saude-purple-300 px-4 text-center font-museo text-2xl"
@@ -57,7 +57,7 @@ export default function Page() {
 
           <div className="flex  items-center justify-center sm:col-span-2">
             <Link
-              href="#"
+              href={`${path}/medicos-vinculados`}
               className={cn(
                 buttonVariants({ variant: "default" }),
                 "h-32 w-full max-w-[325px] whitespace-normal break-words rounded-2xl bg-agenda-saude-purple-300 px-4 text-center font-museo text-2xl"

@@ -23,8 +23,18 @@ import { Bell, Mails } from "lucide-react";
 import useDialogChangePhoto from "./dialog-change-photo";
 import Notification from "../notification";
 import { notification } from "../../shared/utils";
+import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from "@/components/ui/dialog";
 
 export default function Header() {
+  const [openModal, setOpenModal] = useState(false);
+  const [profilePopoverOpen, setProfilePopoverOpen] = useState(false);
   const { user, signOut } = useAuth();
   const { DialogComponent, handleOpenModal } = useDialogLogin();
   const { DialogComponentChangePhoto, handleOpenModalChangePhoto } =
@@ -33,10 +43,29 @@ export default function Header() {
     useDialogRegister();
   const { NotificationModal, handleOpenModalNotification } = Notification();
 
+  // Fechar popover no scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (profilePopoverOpen) {
+        setProfilePopoverOpen(false);
+      }
+    };
+
+    if (profilePopoverOpen) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      document.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [profilePopoverOpen]);
+
   const isAuthenticated = user && user.name && user.email;
 
   return (
-    <header className="fixed w-full z-50 bg-agenda-saude-purple-100 py-4">
+    <header className="fixed z-[9999] w-full bg-agenda-saude-purple-100 py-4">
       <LayoutContainer as="nav" className="flex items-center justify-between">
         <Link href="/">
           <Image
@@ -85,7 +114,7 @@ export default function Header() {
                   {notification.length}
                 </span>
               </Button>
-              <Popover>
+              <Popover open={profilePopoverOpen} onOpenChange={setProfilePopoverOpen}>
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">
                     <AvatarImage
@@ -126,14 +155,14 @@ export default function Header() {
                     <span>Dashboard</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/my-account"
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <CgProfile size={22} />
                     <span>Minha Conta</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/my-account/email-and-password"
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <Mails size={22} />
@@ -141,7 +170,7 @@ export default function Header() {
                   </Link>
                   <Button
                     type="button"
-                    onClick={signOut}
+                    onClick={() => setOpenModal(true)}
                     className=" bg-agenda-saude-purple-100 font-poppins text-lg font-semibold text-agenda-saude-blue-100 hover:bg-agenda-saude-purple-100/90"
                   >
                     Sair
@@ -156,6 +185,43 @@ export default function Header() {
       <DialogComponentRegister />
       <DialogComponentChangePhoto />
       <NotificationModal />
+      <Dialog
+        open={openModal}
+        defaultOpen={openModal}
+        modal
+        onOpenChange={setOpenModal}
+      >
+        <DialogContent className=" max-w-96 items-center rounded-md bg-agenda-saude-blue-100 sm:max-w-2xl">
+          <DialogHeader className="gap-5">
+            <DialogTitle className=" self-center text-center text-2xl  font-semibold text-black">
+              Tem certeza que deseja sair?
+            </DialogTitle>
+          </DialogHeader>
+          <DialogFooter className=" flex !flex-row items-center !justify-evenly !gap-2">
+            <Button
+              type="button"
+              variant="default"
+              size="default"
+              className=" w-32 bg-agenda-saude-purple-100 font-poppins text-lg font-semibold text-agenda-saude-blue-100 hover:bg-agenda-saude-purple-100"
+              onClick={() => {
+                signOut();
+                setOpenModal(false);
+              }}
+            >
+              Sim
+            </Button>
+            <Button
+              type="button"
+              variant="default"
+              size="default"
+              className=" w-32 bg-agenda-saude-purple-100 font-poppins text-lg font-semibold text-agenda-saude-blue-100 hover:bg-agenda-saude-purple-100"
+              onClick={() => setOpenModal(false)}
+            >
+              Nao
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }

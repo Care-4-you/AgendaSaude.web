@@ -4,6 +4,7 @@ import makeAnimated from "react-select/animated";
 
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Label } from "../ui/label";
+import { convenios } from "../../shared/utils";
 
 const animatedComponents = makeAnimated();
 
@@ -14,17 +15,7 @@ function StepThree() {
     formState: { errors }
   } = useFormContext<ClinicaFormData>();
 
-  const convenios = [
-    { value: "semConvenios", label: "Sem convênios" },
-    { value: "bradesco", label: "Bradesco" },
-    { value: "unimed", label: "Unimed" },
-    { value: "amil", label: "Amil" },
-    { value: "assim", label: "Assim" },
-    { value: "notreDame", label: "NotreDame" },
-    { value: "sulAmerica", label: "SulAmérica" },
-    { value: "portoSeguro", label: "Porto Seguro" }
-  ];
-
+  
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     control: (styles: any) => ({

@@ -18,7 +18,11 @@ const validRoutes = [
   "/password",
   "/mapa",
   "/dashboard",
-  "/sobre-nos"
+  "/sobre-nos",
+  "/my-account",
+  "/my-account/email-and-password",
+  "/artigo",
+  "/nossos-servicos"
 ];
 
 export function middleware(req: NextRequest) {
