@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import 'animate.css';
+import "animate.css";
 
 import { Poppins, MuseoModerno, Inter } from "next/font/google";
 
@@ -10,6 +10,7 @@ import Header from "@/components/layout/header";
 import { TanstackProvider } from "../config/tanstack-provider";
 import { AuthProvider } from "../hooks/auth";
 import { getServerAuth } from "../hooks/getServerAuth";
+import { TooltipProvider } from "../components/ui/tooltip";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -39,15 +40,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${museo.variable} ${inter.className} antialiased scroll-custom`}
+        className={`${poppins.className} ${museo.variable} ${inter.className} scroll-custom antialiased`}
       >
-        <AuthProvider initialToken={token} initialUser={user}>
-          <TanstackProvider>
-            <Header />
-            {children}
-            <Footer />
-          </TanstackProvider>
-        </AuthProvider>
+        <TooltipProvider>
+          <AuthProvider initialToken={token} initialUser={user}>
+            <TanstackProvider>
+              <Header />
+              {children}
+              <Footer />
+            </TanstackProvider>
+          </AuthProvider>
+        </TooltipProvider>
       </body>
     </html>
   );

@@ -76,13 +76,13 @@ export default function Header() {
             className="xs:w-[170px]"
           />
         </Link>
-        <div className="flex items-center gap-4">
           <Link
             href="/sobre-nos"
             className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
           >
             Sobre nós
           </Link>
+        <div className="flex items-center justify-between  gap-4">
           {!isAuthenticated ? (
             <div className="flex items-center">
               <Button
@@ -106,9 +106,10 @@ export default function Header() {
             <div className="relative flex items-center justify-center gap-x-4  ">
               <Button
                 onClick={handleOpenModalNotification}
-                size="icon"
-                className="relative bg-transparent hover:bg-transparent"
+                size="sm"
+                className="relative bg-transparent hover:bg-transparent flex gap-2"
               >
+                <p>Notificações</p>
                 <Bell />
                 <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   {notification.length}
@@ -152,7 +153,7 @@ export default function Header() {
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <MdOutlineSpaceDashboard size={22} />
-                    <span>Dashboard</span>
+                    <span>Painel</span>
                   </Link>
                   <Link
                     href="/dashboard/my-account"

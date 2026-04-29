@@ -51,7 +51,7 @@ export default function Page() {
             >
               <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
                 <Input
-                  className="col-span-2"
+                  className="col-span-2 input-with-icon"
                   labelClassName="text-white"
                   placeholder="Email"
                   label="Email*"

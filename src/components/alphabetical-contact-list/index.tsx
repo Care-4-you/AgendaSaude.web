@@ -3,7 +3,11 @@
 import { useMemo, useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { RiImageEditFill } from "react-icons/ri";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip";
 import {
   Popover,
   PopoverContent,
@@ -11,6 +15,7 @@ import {
 } from "@/components/ui/popover";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
+import { Bookmark } from "lucide-react";
 
 interface Contact {
   id?: number;
@@ -115,13 +120,13 @@ export function AlphabeticalContactList({
                     <li
                       key={contact.id ?? contactKey}
                       className={cn(
-                        "cursor-pointer text-sm text-slate-300 transition-colors hover:text-white",
+                        "cursor-pointer text-sm text-slate-300 transition-colors hover:text-white flex  items-center",
                         onContactClick &&
                           "-mx-2 rounded px-2 py-1 hover:bg-slate-700/50"
                       )}
-                      onClick={() => onContactClick?.(contact)}
+                      
                     >
-                      <PopoverTrigger className="flex  w-full justify-start gap-2  py-1">
+                      <PopoverTrigger className="flex  w-full items-center justify-start gap-2  py-1">
                         <Avatar className="size-10">
                           <AvatarImage
                             src={contact.photo}
@@ -141,6 +146,19 @@ export function AlphabeticalContactList({
                           )}
                         </div>
                       </PopoverTrigger>
+                      {!contact.crm && (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Bookmark
+                              size={21}
+                              className=" -rotate-90 fill-current text-agenda-saude-green-100"
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Adicionado pela clinica</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
                     </li>
                     <PopoverContent className="flex  max-w-md flex-col  gap-4 border-none bg-agenda-saude-green-100 p-4">
                       <div className="flex w-full items-center gap-3 border-b-2 border-slate-300 pb-4">

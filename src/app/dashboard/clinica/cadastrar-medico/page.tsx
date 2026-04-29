@@ -24,6 +24,8 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { SearchDoctorProps } from "../../../../shared/interfaces/IClinica";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 const animatedComponents = makeAnimated();
 
@@ -75,9 +77,17 @@ export default function Page() {
   return (
     <>
       <div className="flex  w-full flex-1 flex-col  items-center  lg:items-start ">
-        <h2 className="mb-6 font-museo text-3xl font-bold">Cadastrar Medico</h2>
+        <Link
+            href="/dashboard/clinica"
+            className="mb-6 flex  items-center gap-2 font-bold text-start text-black transition-all hover:underline"
+          >
+            <ChevronLeft size={32} strokeWidth={4} />
+            <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+              Cadastrar médico
+            </h2>
+          </Link>
         <form
-          className="flex h-[600px] w-full max-w-[500px] flex-col  gap-20 rounded-3xl bg-agenda-saude-purple-300 p-12"
+          className="flex h-[600px] w-full  flex-col  gap-20 rounded-3xl bg-agenda-saude-purple-300 p-12"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Label className="text-center text-white">
