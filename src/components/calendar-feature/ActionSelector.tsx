@@ -11,7 +11,12 @@ interface ActionSelectorProps {
 export function ActionSelector({ selectedAction, onChange }: ActionSelectorProps) {
   return (
     <div className="flex flex-col md:flex-row items-start gap-4 mt-6">
-      <span className="font-extrabold text-xl md:text-2xl text-gray-300 whitespace-nowrap min-w-[200px] mt-2">Você deseja?</span>
+      <span className={cn(
+        "font-extrabold text-xl md:text-2xl whitespace-nowrap min-w-[200px] mt-2 transition-colors",
+        selectedAction ? "text-gray-900" : "text-gray-300"
+      )}>
+        Você deseja?
+      </span>
       <div className="flex flex-col gap-6 bg-transparent border border-[#BCE1DD] p-6 rounded-md w-full max-w-2xl">
         <label className="flex items-center gap-4 cursor-pointer group">
           <div className="relative flex items-center justify-center w-6 h-6 flex-shrink-0">

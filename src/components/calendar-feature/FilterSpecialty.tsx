@@ -23,7 +23,12 @@ export function FilterSpecialty({ options, selectedOption, onChange, onAddOption
 
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 w-full md:w-auto">
-      <span className="font-extrabold text-xl md:text-2xl text-gray-900 whitespace-nowrap min-w-[200px]">Qual especialidade?</span>
+      <span className={cn(
+        "font-extrabold text-xl md:text-2xl whitespace-nowrap min-w-[200px] transition-colors",
+        selectedOption ? "text-gray-900" : "text-gray-300"
+      )}>
+        Qual especialidade?
+      </span>
       
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 border border-gray-400 bg-transparent rounded-md p-2 w-fit">

@@ -22,9 +22,7 @@ export function AppointmentCard({ appointment, onConfirm, onCancel }: Appointmen
 
       <div className="flex justify-between items-start">
         <div className="flex flex-col gap-1">
-          <span className="text-gray-400 font-semibold text-sm">Consulta</span>
-          <h3 className="font-black text-xl text-gray-900">Clinica Fast</h3>
-          <p className="text-gray-500 font-medium text-sm">{especialidade}</p>
+          <span className="text-gray-400 font-semibold text-sm">Consulta {especialidade}</span>
           <p className="font-extrabold text-gray-800 text-sm mt-1">{medico}</p>
         </div>
 
@@ -40,13 +38,13 @@ export function AppointmentCard({ appointment, onConfirm, onCancel }: Appointmen
         </div>
       </div>
 
-      {/* Patient Section (Only if not livre) */}
-      {!isLivre && (
-        <div className="flex flex-col mt-2">
-          <span className="text-gray-500 font-medium text-sm">Paciente</span>
-          <span className="font-bold text-gray-800 text-sm">{appointment.pacienteNome || "N/A"}</span>
-        </div>
-      )}
+      {/* Patient Section */}
+      <div className="flex flex-col mt-2">
+        <span className="text-gray-500 font-medium text-sm">Paciente</span>
+        <span className="font-bold text-gray-800 text-sm">
+          {!isLivre ? (appointment.pacienteNome || "N/A") : "N/A"}
+        </span>
+      </div>
 
       {/* Buttons */}
       <div className="flex flex-row justify-center items-center mt-4 gap-4">

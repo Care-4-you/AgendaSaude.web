@@ -66,7 +66,7 @@ export default function Header() {
 
   return (
     <header className="fixed z-[9999] w-full bg-agenda-saude-purple-100 py-4">
-      <LayoutContainer as="nav" className="flex items-center justify-between">
+      <LayoutContainer as="nav" className="flex items-center justify-between relative">
         <Link href="/">
           <Image
             alt="logo"
@@ -76,13 +76,28 @@ export default function Header() {
             className="xs:w-[170px]"
           />
         </Link>
-        <div className="flex items-center gap-4">
+        {/* Sobre nós centralizado */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block z-10">
           <Link
             href="/sobre-nos"
             className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
           >
             Sobre nós
           </Link>
+        </div>
+
+        <div className="flex items-center gap-4 z-10">
+          <button
+            onClick={handleOpenModalNotification}
+            className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg relative mr-2"
+          >
+            Notificações
+            {notification.length > 0 && (
+              <span className="absolute -right-3 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
+                {notification.length}
+              </span>
+            )}
+          </button>
           {!isAuthenticated ? (
             <div className="flex items-center">
               <Button
@@ -103,17 +118,7 @@ export default function Header() {
               </Button>
             </div>
           ) : (
-            <div className="relative flex items-center justify-center gap-x-4  ">
-              <Button
-                onClick={handleOpenModalNotification}
-                size="icon"
-                className="relative bg-transparent hover:bg-transparent"
-              >
-                <Bell />
-                <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                  {notification.length}
-                </span>
-              </Button>
+            <div className="relative flex items-center justify-center gap-x-4">
               <Popover open={profilePopoverOpen} onOpenChange={setProfilePopoverOpen}>
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">

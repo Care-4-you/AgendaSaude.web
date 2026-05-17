@@ -265,7 +265,11 @@ export default function CalendarioPage() {
                 <div className="flex flex-col w-full items-center">
                   
                   <div className="flex flex-col items-center justify-center mb-8">
-                     <h3 className="text-lg font-medium text-gray-800 mb-4">Escolha entre consultas:</h3>
+                     <h3 className={`text-lg font-medium mb-4 transition-colors ${
+                        appointmentStatusFilters.length > 0 ? "text-gray-800" : "text-gray-300"
+                     }`}>
+                        Escolha entre consultas:
+                     </h3>
                      <div className="flex flex-wrap justify-center gap-3">
                         {["Marcadas", "Livres"].map(status => (
                            <button
@@ -314,7 +318,11 @@ export default function CalendarioPage() {
              {actionType === "consult_calendar" && (
                 <div className="flex flex-col w-full h-full">
                    <div className="flex flex-col items-center justify-center mb-8">
-                      <h3 className="text-lg font-bold text-gray-800 mb-4">Encontre opções nessas datas</h3>
+                      <h3 className={`text-lg font-bold mb-4 transition-colors ${
+                         selectedShifts.length > 0 ? "text-gray-800" : "text-gray-300"
+                      }`}>
+                         Encontre opções nessas datas
+                      </h3>
                       <div className="flex flex-wrap justify-center gap-3">
                          {["Manhã", "Tarde", "Noite"].map(turno => (
                             <button
