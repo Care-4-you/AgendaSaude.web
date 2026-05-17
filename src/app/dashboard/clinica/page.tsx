@@ -9,11 +9,11 @@ import { buttonVariants } from "../../../components/ui/button";
 export default function Page() {
   const path = "/dashboard/clinica";
   return (
-    <div className="flex w-full flex-1 flex-col items-center justify-between ">
+    <div className="flex w-full flex-1 flex-col items-start justify-start ">
       <h2 className="mb-6 w-full text-start font-museo text-3xl font-bold">
         Funcionalidades
       </h2>
-      <div className="flex h-full  w-full items-center justify-center">
+      <div className="flex h-full  w-full ">
         <div className="grid h-full grid-cols-1 content-evenly  gap-4 font-museo sm:grid-cols-2 sm:gap-4  capitalize">
           <Link
             href={`${path}/cadastrar-medico`}

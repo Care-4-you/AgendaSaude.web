@@ -40,13 +40,12 @@ export default function useDialogChangePhoto() {
       );
       setFile(null);
       setPreview(null);
-      event.target.value = ""; // Limpa o input
+      event.target.value = ""; 
       return;
     }
 
-    // Validação de tamanho (5MB)
     const fileSize = selectedFile.size;
-    const maxSize = 5 * 1024 * 1024; // 5MB em bytes
+    const maxSize = 5 * 1024 * 1024; 
     if (fileSize > maxSize) {
       alert(
         "O arquivo selecionado é muito grande. Por favor, selecione um arquivo menor que 5MB."
@@ -107,7 +106,7 @@ export default function useDialogChangePhoto() {
             </DialogTitle>
             <DialogDescription className="text-center font-poppins text-base font-medium text-black">
               Uma foto ajuda as pessoas a reconhecerem você e permite que você
-              saiba quando a conta estáconectada.
+              saiba quando a conta está conectada.
             </DialogDescription>
           </DialogHeader>
           <div

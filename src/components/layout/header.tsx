@@ -86,7 +86,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-4 z-10">
+        <div className="flex items-center justify-between gap-4 z-10">
           <button
             onClick={handleOpenModalNotification}
             className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg relative mr-2"
@@ -157,7 +157,7 @@ export default function Header() {
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <MdOutlineSpaceDashboard size={22} />
-                    <span>Dashboard</span>
+                    <span>Painel</span>
                   </Link>
                   <Link
                     href="/dashboard/my-account"

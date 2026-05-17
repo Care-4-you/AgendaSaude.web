@@ -17,13 +17,14 @@ export default function Page() {
     register,
     handleSubmit,
     control,
-    formState: { errors }
+    formState: { errors },
   } = useForm<ClinicaFormData>();
 
   const onSubmit: SubmitHandler<ClinicaFormData> = (data, event) => {
     event?.preventDefault();
     console.log(data);
   };
+
   return (
     <div className="flex w-full flex-1 items-center justify-between ">
       <div className="flex w-full items-center justify-center">
@@ -35,13 +36,13 @@ export default function Page() {
             className="flex w-full flex-col items-center px-10 py-16 "
             onSubmit={handleSubmit((e) => onSubmit(e))}
           >
-            <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
+            <fieldset className="grid w-full grid-cols-2 items-center gap-x-2   ">
               <Input
                 labelClassName="text-white"
                 id="name"
                 type="text"
-                className="col-span-2"
-                placeholder="Nome da clínica"
+                className="col-span-2 input-with-icon "
+                placeholder="Nome da clínica "
                 label="Nome da clínica*"
                 {...register("name", {
                   required: {
@@ -57,7 +58,7 @@ export default function Page() {
                 id="CNPJ"
                 mask="cnpj"
                 type="text"
-                className="col-span-2"
+                className="col-span-2 input-with-icon"
                 placeholder="XX.XXX.XXX/0001-XX"
                 label="CNPJ*"
                 {...register("cnpj", {
@@ -125,7 +126,7 @@ export default function Page() {
                 id="phone"
                 mask="phone"
                 type="tel"
-                className=" "
+                className=" input-with-icon"
                 placeholder="(00) 0000-0000"
                 label="Telefone*"
                 {...register("phone", {
@@ -146,7 +147,7 @@ export default function Page() {
                 id="cellPhone"
                 mask="cellphone"
                 type="tel"
-                className=""
+                className=" input-with-icon"
                 placeholder="(00) 00000-0000"
                 label="Celular*"
                 {...register("cellPhone", {
@@ -164,7 +165,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className=""
+                className=" input-with-icon"
                 mask="cep"
                 placeholder="CEP"
                 label="Cep*"
@@ -184,7 +185,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className=""
+                className=" input-with-icon"
                 placeholder="Estado"
                 label="Estado*"
                 id="state"
@@ -199,7 +200,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className=""
+                className=" input-with-icon"
                 placeholder="Logradouro"
                 label="Logradouro*"
                 id="address"
@@ -216,7 +217,7 @@ export default function Page() {
               <Input
                 labelClassName="text-white"
                 mask="number"
-                className=" "
+                className=" input-with-icon"
                 placeholder="Numero"
                 label="Numero*"
                 id="houseNumber"
@@ -232,7 +233,7 @@ export default function Page() {
 
               <Input
                 labelClassName="text-white"
-                className=""
+                className=" input-with-icon "
                 placeholder="Cidade"
                 label="Cidade*"
                 id="city"
@@ -247,7 +248,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className=""
+                className="input-with-icon"
                 placeholder="Bairro"
                 label="Bairro*"
                 id="neighborhood"
@@ -262,7 +263,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className="col-span-2"
+                className="col-span-2 input-with-icon"
                 placeholder="Complemento"
                 label="Complemento"
                 id="addressComplement"

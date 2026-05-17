@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import { useRouter } from "next/navigation";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import avatarImageDefault from "@/assets/foto-pessoal.svg";
 import {
   AvatarImage,
   Avatar,
   AvatarFallback
 } from "../../../../../components/ui/avatar";
-import { RiImageEditFill } from "react-icons/ri";
-import useDialogChangePhoto from "../../../../../components/layout/dialog-change-photo";
+
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
+import useDialogWebCam from "../../../../../components/webcam";
 
 type props = {
   name: string;
@@ -23,14 +25,25 @@ type props = {
 };
 export default function Page() {
   const router = useRouter();
-  const { DialogComponentChangePhoto, handleOpenModalChangePhoto } =
-      useDialogChangePhoto();
+  const { DialogComponentWebCam, handleOpenModalWebCam, capturedImage } =
+    useDialogWebCam();
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors }
-  } = useForm<props>();
+  } = useForm<props>({
+    defaultValues: {
+      name: "",
+      phone: "",
+      cellPhone: "",
+      email: "",
+      cpf: ""
+    }
+  });
+  const formValues = useWatch({ control: control });
+  console.log(formValues.name);
 
   const onSubmit: SubmitHandler<props> = (data, event) => {
     event?.preventDefault();
@@ -40,10 +53,16 @@ export default function Page() {
   return (
     <>
       <div className="flex w-full flex-1 items-center justify-between ">
-        <div className=" flex w-full flex-col items-center justify-center gap-8">
-          <h2 className="mb-6 w-full text-start  font-museo text-3xl font-bold">
-            Contato dos pacientes
-          </h2>
+        <div className="flex w-full flex-col  gap-8">
+          <Link
+            href="/dashboard/clinica"
+            className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+          >
+            <ChevronLeft size={32} strokeWidth={4} />
+            <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+              Contato dos pacientes
+            </h2>
+          </Link>
           <div className="relative min-h-[700px] w-full  rounded-md bg-agenda-saude-purple-300 ">
             <div className="absolute -top-10 left-1/2 flex h-20 w-80 -translate-x-1/2 transform items-center justify-center rounded-md bg-agenda-saude-green-100">
               <p className="text-2xl font-bold text-white">Contato</p>
@@ -54,15 +73,28 @@ export default function Page() {
                 onSubmit={handleSubmit((e) => onSubmit(e))}
               >
                 <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
-                  <div className="col-span-2 items-center justify-center flex">
+                  <div className="col-span-2 flex flex-col items-center justify-center gap-6">
                     <Avatar className="h-28 w-28">
                       <AvatarImage
-                        src={avatarImageDefault}
+                        src={capturedImage || avatarImageDefault}
                         alt="foto_perfil"
                         className="object-centere object-cover"
                       />
-                      <AvatarFallback>CN</AvatarFallback>
+                      <AvatarFallback>
+                        {formValues.name
+                          ? formValues.name.slice(0, 2).toUpperCase()
+                          : "EX"}
+                      </AvatarFallback>
                     </Avatar>
+                    <Button
+                      onClick={handleOpenModalWebCam}
+                      type="button"
+                      variant="default"
+                      size="sm"
+                      className="hover:bg-agenda-saude-green-200/90 rounded-full bg-agenda-saude-green-100 p-2 text-agenda-saude-blue-100"
+                    >
+                      Tirar foto
+                    </Button>
                   </div>
                   <Input
                     labelClassName="text-white"
@@ -189,7 +221,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <DialogComponentChangePhoto />
+      <DialogComponentWebCam />
     </>
   );
 }
