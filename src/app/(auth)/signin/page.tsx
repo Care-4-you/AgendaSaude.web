@@ -47,7 +47,7 @@ export default function Signin() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-68px)] bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% md:bg-gradient-to-r pt-20">
+      <div className="min-h-[calc(100vh-68px)] bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-20 md:bg-gradient-to-r">
         <div className="mx-auto flex h-full w-full max-w-[87.5rem] flex-col justify-between md:flex-row ">
           <div className=" flex  flex-1 justify-center bg-[#ebfffd] px-8  py-36  pb-16 md:justify-start 2xl:px-0">
             <div>

@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { createPortal } from "react-dom";
+
 import "animate.css";
 import { notification } from "../../shared/utils";
 
@@ -44,7 +44,7 @@ export default function Notification() {
               notification.map((item) => (
                 <li
                   key={item.id}
-                  className=" rounded-md border border-agenda-saude-green-100 bg-agenda-saude-green-50 mb-2"
+                  className=" mb-2 rounded-md border border-agenda-saude-green-100 bg-agenda-saude-green-50"
                 >
                   <div className=" flex w-full flex-col gap-2 p-3">
                     <p className="text-xl font-bold text-black">{item.title}</p>

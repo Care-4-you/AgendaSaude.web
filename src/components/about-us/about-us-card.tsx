@@ -23,18 +23,18 @@ export default function AboutUsCard({
   linkedinUrl,
   githubUrl,
   isImageRight = false,
-  rotation = 0,
+  rotation = 0
 }: AboutUsCardProps) {
   const content = (
-    <div className="flex flex-col items-center justify-center bg-[#FFFACD] p-6 text-center shadow-sm min-h-[250px] w-full aspect-square relative">
+    <div className="relative flex aspect-square min-h-[250px] w-full flex-col items-center justify-center bg-[#FFFACD] p-6 text-center shadow-sm">
       {/* Decorative "tape" effect */}
       <div className="absolute -top-3 left-1/2 h-6 w-16 -translate-x-1/2 bg-white/40 backdrop-blur-sm" />
-      
+
       <span className="mb-2 font-poppins text-xs font-bold uppercase text-agenda-saude-purple-100 md:text-sm">
         {role}: {name}
       </span>
       <p className="mb-4 font-poppins text-[11px] font-medium italic leading-relaxed text-gray-800 md:text-[13px]">
-        "{bio}"
+        &quot;{bio}&quot;
       </p>
       <div className="flex gap-4">
         <Link
@@ -73,12 +73,12 @@ export default function AboutUsCard({
       initial={{ opacity: 0, y: 20, rotate: 0 }}
       whileInView={{ opacity: 1, y: 0, rotate: rotation }}
       viewport={{ once: true }}
-      whileHover={{ 
-        y: -10, 
-        scale: 1.02, 
-        rotate: 0, 
+      whileHover={{
+        y: -10,
+        scale: 1.02,
+        rotate: 0,
         zIndex: 10,
-        transition: { duration: 0.2 } 
+        transition: { duration: 0.2 }
       }}
       className="grid grid-cols-2 overflow-hidden rounded-sm shadow-md transition-shadow hover:shadow-2xl"
     >

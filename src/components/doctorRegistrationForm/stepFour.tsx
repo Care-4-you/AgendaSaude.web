@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
-import { Input } from "../ui/input";
 import { DoctorFormData } from "../../shared/interfaces/IDoctor";
+import { Input } from "../ui/input";
 
 function StepFour() {
   const [isShowPassword, setIsShowPassword] = useState(false);

@@ -1,8 +1,8 @@
 import cleitonPhoto from "@/assets/team/cleiton.jpeg";
+import gabiPhoto from "@/assets/team/gabi.jpeg";
 import gabrielPhoto from "@/assets/team/gabriel.png";
 import igorPhoto from "@/assets/team/igor.jpeg";
 import manuPhoto from "@/assets/team/manu.png";
-import gabiPhoto from "@/assets/team/gabi.jpeg";
 import Container from "@/components/layout/container";
 
 import AboutUsCard from "./about-us-card";

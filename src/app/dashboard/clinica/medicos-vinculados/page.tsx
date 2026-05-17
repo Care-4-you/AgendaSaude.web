@@ -1,12 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
+
+import { ChevronLeft } from "lucide-react";
+
+import { doctors } from "../../../../shared/utils";
+
 import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
 import { Input } from "../../../../components/ui/input";
-import { doctors } from "../../../../shared/utils";
 import { useDebounce } from "../../../../hooks/useDebounce";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
 
 export default function DoctorPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +27,7 @@ export default function DoctorPage() {
         <div className="flex w-full flex-col gap-8">
           <Link
             href="/dashboard/clinica"
-            className="mb-6 flex  items-center gap-2 font-bold text-start text-black transition-all hover:underline"
+            className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
           >
             <ChevronLeft size={32} strokeWidth={4} />
             <h2 className=" w-full text-start  font-museo text-3xl font-bold">

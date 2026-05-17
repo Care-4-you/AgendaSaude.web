@@ -6,45 +6,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 
 import { cn } from "@/lib/utils";
 
-// Componente personalizado que fecha no scroll
-const PopoverRoot = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root>
->(({ children, ...props }, ref) => {
-  const [open, setOpen] = React.useState(false);
-  
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (open) {
-        setOpen(false);
-      }
-    };
-
-    if (open) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      document.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [open]);
-
-  return (
-    <PopoverPrimitive.Root
-      ref={ref}
-      open={open}
-      onOpenChange={setOpen}
-      {...props}
-    >
-      {children}
-    </PopoverPrimitive.Root>
-  );
-});
-PopoverRoot.displayName = "PopoverRoot";
-
-const Popover = PopoverRoot;
+const Popover = PopoverPrimitive.Root;
 
 const PopoverTrigger = PopoverPrimitive.Trigger;
 

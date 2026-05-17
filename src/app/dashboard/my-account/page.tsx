@@ -1,14 +1,16 @@
 "use client";
 import React from "react";
-import Select from "react-select";
-import { Button } from "../../../components/ui/button";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Input } from "../../../components/ui/input";
-import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
-import { isValidCNPJ } from "../../../components/clinicRegistrationForm/stepFour";
-import { Label } from "../../../components/ui/label";
+import Select from "react-select";
 import makeAnimated from "react-select/animated";
+
 import { convenios } from "../../../shared/utils";
+
+import { isValidCNPJ } from "../../../components/clinicRegistrationForm/stepFour";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Label } from "../../../components/ui/label";
+import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
 
 const animatedComponents = makeAnimated();
 
@@ -17,7 +19,7 @@ export default function Page() {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors }
   } = useForm<ClinicaFormData>();
 
   const onSubmit: SubmitHandler<ClinicaFormData> = (data, event) => {
@@ -28,7 +30,7 @@ export default function Page() {
   return (
     <div className="flex w-full flex-1 items-center justify-between ">
       <div className="flex w-full items-center justify-center">
-        <div className=" relative  w-full bg-agenda-saude-purple-300  rounded-md ">
+        <div className=" relative  w-full rounded-md  bg-agenda-saude-purple-300 ">
           <div className="absolute -top-10 left-1/2 flex h-20 w-80 -translate-x-1/2 transform items-center justify-center rounded-md bg-agenda-saude-green-100">
             <p className="text-2xl font-bold text-white">Dados cadastrais</p>
           </div>
@@ -41,7 +43,7 @@ export default function Page() {
                 labelClassName="text-white"
                 id="name"
                 type="text"
-                className="col-span-2 input-with-icon "
+                className="input-with-icon col-span-2 "
                 placeholder="Nome da clínica "
                 label="Nome da clínica*"
                 {...register("name", {
@@ -58,7 +60,7 @@ export default function Page() {
                 id="CNPJ"
                 mask="cnpj"
                 type="text"
-                className="col-span-2 input-with-icon"
+                className="input-with-icon col-span-2"
                 placeholder="XX.XXX.XXX/0001-XX"
                 label="CNPJ*"
                 {...register("cnpj", {
@@ -263,7 +265,7 @@ export default function Page() {
               />
               <Input
                 labelClassName="text-white"
-                className="col-span-2 input-with-icon"
+                className="input-with-icon col-span-2"
                 placeholder="Complemento"
                 label="Complemento"
                 id="addressComplement"

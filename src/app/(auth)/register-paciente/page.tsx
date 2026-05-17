@@ -70,7 +70,7 @@ export default function registerPaciente() {
   }
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% md:bg-gradient-to-r pt-20">
+      <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-20 md:bg-gradient-to-r">
         <LayoutContainer className="flex min-h-screen flex-col px-0 md:flex-row ">
           <div className="flex flex-1 justify-center bg-agenda-saude-blue-100 p-8  md:justify-start 2xl:p-0 ">
             <hgroup className="max-w-[27rem] p-4 md:p-0 md:pt-16">

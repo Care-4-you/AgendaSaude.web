@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -15,6 +16,7 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 
+import { ChevronLeft } from "lucide-react";
 import { setCookie } from "nookies";
 
 import { UFs } from "../../../../shared/utils";
@@ -24,8 +26,6 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { SearchDoctorProps } from "../../../../shared/interfaces/IClinica";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
 
 const animatedComponents = makeAnimated();
 
@@ -78,14 +78,14 @@ export default function Page() {
     <>
       <div className="flex  w-full flex-1 flex-col  items-center  lg:items-start ">
         <Link
-            href="/dashboard/clinica"
-            className="mb-6 flex  items-center gap-2 font-bold text-start text-black transition-all hover:underline"
-          >
-            <ChevronLeft size={32} strokeWidth={4} />
-            <h2 className=" w-full text-start  font-museo text-3xl font-bold">
-              Cadastrar médico
-            </h2>
-          </Link>
+          href="/dashboard/clinica"
+          className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+        >
+          <ChevronLeft size={32} strokeWidth={4} />
+          <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+            Cadastrar médico
+          </h2>
+        </Link>
         <form
           className="flex h-[600px] w-full  flex-col  gap-20 rounded-3xl bg-agenda-saude-purple-300 p-12"
           onSubmit={handleSubmit(onSubmit)}

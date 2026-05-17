@@ -1,10 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { Button } from "../../../../components/ui/button";
-import {  SubmitHandler, useForm } from "react-hook-form";
-import { Input } from "../../../../components/ui/input";
-import { ChangeEmailandPassword } from "../../../../shared/interfaces/IClinica";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+
 import {
   Dialog,
   DialogContent,
@@ -12,7 +11,10 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
+
+import { Button } from "../../../../components/ui/button";
+import { Input } from "../../../../components/ui/input";
+import { ChangeEmailandPassword } from "../../../../shared/interfaces/IClinica";
 
 export default function Page() {
   const [openModal, setOpenModal] = useState(false);
@@ -51,7 +53,7 @@ export default function Page() {
             >
               <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
                 <Input
-                  className="col-span-2 input-with-icon"
+                  className="input-with-icon col-span-2"
                   labelClassName="text-white"
                   placeholder="Email"
                   label="Email*"
@@ -134,7 +136,7 @@ export default function Page() {
         modal
         onOpenChange={() => setOpenModal((prev) => !prev)}
       >
-        <DialogContent className=" items-center rounded-md max-w-60 sm:max-w-2xl bg-agenda-saude-blue-100">
+        <DialogContent className=" max-w-60 items-center rounded-md bg-agenda-saude-blue-100 sm:max-w-2xl">
           <DialogHeader className="gap-5">
             <DialogTitle className=" self-center text-center text-2xl  font-semibold text-black">
               Senha alterada com sucesso!

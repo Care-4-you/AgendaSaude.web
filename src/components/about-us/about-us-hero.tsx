@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import care4youLogo from "@/assets/care4you_footer.png";
 import Container from "@/components/layout/container";
 

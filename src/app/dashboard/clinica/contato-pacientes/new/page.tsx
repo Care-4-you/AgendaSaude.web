@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
-import { Input } from "../../../../../components/ui/input";
-import { Button } from "../../../../../components/ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React from "react";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
+
 import avatarImageDefault from "@/assets/foto-pessoal.svg";
+import { ChevronLeft } from "lucide-react";
+
 import {
   AvatarImage,
   Avatar,
   AvatarFallback
 } from "../../../../../components/ui/avatar";
-
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { Button } from "../../../../../components/ui/button";
+import { Input } from "../../../../../components/ui/input";
 import useDialogWebCam from "../../../../../components/webcam";
 
 type props = {

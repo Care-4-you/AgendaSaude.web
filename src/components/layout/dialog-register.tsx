@@ -26,11 +26,7 @@ export default function useDialogRegister() {
 
   const DialogComponentRegister = () => {
     return (
-      <Dialog
-        open={openModal}
-        modal
-        onOpenChange={setOpenModal}
-      >
+      <Dialog open={openModal} modal onOpenChange={setOpenModal}>
         <DialogContent className="min-h-[530px] max-w-2xl !rounded-3xl bg-[#EBFFFD] lg:max-w-5xl">
           <div className="flex w-full flex-col gap-7 py-11">
             <DialogHeader className="gap-2">

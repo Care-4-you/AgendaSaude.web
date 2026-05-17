@@ -22,7 +22,7 @@ interface ArticlesProps {
 
 export default function ArticlePage({ params }: Params) {
   const { id } = params;
-  console.log
+  console.log;
   const articles = mockArticles.find(
     (article) => article.id === id
   ) as ArticlesProps;

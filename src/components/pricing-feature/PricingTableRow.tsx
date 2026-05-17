@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import { IPricingItem } from "@/shared/interfaces/IPricing";
-import { Edit2, Trash2, PlusCircle, Check } from "lucide-react";
+import { Edit2, Trash2, Check } from "lucide-react";
 
 interface PricingTableRowProps {
   item: IPricingItem;
@@ -11,13 +12,13 @@ interface PricingTableRowProps {
   specialtiesOptions: string[];
 }
 
-export function PricingTableRow({ 
-  item, 
-  isNew = false, 
-  onUpdate, 
-  onDelete, 
+export function PricingTableRow({
+  item,
+  isNew = false,
+  onUpdate,
+  onDelete,
   onAddRow,
-  specialtiesOptions 
+  specialtiesOptions
 }: PricingTableRowProps) {
   const [isEditing, setIsEditing] = useState(isNew);
   const [isHovered, setIsHovered] = useState(false);
@@ -43,57 +44,74 @@ export function PricingTableRow({
   };
 
   const formatCurrency = (val: number | string) => {
-    const num = typeof val === 'string' ? parseFloat(val.replace(/[^\d.-]/g, '')) || 0 : val;
-    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(num);
+    const num =
+      typeof val === "string"
+        ? parseFloat(val.replace(/[^\d.-]/g, "")) || 0
+        : val;
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    }).format(num);
   };
 
-  const inputClass = "w-full bg-transparent border-b border-gray-400 focus:border-black outline-none px-1 py-1 text-sm text-gray-800";
+  const inputClass =
+    "w-full bg-transparent border-b border-gray-400 focus:border-black outline-none px-1 py-1 text-sm text-gray-800";
 
   return (
-    <tr 
-      className="relative border-b border-gray-200 hover:bg-gray-50/50 group h-12 transition-colors"
+    <tr
+      className="group relative h-12 border-b border-gray-200 transition-colors hover:bg-gray-50/50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <td className="p-3 relative">
-
-
+      <td className="relative p-3">
         {isEditing ? (
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={formData.procedimento}
-            onChange={e => setFormData({ ...formData, procedimento: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, procedimento: e.target.value })
+            }
             onKeyDown={handleKeyDown}
             className={inputClass}
             placeholder="Nome do procedimento"
             autoFocus={isNew}
           />
         ) : (
-          <span className="text-sm text-gray-800 font-medium truncate block">{item.procedimento || "-"}</span>
+          <span className="block truncate text-sm font-medium text-gray-800">
+            {item.procedimento || "-"}
+          </span>
         )}
       </td>
-      <td className="p-3 border-l border-gray-200">
+      <td className="border-l border-gray-200 p-3">
         {isEditing ? (
-          <select 
+          <select
             value={formData.especialidade}
-            onChange={e => setFormData({ ...formData, especialidade: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, especialidade: e.target.value })
+            }
             onKeyDown={handleKeyDown}
             className={inputClass}
           >
             <option value="">Selecione...</option>
-            {specialtiesOptions.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
+            {specialtiesOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         ) : (
-          <span className="text-sm text-gray-800 truncate block">{item.especialidade || "-"}</span>
+          <span className="block truncate text-sm text-gray-800">
+            {item.especialidade || "-"}
+          </span>
         )}
       </td>
-      <td className="p-3 border-l border-gray-200">
+      <td className="border-l border-gray-200 p-3">
         {isEditing ? (
-          <select 
+          <select
             value={formData.cobertura}
-            onChange={e => setFormData({ ...formData, cobertura: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, cobertura: e.target.value })
+            }
             onKeyDown={handleKeyDown}
             className={inputClass}
           >
@@ -102,48 +120,56 @@ export function PricingTableRow({
             <option value="Não">Não</option>
           </select>
         ) : (
-          <span className="text-sm text-gray-800 truncate block">{item.cobertura || "-"}</span>
+          <span className="block truncate text-sm text-gray-800">
+            {item.cobertura || "-"}
+          </span>
         )}
       </td>
-      <td className="p-3 border-l border-gray-200 relative">
+      <td className="relative border-l border-gray-200 p-3">
         {isEditing ? (
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-500">R$</span>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={formData.valor}
-              onChange={e => setFormData({ ...formData, valor: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, valor: e.target.value })
+              }
               onKeyDown={handleKeyDown}
               className={inputClass}
               placeholder="0,00"
             />
           </div>
         ) : (
-          <span className="text-sm text-gray-800 font-medium truncate block">{formatCurrency(item.valor)}</span>
+          <span className="block truncate text-sm font-medium text-gray-800">
+            {formatCurrency(item.valor)}
+          </span>
         )}
 
         {/* Action Buttons on Right Hover */}
-        <div className={`absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 items-center transition-opacity duration-200 bg-white/80 p-1 rounded-md ${isHovered || isEditing ? 'opacity-100' : 'opacity-0'}`}>
+        <div
+          className={`absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-2 rounded-md bg-white/80 p-1 transition-opacity duration-200 ${isHovered || isEditing ? "opacity-100" : "opacity-0"}`}
+        >
           {isEditing ? (
-            <button 
+            <button
               onClick={handleSave}
-              className="text-green-600 hover:text-green-800 p-1"
+              className="p-1 text-green-600 hover:text-green-800"
               title="Salvar"
             >
               <Check size={16} />
             </button>
           ) : (
-            <button 
+            <button
               onClick={() => setIsEditing(true)}
-              className="text-gray-500 hover:text-[#4E3FB4] p-1"
+              className="p-1 text-gray-500 hover:text-[#4E3FB4]"
               title="Editar"
             >
               <Edit2 size={16} />
             </button>
           )}
-          <button 
+          <button
             onClick={() => onDelete(item.id)}
-            className="text-gray-400 hover:text-red-500 p-1"
+            className="p-1 text-gray-400 hover:text-red-500"
             title="Excluir"
           >
             <Trash2 size={16} />

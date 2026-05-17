@@ -14,7 +14,7 @@ export default function Page() {
         Funcionalidades
       </h2>
       <div className="flex h-full  w-full ">
-        <div className="grid h-full grid-cols-1 content-evenly  gap-4 font-museo sm:grid-cols-2 sm:gap-4  capitalize">
+        <div className="grid h-full grid-cols-1 content-evenly  gap-4 font-museo capitalize sm:grid-cols-2  sm:gap-4">
           <Link
             href={`${path}/cadastrar-medico`}
             className={cn(

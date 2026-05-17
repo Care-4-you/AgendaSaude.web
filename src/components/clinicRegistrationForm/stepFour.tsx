@@ -6,40 +6,40 @@ import { LuEye, LuEyeOff } from "react-icons/lu";
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Input } from "../ui/input";
 
- export const isValidCNPJ = (cnpj: string) => {
-    cnpj = cnpj.replace(/[^\d]+/g, "");
+export const isValidCNPJ = (cnpj: string) => {
+  cnpj = cnpj.replace(/[^\d]+/g, "");
 
-    if (cnpj.length !== 14) return false;
+  if (cnpj.length !== 14) return false;
 
-    // Elimina CNPJs com todos os dígitos iguais
-    if (/^(\d)\1+$/.test(cnpj)) return false;
+  // Elimina CNPJs com todos os dígitos iguais
+  if (/^(\d)\1+$/.test(cnpj)) return false;
 
-    let tamanho = cnpj.length - 2;
-    let numeros = cnpj.substring(0, tamanho);
-    const digitos = cnpj.substring(tamanho);
-    let soma = 0;
-    let pos = tamanho - 7;
+  let tamanho = cnpj.length - 2;
+  let numeros = cnpj.substring(0, tamanho);
+  const digitos = cnpj.substring(tamanho);
+  let soma = 0;
+  let pos = tamanho - 7;
 
-    for (let i = tamanho; i >= 1; i--) {
-      soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
-      if (pos < 2) pos = 9;
-    }
+  for (let i = tamanho; i >= 1; i--) {
+    soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
+    if (pos < 2) pos = 9;
+  }
 
-    let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-    if (resultado !== parseInt(digitos.charAt(0))) return false;
+  let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado !== parseInt(digitos.charAt(0))) return false;
 
-    tamanho += 1;
-    numeros = cnpj.substring(0, tamanho);
-    soma = 0;
-    pos = tamanho - 7;
+  tamanho += 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
 
-    for (let i = tamanho; i >= 1; i--) {
-      soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
-      if (pos < 2) pos = 9;
-    }
+  for (let i = tamanho; i >= 1; i--) {
+    soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
+    if (pos < 2) pos = 9;
+  }
 
-    resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-    return resultado === parseInt(digitos.charAt(1));
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  return resultado === parseInt(digitos.charAt(1));
 };
 
 function StepFour() {
@@ -53,8 +53,6 @@ function StepFour() {
   } = useFormContext<ClinicaFormData>();
 
   const password = watch("password");
-
- 
 
   return (
     <fieldset className="grid grid-cols-2 items-center  gap-x-4 ">

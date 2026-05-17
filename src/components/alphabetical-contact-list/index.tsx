@@ -1,21 +1,24 @@
 "use client";
 
 import { useMemo, useEffect, useState, useRef } from "react";
-import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from "@/components/ui/tooltip";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover";
-import { Label } from "../ui/label";
-import { Button } from "../ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip";
 import { Bookmark } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 
 interface Contact {
   id?: number;
@@ -120,11 +123,10 @@ export function AlphabeticalContactList({
                     <li
                       key={contact.id ?? contactKey}
                       className={cn(
-                        "cursor-pointer text-sm text-slate-300 transition-colors hover:text-white flex  items-center",
+                        "flex cursor-pointer items-center text-sm text-slate-300 transition-colors  hover:text-white",
                         onContactClick &&
                           "-mx-2 rounded px-2 py-1 hover:bg-slate-700/50"
                       )}
-                      
                     >
                       <PopoverTrigger className="flex  w-full items-center justify-start gap-2  py-1">
                         <Avatar className="size-10">

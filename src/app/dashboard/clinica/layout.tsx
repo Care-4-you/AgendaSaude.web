@@ -2,11 +2,10 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 import clinicPicture2 from "@/assets/clinicwithgreenbg.png";
-import clincaPicture from "@/assets/clinicapicture.svg";
 import { default as LayoutContainer } from "@/components/layout/container";
 
 export default function Dashboard({
@@ -16,22 +15,22 @@ export default function Dashboard({
 }>) {
   const pathname = usePathname();
 
-const routesWithoutBgImage = [
-  "/calendario",
-  "/tabela-precos",
-  "/contato-pacientes",
-  "/medicos-vinculados",
-  "/cadastrar-medico",
-];
+  const routesWithoutBgImage = [
+    "/calendario",
+    "/tabela-precos",
+    "/contato-pacientes",
+    "/medicos-vinculados",
+    "/cadastrar-medico"
+  ];
 
-const shouldHideBgImage = routesWithoutBgImage.some((route) =>
-  pathname?.includes(route)
-);
+  const shouldHideBgImage = routesWithoutBgImage.some((route) =>
+    pathname?.includes(route)
+  );
 
   return (
     <LayoutContainer
       as="section"
-      className="flex h-full min-h-[calc(100vh-68px)] gap-4 overflow-x-hidden py-20"  
+      className="flex h-full min-h-[calc(100vh-68px)] gap-4 overflow-x-hidden py-20"
     >
       {children}
 

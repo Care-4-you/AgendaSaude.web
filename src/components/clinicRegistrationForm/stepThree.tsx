@@ -2,9 +2,10 @@ import { useFormContext, Controller } from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
+import { convenios } from "../../shared/utils";
+
 import { ClinicaFormData } from "../../shared/interfaces/IClinica";
 import { Label } from "../ui/label";
-import { convenios } from "../../shared/utils";
 
 const animatedComponents = makeAnimated();
 
@@ -15,7 +16,6 @@ function StepThree() {
     formState: { errors }
   } = useFormContext<ClinicaFormData>();
 
-  
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     control: (styles: any) => ({

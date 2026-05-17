@@ -64,7 +64,7 @@ export type ResetPassowrdTokenEmail = {
 export type ChangeEmailandPassword = {
   email: string;
   password: string;
-}
+};
 
 export type SearchDoctorProps = {
   state: {

@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
+
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import { Button } from "../ui/button";
@@ -24,7 +25,7 @@ export default function useDialogWebCam() {
   };
 
   const DialogComponentWebCam = () => {
-    const webcamRef = useRef<Webcam | null >(null);
+    const webcamRef = useRef<Webcam | null>(null);
     const [preview, setPreview] = useState<string | null>(null);
     const [isCameraReady, setIsCameraReady] = useState(false);
 
@@ -64,7 +65,7 @@ export default function useDialogWebCam() {
 
     return (
       <Dialog open={openModal} onOpenChange={handleModalChange}>
-        <DialogContent className="!px-7 flex !min-h-80 !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD]">
+        <DialogContent className="flex !min-h-80 !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD] !px-7">
           {!isCameraReady && !preview && (
             <div className="flex items-center justify-center">
               <p className="text-lg font-medium">Carregando câmera...</p>

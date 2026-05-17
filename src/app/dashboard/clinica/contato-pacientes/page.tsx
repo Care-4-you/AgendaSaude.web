@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
-import { Input } from "../../../../components/ui/input";
-import { patients } from "../../../../shared/utils";
-import { useDebounce } from "../../../../hooks/useDebounce";
-import { Button } from "../../../../components/ui/button";
-import { ChevronLeft, Plus } from "lucide-react";
 import Link from "next/link";
+import React, { useState } from "react";
+
+import { ChevronLeft, Plus } from "lucide-react";
+
+import { patients } from "../../../../shared/utils";
+
+import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
+
+import { Input } from "../../../../components/ui/input";
+import { useDebounce } from "../../../../hooks/useDebounce";
 
 export default function Page() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,7 +28,7 @@ export default function Page() {
         <div className=" flex w-full flex-col  gap-8">
           <Link
             href="/dashboard/clinica"
-            className="mb-6 flex  items-center gap-2 font-bold text-start text-black transition-all hover:underline"
+            className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
           >
             <ChevronLeft size={32} strokeWidth={4} />
             <h2 className=" w-full text-start  font-museo text-3xl font-bold">
@@ -55,7 +58,7 @@ export default function Page() {
 
             <Link
               href="/dashboard/clinica/contato-pacientes/new"
-              className=" absolute bg-agenda-saude-blue-100 size-14   hover:bg-agenda-saude-blue-100 text-agenda-saude-purple-200 rounded-full right-20 bottom-10 flex items-center justify-center"
+              className=" absolute bottom-10 right-20   flex size-14 items-center justify-center rounded-full bg-agenda-saude-blue-100 text-agenda-saude-purple-200 hover:bg-agenda-saude-blue-100"
             >
               <Plus size={43} />
             </Link>

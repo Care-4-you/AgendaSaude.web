@@ -1,23 +1,24 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { RiImageEditFill } from "react-icons/ri";
+
 import avatarImageDefault from "@/assets/foto-pessoal.svg";
 import logo from "@/assets/icon-plus-secondary.svg";
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
-import Image from "next/image";
-import { Button } from "../ui/button";
+
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { RiImageEditFill } from "react-icons/ri";
+import { Button } from "../ui/button";
 
 export default function useDialogChangePhoto() {
-  const [file, setFile] = useState<File | null>(null);
+  const [, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [openModal, setOpenModal] = useState(false);
 
@@ -40,12 +41,12 @@ export default function useDialogChangePhoto() {
       );
       setFile(null);
       setPreview(null);
-      event.target.value = ""; 
+      event.target.value = "";
       return;
     }
 
     const fileSize = selectedFile.size;
-    const maxSize = 5 * 1024 * 1024; 
+    const maxSize = 5 * 1024 * 1024;
     if (fileSize > maxSize) {
       alert(
         "O arquivo selecionado é muito grande. Por favor, selecione um arquivo menor que 5MB."
@@ -74,8 +75,8 @@ export default function useDialogChangePhoto() {
   };
 
   const save = () => {
-    handleCloseModalChangePhoto()
-  }
+    handleCloseModalChangePhoto();
+  };
 
   useEffect(() => {
     return () => {
@@ -127,11 +128,11 @@ export default function useDialogChangePhoto() {
                 className="object-cover object-center"
               />
               <AvatarFallback className="bg-slate-200 text-slate-500">
-                <RiImageEditFill  size={48}  />
+                <RiImageEditFill size={48} />
               </AvatarFallback>
             </Avatar>
             <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <RiImageEditFill  size={48} className="text-white" />
+              <RiImageEditFill size={48} className="text-white" />
             </div>
           </div>
 
