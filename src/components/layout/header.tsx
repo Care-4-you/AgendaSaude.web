@@ -1,14 +1,29 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { RiImageEditFill } from "react-icons/ri";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 import logo from "@/assets/logo_agenda_saude.png";
 import { default as LayoutContainer } from "@/components/layout/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover";
+import { useAuth } from "@/hooks/auth";
+
+import { Button } from "../ui/button";
+import useDialogLogin from "./dialog-login";
+import useDialogRegister from "./dialog-register";
+
+import { Bell, Mails } from "lucide-react";
+import useDialogChangePhoto from "./dialog-change-photo";
+import Notification from "../notification";
+import { notification } from "../../shared/utils";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -16,21 +31,6 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/ui/popover";
-import { useAuth } from "@/hooks/auth";
-import { Mails } from "lucide-react";
-
-import { notification } from "../../shared/utils";
-
-import Notification from "../notification";
-import { Button } from "../ui/button";
-import useDialogChangePhoto from "./dialog-change-photo";
-import useDialogLogin from "./dialog-login";
-import useDialogRegister from "./dialog-register";
 
 export default function Header() {
   const [openModal, setOpenModal] = useState(false);
@@ -52,13 +52,13 @@ export default function Header() {
     };
 
     if (profilePopoverOpen) {
-      window.addEventListener("scroll", handleScroll, { passive: true });
-      document.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      document.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
     };
   }, [profilePopoverOpen]);
 
@@ -66,10 +66,7 @@ export default function Header() {
 
   return (
     <header className="fixed z-[9999] w-full bg-agenda-saude-purple-100 py-4">
-      <LayoutContainer
-        as="nav"
-        className="relative flex items-center justify-between"
-      >
+      <LayoutContainer as="nav" className="flex items-center justify-between">
         <Link href="/">
           <Image
             alt="logo"
@@ -79,28 +76,13 @@ export default function Header() {
             className="xs:w-[170px]"
           />
         </Link>
-        {/* Sobre nós centralizado */}
-        <div className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block">
           <Link
             href="/sobre-nos"
             className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
           >
             Sobre nós
           </Link>
-        </div>
-
-        <div className="z-10 flex items-center justify-between gap-4">
-          <button
-            onClick={handleOpenModalNotification}
-            className="relative mr-2 font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
-          >
-            Notificações
-            {notification.length > 0 && (
-              <span className="absolute -right-3 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
-                {notification.length}
-              </span>
-            )}
-          </button>
+        <div className="flex items-center justify-between  gap-4">
           {!isAuthenticated ? (
             <div className="flex items-center">
               <Button
@@ -121,11 +103,19 @@ export default function Header() {
               </Button>
             </div>
           ) : (
-            <div className="relative flex items-center justify-center gap-x-4">
-              <Popover
-                open={profilePopoverOpen}
-                onOpenChange={setProfilePopoverOpen}
+            <div className="relative flex items-center justify-center gap-x-4  ">
+              <Button
+                onClick={handleOpenModalNotification}
+                size="sm"
+                className="relative bg-transparent hover:bg-transparent flex gap-2"
               >
+                <p>Notificações</p>
+                <Bell />
+                <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                  {notification.length}
+                </span>
+              </Button>
+              <Popover open={profilePopoverOpen} onOpenChange={setProfilePopoverOpen}>
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">
                     <AvatarImage
