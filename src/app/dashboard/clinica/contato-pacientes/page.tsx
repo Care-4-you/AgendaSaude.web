@@ -1,8 +1,6 @@
 "use client";
-
 import Link from "next/link";
 import React, { useState } from "react";
-
 import { ChevronLeft, Plus } from "lucide-react";
 
 import { patients } from "../../../../shared/utils";

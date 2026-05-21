@@ -1,29 +1,16 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { RiImageEditFill } from "react-icons/ri";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { RiImageEditFill } from "react-icons/ri";
+import { Bell, Mails } from "lucide-react";
 
 import logo from "@/assets/logo_agenda_saude.png";
 import { default as LayoutContainer } from "@/components/layout/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/ui/popover";
-import { useAuth } from "@/hooks/auth";
-
-import { Button } from "../ui/button";
-import useDialogLogin from "./dialog-login";
-import useDialogRegister from "./dialog-register";
-
-import { Bell, Mails } from "lucide-react";
-import useDialogChangePhoto from "./dialog-change-photo";
-import Notification from "../notification";
-import { notification } from "../../shared/utils";
-import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -31,6 +18,18 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover";
+import { useAuth } from "@/hooks/auth";
+import { notification } from "@/shared/utils";
+
+import Notification from "../notification";
+import useDialogChangePhoto from "./dialog-change-photo";
+import useDialogLogin from "./dialog-login";
+import useDialogRegister from "./dialog-register";
 
 export default function Header() {
   const [openModal, setOpenModal] = useState(false);
@@ -52,13 +51,13 @@ export default function Header() {
     };
 
     if (profilePopoverOpen) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      document.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      document.addEventListener("scroll", handleScroll, { passive: true });
     }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, [profilePopoverOpen]);
 
@@ -76,12 +75,12 @@ export default function Header() {
             className="xs:w-[170px]"
           />
         </Link>
-          <Link
-            href="/sobre-nos"
-            className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
-          >
-            Sobre nós
-          </Link>
+        <Link
+          href="/sobre-nos"
+          className="font-poppins text-base font-normal text-zinc-100 transition-colors hover:text-white md:text-lg"
+        >
+          Sobre nós
+        </Link>
         <div className="flex items-center justify-between  gap-4">
           {!isAuthenticated ? (
             <div className="flex items-center">
@@ -107,7 +106,7 @@ export default function Header() {
               <Button
                 onClick={handleOpenModalNotification}
                 size="sm"
-                className="relative bg-transparent hover:bg-transparent flex gap-2"
+                className="relative flex gap-2 bg-transparent hover:bg-transparent"
               >
                 <p>Notificações</p>
                 <Bell />
@@ -115,7 +114,10 @@ export default function Header() {
                   {notification.length}
                 </span>
               </Button>
-              <Popover open={profilePopoverOpen} onOpenChange={setProfilePopoverOpen}>
+              <Popover
+                open={profilePopoverOpen}
+                onOpenChange={setProfilePopoverOpen}
+              >
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">
                     <AvatarImage

@@ -97,7 +97,7 @@ export default function Map({ clínicas }: MapProps) {
   };
 
   return (
-    <div>
+    <div className="pt-24 md:pt-20">
       <ClinicaFilter onFilter={fetchProximity} onClear={fetchClinicas} />
       <MapContainer
         center={[geoData.lat, geoData.lng]}
