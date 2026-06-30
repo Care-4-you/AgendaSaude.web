@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -98,7 +99,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @layer utilities {
   .background-image-full {
-    background-image: url("../../public/articleImage/1.png");
+    background-image: url('../../public/articleImage/1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -109,7 +110,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 
   .input-with-icon::after {
-    content: "";
+    content: '';
     position: absolute;
     right: 12px;
     top: 50%;
@@ -127,6 +128,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding-right: 40px !important;
   }
 }
+
+
 
 @layer base {
   * {
