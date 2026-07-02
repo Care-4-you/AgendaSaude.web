@@ -23,7 +23,7 @@ export function RHFCheckBox<T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <div>
+        <div {...props}>
           <FieldSet data-invalid={fieldState.invalid}>
             <FieldGroup data-slot="checkbox-group">
               <Field orientation="horizontal" className="text-white ">

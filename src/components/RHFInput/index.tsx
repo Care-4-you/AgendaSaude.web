@@ -30,6 +30,7 @@ export function RHFInput<T extends FieldValues>({
                 {...field}
                 mask={MASK[mask]}
                 id={field.name}
+                disabled={props.disabled}
                 aria-invalid={fieldState.invalid}
                 placeholder={props.placeholder}
                 type={type}

@@ -2,9 +2,6 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { MdKeyboardArrowRight } from "react-icons/md";
-
 import iconplus from "@/assets/icon-plus.png";
 import { default as LayoutContainer } from "@/components/layout/container";
 import {
@@ -15,72 +12,27 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { Progress } from "@/components/ui/progress";
-import { Loader2 } from "lucide-react";
 
-import { UseRegisterClinic } from "../../../Api/clinic/useRegisterClinic";
-import StepFour from "../../../components/clinicRegistrationForm/stepFour";
-import StepOne from "../../../components/clinicRegistrationForm/stepOne";
-import StepThree from "../../../components/clinicRegistrationForm/stepThree";
-import StepTwo from "../../../components/clinicRegistrationForm/stepTwo";
 import { Button } from "../../../components/ui/button";
-import UseMulitstepForm from "../../../hooks/UseMultistepForm";
-import { ClinicaFormData } from "../../../shared/interfaces/IClinica";
+import { MultiStepForm } from "./_components/multi-step-form";
+import { useClinicStore } from "../../../lib/store/clinic-store";
 
 export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
-  const [progress, setProgress] = useState(25);
+   const { isCompleted, resetForm } = useClinicStore();
   const router = useRouter();
-  const { mutate, status, isPending } = UseRegisterClinic();
-
-  const methods = useForm<ClinicaFormData>({
-    defaultValues: { isWhatsapp: false, acceptTerm: false, hasNumber: false }
-  });
-
-  const acceptTerm = methods.watch("acceptTerm");
-
-  const { currentStep, step, isFirstStep, back, next, isLastStep } =
-    UseMulitstepForm([
-      <StepOne key="stepOne" />,
-      <StepTwo key="stepTwo" />,
-      <StepThree key="stepThree" />,
-      <StepFour key="stepFour" />
-    ]);
-
-  useEffect(() => {
-    function getProgress() {
-      if (currentStep + 1 === 1) {
-        return setProgress(25);
-      }
-      if (currentStep + 1 === 2) {
-        return setProgress(50);
-      }
-      if (currentStep + 1 === 3) {
-        return setProgress(75);
-      }
-      if (currentStep + 1 === 4) {
-        return setProgress(100);
-      }
-    }
-    getProgress();
-  }, [currentStep]);
-
-  const onSubmit: SubmitHandler<ClinicaFormData> = (data, event) => {
-    event?.preventDefault();
-    if (!isLastStep) return next();
-    mutate(data);
-  };
 
   function sendEmail() {
     setOpenModal(false);
+    resetForm();
     router.push("/");
   }
-
-  useEffect(() => {
-    if (status === "success") {
+    useEffect(() => {
+    if (isCompleted === true) {
       setOpenModal(true);
     }
-  }, [status]);
+  }, [isCompleted])
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-20 md:bg-gradient-to-r">
@@ -109,57 +61,8 @@ export default function registerClinical() {
                 Preencha suas informações e descubra a diferença que um bom
                 cuidado pode fazer.
               </span>
-              <Progress
-                value={progress}
-                className="mb-10 mt-12 h-4 w-full bg-agenda-saude-blue-100"
-              />
-              <FormProvider {...methods}>
-                <form
-                  className=" flex w-full flex-col justify-between gap-28"
-                  onSubmit={methods.handleSubmit((e) => onSubmit(e))}
-                >
-                  {step}
-                  <div className="flex items-center justify-center gap-4 ">
-                    {!isFirstStep && (
-                      <Button
-                        variant={"secondary"}
-                        onClick={back}
-                        type="button"
-                        className="inline-flex h-11 w-full max-w-64 items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
-                      >
-                        Voltar
-                      </Button>
-                    )}
 
-                    <Button
-                      type="submit"
-                      className=" inline-flex h-11 w-full max-w-64 items-center justify-center rounded-lg bg-black hover:bg-black/80"
-                      disabled={!acceptTerm && isLastStep}
-                    >
-                      <span>
-                        {isLastStep ? (
-                          isPending ? (
-                            <Loader2 className="animate-spin" />
-                          ) : (
-                            "Finalizar"
-                          )
-                        ) : (
-                          "Continuar"
-                        )}
-                      </span>
-                      {/* {isLastStep && isPending && (
-                        <Loader2 className="animate-spin" />
-                      )} */}
-                      {isLastStep ? null : (
-                        <MdKeyboardArrowRight
-                          color="white"
-                          className=" size-8"
-                        />
-                      )}
-                    </Button>
-                  </div>
-                </form>
-              </FormProvider>
+              <MultiStepForm />
             </div>
           </div>
         </LayoutContainer>

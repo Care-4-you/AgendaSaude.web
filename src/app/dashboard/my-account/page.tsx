@@ -6,7 +6,7 @@ import makeAnimated from "react-select/animated";
 
 import { convenios } from "../../../shared/utils";
 
-import { isValidCNPJ } from "../../../components/clinicRegistrationForm/stepFour";
+
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
