@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
-
 import iconplus from "@/assets/icon-plus.png";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,23 +15,20 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { ResetPassowrdEmail } from "@/shared/interfaces/IClinica";
+
+import { usePasswordReset } from "../_hook/usaPassword";
+import { RHFInput } from "@/components/RHFInput";
+import { PasswordResetFormData } from "../_schemas/password-reset-schema";
+import { FieldGroup } from "@/components/ui/field";
 
 export default function Reset() {
   const [openModal, setOpenModal] = useState(false);
+  const { Form } = usePasswordReset({});
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch
-  } = useForm<ResetPassowrdEmail>();
 
-  const inputFielded = watch("username");
+  const inputFielded = Form.watch("email");
 
-  const onSubmit: SubmitHandler<ResetPassowrdEmail> = (data, event) => {
-    event?.preventDefault();
+  const onSubmit: SubmitHandler<PasswordResetFormData> = (data) => {
     console.log(data);
     setOpenModal(true);
   };
@@ -52,7 +48,7 @@ export default function Reset() {
                   Bem vindo ao seu Espaço de saúde
                 </h3>
                 <span className=" max-w-sm font-poppins text-base font-medium">
-                  Digite seu e-mail cadastrado para realizar a recuparação de
+                  Digite seu e-mail cadastrado para realizar a recuperação de
                   senha.
                 </span>
               </hgroup>
@@ -66,29 +62,19 @@ export default function Reset() {
 
               <form
                 className=" mt-8 flex w-full flex-col justify-between  gap-16"
-                onSubmit={handleSubmit((e) => onSubmit(e))}
+                onSubmit={Form.handleSubmit(onSubmit)}
               >
-                <fieldset className="grid grid-cols-2 items-center  gap-x-4  ">
-                  <Input
-                    className="col-span-2"
+                <FieldGroup className="grid grid-cols-2  gap-1 ">
+                  <RHFInput<PasswordResetFormData>
+                    id="email"
+                    type="email"
+                    name="email"
                     placeholder="Email"
                     label="Email*"
-                    id="email"
-                    type="text"
-                    {...register("username", {
-                      required: {
-                        value: true,
-                        message: "Campo é obrigatório"
-                      },
-                      pattern: {
-                        value:
-                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: "Formato inválido Ex. exemplo@email.com"
-                      }
-                    })}
-                    error={errors.username ? errors.username.message : ""}
+                    className="col-span-2"
+                    control={Form.control}
                   />
-                </fieldset>
+                </FieldGroup>
                 <div className="flex w-full items-center justify-center gap-4">
                   <Button
                     type="button"
