@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 export default function Notification() {
   const [openModal, setOpenModal] = useState<boolean>();
   const [isClosing, setIsClosing] = useState<boolean>();
-  const [notifications, setNotifications] = useState(notification || []);
+  const [notifications] = useState(notification || []);
 
   const handleOpenModalNotification = () => {
     setOpenModal(true);
