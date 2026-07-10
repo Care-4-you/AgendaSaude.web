@@ -2,14 +2,11 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-
 import { ChevronLeft } from "lucide-react";
-
-import { clinics, doctors } from "../../../../shared/utils";
-
-import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
-import { Input } from "../../../../components/ui/input";
-import { useDebounce } from "../../../../hooks/useDebounce";
+import { clinics } from "@/shared/utils";
+import { AlphabeticalContactList } from "@/components/alphabetical-contact-list";
+import { Input } from "@/components/ui/input";
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function ClinicPage() {
   const [searchTerm, setSearchTerm] = useState("");

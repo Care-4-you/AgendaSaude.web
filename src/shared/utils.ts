@@ -48,7 +48,7 @@ export const notification = [
     title: "Consulta cancelada",
     mensagem:
       "A paciente Mônica Mauro França cancelou a consulta no dia 21/03/2026 às 09:30 com o médico Luiz Carlos.",
-      confimation: false
+    confimation: false
   },
   {
     id: 3,
@@ -82,7 +82,7 @@ export const notification = [
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
     confimation: false,
-      title: "Agenda cheia no período"
+    title: "Agenda cheia no período"
   },
   {
     id: 1713350001000,
@@ -95,7 +95,7 @@ export const notification = [
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
     confimation: false,
-      title: "Agenda cheia no período"
+    title: "Agenda cheia no período"
   },
   {
     id: 1713350006000,
@@ -108,7 +108,7 @@ export const notification = [
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
     confimation: false,
-      title: "Agenda cheia no período"
+    title: "Agenda cheia no período"
   },
   {
     id: 1713350012000,
@@ -121,7 +121,7 @@ export const notification = [
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
     confimation: false,
-      title: "Agenda cheia no período"
+    title: "Agenda cheia no período"
   },
   {
     id: 1713350018000,
@@ -338,7 +338,7 @@ export const patients = [
 ];
 
 export const clinics = [
- {
+  {
     id: 1,
     name: "Clínica Vida Plena",
     phone: "(11) 3456-7890",

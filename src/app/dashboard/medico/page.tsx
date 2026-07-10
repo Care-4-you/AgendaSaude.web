@@ -14,7 +14,10 @@ export default function Page() {
         Funcionalidades
       </h2>
       <div className="flex h-full  w-full ">
-        <div className="grid h-full grid-cols-1 content-start item-center  gap-4 font-museo capitalize sm:grid-cols-2 w-full  sm:gap-4">
+        <div
+          className="
+        grid h-full w-full grid-cols-1 content-start  items-center gap-4 font-museo capitalize sm:grid-cols-2  sm:gap-4"
+        >
           <Link
             href={`${path}/calendario-consulta`}
             className={cn(
@@ -25,7 +28,6 @@ export default function Page() {
             Calendário de consulta
           </Link>
 
-
           <Link
             href={`${path}/clinicas-vinculados`}
             className={cn(
@@ -35,7 +37,6 @@ export default function Page() {
           >
             Clinicas vinculados
           </Link>
-
         </div>
       </div>
     </div>

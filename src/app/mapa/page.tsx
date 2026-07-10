@@ -4,7 +4,7 @@ import { ClinicaAPI } from "./types";
 
 // Transform db.json structure to ClinicaAPI format
 const transformClinicas = (clinicas: typeof db.clinicas): ClinicaAPI[] => {
-  return clinicas.map((clinica, index) => ({
+  return clinicas.map((clinica) => ({
     id: clinica.id,
     name: clinica.nome,
     phone: clinica.contato?.telefone || "",

@@ -12,12 +12,11 @@ import makeAnimated from "react-select/animated";
 
 import { councilsTypes, UFs } from "@/shared/utils";
 
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { DoctorFormData } from "../../../../shared/interfaces/IDoctor";
+import { DoctorFormData } from "@/shared/interfaces/IDoctor";
 
 const animatedComponents = makeAnimated();
 
@@ -72,26 +71,24 @@ export default function Page() {
 
   // Combinar especialidades de todos os conselhos selecionados
   const especializacoes = useMemo(() => {
-  const registrosComConselho = medicalRecordArray?.filter(
-    (record) => record?.councils?.value
-  );
+    const registrosComConselho = medicalRecordArray?.filter(
+      (record) => record?.councils?.value
+    );
 
-  return (
-    registrosComConselho
-      ?.flatMap((record) => {
-        const conselho = record.councils.value;
+    return (
+      registrosComConselho
+        ?.flatMap((record) => {
+          const conselho = record.councils.value;
 
-        return especializacoesPorConselho[conselho] ?? [];
-      })
-      .filter(
-        (especializacao, index, array) =>
-          index ===
-          array.findIndex(
-            (item) => item.value === especializacao.value
-          )
-      ) ?? []
-  );
-}, [medicalRecordArray]);
+          return especializacoesPorConselho[conselho] ?? [];
+        })
+        .filter(
+          (especializacao, index, array) =>
+            index ===
+            array.findIndex((item) => item.value === especializacao.value)
+        ) ?? []
+    );
+  }, [medicalRecordArray]);
 
   const colorStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -299,7 +296,8 @@ export default function Page() {
                       }
                     )}
                     error={
-                      errors.medicalRecord?.[index]?.councilsNumber?.message ?? ""
+                      errors.medicalRecord?.[index]?.councilsNumber?.message ??
+                      ""
                     }
                   />
                 </div>

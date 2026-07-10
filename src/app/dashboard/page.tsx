@@ -9,7 +9,7 @@ export default function page() {
       redirect("/dashboard/medico");
     } else if (user.role === "paciente") {
       redirect("/dashboard/paciente");
-    } else if (user.role === "USER") {
+    } else if (user.role === "CLINICA") {
       redirect("/dashboard/clinica");
     }
   }

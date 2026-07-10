@@ -204,7 +204,7 @@ export function AlphabeticalContactList({
                           </p>
                         </li>
                         {contact.crm ||
-                          contact.cpf && (
+                          (contact.cpf && (
                             <li>
                               <Label className="text-sm font-semibold text-white ">
                                 {contact.crm ? "CRM:" : "CPF:"}
@@ -213,7 +213,7 @@ export function AlphabeticalContactList({
                                 {contact.crm ? contact.crm : contact.cpf}
                               </p>
                             </li>
-                          )}
+                          ))}
                         {contact.crm && (
                           <li>
                             <Label className="text-sm font-semibold text-white ">

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-
 import "animate.css";
-import { notification } from "../../shared/utils";
+import { notification } from "@/shared/utils";
 import { Button } from "../ui/button";
 
 export default function Notification() {
@@ -23,7 +22,7 @@ export default function Notification() {
     }, 1000); // Duração da animação
   };
 
-  const handleCloseNotificationImmediate = (id: number) => {
+  const handleCloseNotificationImmediate = () => {
     //setNotifications((prevNotifications) => prevNotifications.filter((item) => item.id !== id));
     setIsClosing(false);
   };
@@ -56,7 +55,7 @@ export default function Notification() {
                   <div className=" relative flex w-full flex-col gap-2 px-4 py-5">
                     <button
                       type="button"
-                      onClick={() => handleCloseNotificationImmediate(item.id)}
+                      onClick={() => handleCloseNotificationImmediate()}
                       className="text-md absolute right-4 top-4 transition-opacity hover:opacity-70"
                     >
                       ✕
