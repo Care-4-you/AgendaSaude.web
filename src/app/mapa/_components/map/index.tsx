@@ -20,11 +20,11 @@ import { ClinicaAPI } from "../../types";
 import NoClinicsPopup from "../filter/noClinicsPopup";
 
 interface MapProps {
-  clínicas: ClinicaAPI[];
+  clinicas: ClinicaAPI[];
 }
 
-export default function Map({ clínicas }: MapProps) {
-  const [clinicasState, setClinicas] = useState<ClinicaAPI[]>(clínicas);
+export default function Map({ clinicas }: MapProps) {
+  const [clinicasState, setClinicas] = useState<ClinicaAPI[]>(clinicas);
   const [geoData, setGeoData] = useState({ lat: -14.4, lng: -57 });
   const [showNoClinicsPopup, setShowNoClinicsPopup] = useState(false);
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -82,15 +82,15 @@ export default function Map({ clínicas }: MapProps) {
   }
 
   useEffect(() => {
-    if (clínicas.length > 0) {
-      setClinicas(clínicas);
-      if (clínicas[0]?.latitude && clínicas[0]?.longitude) {
-        setGeoData({ lat: clínicas[0].latitude, lng: clínicas[0].longitude });
+    if (clinicas.length > 0) {
+      setClinicas(clinicas);
+      if (clinicas[0]?.latitude && clinicas[0]?.longitude) {
+        setGeoData({ lat: clinicas[0].latitude, lng: clinicas[0].longitude });
       }
     } else {
       fetchClinicas();
     }
-  }, [clínicas, fetchClinicas]); // Added fetchClinicas to the dependency array
+  }, [clinicas, fetchClinicas]); // Added fetchClinicas to the dependency array
 
   const handleClosePopup = () => {
     setShowNoClinicsPopup(false);

@@ -25,4 +25,15 @@ export type DoctorFormData = {
   passwordConfirmation: string;
   acceptTerm: boolean;
   isWhatsapp: boolean;
+  medicalRecord?: Array<{
+    councilsNumber: string;
+    councils: {
+      value: string;
+      label: string;
+    };
+    councilsUF: {
+      value: string;
+      label: string;
+    };
+  }>;
 };

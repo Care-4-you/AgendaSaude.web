@@ -37,47 +37,96 @@ export const councilsTypes = [
 
 export const notification = [
   {
+    id: 1,
+    title: "Solicitação de vínculo",
+    mensagem:
+      "A clínica Vitalize pediu que você se adicionasse ao seu quadro de pacientes. Você aprova?",
+    confimation: true
+  },
+  {
+    id: 2,
+    title: "Consulta cancelada",
+    mensagem:
+      "A paciente Mônica Mauro França cancelou a consulta no dia 21/03/2026 às 09:30 com o médico Luiz Carlos.",
+      confimation: false
+  },
+  {
+    id: 3,
+    title: "Desvínculo",
+    mensagem: "A clínica Romero fez desvínculo você do seu quadro de médicos.",
+    confimation: false
+  },
+  {
+    id: 4,
+    title: "Tratamento cadastrado",
+    mensagem:
+      "A consulta realizada no dia 18/02/2026 às 16:00 com o médico Luiz Carlos teve a indicação de um tratamento. Favor verificar sua lista de tratamentos para receber seu relatório de gastos.",
+    confimation: true
+  },
+  {
+    id: 5,
+    title: "Solicitação de desvínculo",
+    mensagem:
+      "A médica Paula Farias deseja deixar de fazer parte do seu quadro de médicos. Você aceita?",
+    confimation: true
+  },
+  {
+    id: 6,
+    title: "Consulta de reavaliação",
+    mensagem:
+      "O médico Luiz Carlos deseja que a consulta de reavaliação de sua queixa clínica seja realizada no dia 24/03/2026 às 13:00. Você confirma o recebimento?",
+    confimation: false
+  },
+  {
     id: 1713350000000,
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
-    title: "Agenda cheia no período"
+    confimation: false,
+      title: "Agenda cheia no período"
   },
   {
     id: 1713350001000,
     mensagem: "O Dr. Ricardo alterou seus horários de atendimento.....",
+    confimation: false,
     title: "Alteração na agenda"
   },
   {
     id: 1713350003000,
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
-    title: "Agenda cheia no período"
+    confimation: false,
+      title: "Agenda cheia no período"
   },
   {
     id: 1713350006000,
     mensagem: "O Dr. Ricardo alterou seus horários de atendimento.....",
+    confimation: false,
     title: "Alteração na agenda"
   },
   {
     id: 1713350009000,
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
-    title: "Agenda cheia no período"
+    confimation: false,
+      title: "Agenda cheia no período"
   },
   {
     id: 1713350012000,
     mensagem: "O Dr. Ricardo alterou seus horários de atendimento.....",
+    confimation: false,
     title: "Alteração na agenda"
   },
   {
     id: 1713350015000,
     mensagem:
       "A agenda do Dr. Paulo está lotada hoje à tarde. Horário livre disponível: Um horário ficou.....",
-    title: "Agenda cheia no período"
+    confimation: false,
+      title: "Agenda cheia no período"
   },
   {
     id: 1713350018000,
     mensagem: "O Dr. Ricardo alterou seus horários de atendimento.....",
+    confimation: false,
     title: "Alteração na agenda"
   }
 ];
@@ -287,3 +336,77 @@ export const patients = [
     createdAt: "2024-04-10"
   }
 ];
+
+export const clinics = [
+ {
+    id: 1,
+    name: "Clínica Vida Plena",
+    phone: "(11) 3456-7890",
+    cellphone: "(11) 98765-4321",
+    email: "contato@vidaplena.com.br",
+    photo: "https://picsum.photos/400/300?random=1"
+  },
+  {
+    id: 2,
+    name: "Clínica Saúde Integral",
+    phone: "(21) 3344-5566",
+    mobile: "(21) 99876-5432",
+    email: "atendimento@saudeintegral.com.br",
+    photo: "https://picsum.photos/400/300?random=2"
+  },
+  {
+    id: 3,
+    name: "Centro Médico Bem Viver",
+    phone: "(31) 3232-4545",
+    mobile: "(31) 99754-3210",
+    email: "contato@bemviver.com.br",
+    photo: "https://picsum.photos/400/300?random=3"
+  },
+  {
+    id: 4,
+    name: "Clínica Nova Esperança",
+    phone: "(41) 3366-7788",
+    mobile: "(41) 99632-1458",
+    email: "recepcao@novaesperanca.com.br",
+    photo: "https://picsum.photos/400/300?random=4"
+  },
+  {
+    id: 5,
+    name: "Instituto Saúde Prime",
+    phone: "(51) 3321-9876",
+    mobile: "(51) 99541-7896",
+    email: "contato@saudeprime.com.br",
+    photo: "https://picsum.photos/400/300?random=5"
+  },
+  {
+    id: 6,
+    name: "Clínica Horizonte Médico",
+    phone: "(61) 3345-1234",
+    mobile: "(61) 99421-3658",
+    email: "atendimento@horizontemedico.com.br",
+    photo: "https://picsum.photos/400/300?random=6"
+  }
+];
+
+
+const especializacoesPorConselho: Record<
+    string,
+    { value: string; label: string }[]
+  > = {
+    CRM: [
+      { value: "cardiologia", label: "Cardiologia" },
+      { value: "ginecologia", label: "Ginecologia" },
+      { value: "urologia", label: "Urologia" },
+      { value: "ortopedia", label: "Ortopedia" },
+      { value: "oncologia", label: "Oncologia" },
+      { value: "geriatria", label: "Geriatria" },
+      { value: "oftalmologia", label: "Oftalmologia" },
+      { value: "angiologia", label: "Angiologia" },
+      { value: "dermatologia", label: "Dermatologia" },
+      { value: "cirurgia", label: "Cirurgia" },
+      { value: "clinica-geral", label: "Clínica Geral" }
+    ],
+    CRN: [{ value: "nutricao", label: "Nutrição" }],
+    CRO: [{ value: "odontologia", label: "Odontologia" }],
+    CREFITO: [{ value: "fisioterapia", label: "Fisioterapia" }]
+  };

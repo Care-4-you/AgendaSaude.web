@@ -54,10 +54,10 @@ export function middleware(req: NextRequest) {
 
     try {
       if (
-        (pathname.startsWith("/dashboard/medico") && user.role !== "medico") ||
+        (pathname.startsWith("/dashboard/medico") && user.role !== "USER") ||
         (pathname.startsWith("/dashboard/paciente") &&
           user.role !== "paciente") ||
-        (pathname.startsWith("/dashboard/clinica") && user.role !== "USER")
+        (pathname.startsWith("/dashboard/clinica") && user.role !== "medico")
       ) {
         return NextResponse.redirect(new URL("/unauthorized", req.url));
       }

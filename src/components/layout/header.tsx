@@ -104,6 +104,7 @@ export default function Header() {
           ) : (
             <div className="relative flex items-center justify-center gap-x-4  ">
               <Button
+               type="button"
                 onClick={handleOpenModalNotification}
                 size="sm"
                 className="relative flex gap-2 bg-transparent hover:bg-transparent"
@@ -158,14 +159,14 @@ export default function Header() {
                     <span>Painel</span>
                   </Link>
                   <Link
-                    href="/dashboard/my-account"
+                    href="/dashboard/medico/my-account"
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <CgProfile size={22} />
                     <span>Minha Conta</span>
                   </Link>
                   <Link
-                    href="/dashboard/my-account/email-and-password"
+                    href="/dashboard/medico/my-account/email-and-password"
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <Mails size={22} />

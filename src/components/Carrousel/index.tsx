@@ -11,7 +11,7 @@ import paciente from "@/assets/paciente.png";
 
 import { cn } from "../../lib/utils";
 
-import Button from "../Button";
+import Button from "../calendar-feature/Button";
 import { buttonVariants } from "../ui/button";
 
 interface Page {

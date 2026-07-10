@@ -5,7 +5,7 @@ import { getServerAuth } from "../../hooks/getServerAuth";
 export default function page() {
   const { token, user } = getServerAuth();
   if (token) {
-    if (user.role === "medico") {
+    if (user.role === "USER") {
       redirect("/dashboard/medico");
     } else if (user.role === "paciente") {
       redirect("/dashboard/paciente");

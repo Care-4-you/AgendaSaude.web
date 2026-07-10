@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Phone, Pin } from "lucide-react";
 
-import Button from "../Button";
+import Button from "../calendar-feature/Button";
 
 interface Specialty {
   value: string;
@@ -31,6 +32,7 @@ interface CardClinicaProps {
 }
 
 export default function CardClinica({ clinica }: CardClinicaProps) {
+  const route = useRouter()
   const [especialidades, setEspecialidades] = useState<Specialty[]>([]);
   const [loading, setLoading] = useState(false);
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -57,6 +59,10 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
   const houseNumber = clinica.houseNumber ?? "–";
   const neighborhood = clinica.neighborhood ?? "–";
   const phone = clinica.phone ?? "–";
+
+  const goToSchedule = () => {
+
+  }
 
   return (
     <div className="m-0 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white p-0 shadow">

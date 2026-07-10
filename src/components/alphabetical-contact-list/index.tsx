@@ -203,16 +203,17 @@ export function AlphabeticalContactList({
                             {contact.email}
                           </p>
                         </li>
-
-                        <li>
-                          <Label className="text-sm font-semibold text-white ">
-                            {contact.crm ? "CRM:" : "CPF:"}
-                          </Label>
-                          <p className="font-poppins text-base text-white ">
-                            {contact.crm ? contact.crm : contact.cpf}
-                          </p>
-                        </li>
-
+                        {contact.crm ||
+                          contact.cpf && (
+                            <li>
+                              <Label className="text-sm font-semibold text-white ">
+                                {contact.crm ? "CRM:" : "CPF:"}
+                              </Label>
+                              <p className="font-poppins text-base text-white ">
+                                {contact.crm ? contact.crm : contact.cpf}
+                              </p>
+                            </li>
+                          )}
                         {contact.crm && (
                           <li>
                             <Label className="text-sm font-semibold text-white ">
@@ -224,7 +225,7 @@ export function AlphabeticalContactList({
                           </li>
                         )}
                       </ul>
-                      {contact.crm && (
+                      {!contact.cpf && (
                         <Button
                           type="submit"
                           variant="default"
