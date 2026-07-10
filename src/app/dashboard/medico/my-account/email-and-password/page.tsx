@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChangeEmailandPassword } from "@/shared/interfaces/IClinica";
 import { RiImageEditFill } from "react-icons/ri";
-import useDialogChangePhoto from "../../../../../components/layout/dialog-change-photo";
+import useDialogChangePhoto from "@/components/layout/dialog-change-photo";
 
 export default function Page() {
   const [openModal, setOpenModal] = useState(false);

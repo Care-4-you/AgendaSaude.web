@@ -387,26 +387,3 @@ export const clinics = [
     photo: "https://picsum.photos/400/300?random=6"
   }
 ];
-
-
-const especializacoesPorConselho: Record<
-    string,
-    { value: string; label: string }[]
-  > = {
-    CRM: [
-      { value: "cardiologia", label: "Cardiologia" },
-      { value: "ginecologia", label: "Ginecologia" },
-      { value: "urologia", label: "Urologia" },
-      { value: "ortopedia", label: "Ortopedia" },
-      { value: "oncologia", label: "Oncologia" },
-      { value: "geriatria", label: "Geriatria" },
-      { value: "oftalmologia", label: "Oftalmologia" },
-      { value: "angiologia", label: "Angiologia" },
-      { value: "dermatologia", label: "Dermatologia" },
-      { value: "cirurgia", label: "Cirurgia" },
-      { value: "clinica-geral", label: "Clínica Geral" }
-    ],
-    CRN: [{ value: "nutricao", label: "Nutrição" }],
-    CRO: [{ value: "odontologia", label: "Odontologia" }],
-    CREFITO: [{ value: "fisioterapia", label: "Fisioterapia" }]
-  };

@@ -17,7 +17,7 @@ export default function Dashboard({
 
   const routesWithoutBgImage = [
     "/my-account/email-and-password",
-    "/my-account",
+    "/my-account"
   ];
 
   const shouldHideBgImage = routesWithoutBgImage.some((route) =>

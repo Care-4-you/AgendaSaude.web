@@ -104,7 +104,7 @@ export default function Header() {
           ) : (
             <div className="relative flex items-center justify-center gap-x-4  ">
               <Button
-               type="button"
+                type="button"
                 onClick={handleOpenModalNotification}
                 size="sm"
                 className="relative flex gap-2 bg-transparent hover:bg-transparent"

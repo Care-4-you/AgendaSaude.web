@@ -10,13 +10,13 @@ import {
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
-import { convenios, councilsTypes, UFs } from "@/shared/utils";
+import { councilsTypes, UFs } from "@/shared/utils";
 
-import { isValidCNPJ } from "@/components/clinicRegistrationForm/stepFour";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ClinicaFormData } from "@/shared/interfaces/IClinica";
+
 import { DoctorFormData } from "../../../../shared/interfaces/IDoctor";
 
 const animatedComponents = makeAnimated();
@@ -222,9 +222,7 @@ export default function Page() {
                       }}
                     />
                     <p className="min-h-6 text-sm  font-semibold text-red-500">
-                      {errors.medicalRecord?.[index]?.councils
-                        ? errors.medicalRecord[index].councils.message
-                        : ""}
+                      {errors.medicalRecord?.[index]?.councils?.message ?? ""}
                     </p>
                   </div>
                   <div
@@ -269,9 +267,7 @@ export default function Page() {
                       }}
                     />
                     <p className="min-h-6 text-sm  font-semibold text-red-500">
-                      {errors.medicalRecord?.[index]?.councilsUF
-                        ? errors.medicalRecord[index].councilsUF.message
-                        : ""}
+                      {errors.medicalRecord?.[index]?.councilsUF?.message ?? ""}
                     </p>
                   </div>
                   {fields.length > 1 && (
@@ -303,9 +299,7 @@ export default function Page() {
                       }
                     )}
                     error={
-                      errors.medicalRecord?.[index]?.councilsNumber
-                        ? errors.medicalRecord[index].councilsNumber.message
-                        : ""
+                      errors.medicalRecord?.[index]?.councilsNumber?.message ?? ""
                     }
                   />
                 </div>
@@ -364,7 +358,7 @@ export default function Page() {
                   }}
                 />
                 <p className="min-h-6 text-sm  font-semibold text-red-500">
-                  {errors.specialty ? errors.specialty.message : ""}
+                  {errors.specialty?.message ?? ""}
                 </p>
               </div>
             </fieldset>

@@ -26,7 +26,7 @@ export default function Notification() {
   const handleCloseNotificationImmediate = (id: number) => {
     //setNotifications((prevNotifications) => prevNotifications.filter((item) => item.id !== id));
     setIsClosing(false);
-  }
+  };
 
   const NotificationModal = () => {
     if (!openModal) return null;
@@ -34,10 +34,9 @@ export default function Notification() {
     return createPortal(
       <div className="fixed inset-0 right-0 top-20 z-30 flex justify-end md:right-10  ">
         <div
-          className={`animate__animated max-h-[750px] w-[490px] min-w-[490px] bg-agenda-saude-green-100 ${isClosing  ? "animate__fadeOutUpBig" : "animate__fadeInDownBig"}`}
+          className={`animate__animated max-h-[750px] w-[490px] min-w-[490px] bg-agenda-saude-green-100 ${isClosing ? "animate__fadeOutUpBig" : "animate__fadeInDownBig"}`}
         >
           <button
-         
             onClick={handleCloseModalNotification}
             className="absolute right-4 top-4 text-3xl transition-opacity hover:opacity-70"
           >
@@ -55,7 +54,11 @@ export default function Notification() {
                   className=" mb-2 rounded-xl border border-agenda-saude-green-50 bg-agenda-saude-green-50"
                 >
                   <div className=" relative flex w-full flex-col gap-2 px-4 py-5">
-                    <button  type="button" onClick={() => handleCloseNotificationImmediate(item.id)} className="text-md absolute right-4 top-4 transition-opacity hover:opacity-70">
+                    <button
+                      type="button"
+                      onClick={() => handleCloseNotificationImmediate(item.id)}
+                      className="text-md absolute right-4 top-4 transition-opacity hover:opacity-70"
+                    >
                       ✕
                     </button>
 
