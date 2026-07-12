@@ -47,39 +47,10 @@ export default function Page() {
       <div className="flex w-full flex-1 items-center justify-between ">
         <div className="flex w-full items-center justify-center">
           <div className=" relative  w-full bg-agenda-saude-purple-300  ">
-            <div className="absolute -top-28 left-1/2 flex h-44 w-[500px] -translate-x-1/2 transform items-center justify-around  rounded-md bg-agenda-saude-green-100 py-2">
-              <div className="text-2xl font-bold text-white">
-                <div className="relative flex w-full items-center justify-center">
-                  <Avatar className="h-20 w-20">
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                      className="object-centere object-cover"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <Button
-                    type="button"
-                    size="icon"
-                    variant="outline"
-                    className=" absolute left-12 top-14 size-9 rounded-full"
-                    onClick={handleOpenModalChangePhoto}
-                  >
-                    <RiImageEditFill size={22} className="text-slate-950" />
-                  </Button>
-                </div>
-              </div>
-              <hr className=" h-28 w-1 rounded-2xl bg-agenda-saude-purple-200" />
-              <div className="flex flex-col items-start justify-start gap-2 text-sm">
-                <p className="font-bold text-white">Dados Pessoais</p>
-                <ul>
-                  <li className="text-white">Nome: Dr. Fulano de Tal</li>
-                  <li className="text-white">Email: dr.fulano@example.com</li>
-                  <li className="text-white">Telefone: (11) 1234-5678</li>
-                  <li className="text-white">Celular: (11) 91234-5678</li>
-                  <li className="text-white">CRM: 123456</li>
-                </ul>
-              </div>
+             <div className="absolute -top-10 left-1/2 flex h-20 w-80 -translate-x-1/2 transform items-center justify-center rounded-md bg-agenda-saude-green-100">
+              <p className="text-2xl font-bold text-white">
+                Alterar email e senha
+              </p>
             </div>
             <form
               className="flex w-full flex-col items-center p-20"

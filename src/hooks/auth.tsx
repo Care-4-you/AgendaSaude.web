@@ -63,7 +63,7 @@ interface Props {
 const roleRedirectMap: Record<string, string> = {
   medico: "/dashboard/medico",
   paciente: "/dashboard/paciente",
-  USER: "/dashboard/clinica"
+  USER: "/dashboard/medico"
 };
 
 export function AuthProvider({
@@ -137,6 +137,7 @@ export function AuthProvider({
         });
 
         const redirectPath = roleRedirectMap[userToSave.role];
+        console.log("Redirecting to:", redirectPath);
 
         router.push(redirectPath);
       } catch (error) {

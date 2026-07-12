@@ -303,20 +303,22 @@ export default function Page() {
                 </div>
               ))}
 
-              <Button
-                type="button"
-                size="lg"
-                onClick={() =>
-                  append({
-                    councilsNumber: "",
-                    councils: { value: "", label: "" },
-                    councilsUF: { value: "", label: "" }
-                  })
-                }
-                className="hover:bg-agenda-saude-green-200/90 min-h-10! col-span-6  my-2 w-full bg-agenda-saude-green-100"
-              >
-                + Adicionar conselhos
-              </Button>
+              {fields.length < 2 && (
+                <Button
+                  type="button"
+                  size="lg"
+                  onClick={() =>
+                    append({
+                      councilsNumber: "",
+                      councils: { value: "", label: "" },
+                      councilsUF: { value: "", label: "" }
+                    })
+                  }
+                  className="hover:bg-agenda-saude-green-200/90 min-h-10! col-span-6  my-2 w-full bg-agenda-saude-green-100"
+                >
+                  + Adicionar conselhos
+                </Button>
+              )}
 
               <div className=" col-span-6 flex flex-col gap-3 ">
                 <Label className="leading-5 text-white" htmlFor="state">
