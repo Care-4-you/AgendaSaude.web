@@ -61,9 +61,9 @@ interface Props {
 }
 
 const roleRedirectMap: Record<string, string> = {
-  medico: "/dashboard/medico",
+  USER: "/dashboard/clinica",
   paciente: "/dashboard/paciente",
-  USER: "/dashboard/clinica"
+  medico: "/dashboard/medico"
 };
 
 export function AuthProvider({

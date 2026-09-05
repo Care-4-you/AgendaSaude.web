@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { SubmitHandler} from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
 import {
@@ -12,9 +12,10 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 
-import { Button } from "../../../../components/ui/button";
-import { useChangeEmailAndPassword } from "./_hook/useEmailPassword"
-import { ChangeEmailAndPasswordFormData } from "./_schema/Email-password-schema"
+import { Button } from "@/components/ui/button";
+import useDialogChangePhoto from "@/components/layout/dialog-change-photo";
+import { useChangeEmailAndPassword } from "./_hook/useEmailPassword";
+import { ChangeEmailAndPasswordFormData } from "./_schema/Email-password-schema";
 import { RHFInput } from "@/components/RHFInput";
 
 export default function Page() {
@@ -22,9 +23,12 @@ export default function Page() {
   const router = useRouter();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const { changeEmailAndPasswordForm } = useChangeEmailAndPassword({});
+  const { DialogComponentChangePhoto, handleOpenModalChangePhoto } =
+    useDialogChangePhoto();
 
-  const onSubmit: SubmitHandler<ChangeEmailAndPasswordFormData> = async (data) => {
-
+  const onSubmit: SubmitHandler<ChangeEmailAndPasswordFormData> = async (
+    data
+  ) => {
     console.log(data);
     setOpenModal(true);
   };
@@ -44,7 +48,7 @@ export default function Page() {
               </p>
             </div>
             <form
-              className="flex w-full flex-col items-center p-20 gap-5"
+              className="flex w-full flex-col items-center p-20 gap-4"
               onSubmit={changeEmailAndPasswordForm.handleSubmit(onSubmit)}
             >
               <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
@@ -94,6 +98,7 @@ export default function Page() {
         </div>
       </div>
 
+      <DialogComponentChangePhoto />
       <Dialog
         open={openModal}
         defaultOpen={openModal}

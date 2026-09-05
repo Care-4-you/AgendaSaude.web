@@ -113,7 +113,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     content: '';
     position: absolute;
     right: 12px;
-    top: 50%;
+    top: 50px;
     transform: translateY(-30%);
     width: 16px;
     height: 16px;

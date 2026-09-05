@@ -2,23 +2,19 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { AlphabeticalContactList } from "@/components/alphabetical-contact-list";
+import { Input } from "@/components/ui/input";
+import { useDebounce } from "@/hooks/useDebounce";
+import { ChevronLeft, Plus } from "lucide-react";
 
-import { ChevronLeft } from "lucide-react";
+import { clinics } from "@/shared/utils";
 
-import { doctors } from "../../../../shared/utils";
-
-import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
-import { useDebounce } from "../../../../hooks/useDebounce";
-import { FieldGroup } from "@/components/ui/field";
-import { RHFInput } from "../../../../components/RHFInput";
-import { Input } from "../../../../components/ui/input";
-
-export default function DoctorPage() {
+export default function ClinicPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
-  const filteredDoctors = doctors.filter((doctor) =>
-    doctor.name
+  const filteredClinics = clinics.filter((clinic) =>
+    clinic.name
       .toLocaleLowerCase()
       .includes(debouncedSearchTerm.toLocaleLowerCase())
   );
@@ -28,12 +24,12 @@ export default function DoctorPage() {
       <div className="flex w-full flex-1 items-center justify-between ">
         <div className="flex w-full flex-col gap-8">
           <Link
-            href="/dashboard/clinica"
+            href="/dashboard/medico"
             className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
           >
             <ChevronLeft size={32} strokeWidth={4} />
             <h2 className=" w-full text-start  font-museo text-3xl font-bold">
-              Médicos vinculados
+              Clínicas vinculadas
             </h2>
           </Link>
 
@@ -45,11 +41,11 @@ export default function DoctorPage() {
                 placeholder="Pesquisar médico..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-12 bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring max-w-md mb-6"
+                className="mb-6 h-12 max-w-md bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring"
               />
 
               <AlphabeticalContactList
-                contacts={filteredDoctors}
+                contacts={filteredClinics}
                 className="scroll-custom max-h-[500px] w-full max-w-xl overflow-y-auto "
               />
             </div>

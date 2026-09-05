@@ -287,3 +287,54 @@ export const patients = [
     createdAt: "2024-04-10"
   }
 ];
+
+export const clinics = [
+  {
+    id: 1,
+    name: "Clínica Vida Plena",
+    phone: "(11) 3456-7890",
+    cellphone: "(11) 98765-4321",
+    email: "contato@vidaplena.com.br",
+    photo: "https://picsum.photos/400/300?random=1"
+  },
+  {
+    id: 2,
+    name: "Clínica Saúde Integral",
+    phone: "(21) 3344-5566",
+    mobile: "(21) 99876-5432",
+    email: "atendimento@saudeintegral.com.br",
+    photo: "https://picsum.photos/400/300?random=2"
+  },
+  {
+    id: 3,
+    name: "Centro Médico Bem Viver",
+    phone: "(31) 3232-4545",
+    mobile: "(31) 99754-3210",
+    email: "contato@bemviver.com.br",
+    photo: "https://picsum.photos/400/300?random=3"
+  },
+  {
+    id: 4,
+    name: "Clínica Nova Esperança",
+    phone: "(41) 3366-7788",
+    mobile: "(41) 99632-1458",
+    email: "recepcao@novaesperanca.com.br",
+    photo: "https://picsum.photos/400/300?random=4"
+  },
+  {
+    id: 5,
+    name: "Instituto Saúde Prime",
+    phone: "(51) 3321-9876",
+    mobile: "(51) 99541-7896",
+    email: "contato@saudeprime.com.br",
+    photo: "https://picsum.photos/400/300?random=5"
+  },
+  {
+    id: 6,
+    name: "Clínica Horizonte Médico",
+    phone: "(61) 3345-1234",
+    mobile: "(61) 99421-3658",
+    email: "atendimento@horizontemedico.com.br",
+    photo: "https://picsum.photos/400/300?random=6"
+  }
+];

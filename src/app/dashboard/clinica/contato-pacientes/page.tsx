@@ -39,15 +39,15 @@ export default function Page() {
               <p className="text-2xl font-bold text-white">Contato</p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2 px-5 py-16 md:px-10">
-              <Input
-                labelClassName="text-white"
+                <Input
                 id="search"
                 type="text"
-                className="w-full max-w-sm rounded-lg lg:max-w-md"
                 placeholder="Pesquisar paciente..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                className="h-12 bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring max-w-md mb-6"
               />
+              
               <AlphabeticalContactList
                 contacts={filteredPatients}
                 className="scroll-custom max-h-[500px] w-full max-w-xl overflow-y-auto "
