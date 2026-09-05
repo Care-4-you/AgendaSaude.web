@@ -1,14 +1,15 @@
-import { useClinicStore } from "@/lib/store/clinic-store";
-import { useCreateClinic} from "../_hook/useCreateClinic";
 import { SubmitHandler } from "react-hook-form";
-import { StepThreeFormData } from "../_schemas/clinic-schema";
 
-import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { useClinicStore } from "@/lib/store/clinic-store";
+import { ArrowRight } from "lucide-react";
 
-import { RHFSelect } from "../../../../components/RHFSelect";
 import { convenios } from "../../../../shared/utils";
+
+import { useCreateClinic } from "../_hook/useCreateClinic";
+import { StepThreeFormData } from "../_schemas/clinic-schema";
+import { RHFSelect } from "../../../../components/RHFSelect";
 
 export function StepThree() {
   const { formData, updateFormData, prevStep, nextStep } = useClinicStore();

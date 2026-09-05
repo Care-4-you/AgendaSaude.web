@@ -1,12 +1,14 @@
 import { Controller, type FieldValues } from "react-hook-form";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+
 import {
   colorStyles,
   SelectInputFieldProps,
   SelectOption
 } from "../../lib/types/select-input-types";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
 
 const animatedComponents = makeAnimated();
 

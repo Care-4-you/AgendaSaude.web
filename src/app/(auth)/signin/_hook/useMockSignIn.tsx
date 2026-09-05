@@ -2,9 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
-import { setCookie } from "nookies";
-
 import { useAuth } from "@/hooks/auth";
+import { setCookie } from "nookies";
 
 import { MockUser } from "./mock-users";
 

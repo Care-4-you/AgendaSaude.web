@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import iconplus from "@/assets/icon-plus.png";
 import { default as LayoutContainer } from "@/components/layout/container";
 import {
@@ -12,18 +13,19 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+
 import { Button } from "../../../components/ui/button";
-import { MultiStepForm } from "./_components/multi-step-form";
 import { usePacientStore } from "../../../lib/store/pacient-store";
+import { MultiStepForm } from "./_components/multi-step-form";
 
 export default function registerPaciente() {
   const [openModal, setOpenModal] = useState(false);
-   const { isCompleted, resetForm } = usePacientStore();
+  const { isCompleted, resetForm } = usePacientStore();
   const router = useRouter();
- 
+
   function sendEmail() {
     setOpenModal(false);
-    resetForm();  
+    resetForm();
     router.push("/");
   }
 
@@ -32,7 +34,7 @@ export default function registerPaciente() {
       setOpenModal(true);
     }
   }, [isCompleted]);
-  
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-16 md:bg-gradient-to-r">

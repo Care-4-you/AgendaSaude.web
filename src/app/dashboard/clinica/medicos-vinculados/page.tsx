@@ -8,10 +8,8 @@ import { ChevronLeft } from "lucide-react";
 import { doctors } from "../../../../shared/utils";
 
 import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
-import { useDebounce } from "../../../../hooks/useDebounce";
-import { FieldGroup } from "@/components/ui/field";
-import { RHFInput } from "../../../../components/RHFInput";
 import { Input } from "../../../../components/ui/input";
+import { useDebounce } from "../../../../hooks/useDebounce";
 
 export default function DoctorPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,7 +43,7 @@ export default function DoctorPage() {
                 placeholder="Pesquisar médico..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-12 bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring max-w-md mb-6"
+                className="mb-6 h-12 max-w-md bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring"
               />
 
               <AlphabeticalContactList

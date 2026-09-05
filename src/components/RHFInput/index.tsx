@@ -1,9 +1,10 @@
 import React from "react";
 import { Controller, type FieldValues } from "react-hook-form";
-import { Input } from "@/components/ui/input";
+
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import InputMask from "@mona-health/react-input-mask";
+import { Input } from "@/components/ui/input";
 import { InputFieldProps, MASK } from "@/lib/types/input-types";
+import InputMask from "@mona-health/react-input-mask";
 
 export function RHFInput<T extends FieldValues>({
   control,

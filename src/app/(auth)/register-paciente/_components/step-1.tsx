@@ -1,15 +1,17 @@
-import { usePacientStore } from "@/lib/store/pacient-store";
-import { useCreatePacient } from "../_hook/useCreatePacient";
-import { SubmitHandler } from "react-hook-form";
-import { StepOneFormData } from "../_schemas/pacient-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { RHFSelect } from "@/components/RHFSelect";
 import Image from "next/image";
-import { Label } from "@/components/ui/label";
+import { SubmitHandler } from "react-hook-form";
+
 import uploadsvg from "@/assets/upload.svg";
+import { RHFInput } from "@/components/RHFInput";
+import { RHFSelect } from "@/components/RHFSelect";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { Label } from "@/components/ui/label";
+import { usePacientStore } from "@/lib/store/pacient-store";
+import { ArrowRight } from "lucide-react";
+
+import { useCreatePacient } from "../_hook/useCreatePacient";
+import { StepOneFormData } from "../_schemas/pacient-schema";
 
 const MIN_BIRTH_DATE = "1900-01-01";
 

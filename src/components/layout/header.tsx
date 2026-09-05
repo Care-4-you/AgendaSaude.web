@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { RiImageEditFill } from "react-icons/ri";
-import { Bell, Mails } from "lucide-react";
 
 import logo from "@/assets/logo_agenda_saude.png";
 import { default as LayoutContainer } from "@/components/layout/container";
@@ -24,6 +23,8 @@ import {
   PopoverTrigger
 } from "@/components/ui/popover";
 import { useAuth } from "@/hooks/auth";
+import { Bell, Mails } from "lucide-react";
+
 import { notification } from "@/shared/utils";
 
 import Notification from "../notification";
@@ -61,7 +62,6 @@ export default function Header() {
     };
   }, [profilePopoverOpen]);
 
-  
   const isAuthenticated = user && user.name && user.email;
   const accountPath =
     user?.role === "medico"

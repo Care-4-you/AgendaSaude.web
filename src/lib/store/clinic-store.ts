@@ -1,5 +1,5 @@
-import { create } from "zustand";
 import { ClinicaFormData } from "@/shared/interfaces/IClinica";
+import { create } from "zustand";
 
 interface FormState {
   currentStep: number;
@@ -32,7 +32,7 @@ const initialFormData: ClinicaFormData = {
   addressComplement: "",
   specialty: {
     value: "",
-    label: "",
+    label: ""
   },
   healthInsurance: [],
   email: "",
@@ -40,7 +40,7 @@ const initialFormData: ClinicaFormData = {
   confirmPassword: "",
   acceptTerm: false,
   isWhatsapp: false,
-  hasNumber: false,
+  hasNumber: false
 };
 
 export const useClinicStore = create<FormState>((set) => ({
@@ -73,5 +73,10 @@ export const useClinicStore = create<FormState>((set) => ({
       formData: { ...state.formData, ...data }
     })),
   resetForm: () =>
-    set({ currentStep: 1, maxStepReached: 1, formData: initialFormData, isCompleted: false })
+    set({
+      currentStep: 1,
+      maxStepReached: 1,
+      formData: initialFormData,
+      isCompleted: false
+    })
 }));

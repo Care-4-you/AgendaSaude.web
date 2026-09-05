@@ -3,9 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { CreateDoctorFormData } from "./_schema/create-doctor-schema";
 
 // eslint-disable-next-line import-helpers/order-imports
+import { UseSeachDoctor } from "@/Api/clinic/useSerachDoctor";
+import { RHFInput } from "@/components/RHFInput";
+import { RHFSelect } from "@/components/RHFSelect";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -14,17 +17,13 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-
 import { ChevronLeft } from "lucide-react";
 import { setCookie } from "nookies";
 
 import { UFs } from "@/shared/utils";
 
-import { UseSeachDoctor } from "@/Api/clinic/useSerachDoctor";
-import { Button } from "@/components/ui/button";
 import { useCreateDoctor } from "./_hook/useCreateDoctor";
-import { RHFSelect } from "@/components/RHFSelect";
-import { RHFInput } from "@/components/RHFInput";
+import { CreateDoctorFormData } from "./_schema/create-doctor-schema";
 
 export default function Page() {
   const { createDoctorForm } = useCreateDoctor({});

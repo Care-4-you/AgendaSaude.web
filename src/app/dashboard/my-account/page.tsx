@@ -1,24 +1,19 @@
 "use client";
 import React from "react";
-import { SubmitHandler} from "react-hook-form";
-import { useMyAccount } from "./_hook/useMyAccount";
+import { SubmitHandler } from "react-hook-form";
 
+import { RHFInput } from "@/components/RHFInput";
+import { RHFSelect } from "@/components/RHFSelect";
+import { Button } from "@/components/ui/button";
 
 import { convenios } from "@/shared/utils";
 
-import { Button } from "@/components/ui/button";
+import { useMyAccount } from "./_hook/useMyAccount";
 import { MyAccountFormData } from "./_schema/my-account-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { RHFSelect } from "@/components/RHFSelect";
-
-
 
 export default function Page() {
   const { myAccountForm } = useMyAccount({ initialValues: {} });
-  const {
-    handleSubmit,
-    control,
-  } = myAccountForm;
+  const { handleSubmit, control } = myAccountForm;
 
   const onSubmit: SubmitHandler<MyAccountFormData> = async (data) => {
     console.log(data);
@@ -32,7 +27,7 @@ export default function Page() {
             <p className="text-2xl font-bold text-white">Dados cadastrais</p>
           </div>
           <form
-            className="flex w-full flex-col items-center px-10 py-16 gap-5 "
+            className="flex w-full flex-col items-center gap-5 px-10 py-16 "
             onSubmit={handleSubmit((e) => onSubmit(e))}
           >
             <fieldset className="grid w-full grid-cols-2 items-center gap-2 ">
@@ -63,7 +58,6 @@ export default function Page() {
                   label="Convênio*"
                   className="z-50"
                 />
-              
               </div>
               <RHFInput<MyAccountFormData>
                 id="phone"

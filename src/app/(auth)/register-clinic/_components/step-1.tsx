@@ -1,16 +1,18 @@
-import { useCreateClinic } from "../_hook/useCreateClinic";
-import { SubmitHandler, useWatch } from "react-hook-form";
-import { StepOneFormData } from "../_schemas/clinic-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Label } from "@/components/ui/label";
-import uploadsvg from "@/assets/upload.svg";
-import { useClinicStore } from "@/lib/store/clinic-store";
-import { RHFCheckBox } from "@/components/RHFCheckBox";
 import { useEffect } from "react";
+import { SubmitHandler, useWatch } from "react-hook-form";
+
+import uploadsvg from "@/assets/upload.svg";
+import { RHFCheckBox } from "@/components/RHFCheckBox";
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { Label } from "@/components/ui/label";
+import { useClinicStore } from "@/lib/store/clinic-store";
+import { ArrowRight } from "lucide-react";
+
+import { useCreateClinic } from "../_hook/useCreateClinic";
+import { StepOneFormData } from "../_schemas/clinic-schema";
 
 export function StepOne() {
   const { formData, updateFormData, nextStep } = useClinicStore();

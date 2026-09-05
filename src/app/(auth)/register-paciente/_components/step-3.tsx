@@ -1,14 +1,16 @@
-import { usePacientStore } from "@/lib/store/pacient-store";
-import { useCreatePacient } from "../_hook/useCreatePacient";
+import Link from "next/link";
 import { useState } from "react";
 import { SubmitHandler, useWatch } from "react-hook-form";
-import { StepThreeFormData } from "../_schemas/pacient-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { Eye, EyeOff } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import { RHFCheckBox } from "@/components/RHFCheckBox";
-import Link from "next/link";
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { usePacientStore } from "@/lib/store/pacient-store";
+import { Eye, EyeOff } from "lucide-react";
+
+import { useCreatePacient } from "../_hook/useCreatePacient";
+import { StepThreeFormData } from "../_schemas/pacient-schema";
 
 export function StepThree() {
   const { formData, updateFormData, prevStep, onComplete } = usePacientStore();
@@ -25,8 +27,11 @@ export function StepThree() {
     }
   });
 
-  const isChecked = useWatch({ control: StepThreeForm.control, name: "acceptTerm" });
-  
+  const isChecked = useWatch({
+    control: StepThreeForm.control,
+    name: "acceptTerm"
+  });
+
   const onSubmit: SubmitHandler<StepThreeFormData> = (data) => {
     updateFormData(data);
     onComplete();
@@ -129,7 +134,7 @@ export function StepThree() {
         <Button
           type="button"
           variant="outline"
-           className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
+          className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
           onClick={prevStep}
         >
           Voltar
@@ -140,7 +145,6 @@ export function StepThree() {
           disabled={!isChecked || StepThreeForm.formState.isSubmitting}
         >
           Finalizar
-          
         </Button>
       </div>
     </form>

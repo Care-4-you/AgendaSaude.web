@@ -1,7 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
   StepOneFormData,
   StepOneFormSchema,
@@ -79,16 +81,16 @@ export function useCreateClinic({
     }
   });
 
-   const StepFourForm = useForm<StepFourFormData>({
-      resolver: zodResolver(StepFourFormSchema),
-      defaultValues: stepFourInitialValues || {
-        email: "",
-        cnpj: "",
-        password: "",
-        confirmPassword: "",
-        acceptTerm: false
-      }
-    });
+  const StepFourForm = useForm<StepFourFormData>({
+    resolver: zodResolver(StepFourFormSchema),
+    defaultValues: stepFourInitialValues || {
+      email: "",
+      cnpj: "",
+      password: "",
+      confirmPassword: "",
+      acceptTerm: false
+    }
+  });
 
   return { StepOneForm, StepTwoForm, StepThreeForm, StepFourForm };
 }

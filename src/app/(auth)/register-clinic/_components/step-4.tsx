@@ -1,14 +1,16 @@
-import { useClinicStore } from "@/lib/store/clinic-store";
-import { useCreateClinic } from "../_hook/useCreateClinic";
+import Link from "next/link";
 import { useState } from "react";
 import { SubmitHandler, useWatch } from "react-hook-form";
-import { StepFourFormData } from "../_schemas/clinic-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { Eye, EyeOff } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import { RHFCheckBox } from "@/components/RHFCheckBox";
-import Link from "next/link";
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { useClinicStore } from "@/lib/store/clinic-store";
+import { Eye, EyeOff } from "lucide-react";
+
+import { useCreateClinic } from "../_hook/useCreateClinic";
+import { StepFourFormData } from "../_schemas/clinic-schema";
 
 export function StepFour() {
   const { formData, updateFormData, prevStep, onComplete } = useClinicStore();

@@ -2,8 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Form, SubmitHandler, useForm } from "react-hook-form";
-import { LuEye, LuEyeOff } from "react-icons/lu";
+import { SubmitHandler } from "react-hook-form";
 
 import iconplus from "@/assets/icon-plus.png";
 import { Button } from "@/components/ui/button";
@@ -15,13 +14,13 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { ResetPassowrdTokenEmail } from "@/shared/interfaces/IClinica";
-import { FieldGroup } from "../../../../../components/ui/field";
-import { RHFInput } from "../../../../../components/RHFInput";
-import { PasswordResetFormDataWithPassword } from "../../_schemas/password-reset-schema";
-import { usePasswordReset } from "../../_hook/usaPassword";
 import { Eye, EyeOff } from "lucide-react";
+
+import { usePasswordReset } from "../../_hook/usaPassword";
+import { PasswordResetFormDataWithPassword } from "../../_schemas/password-reset-schema";
+import { RHFInput } from "../../../../../components/RHFInput";
+import { FieldGroup } from "../../../../../components/ui/field";
 
 interface IParams {
   tokenReset: string;
@@ -44,7 +43,9 @@ export default function ResetToken({ params }: { params: IParams }) {
   const confirmPassword = PasswordForm.watch("confirmPassword");
 
   const isDisabled =
-    !password || !confirmPassword || Object.keys(PasswordForm.formState.errors).length > 0;
+    !password ||
+    !confirmPassword ||
+    Object.keys(PasswordForm.formState.errors).length > 0;
 
   const onSubmit: SubmitHandler<ResetPassowrdTokenEmail> = (data, event) => {
     event?.preventDefault();
@@ -96,7 +97,9 @@ export default function ResetToken({ params }: { params: IParams }) {
                     />
                     <button
                       type="button"
-                      aria-label={isShowPassword ? "Ocultar senha" : "Mostrar senha"}
+                      aria-label={
+                        isShowPassword ? "Ocultar senha" : "Mostrar senha"
+                      }
                       onClick={() => setIsShowPassword((prev) => !prev)}
                       className="absolute right-4  top-[46px]  cursor-pointer "
                     >

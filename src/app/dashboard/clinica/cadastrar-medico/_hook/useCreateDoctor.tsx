@@ -1,8 +1,13 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateDoctorFormSchema, CreateDoctorFormData } from "../_schema/create-doctor-schema";
+
+import {
+  CreateDoctorFormSchema,
+  CreateDoctorFormData
+} from "../_schema/create-doctor-schema";
 
 export interface UseCreateDoctorFormProps {
   initialValues?: {

@@ -1,8 +1,8 @@
 import { Control, FieldValues, Path } from "react-hook-form";
-import { Props as ReactSelectProps } from "react-select";
+import { CSSObjectWithLabel, Props as ReactSelectProps } from "react-select";
 
 export const colorStyles = {
-  control: (styles: any) => ({
+  control: (styles: CSSObjectWithLabel) => ({
     ...styles,
     minHeight: "2.75em"
   })

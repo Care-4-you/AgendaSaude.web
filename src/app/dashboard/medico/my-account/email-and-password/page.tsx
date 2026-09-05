@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
+import useDialogChangePhoto from "@/components/layout/dialog-change-photo";
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -12,19 +15,15 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 
-import { Button } from "@/components/ui/button";
-import useDialogChangePhoto from "@/components/layout/dialog-change-photo";
 import { useChangeEmailAndPassword } from "./_hook/useEmailPassword";
 import { ChangeEmailAndPasswordFormData } from "./_schema/Email-password-schema";
-import { RHFInput } from "@/components/RHFInput";
 
 export default function Page() {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const { changeEmailAndPasswordForm } = useChangeEmailAndPassword({});
-  const { DialogComponentChangePhoto, handleOpenModalChangePhoto } =
-    useDialogChangePhoto();
+  const { DialogComponentChangePhoto } = useDialogChangePhoto();
 
   const onSubmit: SubmitHandler<ChangeEmailAndPasswordFormData> = async (
     data
@@ -48,7 +47,7 @@ export default function Page() {
               </p>
             </div>
             <form
-              className="flex w-full flex-col items-center p-20 gap-4"
+              className="flex w-full flex-col items-center gap-4 p-20"
               onSubmit={changeEmailAndPasswordForm.handleSubmit(onSubmit)}
             >
               <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">

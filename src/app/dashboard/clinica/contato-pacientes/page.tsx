@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+
 import { ChevronLeft, Plus } from "lucide-react";
 
 import { patients } from "../../../../shared/utils";
 
 import { AlphabeticalContactList } from "../../../../components/alphabetical-contact-list";
-
 import { Input } from "../../../../components/ui/input";
 import { useDebounce } from "../../../../hooks/useDebounce";
 
@@ -39,15 +39,15 @@ export default function Page() {
               <p className="text-2xl font-bold text-white">Contato</p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2 px-5 py-16 md:px-10">
-                <Input
+              <Input
                 id="search"
                 type="text"
                 placeholder="Pesquisar paciente..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-12 bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring max-w-md mb-6"
+                className="mb-6 h-12 max-w-md bg-background text-black ring-offset-background placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring"
               />
-              
+
               <AlphabeticalContactList
                 contacts={filteredPatients}
                 className="scroll-custom max-h-[500px] w-full max-w-xl overflow-y-auto "

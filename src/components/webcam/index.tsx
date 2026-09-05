@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
@@ -73,10 +74,12 @@ export default function useDialogWebCam() {
           )}
           {preview && (
             <div className="flex flex-col items-center gap-4">
-              <img
+              <Image
                 src={preview}
                 alt="Preview"
                 className="max-w-full rounded-md border"
+                width={1280}
+                height={720}
               />
               <div className="flex gap-4">
                 <Button

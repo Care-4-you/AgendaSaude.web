@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 export const MyAccountFormSchema = z.object({
   name: z
     .string()
@@ -27,7 +26,7 @@ export const MyAccountFormSchema = z.object({
   address: z.string("Campo obrigatório").min(1, "Campo obrigatório"),
   houseNumber: z.string().optional(),
   hasNumber: z.boolean().optional(),
-  addressComplement: z.string().optional(),
+  addressComplement: z.string().optional()
 });
 
 export type MyAccountFormData = z.infer<typeof MyAccountFormSchema>;

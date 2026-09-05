@@ -5,6 +5,7 @@ import { Poppins, MuseoModerno, Inter } from "next/font/google";
 
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
+
 import { TooltipProvider } from "../components/ui/tooltip";
 import { TanstackProvider } from "../config/tanstack-provider";
 import { AuthProvider } from "../hooks/auth";

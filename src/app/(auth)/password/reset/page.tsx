@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
+
 import iconplus from "@/assets/icon-plus.png";
+import { RHFInput } from "@/components/RHFInput";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,11 +17,10 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+import { FieldGroup } from "@/components/ui/field";
 
 import { usePasswordReset } from "../_hook/usaPassword";
-import { RHFInput } from "@/components/RHFInput";
 import { PasswordResetFormData } from "../_schemas/password-reset-schema";
-import { FieldGroup } from "@/components/ui/field";
 
 export default function Reset() {
   const [openModal, setOpenModal] = useState(false);

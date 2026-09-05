@@ -3,15 +3,15 @@
 import Link from "next/link";
 import React from "react";
 import { SubmitHandler, useWatch } from "react-hook-form";
-import avatarImageDefault from "@/assets/foto-pessoal.svg";
-import { ChevronLeft } from "lucide-react";
 
+import avatarImageDefault from "@/assets/foto-pessoal.svg";
+import { RHFInput } from "@/components/RHFInput";
 import { AvatarImage, Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-
 import useDialogWebCam from "@/components/webcam";
+import { ChevronLeft } from "lucide-react";
+
 import { useCreatePacient } from "./_hook/useCreatePacient";
-import { RHFInput } from "@/components/RHFInput";
 import { CreatePacientFormData } from "./_schema/create-pacient-schema";
 
 export default function Page() {

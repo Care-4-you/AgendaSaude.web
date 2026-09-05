@@ -1,9 +1,13 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { MyAccountFormSchema, MyAccountFormData } from "../_schema/my-account-schema";
+import {
+  MyAccountFormSchema,
+  MyAccountFormData
+} from "../_schema/my-account-schema";
 
 export interface UseMyAccountFormProps {
   initialValues?: {

@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+
 import { AlphabeticalContactList } from "@/components/alphabetical-contact-list";
 import { Input } from "@/components/ui/input";
 import { useDebounce } from "@/hooks/useDebounce";
-import { ChevronLeft, Plus } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 import { clinics } from "@/shared/utils";
 

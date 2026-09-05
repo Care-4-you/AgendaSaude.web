@@ -1,7 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
   PasswordResetFormData,
   PasswordResetSchema,
@@ -13,14 +15,17 @@ export interface UsePasswordResetFormProps {
   initialValues?: {
     email: string;
   };
-  passwordValue?:{
+  passwordValue?: {
     token: string;
     password: string;
     confirmPassword: string;
-  }
+  };
 }
 
-export function usePasswordReset({ initialValues, passwordValue }: UsePasswordResetFormProps) {
+export function usePasswordReset({
+  initialValues,
+  passwordValue
+}: UsePasswordResetFormProps) {
   const Form = useForm<PasswordResetFormData>({
     resolver: zodResolver(PasswordResetSchema),
     defaultValues: initialValues || {
@@ -35,9 +40,7 @@ export function usePasswordReset({ initialValues, passwordValue }: UsePasswordRe
       password: "",
       confirmPassword: ""
     }
-  })
-
-  
+  });
 
   return { Form, PasswordForm };
 }

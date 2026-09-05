@@ -1,5 +1,5 @@
-import { create } from "zustand";
 import { PacienteFormData } from "@/shared/interfaces/IPacient";
+import { create } from "zustand";
 
 interface FormState {
   currentStep: number;
@@ -68,5 +68,10 @@ export const usePacientStore = create<FormState>((set) => ({
       formData: { ...state.formData, ...data }
     })),
   resetForm: () =>
-    set({ currentStep: 1, maxStepReached: 1, formData: initialFormData, isCompleted: false })
+    set({
+      currentStep: 1,
+      maxStepReached: 1,
+      formData: initialFormData,
+      isCompleted: false
+    })
 }));

@@ -1,16 +1,15 @@
 import { Controller, type FieldValues } from "react-hook-form";
+
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
   FieldSet
 } from "@/components/ui/field";
+
 import { CheckboxFieldProps } from "../../lib/types/Checkbox-type";
-import { Checkbox } from "@/components/ui/checkbox";
 
 export function RHFCheckBox<T extends FieldValues>({
   control,
@@ -36,7 +35,7 @@ export function RHFCheckBox<T extends FieldValues>({
                 />
                 <FieldLabel
                   htmlFor="form-rhf-checkbox-responses"
-                  className="font-normal text-sm"
+                  className="text-sm font-normal"
                 >
                   {label}
                 </FieldLabel>

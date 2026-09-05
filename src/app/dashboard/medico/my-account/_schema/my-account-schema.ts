@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-
-
 const selectOptionSchema = z.object({
   value: z.string().min(1, "Campo obrigatório"),
   label: z.string()
@@ -15,18 +13,14 @@ export const MyAccountFormSchema = z.object({
   medicalRecord: z
     .array(
       z.object({
-        councilsNumber: z
-          .string()
-          .min(1, "Número do Conselho é obrigatório"),
+        councilsNumber: z.string().min(1, "Número do Conselho é obrigatório"),
         councils: selectOptionSchema,
         councilsUF: selectOptionSchema
       })
     )
     .min(1, "Adicione pelo menos um conselho"),
 
-  specialty: z
-    .array(selectOptionSchema)
-    .min(1, "Especialidade é obrigatória")
+  specialty: z.array(selectOptionSchema).min(1, "Especialidade é obrigatória")
 });
-  
+
 export type MyAccountFormData = z.infer<typeof MyAccountFormSchema>;

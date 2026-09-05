@@ -37,18 +37,24 @@ export const StepOneFormSchema = z.object({
     .refine((value) => parseBirthDate(value) !== null, {
       message: "Data de nascimento inválida"
     })
-    .refine((value) => {
-      const date = parseBirthDate(value);
-      return date !== null && date >= MIN_BIRTH_DATE;
-    }, {
-      message: "Ano de nascimento inválido"
-    })
-    .refine((value) => {
-      const date = parseBirthDate(value);
-      return date !== null && date <= getMaxBirthDate();
-    }, {
-      message: "Você deve ter pelo menos 18 anos"
-    }),
+    .refine(
+      (value) => {
+        const date = parseBirthDate(value);
+        return date !== null && date >= MIN_BIRTH_DATE;
+      },
+      {
+        message: "Ano de nascimento inválido"
+      }
+    )
+    .refine(
+      (value) => {
+        const date = parseBirthDate(value);
+        return date !== null && date <= getMaxBirthDate();
+      },
+      {
+        message: "Você deve ter pelo menos 18 anos"
+      }
+    ),
 
   gender: z.object({
     value: z.string().min(1, "Selecione um gênero"),
@@ -56,40 +62,44 @@ export const StepOneFormSchema = z.object({
   })
 });
 
-export const  StepTwoFormSchema = z.object({
-  zipcode: z.string("Campo obrigatório").min(9, "CEP inválido").max(9, "CEP inválido"),
+export const StepTwoFormSchema = z.object({
+  zipcode: z
+    .string("Campo obrigatório")
+    .min(9, "CEP inválido")
+    .max(9, "CEP inválido"),
   state: z.string("Campo obrigatório").min(1, "Campo obrigatório"),
   city: z.string("Campo obrigatório").min(1, "Campo obrigatório"),
   neighborhood: z.string("Campo obrigatório").min(1, "Campo obrigatório"),
   address: z.string("Campo obrigatório").min(1, "Campo obrigatório"),
   addressComplement: z.string().optional()
-})
+});
 
-
-export const StepThreeFormSchema = z.object({
-  email: z.string().min(1, "Campo obrigatório"),
-  cpf: z.string().min(1, "Campo obrigatório"),
-  password: z
-    .string()
-    .min(1, "Campo obrigatório")
-    .min(8, "Senha deve ter no minimo 8 caracters")
-    .refine((value) => /^(?=.*[A-Z]).+$/.test(value), {
-      message: "Deve conter no minimo uma letra maiúscula"
+export const StepThreeFormSchema = z
+  .object({
+    email: z.string().min(1, "Campo obrigatório"),
+    cpf: z.string().min(1, "Campo obrigatório"),
+    password: z
+      .string()
+      .min(1, "Campo obrigatório")
+      .min(8, "Senha deve ter no minimo 8 caracters")
+      .refine((value) => /^(?=.*[A-Z]).+$/.test(value), {
+        message: "Deve conter no minimo uma letra maiúscula"
+      })
+      .refine((value) => /^(?=.*[a-z]).+$/.test(value), {
+        message: "Deve conter no minimo uma letra minuscula"
+      })
+      .refine((value) => /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(value), {
+        message: "Deve conter caracters especiaos Ex. @ # $"
+      }),
+    confirmPassword: z.string().min(1, "Campo obrigatório"),
+    acceptTerm: z.boolean().refine((value) => value === true, {
+      message: "Você deve aceitar os termos e condições"
     })
-    .refine((value) => /^(?=.*[a-z]).+$/.test(value), {
-      message: "Deve conter no minimo uma letra minuscula"
-    })
-    .refine((value) => /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?/~]).+$/.test(value), {
-      message: "Deve conter caracters especiaos Ex. @ # $"
-    }),
-  confirmPassword: z.string().min(1, "Campo obrigatório"),
-  acceptTerm: z.boolean().refine((value) => value === true, {
-    message: "Você deve aceitar os termos e condições"
   })
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "As senhas não coincidem",
-  path: ["confirmPassword"],
-})
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "As senhas não coincidem",
+    path: ["confirmPassword"]
+  });
 
 export type StepThreeFormData = z.infer<typeof StepThreeFormSchema>;
 export type StepTwoFormData = z.infer<typeof StepTwoFormSchema>;

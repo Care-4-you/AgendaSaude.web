@@ -17,12 +17,9 @@ export const PasswordResetSchemaWithPassword = z
       .refine((value) => /^(?=.*[a-z]).+$/.test(value), {
         message: "Deve conter no minimo uma letra minuscula"
       })
-      .refine(
-        (value) => /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?/~]).+$/.test(value),
-        {
-          message: "Deve conter caracters especiaos Ex. @ # $"
-        }
-      ),
+      .refine((value) => /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(value), {
+        message: "Deve conter caracters especiaos Ex. @ # $"
+      }),
     confirmPassword: z.string().min(1, "Campo obrigatório")
   })
   .refine((data) => data.password === data.confirmPassword, {

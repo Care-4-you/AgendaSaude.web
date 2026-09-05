@@ -1,14 +1,16 @@
-import { usePacientStore } from "@/lib/store/pacient-store";
-import { useCreatePacient } from "../_hook/useCreatePacient";
-import { SubmitHandler, useWatch } from "react-hook-form";
-import { StepTwoFormData } from "../_schemas/pacient-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { noMask } from "../../../../hooks/useMask";
-import { UseSearchCep } from "../../../../Api/UseSearchCep";
 import { useEffect } from "react";
+import { SubmitHandler, useWatch } from "react-hook-form";
+
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { usePacientStore } from "@/lib/store/pacient-store";
+import { ArrowRight } from "lucide-react";
+
+import { useCreatePacient } from "../_hook/useCreatePacient";
+import { StepTwoFormData } from "../_schemas/pacient-schema";
+import { UseSearchCep } from "../../../../Api/UseSearchCep";
+import { noMask } from "../../../../hooks/useMask";
 
 export function StepTwo() {
   const { formData, updateFormData, nextStep, prevStep } = usePacientStore();
@@ -49,7 +51,7 @@ export function StepTwo() {
       StepTwoForm.setValue("neighborhood", "");
       return;
     }
-  }, [CepData, cep, StepTwoForm.setValue]);
+  }, [CepData, cep, StepTwoForm]);
 
   return (
     <form
@@ -118,7 +120,7 @@ export function StepTwo() {
         <Button
           type="button"
           variant="outline"
-           className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
+          className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-white text-black hover:bg-white/90"
           onClick={prevStep}
         >
           Voltar

@@ -2,21 +2,40 @@
 import React, { useMemo } from "react";
 import { SubmitHandler, useFieldArray, useWatch } from "react-hook-form";
 
-import { councilsTypes, UFs } from "@/shared/utils";
-
 import { Button } from "@/components/ui/button";
 
-import { useMyAccount } from "./_hook/useMyAccount";
-import { MyAccountFormData } from "./_schema/my-account-schema";
+import { councilsTypes, UFs } from "@/shared/utils";
+
 import { RHFInput } from "../../../../components/RHFInput";
 import { RHFSelect } from "../../../../components/RHFSelect";
+import { useMyAccount } from "./_hook/useMyAccount";
+import { MyAccountFormData } from "./_schema/my-account-schema";
+
+const especializacoesPorConselho: Record<
+  string,
+  { value: string; label: string }[]
+> = {
+  CRM: [
+    { value: "cardiologia", label: "Cardiologia" },
+    { value: "ginecologia", label: "Ginecologia" },
+    { value: "urologia", label: "Urologia" },
+    { value: "ortopedia", label: "Ortopedia" },
+    { value: "oncologia", label: "Oncologia" },
+    { value: "geriatria", label: "Geriatria" },
+    { value: "oftalmologia", label: "Oftalmologia" },
+    { value: "angiologia", label: "Angiologia" },
+    { value: "dermatologia", label: "Dermatologia" },
+    { value: "cirurgia", label: "Cirurgia" },
+    { value: "clinica-geral", label: "Clínica Geral" }
+  ],
+  CRN: [{ value: "nutricao", label: "Nutrição" }],
+  CRO: [{ value: "odontologia", label: "Odontologia" }],
+  CREFITO: [{ value: "fisioterapia", label: "Fisioterapia" }]
+};
 
 export default function Page() {
   const { myAccountForm } = useMyAccount({});
-  const {
-    handleSubmit,
-    control,
-  } = myAccountForm;
+  const { handleSubmit, control } = myAccountForm;
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -27,28 +46,6 @@ export default function Page() {
     control,
     name: "medicalRecord"
   });
-
-  const especializacoesPorConselho: Record<
-    string,
-    { value: string; label: string }[]
-  > = {
-    CRM: [
-      { value: "cardiologia", label: "Cardiologia" },
-      { value: "ginecologia", label: "Ginecologia" },
-      { value: "urologia", label: "Urologia" },
-      { value: "ortopedia", label: "Ortopedia" },
-      { value: "oncologia", label: "Oncologia" },
-      { value: "geriatria", label: "Geriatria" },
-      { value: "oftalmologia", label: "Oftalmologia" },
-      { value: "angiologia", label: "Angiologia" },
-      { value: "dermatologia", label: "Dermatologia" },
-      { value: "cirurgia", label: "Cirurgia" },
-      { value: "clinica-geral", label: "Clínica Geral" }
-    ],
-    CRN: [{ value: "nutricao", label: "Nutrição" }],
-    CRO: [{ value: "odontologia", label: "Odontologia" }],
-    CREFITO: [{ value: "fisioterapia", label: "Fisioterapia" }]
-  };
 
   // Combinar especialidades de todos os conselhos selecionados
   const especializacoes = useMemo(() => {

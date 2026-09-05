@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
 import iconplus from "@/assets/icon-plus.png";
 import { default as LayoutContainer } from "@/components/layout/container";
 import {
@@ -14,12 +15,12 @@ import {
 } from "@/components/ui/dialog";
 
 import { Button } from "../../../components/ui/button";
-import { MultiStepForm } from "./_components/multi-step-form";
 import { useClinicStore } from "../../../lib/store/clinic-store";
+import { MultiStepForm } from "./_components/multi-step-form";
 
 export default function registerClinical() {
   const [openModal, setOpenModal] = useState(false);
-   const { isCompleted, resetForm } = useClinicStore();
+  const { isCompleted, resetForm } = useClinicStore();
   const router = useRouter();
 
   function sendEmail() {
@@ -27,11 +28,11 @@ export default function registerClinical() {
     resetForm();
     router.push("/");
   }
-    useEffect(() => {
+  useEffect(() => {
     if (isCompleted === true) {
       setOpenModal(true);
     }
-  }, [isCompleted])
+  }, [isCompleted]);
 
   return (
     <>

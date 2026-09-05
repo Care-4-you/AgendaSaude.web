@@ -1,15 +1,17 @@
-import { useClinicStore } from "@/lib/store/clinic-store";
-import { useCreateClinic } from "../_hook/useCreateClinic";
-import { SubmitHandler, useWatch } from "react-hook-form";
-import { StepTwoFormData } from "../_schemas/clinic-schema";
-import { RHFInput } from "@/components/RHFInput";
-import { FieldGroup } from "@/components/ui/field";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { noMask } from "../../../../hooks/useMask";
-import { UseSearchCep } from "../../../../Api/UseSearchCep";
 import { useEffect } from "react";
+import { SubmitHandler, useWatch } from "react-hook-form";
+
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { useClinicStore } from "@/lib/store/clinic-store";
+import { ArrowRight } from "lucide-react";
+
+import { useCreateClinic } from "../_hook/useCreateClinic";
+import { StepTwoFormData } from "../_schemas/clinic-schema";
+import { UseSearchCep } from "../../../../Api/UseSearchCep";
 import { RHFCheckBox } from "../../../../components/RHFCheckBox";
+import { noMask } from "../../../../hooks/useMask";
 
 export function StepTwo() {
   const { formData, updateFormData, nextStep, prevStep } = useClinicStore();
@@ -54,7 +56,7 @@ export function StepTwo() {
       StepTwoForm.setValue("neighborhood", "");
       return;
     }
-  }, [CepData, cep, StepTwoForm.setValue]);
+  }, [CepData, cep, StepTwoForm]);
 
   useEffect(() => {
     if (hasNumberChecked) {
@@ -95,7 +97,7 @@ export function StepTwo() {
           id="address"
           type="text"
           name="address"
-          className="lg:col-span-4 col-span-6"
+          className="col-span-6 lg:col-span-4"
           placeholder="Logradouro"
           label="Logradouro*"
           control={StepTwoForm.control}
@@ -104,7 +106,7 @@ export function StepTwo() {
           id="houseNumber"
           type="text"
           name="houseNumber"
-          className="lg:col-span-1 col-span-3"
+          className="col-span-3 lg:col-span-1"
           placeholder="Número"
           label="Nº*"
           disabled={hasNumberChecked}
@@ -113,7 +115,7 @@ export function StepTwo() {
         <RHFCheckBox<StepTwoFormData>
           id="isWhatsapp"
           name="hasNumber"
-          className="lg:col-span-1 col-span-3 flex items-center justify-start "
+          className="col-span-3 flex items-center justify-start lg:col-span-1 "
           label={<p className="text-xs">S/N</p>}
           control={StepTwoForm.control}
         />

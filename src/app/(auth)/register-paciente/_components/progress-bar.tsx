@@ -2,6 +2,7 @@
 
 import { Progress } from "@/components/ui/progress";
 import { usePacientStore } from "@/lib/store/pacient-store";
+
 import { STEPS_CONFIG } from "./steps-config";
 
 export function ProgressBar() {

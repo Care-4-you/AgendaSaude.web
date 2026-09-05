@@ -1,8 +1,7 @@
 import { z } from "zod";
 
-
 export const CreateDoctorFormSchema = z.object({
-   UF: z.object({
+  UF: z.object({
     value: z.string().min(1, "Selecione um estado"),
     label: z.string()
   }),
