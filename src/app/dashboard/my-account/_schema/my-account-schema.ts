@@ -13,7 +13,7 @@ export const MyAccountFormSchema = z.object({
         label: z.string()
       })
     )
-    .min(1, "Selecione ao menos um convênio"),
+    .optional(),
   phone: z.string().min(1, "Campo obrigatório"),
   cellPhone: z.string().min(1, "Campo obrigatório"),
   zipcode: z

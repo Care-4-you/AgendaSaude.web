@@ -11,18 +11,18 @@ import {
 
 export interface UseMyAccountFormProps {
   initialValues?: {
-    name?: string;
-    cnpj?: string;
-    healthInsurance?: { value: string; label: string }[];
-    phone?: string;
-    cellPhone?: string;
-    zipcode?: string;
-    state?: string;
-    city?: string;
-    neighborhood?: string;
-    address?: string;
-    houseNumber?: string;
-    hasNumber?: boolean;
+    name: string;
+    cnpj: string;
+    healthInsurance: { value: string; label: string }[];
+    phone: string;
+    cellPhone: string;
+    zipcode: string;
+    state: string;
+    city: string;
+    neighborhood: string;
+    address: string;
+    houseNumber: string;
+    hasNumber: boolean;
     addressComplement?: string;
   };
 }
@@ -32,6 +32,8 @@ export function useMyAccount({ initialValues }: UseMyAccountFormProps) {
     resolver: zodResolver(MyAccountFormSchema),
     defaultValues: initialValues || {
       name: "",
+      cnpj: "",
+      healthInsurance: [],
       cellPhone: "",
       phone: "",
       zipcode: "",

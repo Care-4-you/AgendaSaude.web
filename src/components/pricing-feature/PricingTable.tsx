@@ -68,7 +68,7 @@ export function PricingTable({
   );
 
   return (
-    <div className="mx-auto flex h-full w-full max-w-5xl flex-col gap-8">
+    <div className="mx-auto flex h-full w-full  flex-col gap-8">
       {/* Search Bar Area */}
       <div className="flex w-full items-center justify-center">
         <div className="flex w-full max-w-md items-center gap-3 rounded-md bg-white px-4 py-3 shadow-sm">

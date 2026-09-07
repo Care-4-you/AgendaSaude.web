@@ -12,6 +12,9 @@ import {
 import { destroyCookie, setCookie } from "nookies";
 
 import { api } from "../Api/api";
+import { findMockUserByCredentials } from "@/app/(auth)/signin/_hook/mock-users";
+
+export type UserRole = "USER" | "medico" | "paciente";
 
 export interface IUser {
   id?: number;
@@ -29,8 +32,30 @@ export interface IUser {
   city?: string;
   state?: string;
   instagram?: string;
-  role: any;
+  role: UserRole;
   pendingAnnouncement?: any;
+  addressComplement?: string;
+  houseNumber?: string;
+  neighborhood?: string;
+  healthInsurance?: {
+    value: string;
+    label: string;
+  }[];
+  medicalRecord?:{
+    councilsNumber: string;
+    councils: {
+      value: string;
+      label: string;
+    };
+    councilsUF: {
+      value: string;
+      label: string;
+    };
+  }[];
+  specialty?: {
+    value: string;
+    label: string;
+  }[];
 }
 
 interface AuthState {
@@ -101,6 +126,50 @@ export function AuthProvider({
 
   const signIn = useCallback(
     async ({ email, password }: { email: string; password: string }) => {
+      // ============================================================
+      // FLUXO MOCKADO (sem backend)
+      // Valida as credenciais contra os usuários de
+      // src/app/(auth)/signin/_hook/mock-users.ts
+      // Para voltar a usar a API real, restaure o bloco "FLUXO REAL"
+      // comentado no final desta função e remova o bloco mockado.
+      // ============================================================
+      try {
+        // Simula a latência de uma chamada de rede
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        const mockSession = findMockUserByCredentials(email, password);
+
+        if (!mockSession) {
+          alert("Email ou senha inválidos");
+          return;
+        }
+
+        const { token, user } = mockSession;
+
+        setCookie({}, "@Saude:token", token, {
+          path: "/"
+        });
+
+        setCookie({}, "@Saude:user", JSON.stringify(user), {
+          path: "/"
+        });
+
+        setData({
+          token,
+          user
+        });
+
+        const redirectPath = roleRedirectMap[user.role];
+
+        router.push(redirectPath);
+      } catch (error) {
+        console.log("Err", error);
+        alert("erro no login");
+      }
+
+      /* ============================================================
+       * FLUXO REAL (API) — preservado para quando o backend existir.
+       * ============================================================
       try {
         const { data: dataApi } = await api.post("/auth/login", {
           email,
@@ -143,6 +212,7 @@ export function AuthProvider({
         console.log("Err", error);
         alert("erro no login");
       }
+      */
     },
     [router]
   );

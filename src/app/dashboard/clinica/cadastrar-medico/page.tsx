@@ -58,18 +58,18 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex  w-full flex-1 flex-col  items-center  lg:items-start ">
+      <div className="flex  w-full flex-1 flex-col  items-start  p-8">
         <Link
           href="/dashboard/clinica"
-          className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+          className="mb-6 flex items-center gap-2 text-start font-semibold text-black transition-all hover:underline"
         >
-          <ChevronLeft size={32} strokeWidth={4} />
-          <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+          <ChevronLeft size={24} strokeWidth={4} />
+          <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
             Cadastrar médico
           </h2>
         </Link>
         <form
-          className="flex h-[600px] w-full  flex-col  gap-20 rounded-3xl bg-agenda-saude-purple-300 p-12"
+          className="flex h-[400px] w-full  flex-col  gap-20 rounded-md bg-agenda-saude-purple-300 p-12"
           onSubmit={createDoctorForm.handleSubmit(onSubmit)}
         >
           <fieldset className=" grid grid-cols-1 gap-2  ">

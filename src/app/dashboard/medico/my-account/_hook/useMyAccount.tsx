@@ -19,6 +19,7 @@ export interface UseMyAccountFormProps {
       councils: { value: string; label: string };
       councilsUF: { value: string; label: string };
     }[];
+    specialty?: { value: string; label: string }[];
   };
 }
 

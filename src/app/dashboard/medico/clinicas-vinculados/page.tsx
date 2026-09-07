@@ -22,19 +22,19 @@ export default function ClinicPage() {
 
   return (
     <>
-      <div className="flex w-full flex-1 items-center justify-between ">
+      <div className="flex  w-full flex-1 flex-col  items-start p-8 ">
         <div className="flex w-full flex-col gap-8">
           <Link
             href="/dashboard/medico"
-            className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+            className="mb-5 flex  items-center gap-2 text-start font-semibold text-black transition-all hover:underline"
           >
-            <ChevronLeft size={32} strokeWidth={4} />
-            <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+            <ChevronLeft size={24} strokeWidth={4} />
+            <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
               Clínicas vinculadas
             </h2>
           </Link>
 
-          <div className=" min-h-[700px] w-full rounded-md bg-agenda-saude-purple-300 ">
+          <div className=" min-h-[600px] w-full rounded-md bg-agenda-saude-purple-300 ">
             <div className="flex flex-col items-center justify-center gap-2 px-5 py-16 md:px-10">
               <Input
                 id="search"

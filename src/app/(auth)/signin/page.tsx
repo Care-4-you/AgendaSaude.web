@@ -107,6 +107,8 @@ export default function Signin() {
                   </Button>
                 </div>
               </form>
+
+              
             </div>
           </div>
           <div className="flex  flex-1  items-center  justify-center gap-2 bg-[#1C226B] px-8 md:items-start md:py-36 2xl:px-0 ">

@@ -1,14 +1,12 @@
 import { StaticImageData } from "next/image";
-
-import clinicaImage from "@/assets/clinica.png";
-import medicoImage from "@/assets/medico.png";
 import pacienteImage from "@/assets/paciente.png";
 import { IUser } from "@/hooks/auth";
 
 export interface MockUser {
   label: string;
   token: string;
-  image: StaticImageData;
+  password: string;
+  image: StaticImageData | string;
   user: IUser;
 }
 
@@ -16,6 +14,7 @@ export const mockUsers: MockUser[] = [
   {
     label: "Paciente",
     token: "mock-token-paciente",
+    password: "123456",
     image: pacienteImage,
     user: {
       id: 1,
@@ -32,13 +31,16 @@ export const mockUsers: MockUser[] = [
       city: "Sao Paulo",
       state: "SP",
       key: "mock-key-paciente",
-      url: pacienteImage.src
+      url: pacienteImage.src,
+      houseNumber: "23",
+      neighborhood: "Harmonia",
     }
   },
   {
     label: "Medico",
     token: "mock-token-medico",
-    image: medicoImage,
+    password: "123456",
+    image: "https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg",
     user: {
       id: 2,
       name: "Dr. Carlos Mendes",
@@ -54,13 +56,30 @@ export const mockUsers: MockUser[] = [
       city: "Sao Paulo",
       state: "SP",
       key: "mock-key-medico",
-      url: medicoImage.src
+      url: "https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg",
+      medicalRecord:[
+        {
+          councilsNumber: "123456",
+          councils: { value: "crm", label: "CRM" },
+          councilsUF: { value: "SP", label: "SP" }
+        },
+        {
+          councilsNumber: "223342",
+          councils: { value: "crm", label: "CRM" },
+          councilsUF: { value: "RJ", label: "RJ" }
+        }
+      ],
+      specialty: [
+        { value: "ortopedia", label: "Ortopedia" },
+        { value: "oncologia", label: "Oncologia" }
+      ]
     }
   },
   {
     label: "Clinica",
     token: "mock-token-clinica",
-    image: clinicaImage,
+    password: "123456",
+    image: "https://images.pexels.com/photos/8459996/pexels-photo-8459996.jpeg",
     user: {
       id: 3,
       name: "Clinica Vida Saudavel",
@@ -73,10 +92,35 @@ export const mockUsers: MockUser[] = [
       cellphone: "(11) 99999-3003",
       zipcode: "05425-070",
       address: "Rua Harmonia, 250",
+      addressComplement: "",
+      houseNumber: "23",
+      neighborhood: "Harmonia",
       city: "Sao Paulo",
       state: "SP",
       key: "mock-key-clinica",
-      url: clinicaImage.src
+      url: "https://images.pexels.com/photos/8459996/pexels-photo-8459996.jpeg",
+      healthInsurance: [
+        { value: "amil", label: "Amil" },
+        { value: "assim", label: "Assim" },
+        { value: "notreDame", label: "NotreDame" }
+      ]
     }
   }
 ];
+
+export function findMockUserByCredentials(email: string, password: string) {
+  const found = mockUsers.find(
+    (mock) =>
+      mock.user.email.toLowerCase() === email.trim().toLowerCase() &&
+      mock.password === password
+  );
+
+  if (!found) {
+    return null;
+  }
+
+  return {
+    token: found.token,
+    user: found.user
+  };
+}

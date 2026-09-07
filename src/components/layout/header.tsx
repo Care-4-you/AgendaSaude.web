@@ -127,18 +127,18 @@ export default function Header() {
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
+                      src={user.url}
                       alt="@shadcn"
                       className="object-centere object-cover"
                     />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="mt-3 flex  max-w-56 flex-col space-y-3.5 border-none  bg-agenda-saude-green-100 ">
+                <PopoverContent className="mt-3 flex  max-w-60 flex-col space-y-3.5 border-none  bg-agenda-saude-green-100 ">
                   <div className="relative flex w-full items-center justify-center">
                     <Avatar className="h-28 w-28">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src={user.url}
                         alt="@shadcn"
                         className="object-centere object-cover"
                       />
@@ -175,7 +175,7 @@ export default function Header() {
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <Mails size={22} />
-                    <span>Alterar email e senha</span>
+                    <span>Alterar e-mail e senha</span>
                   </Link>
                   <Button
                     type="button"

@@ -1,44 +1,38 @@
-/* eslint-disable react/no-unescaped-entities */
-import Link from "next/link";
 import React from "react";
-
-import { buttonVariants } from "@/components/ui/button";
-
-import { cn } from "@/lib/utils";
+import doctorImage from "@/assets/doctor_and_pacient.jpg";
 
 export default function Page() {
-  const path = "/dashboard/medico";
-  return (
-    <div className="flex w-full flex-1 flex-col items-start justify-start ">
-      <h2 className="mb-6 w-full text-start font-museo text-3xl font-bold">
-        Funcionalidades
-      </h2>
-      <div className="flex h-full  w-full ">
-        <div
-          className="
-        grid h-full w-full grid-cols-1 content-start  items-center gap-4 font-museo capitalize sm:grid-cols-2  sm:gap-4"
-        >
-          <Link
-            href={`${path}/calendario-consulta`}
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "h-32 w-full max-w-[325px] whitespace-normal break-words rounded-2xl bg-agenda-saude-purple-300 px-4 text-center font-museo text-2xl"
-            )}
-          >
-            Calendário de consulta
-          </Link>
+  const img = doctorImage.src;
 
-          <Link
-            href={`${path}/clinicas-vinculados`}
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "h-32 w-full max-w-[325px] whitespace-normal break-words rounded-2xl bg-agenda-saude-purple-300 px-4 text-center font-museo text-2xl"
-            )}
-          >
-            Clinicas vinculados
-          </Link>
-        </div>
-      </div>
+  return (
+    <div className="flex w-full  flex-col items-start justify-start  bg-agenda-saude-blue-100 ">
+      <main className=" min-h-screen w-full overflow-hidden bg-[#efffff] text-[#182477]">
+        {img && (
+          <div
+            aria-hidden="true"
+            className="absolute  inset-y-0 right-0  w-[58%] bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${img})` }}
+          />
+        )}
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 w-full bg-[linear-gradient(90deg,#efffff_0%,#efffff_42%,rgba(239,255,255,0.96)_50%,rgba(239,255,255,0.18)_84%,rgba(239,255,255,0)_100%)]"
+        />
+
+        <section className="relative z-10 flex min-h-screen items-center  px-[21%] py-20 lg:px-[21%]">
+          <div className=" max-w-xl">
+            <h1 className="font-museo  text-4xl font-bold leading-[1.16] tracking-[-0.03em] text-[#182477]">
+              Bem-vindo(a) ao
+              <br />
+              Agenda Saúde
+            </h1>
+            <p className="mt-3 font-poppins  text-lg leading-[1.5] text-[#40517f]">
+              Escolha uma funcionalidade para facilitar seu dia.
+            </p>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

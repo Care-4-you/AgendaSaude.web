@@ -225,24 +225,21 @@ export default function CalendarioPage() {
   const hasSelectedFilters = selectedSpecialty !== "" && actionType !== null;
 
   return (
-    <div className="relative z-20 flex min-h-screen w-full flex-col bg-agenda-saude-blue-100">
+    <div className="flex  w-full flex-1 flex-col  gap-4 items-start  p-8">
       {/* Header Info */}
-      <div className="mx-auto mb-12 w-full max-w-6xl px-6 pt-10">
+      <div className="">
         <Link
           href="/dashboard/clinica"
-          className="mb-1 flex w-fit items-center gap-2 font-bold text-black transition-all hover:underline"
+          className="mb-1 flex w-fit items-center gap-2 font-semibold text-black transition-all hover:underline"
         >
-          <ChevronLeft size={28} strokeWidth={4} />{" "}
-          <span className="text-3xl font-extrabold tracking-tight">
-            Funcionalidades
+          <ChevronLeft size={24} strokeWidth={4} />{" "}
+          <span className="text-2xl font-semibold tracking-tight">
+            Calendário de Consulta
           </span>
         </Link>
-        <h2 className="ml-9 text-lg font-bold text-gray-400">
-          Calendário de Consulta
-        </h2>
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pb-12">
+      <div className="mx-auto flex w-full  flex-col gap-10 px-6 pb-12">
         {/* Filters and Controls */}
         <div className="flex w-full flex-col gap-6">
           <FilterSpecialty
