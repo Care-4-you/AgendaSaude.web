@@ -112,6 +112,7 @@ export function AuthProvider({
   });
 
   const signOut = useCallback(() => {
+    router.push("/signin");
     destroyCookie({}, "@Saude:token", {
       path: "/"
     });
@@ -121,7 +122,6 @@ export function AuthProvider({
     api.defaults.headers.common.Authorization = "";
 
     setData({} as AuthState);
-    router.push("/signin");
   }, [router]);
 
   const signIn = useCallback(
