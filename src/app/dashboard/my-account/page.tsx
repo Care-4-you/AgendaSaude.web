@@ -44,13 +44,8 @@ export default function Page() {
       addressComplement: user.addressComplement || ""
     }
   });
-  const {
-    handleSubmit,
-    control,
-    formState: { errors }
-  } = myAccountForm;
+  const { handleSubmit, control } = myAccountForm;
   const isClinic = user?.role === "USER";
-
 
   const onSubmit: SubmitHandler<MyAccountFormData> = async (data) => {
     console.log(data);
@@ -82,7 +77,7 @@ export default function Page() {
             className="flex w-full  flex-col items-center gap-5 px-10 py-10 "
             onSubmit={handleSubmit(onSubmit)}
           >
-            <fieldset className="p-4 md:overflow-y-auto scroll-custom grid w-full grid-cols-2 items-center gap-2  md:max-h-[600px]  ">
+            <fieldset className="scroll-custom grid w-full grid-cols-2 items-center gap-2 p-4 md:max-h-[600px]  md:overflow-y-auto  ">
               <RHFInput<MyAccountFormData>
                 type="text"
                 className="input-with-icon col-span-2 "
