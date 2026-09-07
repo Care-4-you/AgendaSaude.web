@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
+
 import "animate.css";
 import { notification } from "@/shared/utils";
+
 import { Button } from "../ui/button";
 
 export default function Notification() {

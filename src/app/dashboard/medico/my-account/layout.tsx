@@ -1,9 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
-import Image from "next/image";
-import React from "react";
+"use client";
 
-import clinicPicture2 from "@/assets/clinicwithgreenbg.png";
-import { default as LayoutContainer } from "@/components/layout/container";
+import React from "react";
 
 export default function Dashboard({
   children
@@ -11,22 +8,6 @@ export default function Dashboard({
   children: React.ReactNode;
 }>) {
   return (
-    <LayoutContainer
-      as="section"
-      className="flex h-full  min-h-[calc(100vh-68px)] gap-4 overflow-x-hidden  py-16"
-    >
-      {children}
-
-      <div className=" relative hidden w-full flex-1  items-center justify-end lg:inline-flex xl:justify-center ">
-        <div className="absolute -right-32 h-full min-h-[550px] w-[415px]  xl:left-1/2 xl:-translate-x-1/2 ">
-          <Image
-            alt="foto da clinica"
-            src={clinicPicture2}
-            fill
-            className="h-full object-contain "
-          />
-        </div>
-      </div>
-    </LayoutContainer>
+    <section className=" overflow-hidden md:max-h-screen  ">{children}</section>
   );
 }

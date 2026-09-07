@@ -1,5 +1,5 @@
-import Map from "./_components/map";
 import db from "../../Api/db.json";
+import Map from "./_components/map";
 import { ClinicaAPI } from "./types";
 
 // Transform db.json structure to ClinicaAPI format

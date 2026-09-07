@@ -1,79 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React from "react";
-import { SubmitHandler, useForm, useWatch } from "react-hook-form";
+import { SubmitHandler, useWatch } from "react-hook-form";
 
 import avatarImageDefault from "@/assets/foto-pessoal.svg";
+import { RHFInput } from "@/components/RHFInput";
+import { AvatarImage, Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import useDialogWebCam from "@/components/webcam";
 import { ChevronLeft } from "lucide-react";
 
-import {
-  AvatarImage,
-  Avatar,
-  AvatarFallback
-} from "../../../../../components/ui/avatar";
-import { Button } from "../../../../../components/ui/button";
-import { Input } from "../../../../../components/ui/input";
-import useDialogWebCam from "../../../../../components/webcam";
+import { useCreatePacient } from "./_hook/useCreatePacient";
+import { CreatePacientFormData } from "./_schema/create-pacient-schema";
 
-type props = {
-  name: string;
-  phone: string;
-  cellPhone: string;
-  email: string;
-  cpf: string;
-};
 export default function Page() {
-  const router = useRouter();
+  const { createPacientForm } = useCreatePacient({});
   const { DialogComponentWebCam, handleOpenModalWebCam, capturedImage } =
     useDialogWebCam();
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors }
-  } = useForm<props>({
-    defaultValues: {
-      name: "",
-      phone: "",
-      cellPhone: "",
-      email: "",
-      cpf: ""
-    }
-  });
-  const formValues = useWatch({ control: control });
-  console.log(formValues.name);
+  const formValues = useWatch({ control: createPacientForm.control });
 
-  const onSubmit: SubmitHandler<props> = (data, event) => {
-    event?.preventDefault();
+  const onSubmit: SubmitHandler<CreatePacientFormData> = async (data) => {
     console.log(data);
   };
 
   return (
     <>
-      <div className="flex w-full flex-1 items-center justify-between ">
+      <div className="flex  w-full flex-1 flex-col  items-start  p-8 ">
         <div className="flex w-full flex-col  gap-8">
           <Link
             href="/dashboard/clinica"
-            className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+            className="mb-6 flex  items-center gap-2 text-start font-semibold text-black transition-all hover:underline"
           >
-            <ChevronLeft size={32} strokeWidth={4} />
-            <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+            <ChevronLeft size={24} strokeWidth={4} />
+            <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
               Contato dos pacientes
             </h2>
           </Link>
-          <div className="relative min-h-[700px] w-full  rounded-md bg-agenda-saude-purple-300 ">
-            <div className="absolute -top-10 left-1/2 flex h-20 w-80 -translate-x-1/2 transform items-center justify-center rounded-md bg-agenda-saude-green-100">
+          <div className="relative w-full  rounded-md bg-agenda-saude-purple-300 ">
+            <div className="absolute -top-10 left-1/2 z-50 flex h-20 w-80 -translate-x-1/2 transform items-center justify-center rounded-md bg-agenda-saude-green-100">
               <p className="text-2xl font-bold text-white">Contato</p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2 px-5  md:px-10">
               <form
-                className="flex w-full flex-col items-center px-10 py-16 "
-                onSubmit={handleSubmit((e) => onSubmit(e))}
+                className="flex w-full flex-col items-center px-10 py-16  "
+                onSubmit={createPacientForm.handleSubmit(onSubmit)}
               >
-                <fieldset className="grid w-full grid-cols-2 items-center gap-x-2  ">
+                <fieldset className="scroll-custom flex w-full flex-col items-center gap-2 overflow-y-auto px-4 md:max-h-[600px]  ">
                   <div className="col-span-2 flex flex-col items-center justify-center gap-6">
                     <Avatar className="h-28 w-28">
                       <AvatarImage
@@ -97,117 +71,47 @@ export default function Page() {
                       Tirar foto
                     </Button>
                   </div>
-                  <Input
-                    labelClassName="text-white"
-                    id="name"
+                  <RHFInput<CreatePacientFormData>
+                    name="name"
                     type="text"
-                    className="col-span-2"
-                    placeholder="Nome completo"
+                    control={createPacientForm.control}
                     label="Nome completo*"
-                    {...register("name", {
-                      required: {
-                        value: true,
-                        message: "Campo é obrigatório"
-                      },
-                      maxLength: 255
-                    })}
-                    error={errors.name ? errors.name.message : ""}
+                    placeholder="Nome completo"
                   />
-
-                  <Input
-                    labelClassName="text-white"
-                    id="phone"
-                    mask="phone"
-                    type="tel"
-                    className="col-span-2"
-                    placeholder="(00) 0000-0000"
+                  <RHFInput<CreatePacientFormData>
+                    name="phone"
+                    type="text"
+                    control={createPacientForm.control}
                     label="Telefone*"
-                    {...register("phone", {
-                      required: {
-                        value: true,
-                        message: "Campo é obrigatório"
-                      },
-                      pattern: {
-                        value:
-                          /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:[2-9]\d{3})[-.\s]?(\d{4}))$/,
-                        message: "Formato inválido"
-                      }
-                    })}
-                    error={errors.phone ? errors.phone.message : ""}
+                    placeholder="Telefone"
+                    mask="PHONE"
                   />
-                  <Input
-                    labelClassName="text-white"
-                    id="cellPhone"
-                    mask="cellphone"
-                    type="tel"
-                    className="col-span-2"
-                    placeholder="(00) 00000-0000"
+                  <RHFInput<CreatePacientFormData>
+                    name="cellphone"
+                    type="text"
+                    control={createPacientForm.control}
                     label="Celular*"
-                    {...register("cellPhone", {
-                      required: {
-                        value: true,
-                        message: "Campo é obrigatório"
-                      },
-                      pattern: {
-                        value:
-                          /^\(?(?:(?:\+|00)?(55)\s?)?(?:(?:(?:(?:\d{2})|\((?:0?[1-9]|[1-9][0-9])\))\s?)?(?:9\d{4})[-.\s]?(\d{4}))$/,
-                        message: "Formato inválido"
-                      }
-                    })}
-                    error={errors.cellPhone ? errors.cellPhone.message : ""}
+                    placeholder="Celular"
+                    mask="CELLPHONE"
                   />
-                  <Input
-                    className="col-span-2"
-                    placeholder="Email"
-                    labelClassName="text-white"
+                  <RHFInput<CreatePacientFormData>
+                    name="email"
+                    type="email"
+                    control={createPacientForm.control}
                     label="Email*"
-                    id="email"
-                    type="text"
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Campo Email é obrigatório"
-                      },
-                      pattern: {
-                        value:
-                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: "Formato inválido Ex. exemplo@email.com"
-                      }
-                    })}
-                    error={errors.email ? errors.email.message : ""}
+                    placeholder="Email"
                   />
-                  <Input
-                    labelClassName="text-white"
-                    id="CPF"
-                    mask="cpf"
+                  <RHFInput<CreatePacientFormData>
+                    name="cpf"
                     type="text"
-                    className="col-span-2"
-                    placeholder="XX.XXX.XXX-XX"
+                    control={createPacientForm.control}
                     label="CPF*"
-                    {...register("cpf", {
-                      required: {
-                        value: true,
-                        message: "Campo CPF é obrigatório"
-                      },
-                      pattern: {
-                        value: /^\d{3}\.\d{3}\.\d{3}-\d{2}$/,
-                        message: "Formato inválido"
-                      }
-                    })}
-                    error={errors.cpf ? errors.cpf.message : ""}
+                    placeholder="CPF"
+                    mask="CPF"
                   />
                 </fieldset>
 
-                <div className="flex w-full items-center justify-between gap-4">
-                  <Button
-                    type="button"
-                    variant="default"
-                    size="lg"
-                    className=" hover:bg-agenda-saude-green-200/90 bg-agenda-saude-green-100 font-poppins text-lg font-semibold text-agenda-saude-blue-100"
-                    onClick={() => router.back()}
-                  >
-                    voltar
-                  </Button>
+                <div className="mt-6 flex w-full items-center justify-center gap-4">
                   <Button
                     type="submit"
                     variant="default"

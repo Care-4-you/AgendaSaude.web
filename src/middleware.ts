@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { getServerAuth } from "./hooks/getServerAuth";
-
 const blockIfAuthenticated = [
   "/signin",
   "/register-paciente",
@@ -26,9 +24,10 @@ const validRoutes = [
 ];
 
 export function middleware(req: NextRequest) {
-  const { user } = getServerAuth();
-
+  // Em middleware o next/headers (getServerAuth) não é suportado,
+  // então os cookies são lidos diretamente de req.cookies.
   const token = req.cookies.get("@Saude:token")?.value;
+  const userCookie = req.cookies.get("@Saude:user")?.value;
   const { pathname } = req.nextUrl;
 
   const isPasswordPath = pathname.startsWith("/password");
@@ -53,11 +52,17 @@ export function middleware(req: NextRequest) {
     }
 
     try {
+      const user = userCookie ? JSON.parse(userCookie) : null;
+
+      if (!user) {
+        return NextResponse.redirect(new URL("/signin", req.url));
+      }
+
       if (
-        (pathname.startsWith("/dashboard/medico") && user.role !== "USER") ||
+        (pathname.startsWith("/dashboard/medico") && user.role !== "medico") ||
         (pathname.startsWith("/dashboard/paciente") &&
           user.role !== "paciente") ||
-        (pathname.startsWith("/dashboard/clinica") && user.role !== "medico")
+        (pathname.startsWith("/dashboard/clinica") && user.role !== "USER")
       ) {
         return NextResponse.redirect(new URL("/unauthorized", req.url));
       }

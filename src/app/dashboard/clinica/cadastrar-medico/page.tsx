@@ -2,11 +2,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
+import { SubmitHandler } from "react-hook-form";
 
 // eslint-disable-next-line import-helpers/order-imports
+import { UseSeachDoctor } from "@/Api/clinic/useSerachDoctor";
+import { RHFInput } from "@/components/RHFInput";
+import { RHFSelect } from "@/components/RHFSelect";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,46 +17,26 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-
 import { ChevronLeft } from "lucide-react";
 import { setCookie } from "nookies";
 
-import { UFs } from "../../../../shared/utils";
+import { UFs } from "@/shared/utils";
 
-import { UseSeachDoctor } from "../../../../Api/clinic/useSerachDoctor";
-import { Button } from "../../../../components/ui/button";
-import { Input } from "../../../../components/ui/input";
-import { Label } from "../../../../components/ui/label";
-import { SearchDoctorProps } from "../../../../shared/interfaces/IClinica";
-
-const animatedComponents = makeAnimated();
+import { useCreateDoctor } from "./_hook/useCreateDoctor";
+import { CreateDoctorFormData } from "./_schema/create-doctor-schema";
 
 export default function Page() {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors }
-  } = useForm<SearchDoctorProps>();
+  const { createDoctorForm } = useCreateDoctor({});
+
   const route = useRouter();
   const { DoctorData } = UseSeachDoctor({
-    councilsNumber: watch("councilsNumber"),
-    councilsUF: watch("state.value")
+    councilsNumber: createDoctorForm.watch("CRM"),
+    councilsUF: createDoctorForm.watch("UF.value")
   });
 
   const [openModal, setOpenModal] = useState(false);
 
-  const colorStyles = {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    control: (styles: any) => ({
-      ...styles,
-      minHeight: "2.75em",
-      maxWidth: "100%"
-    })
-  };
-
-  const onSubmit: SubmitHandler<SearchDoctorProps> = async (data) => {
+  const onSubmit: SubmitHandler<CreateDoctorFormData> = async (data) => {
     setCookie({}, "@Saude:CreateDoctorAccountData", JSON.stringify(data), {
       path: "/"
     });
@@ -76,77 +58,37 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex  w-full flex-1 flex-col  items-center  lg:items-start ">
+      <div className="flex  w-full flex-1 flex-col  items-start  p-8">
         <Link
           href="/dashboard/clinica"
-          className="mb-6 flex  items-center gap-2 text-start font-bold text-black transition-all hover:underline"
+          className="mb-6 flex items-center gap-2 text-start font-semibold text-black transition-all hover:underline"
         >
-          <ChevronLeft size={32} strokeWidth={4} />
-          <h2 className=" w-full text-start  font-museo text-3xl font-bold">
+          <ChevronLeft size={24} strokeWidth={4} />
+          <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
             Cadastrar médico
           </h2>
         </Link>
         <form
-          className="flex h-[600px] w-full  flex-col  gap-20 rounded-3xl bg-agenda-saude-purple-300 p-12"
-          onSubmit={handleSubmit(onSubmit)}
+          className="flex h-[400px] w-full  flex-col  gap-20 rounded-md bg-agenda-saude-purple-300 p-12"
+          onSubmit={createDoctorForm.handleSubmit(onSubmit)}
         >
-          <Label className="text-center text-white">
-            Produto sem fins lucrativos
-          </Label>
           <fieldset className=" grid grid-cols-1 gap-2  ">
-            <div className="col-span-1 flex flex-col gap-3">
-              <Label className="text-white" htmlFor="state">
-                Qual é o Estado do conselho do médico?*
-              </Label>
-              <Controller
-                control={control}
-                name="state"
-                rules={{ required: true }}
-                render={(renderProps) => {
-                  return (
-                    <Select
-                      styles={colorStyles}
-                      className={`${errors.state ? " rounded-md border-2  border-red-500  focus-visible:ring-red-500" : ""}`}
-                      id="Especialidadesmedica"
-                      closeMenuOnSelect={true}
-                      components={animatedComponents}
-                      placeholder="Selecionar"
-                      options={UFs}
-                      menuPlacement="auto"
-                      isSearchable={true}
-                      menuPortalTarget={document.body}
-                      menuPosition="fixed"
-                      {...register("state", {
-                        required: {
-                          value: true,
-                          message: "Campo obrigatorio"
-                        }
-                      })}
-                      {...renderProps.field}
-                      onChange={(e) => {
-                        renderProps.field.onChange(e);
-                      }}
-                    />
-                  );
-                }}
-              />
-              <p className="min-h-4 text-sm  font-semibold text-red-500">
-                {errors.state ? errors.state.message : ""}
-              </p>
-            </div>
-            <Input
-              labelClassName="text-white  col-span-1"
-              type="text"
-              className="col-span-4 lg:col-span-2"
+            <RHFSelect<CreateDoctorFormData>
+              options={UFs}
+              id="UF"
+              name="UF"
+              className="col-span-4 "
+              placeholder="UF"
+              label="UF*"
+              control={createDoctorForm.control}
+            />
+
+            <RHFInput<CreateDoctorFormData>
+              id="councilsNumber"
+              name="CRM"
+              label="Número do Conselho*"
               placeholder="9999999"
-              label="Qual é o nº do conselho ?*"
-              {...register("councilsNumber", {
-                required: {
-                  value: true,
-                  message: "Campo obrigatório"
-                }
-              })}
-              error={errors.councilsNumber ? errors.councilsNumber.message : ""}
+              control={createDoctorForm.control}
             />
           </fieldset>
           <Button

@@ -20,18 +20,16 @@ export interface IPaciente {
 
 export type PacienteFormData = {
   name: string;
-  phone: string;
   cellPhone: string;
   whatsapp: string;
   cpf: string;
-  street: string;
+  address: string;
   zipcode: string;
   state: string;
-  houseNumber: string;
   city: string;
   neighborhood: string;
   addressComplement: string;
-  date: Date;
+  date: string;
   gender: {
     value: string;
     label: string;
@@ -40,5 +38,4 @@ export type PacienteFormData = {
   password: string;
   confirmPassword: string;
   acceptTerm: boolean;
-  hasNumber: boolean;
 };

@@ -2,8 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { LuEye, LuEyeOff } from "react-icons/lu";
+import { SubmitHandler } from "react-hook-form";
 
 import iconplus from "@/assets/icon-plus.png";
 import { Button } from "@/components/ui/button";
@@ -15,8 +14,13 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { ResetPassowrdTokenEmail } from "@/shared/interfaces/IClinica";
+import { Eye, EyeOff } from "lucide-react";
+
+import { usePasswordReset } from "../../_hook/usaPassword";
+import { PasswordResetFormDataWithPassword } from "../../_schemas/password-reset-schema";
+import { RHFInput } from "../../../../../components/RHFInput";
+import { FieldGroup } from "../../../../../components/ui/field";
 
 interface IParams {
   tokenReset: string;
@@ -24,21 +28,24 @@ interface IParams {
 
 export default function ResetToken({ params }: { params: IParams }) {
   const [openModal, setOpenModal] = useState(false);
+  const { PasswordForm } = usePasswordReset({
+    passwordValue: {
+      token: params.tokenReset,
+      password: "",
+      confirmPassword: ""
+    }
+  });
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
-  const { tokenReset } = params;
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors }
-  } = useForm<ResetPassowrdTokenEmail>({ mode: "all" });
-  const password = watch("password");
-  const confirmPassword = watch("confirmPassword");
+
+  const password = PasswordForm.watch("password");
+  const confirmPassword = PasswordForm.watch("confirmPassword");
 
   const isDisabled =
-    !password || !confirmPassword || Object.keys(errors).length > 0;
+    !password ||
+    !confirmPassword ||
+    Object.keys(PasswordForm.formState.errors).length > 0;
 
   const onSubmit: SubmitHandler<ResetPassowrdTokenEmail> = (data, event) => {
     event?.preventDefault();
@@ -67,93 +74,70 @@ export default function ResetToken({ params }: { params: IParams }) {
 
               <form
                 className=" mt-8 flex w-full flex-col justify-between  gap-16"
-                onSubmit={handleSubmit((e) => onSubmit(e))}
+                onSubmit={PasswordForm.handleSubmit(onSubmit)}
               >
-                <fieldset className="grid grid-cols-2 items-center  gap-x-4  ">
-                  <Input
-                    className="col-span-2 hidden"
-                    placeholder="token"
-                    value={tokenReset}
-                    label="token*"
+                <FieldGroup className="grid grid-cols-2  gap-1 ">
+                  <RHFInput<PasswordResetFormDataWithPassword>
                     id="token"
                     type="text"
-                    {...register("token")}
+                    name="token"
+                    placeholder="Token"
+                    label="Token*"
+                    className="col-span-2 hidden"
+                    control={PasswordForm.control}
                   />
                   <div className="relative col-span-2">
-                    <Input
-                      labelClassName=""
-                      placeholder="Senha"
-                      type={isShowPassword ? "text" : "password"}
-                      label="Senha*"
+                    <RHFInput<PasswordResetFormDataWithPassword>
                       id="password"
-                      {...register("password", {
-                        required: {
-                          value: true,
-                          message: "Campo Senha é obrigatório"
-                        },
-                        minLength: {
-                          value: 8,
-                          message: "Senha deve ter no minimo 8 caracters"
-                        },
-                        validate: {
-                          hasUppercase: (value) =>
-                            /^(?=.*[A-Z]).+$/.test(value) ||
-                            "Deve conter no minimo uma letra maiúscula",
-                          hasLowerCase: (value) =>
-                            /^(?=.*[a-z]).+$/.test(value) ||
-                            "Deve conter no minimo uma letra minuscula",
-                          hasSpecialChar: (value) =>
-                            /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).+$/.test(
-                              value
-                            ) || "Deve conter caracters especiaos Ex. @ # $"
-                        }
-                      })}
-                      error={errors.password ? errors.password.message : ""}
+                      type={isShowPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Senha"
+                      label="Senha*"
+                      control={PasswordForm.control}
                     />
-                    <span
-                      className=" absolute right-4  top-[46px]  cursor-pointer"
+                    <button
+                      type="button"
+                      aria-label={
+                        isShowPassword ? "Ocultar senha" : "Mostrar senha"
+                      }
                       onClick={() => setIsShowPassword((prev) => !prev)}
+                      className="absolute right-4  top-[46px]  cursor-pointer "
                     >
                       {isShowPassword ? (
-                        <LuEye size={"1.25em"} />
+                        <EyeOff className="size-5" />
                       ) : (
-                        <LuEyeOff size={"1.25em"} />
+                        <Eye className="size-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
                   <div className="relative col-span-2">
-                    <Input
-                      labelClassName=""
-                      placeholder="Repetir senha"
-                      label="Repetir senha*"
+                    <RHFInput<PasswordResetFormDataWithPassword>
                       id="confirmPassword"
                       type={isShowConfirmPassword ? "text" : "password"}
-                      {...register("confirmPassword", {
-                        required: {
-                          value: true,
-                          message: "Campo Repetir senha é obrigatório"
-                        },
-                        validate: (value) =>
-                          value === password || "A senha não corresponde"
-                      })}
-                      error={
-                        errors.confirmPassword
-                          ? errors.confirmPassword.message
-                          : ""
-                      }
+                      name="confirmPassword"
+                      placeholder="Confirmar Senha"
+                      label="Confirmar Senha*"
+                      control={PasswordForm.control}
                     />
-                    <span
-                      className=" absolute right-4  top-[46px]  cursor-pointer"
+                    <button
+                      type="button"
+                      aria-label={
+                        isShowConfirmPassword
+                          ? "Ocultar confirmação de senha"
+                          : "Mostrar confirmação de senha"
+                      }
                       onClick={() => setIsShowConfirmPassword((prev) => !prev)}
+                      className="absolute right-4  top-[46px]  cursor-pointer "
                     >
                       {isShowConfirmPassword ? (
-                        <LuEye size={"1.25em"} />
+                        <EyeOff className="size-5" />
                       ) : (
-                        <LuEyeOff size={"1.25em"} />
+                        <Eye className="size-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
-                </fieldset>
+                </FieldGroup>
+
                 <div className="flex w-full items-center justify-center gap-4">
                   <Button
                     type="submit"

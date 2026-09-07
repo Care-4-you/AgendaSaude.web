@@ -26,23 +26,23 @@ const CLINIC_SPECIALTIES = ["Clínica Geral", "Cardiologia", "Ortopedista"];
 
 export default function TabelaPrecosPage() {
   return (
-    <div className="relative z-20 flex min-h-screen w-full flex-col bg-transparent">
+    <div className="flex  w-full flex-1 flex-col  items-start  p-8 ">
       {/* Header Info */}
-      <div className="mx-auto mb-8 w-full max-w-6xl px-6 pt-10">
+      <div className="mx-auto mb-8 w-full  ">
         <Link
           href="/dashboard/clinica"
-          className="mb-1 flex w-fit items-center gap-2 font-bold text-black transition-all hover:underline"
+          className="mb-1 flex w-fit items-center gap-2 font-semibold text-black transition-all hover:underline"
         >
-          <ChevronLeft size={28} strokeWidth={4} />{" "}
-          <span className="text-3xl font-extrabold tracking-tight">
+          <ChevronLeft size={24} strokeWidth={4} />{" "}
+          <span className="text-2xl font-semibold tracking-tight">
             Tabela de Preços
           </span>
         </Link>
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-12">
+      <div className="mx-auto flex w-full  flex-col  pb-12">
         {/* Main Content Area - Dark Blue Card */}
-        <div className="relative min-h-[600px] w-full rounded-xl bg-[#0B2149] p-4 shadow-lg sm:p-8 md:p-14">
+        <div className="min-h-[600px] w-full rounded-md bg-[#0B2149] p-4 shadow-lg sm:p-8 md:p-14">
           <PricingTable
             initialItems={INITIAL_MOCK_DATA}
             specialtiesOptions={CLINIC_SPECIALTIES}

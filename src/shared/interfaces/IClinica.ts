@@ -23,9 +23,10 @@ export type ClinicaFormData = {
   phone: string;
   cellPhone: string;
   whatsapp: string;
+  zipcode: string;
+  cpf: string;
   cnpj: string;
   address: string;
-  cep: string;
   state: string;
   houseNumber: string;
   city: string;
@@ -38,10 +39,10 @@ export type ClinicaFormData = {
   healthInsurance: {
     value: string;
     label: string;
-  };
+  }[];
   email: string;
   password: string;
-  passwordConfirmation: string;
+  confirmPassword: string;
   acceptTerm: boolean;
   isWhatsapp: boolean;
   hasNumber: boolean;

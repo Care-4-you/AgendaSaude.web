@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
@@ -65,7 +66,7 @@ export default function useDialogWebCam() {
 
     return (
       <Dialog open={openModal} onOpenChange={handleModalChange}>
-        <DialogContent className="flex !min-h-80 !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD] !px-7">
+        <DialogContent className="flex !min-h-80  !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD] !p-8 !px-7">
           {!isCameraReady && !preview && (
             <div className="flex items-center justify-center">
               <p className="text-lg font-medium">Carregando câmera...</p>
@@ -73,10 +74,12 @@ export default function useDialogWebCam() {
           )}
           {preview && (
             <div className="flex flex-col items-center gap-4">
-              <img
+              <Image
                 src={preview}
                 alt="Preview"
                 className="max-w-full rounded-md border"
+                width={1280}
+                height={720}
               />
               <div className="flex gap-4">
                 <Button

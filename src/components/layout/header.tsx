@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { RiImageEditFill } from "react-icons/ri";
-import { Bell, Mails } from "lucide-react";
 
 import logo from "@/assets/logo_agenda_saude.png";
 import { default as LayoutContainer } from "@/components/layout/container";
@@ -24,6 +23,8 @@ import {
   PopoverTrigger
 } from "@/components/ui/popover";
 import { useAuth } from "@/hooks/auth";
+import { Bell, Mails } from "lucide-react";
+
 import { notification } from "@/shared/utils";
 
 import Notification from "../notification";
@@ -62,6 +63,10 @@ export default function Header() {
   }, [profilePopoverOpen]);
 
   const isAuthenticated = user && user.name && user.email;
+  const accountPath =
+    user?.role === "medico"
+      ? "/dashboard/medico/my-account"
+      : "/dashboard/my-account";
 
   return (
     <header className="fixed z-[9999] w-full bg-agenda-saude-purple-100 py-4">
@@ -122,18 +127,18 @@ export default function Header() {
                 <PopoverTrigger>
                   <Avatar className="h-12 w-12">
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
+                      src={user.url}
                       alt="@shadcn"
                       className="object-centere object-cover"
                     />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="mt-3 flex  max-w-56 flex-col space-y-3.5 border-none  bg-agenda-saude-green-100 ">
+                <PopoverContent className="mt-3 flex  max-w-60 flex-col space-y-3.5 border-none  bg-agenda-saude-green-100 ">
                   <div className="relative flex w-full items-center justify-center">
                     <Avatar className="h-28 w-28">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src={user.url}
                         alt="@shadcn"
                         className="object-centere object-cover"
                       />
@@ -159,18 +164,18 @@ export default function Header() {
                     <span>Painel</span>
                   </Link>
                   <Link
-                    href="/dashboard/medico/my-account"
+                    href={accountPath}
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <CgProfile size={22} />
                     <span>Minha Conta</span>
                   </Link>
                   <Link
-                    href="/dashboard/medico/my-account/email-and-password"
+                    href={`${accountPath}/email-and-password`}
                     className="flex items-center justify-start gap-2 text-white hover:font-medium"
                   >
                     <Mails size={22} />
-                    <span>Alterar email e senha</span>
+                    <span>Alterar e-mail e senha</span>
                   </Link>
                   <Button
                     type="button"

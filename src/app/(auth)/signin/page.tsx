@@ -1,30 +1,26 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { LuEye, LuEyeOff } from "react-icons/lu";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { SubmitHandler } from "react-hook-form";
 
 import iconplus from "@/assets/icon-plus.png";
+import { RHFInput } from "@/components/RHFInput";
+import { Button } from "@/components/ui/button";
+import { FieldGroup } from "@/components/ui/field";
+import { useAuth } from "@/hooks/auth";
+import { EyeOff, Eye, ArrowRight } from "lucide-react";
 
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { useAuth } from "../../../hooks/auth";
-import { FormLogin } from "../../../shared/interfaces/IClinica";
+import { useLogin } from "./_hook/useLogin";
+import { LoginFormData } from "./_schemas/login-schema";
 
 export default function Signin() {
-  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const searchParams = useSearchParams();
   const q = searchParams.get("q") || "paciente";
   const { signIn } = useAuth();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormLogin>();
+  const { loginForm } = useLogin({});
 
   const returnText = (text: string) => {
     switch (text) {
@@ -41,13 +37,13 @@ export default function Signin() {
     }
   };
 
-  const onSubmit: SubmitHandler<FormLogin> = async (data) => {
-    await signIn({ email: data.username, password: data.password });
+  const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
+    await signIn({ email: data.email, password: data.password });
   };
 
   return (
     <>
-      <div className="min-h-[calc(100vh-68px)] bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-20 md:bg-gradient-to-r">
+      <div className="min-h-[calc(100vh-68px)] bg-gradient-to-b from-agenda-saude-blue-100 from-50% to-agenda-saude-purple-200 to-50% pt-16 md:bg-gradient-to-r">
         <div className="mx-auto flex h-full w-full max-w-[87.5rem] flex-col justify-between md:flex-row ">
           <div className=" flex  flex-1 justify-center bg-[#ebfffd] px-8  py-36  pb-16 md:justify-start 2xl:px-0">
             <div>
@@ -62,67 +58,52 @@ export default function Signin() {
 
               <form
                 className=" flex w-full flex-col justify-between gap-16"
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={loginForm.handleSubmit(onSubmit)}
+                noValidate
               >
-                <fieldset className="grid grid-cols-2 items-center  gap-x-4 ">
-                  <Input
-                    className="col-span-2"
+                <FieldGroup className="grid grid-cols-2  gap-1 ">
+                  <RHFInput<LoginFormData>
+                    id="email"
+                    type="email"
+                    name="email"
                     placeholder="Email"
                     label="Email*"
-                    id="email"
-                    type="text"
-                    {...register("username", {
-                      required: {
-                        value: true,
-                        message: "Campo Email é obrigatório"
-                      },
-                      pattern: {
-                        value:
-                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: "Formato inválido Ex. exemplo@email.com"
-                      }
-                    })}
-                    error={errors.username ? errors.username.message : ""}
+                    className="col-span-2"
+                    control={loginForm.control}
                   />
                   <div className="relative col-span-2">
-                    <Input
-                      placeholder="Senha"
-                      type={isShowPassword ? "text" : "password"}
-                      label="Senha*"
+                    <RHFInput<LoginFormData>
                       id="password"
-                      {...register("password", {
-                        required: {
-                          value: true,
-                          message: "Campo Senha é obrigatório"
-                        }
-                      })}
-                      error={errors.password ? errors.password.message : ""}
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Senha"
+                      label="Senha*"
+                      control={loginForm.control}
                     />
-                    <span
-                      className=" absolute right-4  top-[46px]  cursor-pointer"
-                      onClick={() => setIsShowPassword((prev) => !prev)}
+                    <button
+                      type="button"
+                      aria-label={
+                        showPassword ? "Ocultar senha" : "Mostrar senha"
+                      }
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute right-4  top-[46px]  cursor-pointer "
                     >
-                      {isShowPassword ? (
-                        <LuEye size={"1.25em"} className="text-gray-400" />
+                      {showPassword ? (
+                        <EyeOff className="size-5" />
                       ) : (
-                        <LuEyeOff size={"1.25em"} className="text-gray-400" />
+                        <Eye className="size-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
-                  <Link
-                    href="/password/reset"
-                    className="font-Poppins mt-4 font-semibold hover:underline"
-                  >
-                    Esqueci minha senha.
-                  </Link>
-                </fieldset>
+                </FieldGroup>
+
                 <div className="flex items-center justify-center">
                   <Button
                     type="submit"
-                    className="w-[253px] bg-black text-white"
+                    className="inline-flex h-11 w-full  items-center justify-center rounded-lg bg-black hover:bg-black/80"
                   >
                     <span>Entrar</span>
-                    <MdKeyboardArrowRight color="white" className=" size-8" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
               </form>
