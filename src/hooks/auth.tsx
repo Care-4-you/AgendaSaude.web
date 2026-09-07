@@ -9,10 +9,10 @@ import {
   useState
 } from "react";
 
+import { findMockUserByCredentials } from "@/app/(auth)/signin/_hook/mock-users";
 import { destroyCookie, setCookie } from "nookies";
 
 import { api } from "../Api/api";
-import { findMockUserByCredentials } from "@/app/(auth)/signin/_hook/mock-users";
 
 export type UserRole = "USER" | "medico" | "paciente";
 
@@ -41,7 +41,7 @@ export interface IUser {
     value: string;
     label: string;
   }[];
-  medicalRecord?:{
+  medicalRecord?: {
     councilsNumber: string;
     councils: {
       value: string;

@@ -1,19 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 
 import { RHFInput } from "@/components/RHFInput";
 import { RHFSelect } from "@/components/RHFSelect";
 import { Button } from "@/components/ui/button";
-
-import { convenios } from "@/shared/utils";
-
-import { useMyAccount } from "./_hook/useMyAccount";
-import { MyAccountFormData } from "./_schema/my-account-schema";
-import { useAuth } from "../../../hooks/auth";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -21,6 +14,13 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+import { ChevronLeft } from "lucide-react";
+
+import { convenios } from "@/shared/utils";
+
+import { useAuth } from "../../../hooks/auth";
+import { useMyAccount } from "./_hook/useMyAccount";
+import { MyAccountFormData } from "./_schema/my-account-schema";
 
 export default function Page() {
   const { user } = useAuth();
@@ -44,7 +44,11 @@ export default function Page() {
       addressComplement: user.addressComplement || ""
     }
   });
-  const { handleSubmit, control,formState: { errors } } = myAccountForm;
+  const {
+    handleSubmit,
+    control,
+    formState: { errors }
+  } = myAccountForm;
   const isClinic = user?.role === "USER";
   console.log(errors);
 

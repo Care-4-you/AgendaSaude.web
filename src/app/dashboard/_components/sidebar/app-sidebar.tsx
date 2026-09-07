@@ -1,7 +1,11 @@
 // src/app/dashboard/_components/sidebar/app-sidebar.tsx
 "use client";
 
-import { NavMain } from "./nav-main";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import iconImg from "@/assets/icon-plus-secondary.svg";
 import {
   Sidebar,
   SidebarContent,
@@ -10,13 +14,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from "@/components/ui/sidebar";
-
-import Link from "next/link";
-import { User, UserRoundPlus, Calendar, Users, Tag } from "lucide-react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import iconImg from "@/assets/icon-plus-secondary.svg";
 import { useAuth } from "@/hooks/auth";
+import { User, UserRoundPlus, Calendar, Users, Tag } from "lucide-react";
+
+import { NavMain } from "./nav-main";
 
 type UserType = "USER" | "paciente" | "medico";
 
@@ -74,13 +75,12 @@ const data: MenuData = {
       title: "Clinicas Vinculadas",
       url: "/dashboard/medico/clinicas-vinculados",
       icon: <User className="h-4 w-4" />
-    },
-  
+    }
   ]
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const {user: currentUser} = useAuth();
+  const { user: currentUser } = useAuth();
   const pathName = usePathname();
 
   const role = (currentUser?.role ?? "USER") as UserType;

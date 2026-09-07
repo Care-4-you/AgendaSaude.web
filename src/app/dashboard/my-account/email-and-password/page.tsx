@@ -1,11 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { useAuth } from "@/hooks/auth";
 import { SubmitHandler } from "react-hook-form";
 import { LuEye, LuEyeOff } from "react-icons/lu";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
 
 import { RHFInput } from "@/components/RHFInput";
 import {
@@ -15,6 +13,8 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+import { useAuth } from "@/hooks/auth";
+import { ChevronLeft } from "lucide-react";
 
 import { Button } from "../../../../components/ui/button";
 import { useChangeEmailAndPassword } from "./_hook/useEmailPassword";

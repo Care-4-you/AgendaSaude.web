@@ -8,5 +8,9 @@ export default function Dashboard({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section className="max-h-screen scroll-custom overflow-y-auto">{children}</section>;
+  return (
+    <section className="scroll-custom max-h-screen overflow-y-auto">
+      {children}
+    </section>
+  );
 }

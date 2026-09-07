@@ -225,7 +225,7 @@ export default function CalendarioPage() {
   const hasSelectedFilters = selectedSpecialty !== "" && actionType !== null;
 
   return (
-    <div className="flex  w-full flex-1 flex-col  gap-4 items-start  p-8">
+    <div className="flex  w-full flex-1 flex-col  items-start gap-4  p-8">
       {/* Header Info */}
       <div className="">
         <Link

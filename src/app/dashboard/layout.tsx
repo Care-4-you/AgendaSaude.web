@@ -1,6 +1,7 @@
 // src/app/dashboard/layout.tsx
-import { AppSidebar } from "./_components/sidebar/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+
+import { AppSidebar } from "./_components/sidebar/app-sidebar";
 import { SiteHeader } from "./_components/sidebar/site-header";
 
 export default function RootLayoutDashboard({

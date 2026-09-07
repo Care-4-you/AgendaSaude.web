@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
@@ -17,6 +16,7 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 import { useAuth } from "@/hooks/auth";
+import { ChevronLeft } from "lucide-react";
 
 import { useChangeEmailAndPassword } from "./_hook/useEmailPassword";
 import { ChangeEmailAndPasswordFormData } from "./_schema/Email-password-schema";

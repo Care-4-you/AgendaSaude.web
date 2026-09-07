@@ -1,17 +1,12 @@
 "use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
 import { SubmitHandler, useFieldArray, useWatch } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { councilsTypes, UFs } from "@/shared/utils";
 
 import { RHFInput } from "@/components/RHFInput";
 import { RHFSelect } from "@/components/RHFSelect";
-import { useMyAccount } from "./_hook/useMyAccount";
-import { MyAccountFormData } from "./_schema/my-account-schema";
-import { useAuth } from "@/hooks/auth";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -19,6 +14,13 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
+import { useAuth } from "@/hooks/auth";
+import { ChevronLeft } from "lucide-react";
+
+import { councilsTypes, UFs } from "@/shared/utils";
+
+import { useMyAccount } from "./_hook/useMyAccount";
+import { MyAccountFormData } from "./_schema/my-account-schema";
 
 const especializacoesPorConselho: Record<
   string,

@@ -1,4 +1,5 @@
 import React from "react";
+
 import doctorImage from "@/assets/doctor_and_pacient.jpg";
 
 export default function Page() {

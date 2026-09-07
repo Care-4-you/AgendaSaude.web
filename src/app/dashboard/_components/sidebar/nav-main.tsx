@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -8,7 +10,6 @@ import {
   SidebarMenuItem,
   useSidebar
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 
 export function NavMain({
   items,

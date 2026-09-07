@@ -66,7 +66,7 @@ export default function useDialogWebCam() {
 
     return (
       <Dialog open={openModal} onOpenChange={handleModalChange}>
-        <DialogContent className="flex !min-h-80  !p-8 !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD] !px-7">
+        <DialogContent className="flex !min-h-80  !max-w-2xl flex-col items-center justify-center gap-6 !rounded-3xl bg-[#EBFFFD] !p-8 !px-7">
           {!isCameraReady && !preview && (
             <div className="flex items-center justify-center">
               <p className="text-lg font-medium">Carregando câmera...</p>

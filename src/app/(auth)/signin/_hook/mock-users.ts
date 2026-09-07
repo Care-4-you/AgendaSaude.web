@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+
 import pacienteImage from "@/assets/paciente.png";
 import { IUser } from "@/hooks/auth";
 
@@ -33,14 +34,15 @@ export const mockUsers: MockUser[] = [
       key: "mock-key-paciente",
       url: pacienteImage.src,
       houseNumber: "23",
-      neighborhood: "Harmonia",
+      neighborhood: "Harmonia"
     }
   },
   {
     label: "Medico",
     token: "mock-token-medico",
     password: "123456",
-    image: "https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg",
+    image:
+      "https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg",
     user: {
       id: 2,
       name: "Dr. Carlos Mendes",
@@ -57,7 +59,7 @@ export const mockUsers: MockUser[] = [
       state: "SP",
       key: "mock-key-medico",
       url: "https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg",
-      medicalRecord:[
+      medicalRecord: [
         {
           councilsNumber: "123456",
           councils: { value: "crm", label: "CRM" },

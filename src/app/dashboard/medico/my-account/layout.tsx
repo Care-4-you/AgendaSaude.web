@@ -8,8 +8,6 @@ export default function Dashboard({
   children: React.ReactNode;
 }>) {
   return (
-    <section className=" min-h-screen overflow-hidden ">
-      {children}
-    </section>
+    <section className=" min-h-screen overflow-hidden ">{children}</section>
   );
 }
