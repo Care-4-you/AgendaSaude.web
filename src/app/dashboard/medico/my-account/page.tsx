@@ -109,7 +109,7 @@ export default function Page() {
         >
           <ChevronLeft size={24} strokeWidth={4} />
           <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
-            Dados cadastrais
+            Voltar
           </h2>
         </Link>
         <div className="flex w-full items-center justify-center">

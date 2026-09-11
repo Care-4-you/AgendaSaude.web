@@ -60,7 +60,7 @@ const data: MenuData = {
   paciente: [
     {
       title: "Agendar consulta",
-      url: "/dashboard/clinica/agendar-consulta",
+      url: "/mapa",
       icon: <Calendar className="h-4 w-4" />
     }
   ],

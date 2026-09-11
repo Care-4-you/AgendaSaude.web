@@ -66,7 +66,7 @@ export default function Page() {
         >
           <ChevronLeft size={24} strokeWidth={4} />
           <h2 className=" w-full text-start  font-museo text-2xl font-semibold">
-            Dados cadastrais
+            Voltar
           </h2>
         </Link>
         <div className="relative  w-full rounded-md  bg-agenda-saude-purple-300 ">
@@ -82,7 +82,7 @@ export default function Page() {
                 type="text"
                 className="input-with-icon col-span-2 "
                 placeholder="Nome da clínica "
-                label="Nome da clínica*"
+                label={ isClinic ? "Nome da clínica*" : "Nome do paciente*"}
                 name="name"
                 control={control}
               />
