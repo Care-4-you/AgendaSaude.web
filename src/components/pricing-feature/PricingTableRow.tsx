@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import { formatCurrency } from "@/lib/format";
 import { IPricingItem } from "@/shared/interfaces/IPricing";
 import { Edit2, Trash2, Check } from "lucide-react";
 
@@ -41,17 +42,6 @@ export function PricingTableRow({
       setIsEditing(false);
       setFormData({ ...item }); // Revert
     }
-  };
-
-  const formatCurrency = (val: number | string) => {
-    const num =
-      typeof val === "string"
-        ? parseFloat(val.replace(/[^\d.-]/g, "")) || 0
-        : val;
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    }).format(num);
   };
 
   const inputClass =

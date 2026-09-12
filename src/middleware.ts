@@ -15,6 +15,7 @@ const validRoutes = [
   "/register-doctor",
   "/password",
   "/mapa",
+  "/agendamento",
   "/dashboard",
   "/sobre-nos",
   "/my-account",
@@ -43,6 +44,28 @@ export function middleware(req: NextRequest) {
 
   if (!isKnownRoute) {
     return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  // === Agendar consulta é um fluxo do paciente autenticado === //
+  if (pathname.startsWith("/agendamento")) {
+    if (!token) {
+      return NextResponse.redirect(new URL("/signin", req.url));
+    }
+
+    try {
+      const user = userCookie ? JSON.parse(userCookie) : null;
+
+      if (!user) {
+        return NextResponse.redirect(new URL("/signin", req.url));
+      }
+
+      if (user.role !== "paciente") {
+        return NextResponse.redirect(new URL("/dashboard", req.url));
+      }
+    } catch (err) {
+      console.error("Erro ao verificar token:", err);
+      return NextResponse.redirect(new URL("/signin", req.url));
+    }
   }
 
   // === Proteção para rotas do dashboard === //

@@ -27,6 +27,8 @@ export default function Map({ clinicas }: MapProps) {
   const [clinicasState, setClinicas] = useState<ClinicaAPI[]>(clinicas);
   const [geoData, setGeoData] = useState({ lat: -14.4, lng: -57 });
   const [showNoClinicsPopup, setShowNoClinicsPopup] = useState(false);
+  /** Especialidade buscada no filtro, repassada ao fluxo de agendamento. */
+  const [selectedSpecialty, setSelectedSpecialty] = useState("");
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const customIcon = new Icon({
@@ -42,6 +44,7 @@ export default function Map({ clinicas }: MapProps) {
       const json = await res.json();
       const data = json.data || [];
       setClinicas(data);
+      setSelectedSpecialty("");
       if (data.length > 0) {
         setGeoData({ lat: data[0].latitude, lng: data[0].longitude });
       }
@@ -55,6 +58,8 @@ export default function Map({ clinicas }: MapProps) {
     radiusInKm: number;
     specialties?: string[];
   }) {
+    setSelectedSpecialty(filters.specialties?.[0] ?? "");
+
     try {
       const res = await fetch(`${url}/clinics/proximity`, {
         method: "POST",
@@ -159,6 +164,7 @@ export default function Map({ clinicas }: MapProps) {
               <Marker key={clinica.id} position={[lat, lng]} icon={customIcon}>
                 <Popup className="mapa_popup">
                   <CardClinica
+                    specialty={selectedSpecialty}
                     clinica={{
                       id: clinica.id,
                       name: clinica.name,
@@ -168,6 +174,7 @@ export default function Map({ clinicas }: MapProps) {
                       phone: clinica.phone,
                       imagem_url: clinica.imagem_url,
                       healthInsurance: clinica.healthInsurance,
+                      specialty: clinica.specialty,
                       avaliacao: clinica.avaliacao
                     }}
                   />

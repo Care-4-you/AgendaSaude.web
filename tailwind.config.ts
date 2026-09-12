@@ -104,11 +104,35 @@ const config: Config = {
   				to: {
   					height: '0'
   				}
+  			},
+  			'check-pop': {
+  				'0%': {
+  					transform: 'scale(0)',
+  					opacity: '0'
+  				},
+  				'60%': {
+  					transform: 'scale(1.12)',
+  					opacity: '1'
+  				},
+  				'100%': {
+  					transform: 'scale(1)',
+  					opacity: '1'
+  				}
+  			},
+  			'check-draw': {
+  				from: {
+  					strokeDashoffset: '48'
+  				},
+  				to: {
+  					strokeDashoffset: '0'
+  				}
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'check-pop': 'check-pop 0.45s ease-out both',
+  			'check-draw': 'check-draw 0.35s 0.3s ease-out both'
   		}
   	}
   },

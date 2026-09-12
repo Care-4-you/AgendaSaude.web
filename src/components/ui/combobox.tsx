@@ -20,53 +20,112 @@ import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface Props {
-  options: {
-    value: string;
-    label: string;
-  }[];
-  text: string;
+export interface ComboboxOption {
+  value: string;
+  label: string;
 }
 
-export function Combobox({ options, text = "Selecione" }: Props) {
+interface Props {
+  options: ComboboxOption[];
+  /** Texto do gatilho quando nada está escolhido. */
+  text?: string;
+  /** Passe `value` + `onChange` para controlar de fora. */
+  value?: string;
+  onChange?: (value: string) => void;
+  id?: string;
+  disabled?: boolean;
+  /** Campo de busca: útil só em listas longas. */
+  searchable?: boolean;
+  searchPlaceholder?: string;
+  emptyText?: string;
+  /** Ícone à esquerda do valor. */
+  icon?: React.ReactNode;
+  className?: string;
+  contentClassName?: string;
+}
+
+export function Combobox({
+  options,
+  text = "Selecione",
+  value,
+  onChange,
+  id,
+  disabled = false,
+  searchable = true,
+  searchPlaceholder,
+  emptyText = "Nenhuma opção encontrada.",
+  icon,
+  className,
+  contentClassName
+}: Props) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [uncontrolledValue, setUncontrolledValue] = React.useState("");
+
+  const isControlled = value !== undefined;
+  const currentValue = isControlled ? value : uncontrolledValue;
+  const selected = options.find((option) => option.value === currentValue);
+
+  const handleSelect = (optionValue: string) => {
+    // Escolher de novo o item atual limpa a seleção.
+    const nextValue = optionValue === currentValue ? "" : optionValue;
+
+    if (!isControlled) setUncontrolledValue(nextValue);
+    onChange?.(nextValue);
+    setOpen(false);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="">
+      <PopoverTrigger asChild>
         <Button
+          id={id}
+          type="button"
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between px-4 md:w-[250px]"
+          disabled={disabled}
+          className={cn("w-full justify-between gap-2 px-3", className)}
         >
-          {value
-            ? options.find((option) => option.value === value)?.label
-            : text}
-          <ChevronsUpDown className="opacity-50" />
+          <span className="flex min-w-0 items-center gap-2">
+            {icon}
+            <span className="truncate">{selected?.label ?? text}</span>
+          </span>
+          <ChevronsUpDown className="h-4 w-4 flex-shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0 md:w-[250px]">
+
+      <PopoverContent
+        className={cn(
+          "w-[--radix-popover-trigger-width] p-0",
+          contentClassName
+        )}
+        align="start"
+      >
         <Command>
-          <CommandInput placeholder={text} className="h-9" />
+          {searchable && (
+            <CommandInput
+              placeholder={searchPlaceholder ?? text}
+              className="h-9"
+            />
+          )}
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>{emptyText}</CommandEmpty>
             <CommandGroup>
               {options.map((option) => (
                 <CommandItem
                   key={option.value}
-                  value={option.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    setOpen(false);
-                  }}
+                  // cmdk usa este valor na busca e o devolve em minúsculas,
+                  // então a seleção vem do closure e não do callback.
+                  value={option.label}
+                  onSelect={() => handleSelect(option.value)}
                 >
                   {option.label}
                   <Check
                     className={cn(
-                      "ml-auto",
-                      value === option.value ? "opacity-100" : "opacity-0"
+                      "ml-auto h-4 w-4",
+                      currentValue === option.value
+                        ? "opacity-100"
+                        : "opacity-0"
                     )}
                   />
                 </CommandItem>

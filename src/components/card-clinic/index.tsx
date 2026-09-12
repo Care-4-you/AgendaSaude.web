@@ -1,7 +1,9 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { FilterPills } from "@/components/ui/filter-pills";
 import { Phone, Pin } from "lucide-react";
 
 import Button from "../calendar-feature/Button";
@@ -26,37 +28,72 @@ interface CardClinicaProps {
     phone?: string;
     imagem_url?: string[];
     healthInsurance?: HealthInsurance[];
+    specialty?: Specialty[];
     avaliacao?: number;
   };
+  /** Especialidade filtrada no mapa: já vem marcada se a clínica atender. */
+  specialty?: string;
 }
 
-export default function CardClinica({ clinica }: CardClinicaProps) {
-  const [especialidades, setEspecialidades] = useState<Specialty[]>([]);
+export default function CardClinica({ clinica, specialty }: CardClinicaProps) {
+  const clinicSpecialties = clinica.specialty ?? [];
+  const [fetchedSpecialties, setFetchedSpecialties] = useState<Specialty[]>([]);
   const [loading, setLoading] = useState(false);
+  const [selectedSpecialty, setSelectedSpecialty] = useState("");
+  const router = useRouter();
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
+  /**
+   * A clínica já chega com as especialidades; a busca na API é só para quando
+   * os dados vierem sem elas.
+   */
   useEffect(() => {
+    if (clinicSpecialties.length > 0 || !url) return;
+
     async function fetchEspecialidades() {
       try {
         setLoading(true);
         const res = await fetch(`${url}/clinics/${clinica.id}/specialties`);
         const json = await res.json();
-        setEspecialidades(json.data?.specialties || []);
+        setFetchedSpecialties(json.data?.specialties || []);
       } catch (err) {
         console.error("Erro ao buscar especialidades:", err);
-        setEspecialidades([]);
+        setFetchedSpecialties([]);
       } finally {
         setLoading(false);
       }
     }
 
     fetchEspecialidades();
-  }, [clinica.id, url]);
+  }, [clinica.id, clinicSpecialties.length, url]);
+
+  const especialidades =
+    clinicSpecialties.length > 0 ? clinicSpecialties : fetchedSpecialties;
+
+  /** O filtro do mapa manda, desde que a clínica atenda a especialidade. */
+  const filteredSpecialty = specialty
+    ? especialidades.find(
+        (esp) => esp.label.toLowerCase() === specialty.toLowerCase()
+      )?.label
+    : undefined;
+
+  const specialtyToSchedule =
+    selectedSpecialty || filteredSpecialty || especialidades[0]?.label || "";
 
   const healthInsurance = clinica.healthInsurance ?? [];
   const houseNumber = clinica.houseNumber ?? "–";
   const neighborhood = clinica.neighborhood ?? "–";
   const phone = clinica.phone ?? "–";
+
+  const handleSchedule = () => {
+    const params = new URLSearchParams({ clinicId: String(clinica.id) });
+
+    if (specialtyToSchedule) {
+      params.set("especialidade", specialtyToSchedule);
+    }
+
+    router.push(`/agendamento?${params.toString()}`);
+  };
 
   return (
     <div className="m-0 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white p-0 shadow">
@@ -102,11 +139,17 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
           {loading ? (
             <p>Carregando...</p>
           ) : especialidades.length > 0 ? (
-            <ul className="ml-4 list-disc">
-              {especialidades.map((esp) => (
-                <li key={esp.value}>{esp.label}</li>
-              ))}
-            </ul>
+            <FilterPills
+              size="xs"
+              aria-label="Especialidade para agendar"
+              options={especialidades.map((esp) => ({
+                value: esp.label,
+                label: esp.label
+              }))}
+              value={specialtyToSchedule}
+              onChange={setSelectedSpecialty}
+              className="mt-1 gap-1"
+            />
           ) : (
             <p>Não informado</p>
           )}
@@ -114,7 +157,12 @@ export default function CardClinica({ clinica }: CardClinicaProps) {
 
         <Button
           type="button"
-          title="Agendar"
+          title={
+            specialtyToSchedule
+              ? `Agendar ${specialtyToSchedule}`
+              : "Agendar consulta"
+          }
+          onClick={handleSchedule}
           className="mt-2 flex justify-center text-xs"
         >
           Agendar

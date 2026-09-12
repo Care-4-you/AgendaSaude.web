@@ -11,11 +11,14 @@ import { AppointmentCard } from "@/components/calendar-feature/AppointmentCard";
 import { ConsultCalendarCard } from "@/components/calendar-feature/ConsultCalendarCard";
 import { FilterSpecialty } from "@/components/calendar-feature/FilterSpecialty";
 import { Calendar } from "@/components/ui/calendar";
+import { EmptyState } from "@/components/ui/empty-state";
+import { FilterPills } from "@/components/ui/filter-pills";
+import { formatDateBR } from "@/lib/date";
+import { DAY_PERIODS } from "@/lib/day-periods";
 import {
   IAppointment,
   IShiftAvailability
 } from "@/shared/interfaces/IAppointment";
-import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { ChevronLeft } from "lucide-react";
 
@@ -137,6 +140,17 @@ const MOCK_SHIFTS: IShiftAvailability[] = [
   }
 ];
 
+/** Os turnos usam o rótulo por ser assim que `IShiftAvailability.turno` guarda. */
+const SHIFT_OPTIONS = DAY_PERIODS.map((period) => ({
+  value: period.label,
+  label: period.label
+}));
+
+const APPOINTMENT_STATUS_OPTIONS = [
+  { value: "Marcadas", label: "Marcadas" },
+  { value: "Livres", label: "Livres" }
+];
+
 export default function CalendarioPage() {
   const [appointmentsList, setAppointmentsList] =
     useState<IAppointment[]>(MOCK_APPOINTMENTS);
@@ -196,7 +210,7 @@ export default function CalendarioPage() {
     alert(`Abrindo fluxo de agendamento para o turno. Ref ID: ${id}`);
   };
 
-  const dateString = date ? format(date, "dd/MM/yyyy") : "";
+  const dateString = date ? formatDateBR(date) : "";
   const isWeekday = date && date.getDay() >= 1 && date.getDay() <= 5;
 
   // Filter Data
@@ -298,21 +312,14 @@ export default function CalendarioPage() {
                     >
                       Escolha entre consultas:
                     </h3>
-                    <div className="flex flex-wrap justify-center gap-3">
-                      {["Marcadas", "Livres"].map((status) => (
-                        <button
-                          key={status}
-                          onClick={() => toggleAppointmentStatus(status)}
-                          className={`rounded-full px-6 py-1.5 text-sm font-semibold transition-all ${
-                            appointmentStatusFilters.includes(status)
-                              ? "bg-[#4E3FB4] text-white"
-                              : "bg-gray-300/50 text-gray-600 hover:bg-gray-300"
-                          }`}
-                        >
-                          {status}
-                        </button>
-                      ))}
-                    </div>
+                    <FilterPills
+                      multiple
+                      aria-label="Situação das consultas"
+                      options={APPOINTMENT_STATUS_OPTIONS}
+                      value={appointmentStatusFilters}
+                      onChange={toggleAppointmentStatus}
+                      className="justify-center gap-3"
+                    />
                   </div>
 
                   <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
@@ -326,10 +333,7 @@ export default function CalendarioPage() {
                         />
                       ))
                     ) : (
-                      <div className="py-10 text-center text-gray-500">
-                        Nenhum agendamento encontrado para os filtros
-                        selecionados.
-                      </div>
+                      <EmptyState message="Nenhum agendamento encontrado para os filtros selecionados." />
                     )}
                   </div>
 
@@ -356,21 +360,14 @@ export default function CalendarioPage() {
                     >
                       Encontre opções nessas datas
                     </h3>
-                    <div className="flex flex-wrap justify-center gap-3">
-                      {["Manhã", "Tarde", "Noite"].map((turno) => (
-                        <button
-                          key={turno}
-                          onClick={() => toggleShift(turno)}
-                          className={`rounded-full px-6 py-1.5 text-sm font-semibold transition-all ${
-                            selectedShifts.includes(turno)
-                              ? "bg-[#4E3FB4] text-white"
-                              : "bg-gray-300/50 text-gray-600 hover:bg-gray-300"
-                          }`}
-                        >
-                          {turno}
-                        </button>
-                      ))}
-                    </div>
+                    <FilterPills
+                      multiple
+                      aria-label="Período do dia"
+                      options={SHIFT_OPTIONS}
+                      value={selectedShifts}
+                      onChange={toggleShift}
+                      className="justify-center gap-3"
+                    />
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -383,9 +380,10 @@ export default function CalendarioPage() {
                         />
                       ))
                     ) : (
-                      <div className="col-span-full py-10 text-center text-gray-500">
-                        Nenhuma opção encontrada para as seleções enviadas.
-                      </div>
+                      <EmptyState
+                        message="Nenhuma opção encontrada para as seleções enviadas."
+                        className="col-span-full"
+                      />
                     )}
                   </div>
                 </div>
